@@ -4,7 +4,6 @@
       <a href="/"><img src="<%= static_path(@conn, "/images/logo.png") %>" class="logo"/></a>
       <h1 class="title"><a href="/">ElixirJobs</a></h1>
       <p class="text"><%= gettext "Find your next Elixir job the right way." %></p>
-      <p class="text"><%= gettext "Publsh your job offers where they matter." %></p>
     </div>
   </div>
   <div class="container sidebar-nav-container">
@@ -13,6 +12,8 @@
 
     <nav class="sidebar-nav">
       <a class="btn-publish" href="#"><%= gettext "Publish a job offer" %></a>
+      <a class="item" href="#">Login</a>
+      <a class="item" href="#">Register</a>
 
       <span class="item text"><%= gettext "You can follow via" %></span>
       <a class="item" href="https://twitter.com/elixir.jobs" target="_blank">Twitter</a>
