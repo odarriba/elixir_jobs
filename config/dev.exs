@@ -48,11 +48,5 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
-# Configure your database
-config :elixir_jobs, ElixirJobs.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "elixir_jobs_dev",
-  hostname: "localhost",
-  pool_size: 10
+# Import custom configuration
+import_config "dev.secret.exs"

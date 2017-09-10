@@ -9,11 +9,5 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
-# Configure your database
-config :elixir_jobs, ElixirJobs.Repo,
-  adapter: Ecto.Adapters.Postgres,
-  username: "postgres",
-  password: "postgres",
-  database: "elixir_jobs_test",
-  hostname: "localhost",
-  pool: Ecto.Adapters.SQL.Sandbox
+#Import custom configuration
+import_config "test.secret.exs"
