@@ -121,37 +121,56 @@
   display: none;
 }
 
-/* Style the `label` that we use to target the `.sidebar-checkbox` */
+/* Important styles */
 .sidebar-toggle {
   position: absolute;
-  top:  0.5rem;
-  left: .25rem;
-  display: block;
-  width: 2.2rem;
-  padding: .5rem .65rem;
-  color: #FFFFFF;
-  border-radius: 4px;
-  cursor: pointer;
+  top: .6rem;
+  left: .5rem;
+  width: 38px;
+  height: 30px;
+  padding: 15px 5px;
 
-  &:before {
+  span {
+    position: relative;
     display: block;
-    content: "";
-    width: 100%;
 
-    height: .5rem;
-    border-top: .125rem solid;
-    border-bottom: .125rem solid;
+    &:after,
+    &:before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: -9px;
+    }
 
-    /* Make the border inside the box */
-    -webkit-box-sizing: border-box;
-      -moz-box-sizing: border-box;
-            box-sizing: border-box;
+    &:after{
+      top: 9px;
+    }
+
+    &,
+    &:after,
+    &:before {
+      width: 100%;
+      height: 5px;
+      background-color: #FFFFFF;
+      transition: all 0.3s;
+      backface-visibility: hidden;
+      border-radius: 2px;
+    }
   }
 }
 
-.sidebar-toggle:active,
 #sidebar-checkbox:checked ~ .sidebar-toggle {
-  opacity: 0.6;
+  span {
+    background-color: transparent;
+
+    &:before {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    &:after {
+      transform: rotate(-45deg) translate(7px, -8px);
+    }
+  }
 }
 
 /* Move sidebar to the left */
