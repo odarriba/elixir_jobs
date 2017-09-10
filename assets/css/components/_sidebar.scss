@@ -185,18 +185,18 @@
     }
   }
 
+  .sidebar-nav-container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #63407D;
+  }
+
   .sidebar-nav {
     display: block;
 
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-
-    .container {
-      margin-top: 20px;
-      padding-top: 20px;
-      border-top: 1px solid #63407D;
-    }
     .item{
       background: transparent;
       border: none;
