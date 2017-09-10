@@ -1,0 +1,233 @@
+@import "_config";
+
+/*
+ * Sidebar
+ *
+ * Flexible banner for housing site name, intro, and "footer" content. Starts
+ * out above content in mobile and later moves to the side with wider viewports.
+ */
+.sidebar {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow-y: auto;
+  text-align: center;
+  color: rgba(255,255,255,.5);
+  background-color: #2e2148;
+  border: 2px solid #2e2148;
+
+  a {
+    color: #fff;
+  }
+
+  .search-icon {
+    position: absolute;
+    top:  0.5rem;
+    right: .25rem;
+    display: block;
+    width: 2.2rem;
+    padding: 0 .65rem;
+    color: #FFFFFF;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+}
+
+.sidebar-header {
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 2rem;
+  padding: 0.25rem;
+
+  img {
+    width: 32px;
+    height: 32px;
+    border-radius: 25%;
+    vertical-align: top;
+  }
+
+  p {
+    margin: 0;
+    margin-top: 0.5rem;
+    line-height: 1.25rem;
+    display: none;
+  }
+
+  /* About section */
+  .title {
+    display: inline;
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.25rem;
+    line-height: 32px;
+    margin-bottom: 0;
+  }
+}
+
+.sidebar-nav {
+  display: none;
+
+  .item {
+    display: block;
+    line-height: 1.75;
+    background: #150C1A;
+    border-top: 1px solid #222;
+    padding: 0.25rem;
+
+    &:hover,
+    &:focus {
+      text-decoration: underline;
+    }
+    &.active {
+      font-weight: bold;
+      background: #271134;
+    }
+  }
+}
+
+/* Slide effect
+ *
+ * Handle the sliding effects of the sidebar and content in one spot, seperate
+ * from the default styles.
+ *
+ * As an a heads up, we don't use `transform: translate3d()` here because when
+ * mixed with `position: fixed;` for the sidebar toggle, it creates a new
+ * containing block. Put simply, the fixed sidebar toggle behaves like
+ * `position: absolute;` when transformed.
+ *
+ * Read more about it at http://meyerweb.com/eric/thoughts/2011/09/12/.
+ */
+
+#sidebar-checkbox:checked ~ .sidebar-nav {
+  display: block;
+}
+
+/* Hide the sidebar checkbox that we toggle with `.sidebar-toggle` */
+.sidebar-checkbox {
+  display: none;
+}
+
+/* Style the `label` that we use to target the `.sidebar-checkbox` */
+.sidebar-toggle {
+  position: absolute;
+  top:  0.5rem;
+  left: .25rem;
+  display: block;
+  width: 2.2rem;
+  padding: .5rem .65rem;
+  color: #FFFFFF;
+  border-radius: 4px;
+  cursor: pointer;
+
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+
+    height: .5rem;
+    border-top: .125rem solid;
+    border-bottom: .125rem solid;
+
+    /* Make the border inside the box */
+    -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+}
+
+.sidebar-toggle:active,
+#sidebar-checkbox:checked ~ .sidebar-toggle {
+  opacity: 0.6;
+}
+
+/* Move sidebar to the left */
+@include screen-md {
+  .sidebar-toggle {
+    position: fixed;
+    width: 2.25rem;
+
+    &:before {
+      padding-bottom: .15rem;
+      border-top-width: .45rem;
+      border-bottom-width: .15rem;
+    }
+  }
+
+  .sidebar {
+    bottom: 0;
+    width: 14rem;
+    height: 100%;
+
+    padding: 2rem 1rem 1rem 1rem;
+
+    border-bottom-color: transparent;
+    border-right-color: #63407d;
+
+    .search-icon {
+      display: none;
+    }
+  }
+
+  .sidebar-header {
+    img {
+      width: 128px;
+      height: 128px;
+    }
+
+    p {
+      display: block;
+    }
+
+    .title {
+      display: block;
+    }
+  }
+
+  .sidebar-nav {
+    display: block;
+
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+    .container {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #63407D;
+    }
+    .item{
+      background: transparent;
+      border: none;
+
+      &.active {
+        background: transparent;
+      }
+    }
+  }
+
+  .sidebar-toggle {
+    display: none;
+  }
+}
+
+.badge {
+  font-size: 0.675rem;
+  padding: 3px;
+  border-radius: 3px;
+  vertical-align: text-top;
+
+  .new {
+    background: #2e2148;
+    color: #72e20b;
+    border: 1px solid #72e20b;
+  }
+}
+
+a.no-hover-decoration:hover {
+  text-decoration: none;
+  .hover-decoration {
+    text-decoration: underline;
+  }
+}
