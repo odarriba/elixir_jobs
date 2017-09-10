@@ -69,6 +69,17 @@
 .sidebar-nav {
   display: none;
 
+  .btn-publish {
+    @extend .btn-primary;
+
+    display: block;
+    line-height: 1.75;
+    font-size: 18px;
+    padding: 0.25rem;
+
+    border-bottom: 0;
+  }
+
   .item {
     display: block;
     line-height: 1.75;
@@ -80,6 +91,7 @@
     &:focus {
       text-decoration: underline;
     }
+
     &.active {
       font-weight: bold;
       background: #271134;
@@ -197,6 +209,12 @@
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+
+    .btn-publish {
+      margin-bottom: 10px;
+      border-bottom: 3px solid darken(#127429, 10%);
+    }
+
     .item{
       background: transparent;
       border: none;

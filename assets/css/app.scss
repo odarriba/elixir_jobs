@@ -2,6 +2,7 @@
 @import "config";
 
 @import "mixins/commons";
+@import "mixins/btn";
 @import "mixins/responsive";
 
 @import "base/commons";
@@ -11,4 +12,5 @@
 
 @import "layout/base";
 
+@import "components/btn";
 @import "components/sidebar";
