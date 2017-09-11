@@ -2,7 +2,7 @@ input[type=text],
 textarea {
   border: 1px solid #d3d3d3;
   border-radius: 4px;
-  padding: 5px;
+  padding: 10px 6px;
   outline: none;
   width: 100%;
   background: #fafafa;
@@ -25,4 +25,11 @@ textarea.error {
 .danger {
   color: #c33;
   border-bottom: 2px dashed #c33;
+}
+
+@include screen-md {
+  input[type=text],
+  textarea {
+    padding: 5px;
+  }
 }
