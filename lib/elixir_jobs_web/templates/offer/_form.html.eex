@@ -1,6 +1,6 @@
 <div class="offer <%= @css_class %>">
   <%= form_for @changeset, @action, fn f -> %>
-    <%= text_input f, :title, id: "offer_title", class: class_with_error(f, :title, "offer-title"), placeholder: "Title goes here (will be tweeted)" %>
+    <%= text_input f, :title, id: "offer_title", class: class_with_error(f, :title, "title"), placeholder: "Title goes here (will be tweeted)" %>
 
     <span class="meta">
       <span class="date">Today</span> &ndash;
@@ -8,7 +8,7 @@
       <span class="time"></span>
     </span>
 
-    <%= textarea f, :description, id: "offer_description", class: class_with_error(f, :text, "offer-description"), placeholder: "Text should describe the offer itself. Remember, this text can potentially engage your candidates!" %>
+    <%= textarea f, :description, id: "offer_description", class: class_with_error(f, :text, "description"), placeholder: "Text should describe the offer itself. Remember, this text can potentially engage your candidates!" %>
 
     <div class="functions">
       <div>
