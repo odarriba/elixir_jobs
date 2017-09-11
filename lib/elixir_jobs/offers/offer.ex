@@ -4,7 +4,7 @@ defmodule ElixirJobs.Offers.Offer do
 
   alias ElixirJobs.{
     Offers.Offer,
-    EctoEnums.JobTime,
+    EctoEnums.JobPlace,
     EctoEnums.JobType
   }
 
@@ -17,13 +17,13 @@ defmodule ElixirJobs.Offers.Offer do
     field :location, :string
     field :url, :string
 
-    field :job_time, JobTime
+    field :job_place, JobPlace
     field :job_type, JobType
 
     timestamps()
   end
 
-  @required_attrs [:title, :description, :location, :url, :job_time, :job_type]
+  @required_attrs [:title, :description, :location, :url, :job_place, :job_type]
   @optional_attrs []
   @attributes @required_attrs ++ @optional_attrs
 
@@ -37,7 +37,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, ~r/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
-    |> validate_inclusion(:job_time, JobTime.__valid_values__())
+    |> validate_inclusion(:job_place, JobPlace.__valid_values__())
     |> validate_inclusion(:job_type, JobType.__valid_values__())
   end
 end

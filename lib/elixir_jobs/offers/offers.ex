@@ -11,7 +11,7 @@ defmodule ElixirJobs.Offers do
 
   alias ElixirJobs.{
     Offers.Offer,
-    EctoEnums.JobTime,
+    EctoEnums.JobPlace,
     EctoEnums.JobType
   }
 
@@ -119,15 +119,15 @@ defmodule ElixirJobs.Offers do
 
 
   @doc """
-  Returns registered job types.
+  Returns registered job palces.
 
   ## Examples
 
-      iex> get_job_times()
-      [:unknown, :full_time, :part_time, :freelance]
+      iex> get_job_places()
+      [:unknown, :onsite, :remote, :both]
 
   """
-  def get_job_times, do: JobTime.__enum_map__()
+  def get_job_places, do: JobPlace.__enum_map__()
 
   @doc """
   Returns registered job types.
@@ -135,7 +135,7 @@ defmodule ElixirJobs.Offers do
   ## Examples
 
       iex> get_job_types()
-      [:unknown, :onsite, :remote, :both]
+      [:unknown, :full_time, :part_time, :freelance]
 
   """
   def get_job_types, do: JobType.__enum_map__()
