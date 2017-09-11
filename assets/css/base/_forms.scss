@@ -17,6 +17,16 @@ textarea {
   min-height: 200px;
 }
 
+select {
+  height: 34px;
+  padding: 6px 12px;
+  line-height: 1.42857143;
+  color: #555;
+  background-image: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
 input.error,
 textarea.error {
   border: 2px solid #faa;

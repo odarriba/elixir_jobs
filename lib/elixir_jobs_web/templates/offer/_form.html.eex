@@ -4,14 +4,23 @@
 
     <span class="meta">
       <span class="date">Today</span> &ndash;
-      <span class="type"></span>
-      <span class="time"></span>
+      <span class="type">
+        <select>
+          <option value="">Job place</option>
+        </select>
+      </span> &ndash;
+      <span class="time">
+        <select>
+          <option value="">Job type</option>
+        </select>
+      </span>
     </span>
 
     <%= textarea f, :description, id: "offer_description", class: class_with_error(f, :text, "description"), placeholder: "Text should describe the offer itself. Remember, this text can potentially engage your candidates!" %>
 
     <div class="information">
-      <%= text_input f, :location, id: "offer_location", class: class_with_error(f, :location, "location"), placeholder: "Location of the job offer" %>
+      <%= text_input f, :location, id: "offer_location", class: class_with_error(f, :location, "location"), placeholder: "Location of the job" %>
+
       <%= text_input f, :url, id: "offer_url", class: class_with_error(f, :url, "url"), placeholder: "External URL of the job offer" %>
     </div>
 
