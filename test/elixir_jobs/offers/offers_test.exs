@@ -10,19 +10,25 @@ defmodule ElixirJobs.OffersTest do
       title: "some title",
       description: "some description",
       location: "some location",
-      url: "https://www.google.com"
+      url: "https://www.google.com",
+      job_type: "remote",
+      job_time: "full_time"
     }
     @update_attrs %{
       title: "some updated title",
       description: "some updated description",
       location: "some updated location",
-      url: "https://www.google.es"
+      url: "https://www.google.es",
+      job_type: "onsite",
+      job_time: "part_time"
     }
     @invalid_attrs %{
       title: nil,
       description: nil,
       location: nil,
-      url: nil
+      url: nil,
+      job_type: "not_registered",
+      job_time: "not_registered"
     }
 
     def offer_fixture(attrs \\ %{}) do
@@ -50,6 +56,8 @@ defmodule ElixirJobs.OffersTest do
       assert offer.description == "some description"
       assert offer.location == "some location"
       assert offer.url == "https://www.google.com"
+      assert offer.job_type == :remote
+      assert offer.job_time == :full_time
     end
 
     test "create_offer/1 with invalid data returns error changeset" do
@@ -64,6 +72,8 @@ defmodule ElixirJobs.OffersTest do
       assert offer.description == "some updated description"
       assert offer.location == "some updated location"
       assert offer.url == "https://www.google.es"
+      assert offer.job_type == :onsite
+      assert offer.job_time == :part_time
     end
 
     test "update_offer/2 with invalid data returns error changeset" do
