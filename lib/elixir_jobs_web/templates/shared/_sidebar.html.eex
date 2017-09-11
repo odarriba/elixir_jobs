@@ -2,7 +2,7 @@
   <div class="container">
     <div class="sidebar-header">
       <a href="/"><img src="<%= static_path(@conn, "/images/logo.png") %>" class="logo"/></a>
-      <h1 class="title"><a href="/">ElixirJobs</a></h1>
+      <h1 class="title"><a href="<%= offer_path(@conn, :index) %>">ElixirJobs</a></h1>
       <p class="text"><%= gettext "Find your next Elixir job." %></p>
     </div>
   </div>
