@@ -1,6 +1,9 @@
 defmodule ElixirJobs.Offers do
   @moduledoc """
   The Offers context.
+
+  At the moment this context o ly have the Offer schema and functions to manage
+  offers in the app.
   """
 
   import Ecto.Query, warn: false
