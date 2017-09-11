@@ -1,27 +1,35 @@
 <div class="offer <%= @css_class %>">
   <%= form_for @changeset, @action, fn f -> %>
-    <%= text_input f, :title, id: "offer_title", class: class_with_error(f, :title, "title"), placeholder: "Title goes here (will be tweeted)" %>
+    <%= text_input(f, :title,
+      id: "offer_title",
+      class: class_with_error(f, :title, "title"),
+      placeholder: gettext("Title goes here (will be tweeted)")) %>
 
     <span class="meta">
       <span class="date">Today</span> &ndash;
-      <span class="type">
-        <select>
-          <option value="">Job place</option>
-        </select>
+      <span class="place">
+        <%= select(f, :job_place, get_job_place_options()) %>
       </span> &ndash;
-      <span class="time">
-        <select>
-          <option value="">Job type</option>
-        </select>
+      <span class="type">
+        <%= select(f, :job_type, get_job_type_options()) %>
       </span>
     </span>
 
-    <%= textarea f, :description, id: "offer_description", class: class_with_error(f, :text, "description"), placeholder: "Text should describe the offer itself. Remember, this text can potentially engage your candidates!" %>
+    <%= textarea(f, :description,
+      id: "offer_description",
+      class: class_with_error(f, :text, "description"),
+      placeholder: gettext("Text should describe the offer itself. Remember, this text can potentially engage your candidates!")) %>
 
     <div class="information">
-      <%= text_input f, :location, id: "offer_location", class: class_with_error(f, :location, "location"), placeholder: "Location of the job" %>
+      <%= text_input(f, :location,
+        id: "offer_location",
+        class: class_with_error(f, :location, "location"),
+        placeholder: gettext("Location of the job (e.g. Barcelona, Spain)")) %>
 
-      <%= text_input f, :url, id: "offer_url", class: class_with_error(f, :url, "url"), placeholder: "External URL of the job offer" %>
+      <%= text_input(f, :url,
+        id: "offer_url",
+        class: class_with_error(f, :url, "url"),
+        placeholder: gettext("External URL of the job offer")) %>
     </div>
 
     <div class="functions">
@@ -32,7 +40,7 @@
         </small>
 
         <span>
-          <%= submit "Send this!", class: "btn-primary" %>
+          <%= submit("Send this!", class: "btn-primary") %>
         </span>
       </div>
     </div>
