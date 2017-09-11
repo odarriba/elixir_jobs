@@ -27,9 +27,21 @@ select {
   border-radius: 4px;
 }
 
+.field-container {
+  @include clearfix;
+  margin-bottom: 0.5rem;
+}
+
 input.error,
-textarea.error {
+textarea.error,
+select.error {
   border: 2px solid #faa;
+
+  & + .error-block {
+    float: right;
+    font-size: 0.8rem;
+    color: #faa;
+  }
 }
 
 .danger {

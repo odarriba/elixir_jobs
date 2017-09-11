@@ -6,6 +6,8 @@ defmodule ElixirJobsWeb.OfferController do
     Offers.Offer
   }
 
+  plug :scrub_params, "offer" when action in [:create]
+
   def index(conn, params) do
     page_number =
       with {:ok, page_no} <- Map.fetch(params, "page_number"),
@@ -28,5 +30,14 @@ defmodule ElixirJobsWeb.OfferController do
     changeset = Offers.change_offer(%Offer{})
 
     render conn, "new.html", changeset: changeset
+  end
+
+  def create(conn, %{"offer" => offer_params}) do
+    case Offers.create_offer(offer_params) do
+      {:ok, offer} ->
+        redirect(conn, to: offer_path(conn, :index))
+      {:error, changeset} ->
+        render conn, "new.html", changeset: changeset
+    end
   end
 end

@@ -59,7 +59,8 @@
     }
 
     span {
-      margin: 0 10px;
+      display: block;
+      margin: 10px 0;
     }
 
     a {
@@ -84,11 +85,16 @@
 .offer-new {
   border-top: none;
   margin-top: 0;
-  padding-top: 0;
+  padding-top: 0.5rem !important;
 
   .meta {
     select {
       font-size: 0.8rem;
+    }
+
+    span input,
+    span select {
+      width: 100%;
     }
   }
 
@@ -97,8 +103,8 @@
     padding-top: 1rem;
     border-top: 2px solid #D8DDE1;
 
-    input.location {
-      margin-bottom: 1rem;
+    input.url {
+      margin-top: 0.5rem;
     }
     input.location,
     input.url {
@@ -120,6 +126,21 @@
     border: none;
     border-bottom: 1px solid #eee;
 
+    .meta {
+      span {
+        display: inline;
+
+        &::after{
+          margin: 0 10px;
+          content: "–";
+        }
+
+        &:last-child::after{
+          content: "";
+        }
+      }
+    }
+
     .functions {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
@@ -133,8 +154,15 @@
       padding-top: 1.5rem;
       border-top: 1px solid #eee;
 
-      input.location {
-        margin-bottom: 1.5rem;
+      input.url {
+        margin-top: 1rem;
+      }
+    }
+
+    .meta {
+      span input,
+      span select {
+        width: auto;
       }
     }
   }
