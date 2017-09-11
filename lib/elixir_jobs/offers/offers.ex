@@ -25,7 +25,14 @@ defmodule ElixirJobs.Offers do
 
   """
   def list_offers do
-    Repo.all(Offer)
+    Offer
+    |> order_by(desc: :inserted_at)
+    |> Repo.all()
+  end
+  def list_offers(page) when is_integer(page) and page > 0 do
+    Offer
+    |> order_by(desc: :inserted_at)
+    |> Repo.paginate(page: page)
   end
 
   @doc """
@@ -120,7 +127,7 @@ defmodule ElixirJobs.Offers do
       [:unknown, :full_time, :part_time, :freelance]
 
   """
-  def get_job_times(), do: JobTime.__enum_map__()
+  def get_job_times, do: JobTime.__enum_map__()
 
   @doc """
   Returns registered job types.
@@ -131,5 +138,5 @@ defmodule ElixirJobs.Offers do
       [:unknown, :onsite, :remote, :both]
 
   """
-  def get_job_types(), do: JobType.__enum_map__()
+  def get_job_types, do: JobType.__enum_map__()
 end
