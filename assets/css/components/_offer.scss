@@ -7,10 +7,6 @@
   .functions {
     @include clearfix;
 
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 2px solid #D8DDE1;
-
     a {
       color: #aaa;
     }
@@ -87,30 +83,22 @@
   margin-top: 0;
   padding-top: 0.5rem !important;
 
-  .meta {
-    select {
-      font-size: 0.8rem;
+  .field-container {
+    &.title-field {
+      margin-bottom: 0.5rem;
     }
 
-    span input,
-    span select {
-      width: 100%;
+    &.location-field {
+      margin-bottom: 0;
     }
   }
 
-  .information {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 2px solid #D8DDE1;
+  input.company {
+    margin-top: 0px;
+  }
 
-    input.url {
-      margin-top: 0.5rem;
-    }
-    input.location,
-    input.url {
-      font-family: inherit;
-      font-size: inherit;
-    }
+  .meta {
+    margin: 20px 0;
   }
 }
 
@@ -140,29 +128,12 @@
         }
       }
     }
-
-    .functions {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-    }
   }
 
   .offer-new {
-    .information {
-      margin-top: 1.5rem;
-      padding-top: 1.5rem;
-      border-top: 1px solid #eee;
-
-      input.url {
-        margin-top: 1rem;
-      }
-    }
-
-    .meta {
-      span input,
-      span select {
-        width: auto;
+    .field-container {
+      &.company-field {
+        margin-bottom: 0;
       }
     }
   }

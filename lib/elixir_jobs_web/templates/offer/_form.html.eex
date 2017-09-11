@@ -1,39 +1,55 @@
 <div class="<%= @css_class %> offer">
   <%= form_for @changeset, @action, fn f -> %>
-    <div class="field-container">
-      <%= text_input(f, :title,
-        id: "offer_title",
-        class: class_with_error(f, :title, "title"),
-        placeholder: gettext("Title goes here (will be tweeted)")) %>
-      <%= error_tag(f, :title) %>
-    </div>
-
-    <span class="meta">
-      <span class="date">Today</span>
-      <span class="place">
-        <%= select(f, :job_place, get_job_place_options()) %>
-      </span>
-      <span class="type">
-        <%= select(f, :job_type, get_job_type_options()) %>
-      </span>
-    </span>
-
-    <div class="field-container">
-      <%= textarea(f, :description,
-        id: "offer_description",
-        class: class_with_error(f, :description, "description"),
-        placeholder: gettext("Text should describe the offer itself. Remember, this text can potentially engage your candidates!")) %>
-      <%= error_tag(f, :description) %>
-    </div>
-
-    <div class="information">
-      <div class="field-container">
-        <%= text_input(f, :location,
-          id: "offer_location",
-          class: class_with_error(f, :location, "location"),
-          placeholder: gettext("Location of the job (e.g. Barcelona, Spain)")) %>
-        <%= error_tag(f, :location) %>
+    <fieldset>
+      <div class="field-container title-field">
+        <%= text_input(f, :title,
+          id: "offer_title",
+          class: class_with_error(f, :title, "title"),
+          placeholder: gettext("Title goes here (will be tweeted)")) %>
+        <%= error_tag(f, :title) %>
       </div>
+
+      <div class="row">
+        <div class="field-container company-field col-2">
+          <%= text_input(f, :company,
+            id: "offer_company",
+            class: class_with_error(f, :company, "company"),
+            placeholder: gettext("Company name")) %>
+          <%= error_tag(f, :company) %>
+        </div>
+
+        <div class="field-container location-field col-2">
+          <%= text_input(f, :location,
+            id: "offer_location",
+            class: class_with_error(f, :location, "location"),
+            placeholder: gettext("Location of the job")) %>
+          <%= error_tag(f, :location) %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="field-container">
+        <%= textarea(f, :description,
+          id: "offer_description",
+          class: class_with_error(f, :description, "description"),
+          placeholder: gettext("Text should describe the offer itself. Remember, this text can potentially engage your candidates!")) %>
+        <%= error_tag(f, :description) %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="row">
+        <div class="field-container col-2">
+          <%= select(f, :job_place, get_job_place_options()) %>
+        </div>
+
+        <div class="field-container col-2">
+          <%= select(f, :job_type, get_job_type_options()) %>
+        </div>
+      </div>
+
+
 
       <div class="field-container">
         <%= text_input(f, :url,
@@ -42,7 +58,7 @@
           placeholder: gettext("External URL of the job offer")) %>
         <%= error_tag(f, :url) %>
       </div>
-    </div>
+    </fieldset>
 
     <div class="functions">
       <div>

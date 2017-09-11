@@ -32,6 +32,15 @@
   border-top: 2px solid #eee;
 }
 
+.row {
+  @include clearfix;
+}
+
+.col-2 {
+  width: 100%;
+  margin-right: 0;
+}
+
 
 @include screen-sm {
   .content {
@@ -49,6 +58,16 @@
   .footer {
     padding-left: 2rem;
     padding-right: 1rem;
+  }
+
+  .col-2 {
+    width: calc(50% - 0.5rem);
+    margin-right: 1rem;
+    float: left;
+
+    &:last-child{
+      margin-right: 0;
+    }
   }
 }
 

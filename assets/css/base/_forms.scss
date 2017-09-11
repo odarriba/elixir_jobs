@@ -6,30 +6,26 @@ textarea {
   outline: none;
   width: 100%;
   background: #fafafa;
+  font-family: inherit;
+  font-size: inherit;
 
   &:focus {
     background: #fff;
   }
 }
 textarea {
-  font-family: inherit;
-  font-size: inherit;
   min-height: 200px;
 }
 
 select {
-  height: 34px;
-  padding: 6px 12px;
+  font-family: inherit;
+  font-size: inherit;
+  padding: 10px 12px;
   line-height: 1.42857143;
   color: #555;
   background-image: none;
   border: 1px solid #ccc;
   border-radius: 4px;
-}
-
-.field-container {
-  @include clearfix;
-  margin-bottom: 0.5rem;
 }
 
 input.error,
@@ -44,6 +40,31 @@ select.error {
   }
 }
 
+fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #D8DDE1;
+
+  & > .field-container:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.field-container {
+  @include clearfix;
+  margin-bottom: 1rem;
+
+  input,
+  textarea,
+  select {
+    width: 100%;
+  }
+}
+
 .danger {
   color: #c33;
   border-bottom: 2px dashed #c33;
@@ -51,7 +72,18 @@ select.error {
 
 @include screen-md {
   input[type=text],
-  textarea {
+  textarea,
+  select {
     padding: 5px;
+  }
+
+  fieldset {
+    margin-bottom: 1.5rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid #eee;
+  }
+
+  .field-container {
+    margin-bottom: 1.5rem;
   }
 }
