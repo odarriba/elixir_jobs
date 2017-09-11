@@ -39,6 +39,7 @@ defmodule ElixirJobsWeb do
 
       import ElixirJobsWeb.Router.Helpers
       import ElixirJobsWeb.ErrorHelpers
+      import ElixirJobsWeb.ViewHelpers
       import ElixirJobsWeb.Gettext
 
       def render_shared(template, assigns \\ []) do
