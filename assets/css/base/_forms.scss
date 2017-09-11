@@ -1,12 +1,14 @@
 input[type=text],
 textarea {
-  border: none;
+  border: 1px solid #d3d3d3;
+  border-radius: 4px;
+  padding: 5px;
   outline: none;
   width: 100%;
   background: #fafafa;
 
   &:focus {
-    background: transparent;
+    background: #fff;
   }
 }
 textarea {
