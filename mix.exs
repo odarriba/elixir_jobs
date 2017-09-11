@@ -47,7 +47,8 @@ defmodule ElixirJobs.Mixfile do
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
       {:ecto_enum, "~> 1.0"},
-      {:scrivener_ecto, "~> 1.0"}
+      {:scrivener_ecto, "~> 1.0"},
+      {:earmark, "~> 1.2" }
     ]
   end
 
