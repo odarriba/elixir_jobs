@@ -1,0 +1,43 @@
+<div class="offer <%= @css_class %>">
+  <%= form_for @changeset, @action, fn f -> %>
+    <%= text_input f, :title, id: "offer_title", class: class_with_error(f, :title, "offer-title"), placeholder: "Title goes here (will be tweeted)" %>
+
+    <span class="meta">
+      <span class="date">Today</span> &ndash;
+      <span class="type"></span>
+      <span class="time"></span>
+    </span>
+
+    <%= textarea f, :description, id: "offer_description", class: class_with_error(f, :text, "offer-description"), placeholder: "Text should describe the offer itself. Remember, this text can potentially engage your candidates!" %>
+
+    <div class="functions">
+      <div>
+        <small>
+          Your offer might be edited (typos, wording, etc.)<br>
+          You can use Markdown (<a href="#" data-toggle="#formatting-help">formatting help</a>).
+        </small>
+
+        <span>
+          <%= submit "Send this!", class: "btn-primary" %>
+        </span>
+      </div>
+    </div>
+
+    <div id="formatting-help" style="display: none;">
+      <table>
+        <tr>
+          <th>What you type</th>
+          <th>What you get</th>
+        </tr>
+        <%= for term <- ["[Link](https://github.com/)", "**bold**", "*italics*", "***highlight***", "`inline code`", "Indent with four spaces to render code blocks:\n\n    # This is rendered as a\n    # code block."] do %>
+          <tr>
+            <td><pre><%= raw term%></pre></td>
+            <td><%= sanitized_markdown(term) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <div class="js-post-preview-inject"></div>
+</div>
