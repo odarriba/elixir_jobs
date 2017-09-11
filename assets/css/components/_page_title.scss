@@ -1,9 +1,12 @@
 .page-title {
   text-transform: uppercase;
   text-rendering: optimizeLegibility;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 
   padding-bottom: 0.5rem;
-  margin-bottom: 0.5rem;
-  border-bottom: 1px solid #d3d3d3;
+  margin: 1.5rem 0.5rem;
+  border-bottom: 2px solid #d3d3d3;
+
+  @include screen-md {
+    margin: 1rem 0;
+  }
 }

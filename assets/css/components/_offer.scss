@@ -2,12 +2,12 @@
   background: #fff;
   border-bottom: 2px solid #D8DDE1;
   margin-top: 0.75rem;
-  padding: 0.5rem;
+  padding: 0.5rem 0.5rem 1rem 0.5rem;
 
   .functions {
-    margin-top: 1.5rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid #eee;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #D8DDE1;
 
     a {
       color: #aaa;
@@ -105,5 +105,11 @@
     padding: 1rem 0 1.5rem 0;
     border: none;
     border-bottom: 1px solid #eee;
+
+    .functions {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #D8DDE1;
+    }
   }
 }
