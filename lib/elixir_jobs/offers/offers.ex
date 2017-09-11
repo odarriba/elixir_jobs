@@ -9,7 +9,11 @@ defmodule ElixirJobs.Offers do
   import Ecto.Query, warn: false
   alias ElixirJobs.Repo
 
-  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.{
+    Offers.Offer,
+    EctoEnums.JobTime,
+    EctoEnums.JobType
+  }
 
   @doc """
   Returns the list of offers.
@@ -104,4 +108,28 @@ defmodule ElixirJobs.Offers do
   def change_offer(%Offer{} = offer) do
     Offer.changeset(offer, %{})
   end
+
+
+
+  @doc """
+  Returns registered job types.
+
+  ## Examples
+
+      iex> get_job_times()
+      [:unknown, :full_time, :part_time, :freelance]
+
+  """
+  def get_job_times(), do: JobTime.__enum_map__()
+
+  @doc """
+  Returns registered job types.
+
+  ## Examples
+
+      iex> get_job_types()
+      [:unknown, :onsite, :remote, :both]
+
+  """
+  def get_job_types(), do: JobType.__enum_map__()
 end

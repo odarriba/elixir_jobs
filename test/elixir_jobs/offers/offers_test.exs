@@ -4,7 +4,11 @@ defmodule ElixirJobs.OffersTest do
   alias ElixirJobs.Offers
 
   describe "offers" do
-    alias ElixirJobs.Offers.Offer
+    alias ElixirJobs.{
+      Offers.Offer,
+      EctoEnums.JobTime,
+      EctoEnums.JobType
+    }
 
     @valid_attrs %{
       title: "some title",
@@ -91,6 +95,14 @@ defmodule ElixirJobs.OffersTest do
     test "change_offer/1 returns a offer changeset" do
       offer = offer_fixture()
       assert %Ecto.Changeset{} = Offers.change_offer(offer)
+    end
+
+    test "get_job_times/0 returns the expected value" do
+      assert Offers.get_job_times() == JobTime.__enum_map__()
+    end
+
+    test "get_job_types/0 returns the expected value" do
+      assert Offers.get_job_types() == JobType.__enum_map__()
     end
   end
 end
