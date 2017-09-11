@@ -5,12 +5,24 @@
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 
   .functions {
+    @include clearfix;
+
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 2px solid #D8DDE1;
 
     a {
       color: #aaa;
+    }
+
+    small,span {
+      display: block;
+      float: left;
+    }
+
+    span {
+      float: right;
+      text-align: right;
     }
   }
 
@@ -67,24 +79,12 @@
     }
   }
 
-  .body {
+  .description {
     a {
       word-break: break-word;
       color: #5E49BA;
       text-decoration: underline;
     }
-  }
-
-  .functions {
-    small,span {
-      display: block;
-      float: left;
-    }
-    span {
-      float: right;
-      text-align: right;
-    }
-    @include clearfix
   }
 }
 
@@ -92,6 +92,21 @@
   border-top: none;
   margin-top: 0;
   padding-top: 0;
+
+  .information {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #D8DDE1;
+
+    input.location {
+      margin-bottom: 1rem;
+    }
+    input.location,
+    input.url {
+      font-family: inherit;
+      font-size: inherit;
+    }
+  }
 }
 
 .offer-preview {
@@ -109,7 +124,19 @@
     .functions {
       margin-top: 1.5rem;
       padding-top: 1.5rem;
-      border-top: 1px solid #D8DDE1;
+      border-top: 1px solid #eee;
+    }
+  }
+
+  .offer-new {
+    .information {
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #eee;
+
+      input.location {
+        margin-bottom: 1.5rem;
+      }
     }
   }
 }
