@@ -48,7 +48,8 @@ defmodule ElixirJobs.Mixfile do
       {:cowboy, "~> 1.0"},
       {:ecto_enum, "~> 1.0"},
       {:scrivener_ecto, "~> 1.0"},
-      {:earmark, "~> 1.2" }
+      {:earmark, "~> 1.2" },
+      {:phoenix_html_sanitizer, "~> 1.1.0-rc1"}
     ]
   end
 
