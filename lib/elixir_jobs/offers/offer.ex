@@ -18,7 +18,8 @@ defmodule ElixirJobs.Offers.Offer do
   @doc false
   def changeset(%Offer{} = offer, attrs) do
     offer
-    |> cast(attrs, [:title, :url, :description])
+    |> cast(attrs, [:title, :description, :location, :url])
     |> validate_required([:title, :location, :description, :url])
+    |> validate_format(:url, ~r/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
   end
 end

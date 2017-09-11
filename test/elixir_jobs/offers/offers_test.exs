@@ -6,9 +6,24 @@ defmodule ElixirJobs.OffersTest do
   describe "offers" do
     alias ElixirJobs.Offers.Offer
 
-    @valid_attrs %{description: "some description", title: "some title", url: "some url"}
-    @update_attrs %{description: "some updated description", title: "some updated title", url: "some updated url"}
-    @invalid_attrs %{description: nil, title: nil, url: nil}
+    @valid_attrs %{
+      title: "some title",
+      description: "some description",
+      location: "some location",
+      url: "https://www.google.com"
+    }
+    @update_attrs %{
+      title: "some updated title",
+      description: "some updated description",
+      location: "some updated location",
+      url: "https://www.google.es"
+    }
+    @invalid_attrs %{
+      title: nil,
+      description: nil,
+      location: nil,
+      url: nil
+    }
 
     def offer_fixture(attrs \\ %{}) do
       {:ok, offer} =
@@ -31,9 +46,10 @@ defmodule ElixirJobs.OffersTest do
 
     test "create_offer/1 with valid data creates a offer" do
       assert {:ok, %Offer{} = offer} = Offers.create_offer(@valid_attrs)
-      assert offer.description == "some description"
       assert offer.title == "some title"
-      assert offer.url == "some url"
+      assert offer.description == "some description"
+      assert offer.location == "some location"
+      assert offer.url == "https://www.google.com"
     end
 
     test "create_offer/1 with invalid data returns error changeset" do
@@ -44,9 +60,10 @@ defmodule ElixirJobs.OffersTest do
       offer = offer_fixture()
       assert {:ok, offer} = Offers.update_offer(offer, @update_attrs)
       assert %Offer{} = offer
-      assert offer.description == "some updated description"
       assert offer.title == "some updated title"
-      assert offer.url == "some updated url"
+      assert offer.description == "some updated description"
+      assert offer.location == "some updated location"
+      assert offer.url == "https://www.google.es"
     end
 
     test "update_offer/2 with invalid data returns error changeset" do
