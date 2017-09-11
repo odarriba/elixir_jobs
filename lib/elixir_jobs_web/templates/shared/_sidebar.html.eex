@@ -3,7 +3,7 @@
     <div class="sidebar-header">
       <a href="/"><img src="<%= static_path(@conn, "/images/logo.png") %>" class="logo"/></a>
       <h1 class="title"><a href="/">ElixirJobs</a></h1>
-      <p class="text"><%= gettext "Find your next Elixir job the right way." %></p>
+      <p class="text"><%= gettext "Find your next Elixir job." %></p>
     </div>
   </div>
   <div class="container sidebar-nav-container">
