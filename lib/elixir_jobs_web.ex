@@ -40,6 +40,10 @@ defmodule ElixirJobsWeb do
       import ElixirJobsWeb.Router.Helpers
       import ElixirJobsWeb.ErrorHelpers
       import ElixirJobsWeb.Gettext
+
+      def render_shared(template, assigns \\ []) do
+        render(ElixirJobsWeb.SharedView, template, assigns)
+      end
     end
   end
 

@@ -1,0 +1,27 @@
+<div class="sidebar">
+  <div class="container">
+    <div class="sidebar-header">
+      <a href="/"><img src="<%= static_path(@conn, "/images/logo.png") %>" class="logo"/></a>
+      <h1 class="title"><a href="/">ElixirJobs</a></h1>
+      <p class="text"><%= gettext "Find your next Elixir job the right way." %></p>
+    </div>
+  </div>
+  <div class="container sidebar-nav-container">
+    <input type="checkbox" class="sidebar-checkbox" id="sidebar-checkbox">
+    <label for="sidebar-checkbox" class="sidebar-toggle"><span></span></label>
+
+    <nav class="sidebar-nav">
+      <a class="btn-publish" href="#"><%= gettext "Publish a job offer" %></a>
+      <a class="item" href="#">Login</a>
+      <a class="item" href="#">Register</a>
+
+      <span class="item text"><%= gettext "You can follow via" %></span>
+      <a class="item" href="https://twitter.com/elixir.jobs" target="_blank">Twitter</a>
+      <a class="item" href="#">RSS</a>
+
+      <span class="item text"><%= gettext "Running on Phoenix!" %></span>
+      <a class="item" href="https://github.com/odarriba/elixir_jobs" target="_blank"><%= gettext "Open Source" %></a>
+      <a class="item" href="#"><%= gettext "About" %></a>
+    </nav>
+  </div>
+</div>
