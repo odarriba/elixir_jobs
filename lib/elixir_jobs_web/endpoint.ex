@@ -9,7 +9,7 @@ defmodule ElixirJobsWeb.Endpoint do
   # when deploying your static files in production.
   plug Plug.Static,
     at: "/", from: :elixir_jobs, gzip: false,
-    only: ~w(css fonts images js favicon.ico robots.txt)
+    only: ~w(css fonts images icons js favicon.ico robots.txt manifest.json browserconfig.xml)
 
   # Code reloading can be explicitly enabled under the
   # :code_reloader configuration of your endpoint.
