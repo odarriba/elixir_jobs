@@ -1,0 +1,17 @@
+<div class="offer">
+  <div class="title">
+    <%= link(@offer.title, to: @offer.url) %>
+    </a>
+    <span class="company">
+      <%= @offer.company %>
+    </span>
+  </div>
+  <div class="meta">
+    <span><%= @offer.location %></span>
+    <span><%= @offer.job_place %></span>
+    <span><%= @offer.job_type %></span>
+  </div>
+  <div class="description">
+    <%= sanitized_markdown(@offer.description) %>
+  </div>
+</div>
