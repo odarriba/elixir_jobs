@@ -40,4 +40,9 @@ defmodule ElixirJobsWeb.OfferController do
         render conn, "new.html", changeset: changeset
     end
   end
+
+  def rss(conn, _params) do
+    offers = Offers.list_offers(1)
+    render(conn, "rss.xml", offers: offers.entries)
+  end
 end
