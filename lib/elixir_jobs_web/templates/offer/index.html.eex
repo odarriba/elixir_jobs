@@ -1,18 +1,1 @@
-<%= inspect(@offers) %>
-
-<div class="pagination">
-  <%= if @page_number > 1 do %>
-    <%= link(gettext("Previous"),
-      to: offer_path(@conn, :index, page: @page_number - 1),
-      class: "item item-older") %>
-  <% else %>
-    <span class="item item-older"><%= gettext("Previous") %></span>
-  <% end %>
-  <%= if @page_number < @total_pages do %>
-    <%= link(gettext("Next"),
-      to: offer_path(@conn, :index, page: @page_number + 1),
-      class: "item item-newer") %>
-  <% else %>
-    <span class="item item-newer"><%= gettext("Next") %></span>
-  <% end %>
-</div>
+<%= render_shared("_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
