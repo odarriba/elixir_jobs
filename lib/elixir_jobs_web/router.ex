@@ -17,6 +17,7 @@ defmodule ElixirJobsWeb.Router do
     pipe_through :browser # Use the default browser stack
 
     get "/", OfferController, :index
+    get "/rss", OfferController, :rss
     get "/page/:page_number", OfferController, :index
 
     get "/offer/new", OfferController, :new
