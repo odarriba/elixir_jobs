@@ -1,7 +1,7 @@
 .offer {
   background: #fff;
-  margin: 0.75rem 0 1rem 0;
-  padding: 0.5rem 0.5rem 1rem 0.5rem;
+  margin-top: .75rem;
+  padding: 1rem .5rem .75rem .5rem;
 
   .functions {
     @include clearfix;
@@ -67,6 +67,17 @@
     span {
       display: block;
       margin: 10px 0;
+      display: inline;
+
+      &::after{
+        margin: 0 10px;
+        content: "–";
+      }
+
+      &:last-child::after{
+        margin: 0;
+        content: "";
+      }
     }
 
     a {
@@ -86,6 +97,10 @@
       color: #5E49BA;
       text-decoration: underline;
     }
+  }
+
+  .published {
+    color: #555;
   }
 }
 
@@ -142,7 +157,7 @@
     }
 
     .meta {
-      span {
+      .group {
         display: inline;
 
         &::after{
@@ -160,7 +175,7 @@
 
 @include screen-md {
   .offer {
-    padding: 1rem 0 1rem 0;
+    padding: 2rem 0 1.75rem 0;
     border-bottom: 1px solid #D8DDE1;
   }
 
