@@ -14,7 +14,7 @@
       <a class="btn-publish" href="<%= offer_path(@conn, :new) %>"><%= gettext "Publish a job offer" %></a>
 
       <span class="item text"><%= gettext "You can follow via" %></span>
-      <a class="item" href="https://twitter.com/elixir.jobs" target="_blank">Twitter</a>
+      <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Twitter</a>
       <a class="item" href="#">RSS</a>
 
       <span class="item text"><%= gettext "Running on Phoenix!" %></span>
