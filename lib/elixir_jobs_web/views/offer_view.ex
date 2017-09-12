@@ -23,6 +23,12 @@ defmodule ElixirJobsWeb.OfferView do
     end)
   end
 
+  def human_get_place(:unknown), do: gettext("Not specified")
+  def human_get_place(option), do: get_place_text(option)
+
+  def human_get_type(:unknown), do: gettext("Not specified")
+  def human_get_type(option), do: get_type_text(option)
+
   defp get_place_text(:unknown), do: gettext("Select a job place")
   defp get_place_text(:onsite), do: gettext("Onsite")
   defp get_place_text(:remote), do: gettext("Remote")

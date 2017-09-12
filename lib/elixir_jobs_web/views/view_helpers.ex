@@ -15,11 +15,33 @@ defmodule ElixirJobsWeb.ViewHelpers do
     |> Enum.member?(field)
   end
 
+  ###
+  # Markdown related functions
+  ###
+
   def sanitized_markdown(nil), do: ""
   def sanitized_markdown(text) do
     text
     |> Earmark.as_html!
     |> sanitize
+  end
+
+  def do_strip_tags(text) do
+    sanitize(text, :strip_tags)
+  end
+
+  ###
+  # XML related functions
+  ###
+
+  def xml_strip_tags(text) do
+    {:safe, text} = do_strip_tags(text)
+    text
+  end
+
+  def xml_sanitized_markdown(text) do
+    {:safe, text} = sanitized_markdown(text)
+    text
   end
 
   @doc "Returns a date formatted for humans."
@@ -42,6 +64,10 @@ defmodule ElixirJobsWeb.ViewHelpers do
   def xml_readable_date(date) do
     ElixirJobs.Date.strftime(date, "%e %b %Y %T %z")
   end
+
+  ###
+  # Private functions
+  ###
 
   defp this_year?(date), do: date.year == Ecto.DateTime.utc.year
 
