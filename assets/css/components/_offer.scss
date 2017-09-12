@@ -1,7 +1,6 @@
 .offer {
   background: #fff;
-  border-bottom: 2px solid #D8DDE1;
-  margin-top: 0.75rem;
+  margin: 0.75rem 0 1rem 0;
   padding: 0.5rem 0.5rem 1rem 0.5rem;
 
   .functions {
@@ -54,7 +53,7 @@
   .meta {
     display: block;
     margin-top: -.3rem;
-    margin-bottom: 0.8rem;
+    margin-bottom: 0.5rem;
     padding-bottom: 0.2rem;
     color: #63407d;
     font-size: 0.85rem;
@@ -81,6 +80,7 @@
   }
 
   .description {
+    font-size: 0.9rem;
     a {
       word-break: break-word;
       color: #5E49BA;
@@ -160,9 +160,8 @@
 
 @include screen-md {
   .offer {
-    padding: 1rem 0 1.5rem 0;
-    border: none;
-    border-bottom: 1px solid #eee;
+    padding: 1rem 0 1rem 0;
+    border-bottom: 1px solid #D8DDE1;
   }
 
   .offer-new {
