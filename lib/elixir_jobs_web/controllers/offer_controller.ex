@@ -34,7 +34,7 @@ defmodule ElixirJobsWeb.OfferController do
 
   def create(conn, %{"offer" => offer_params}) do
     case Offers.create_offer(offer_params) do
-      {:ok, offer} ->
+      {:ok, _offer} ->
         redirect(conn, to: offer_path(conn, :index))
       {:error, changeset} ->
         render conn, "new.html", changeset: changeset

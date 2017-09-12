@@ -40,7 +40,7 @@ defmodule ElixirJobsWeb.ViewHelpers do
 
   @doc "Returns a date formatted for RSS clients."
   def xml_readable_date(date) do
-    Date.strftime(date, "%e %b %Y %T %z")
+    ElixirJobs.Date.strftime(date, "%e %b %Y %T %z")
   end
 
   defp this_year?(date), do: date.year == Ecto.DateTime.utc.year
