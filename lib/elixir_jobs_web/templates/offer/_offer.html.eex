@@ -7,9 +7,14 @@
     </span>
   </div>
   <div class="meta">
-    <span><%= @offer.location %></span>
-    <span><%= @offer.job_place %></span>
-    <span><%= @offer.job_type %></span>
+    <div class="group">
+      <span class="published"><%= human_readable_date(@offer.inserted_at) %></span>
+      <span><%= @offer.location %></span>
+    </div>
+    <div class="group">
+      <span><%= @offer.job_place %></span>
+      <span><%= @offer.job_type %></span>
+    </div>
   </div>
   <div class="description">
     <%= sanitized_markdown(@offer.description) %>
