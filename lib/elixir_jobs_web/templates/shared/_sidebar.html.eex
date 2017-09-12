@@ -15,7 +15,7 @@
 
       <span class="item text"><%= gettext "You can follow via" %></span>
       <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Twitter</a>
-      <a class="item" href="#">RSS</a>
+      <a class="item" href="<%= offer_path(@conn, :rss) %>">RSS</a>
 
       <span class="item text"><%= gettext "Running on Phoenix!" %></span>
       <a class="item" href="https://github.com/odarriba/elixir_jobs" target="_blank"><%= gettext "Open Source" %></a>
