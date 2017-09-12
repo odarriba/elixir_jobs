@@ -1,7 +1,7 @@
 .offer {
   background: #fff;
-  margin-top: .75rem;
-  padding: 1rem .5rem .75rem .5rem;
+  margin-top: 1.5rem;
+  padding: .5rem .5rem 0 .5rem;
 
   .functions {
     @include clearfix;
@@ -29,7 +29,6 @@
     margin-top: 0rem !important;
     margin-bottom: .5rem;
     padding-bottom: 0.4rem;
-    border-bottom: 1px solid #D8DDE1;
     font-weight: bold;
     font-size: 1.25rem;
     line-height: 1.25;
@@ -145,6 +144,8 @@
 @include screen-sm {
   .offer {
     .title {
+      padding-bottom: 0.1rem;
+
       .company{
         font-size: 1.15rem;
         display: inline;
@@ -175,8 +176,9 @@
 
 @include screen-md {
   .offer {
+    margin-top: .5rem;
     padding: 2rem 0 1.75rem 0;
-    border-bottom: 1px solid #D8DDE1;
+    border-bottom: 1px solid #e3e3e3;
   }
 
   .offer-new {
