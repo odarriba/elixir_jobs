@@ -21,6 +21,8 @@ defmodule ElixirJobs.Offers.Offer do
     field :job_place, JobPlace
     field :job_type, JobType
 
+    field :published_at, :naive_datetime
+
     timestamps()
   end
 

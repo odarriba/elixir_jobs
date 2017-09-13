@@ -10,6 +10,8 @@ defmodule ElixirJobs.Repo.Migrations.CreateOffers do
       add :location, :string, null: false, size: 50
       add :url, :string, null: false, size: 255
 
+      add :published_at, :naive_datetime, default: nil
+
       timestamps()
     end
 

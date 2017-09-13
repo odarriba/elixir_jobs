@@ -23,6 +23,9 @@ defmodule ElixirJobs.Offers do
       iex> list_offers()
       [%Offer{}, ...]
 
+      iex> list_offers(page_no)
+      [%Offer{}, ...]
+
   """
   def list_offers do
     Offer
@@ -32,6 +35,31 @@ defmodule ElixirJobs.Offers do
   def list_offers(page) when is_integer(page) and page > 0 do
     Offer
     |> order_by(desc: :inserted_at)
+    |> Repo.paginate(page: page)
+  end
+
+  @doc """
+  Returns the list of published offers.
+
+  ## Examples
+
+      iex> list_publsihed_offers()
+      [%Offer{}, ...]
+
+      iex> list_publsihed_offers(page_no)
+      [%Offer{}, ...]
+
+  """
+  def list_published_offers do
+    Offer
+    |> where([o], not is_nil(o.published_at) and o.published_at < ^NaiveDateTime.utc_now())
+    |> order_by(desc: :published_at)
+    |> Repo.all()
+  end
+  def list_published_offers(page) when is_integer(page) and page > 0 do
+    Offer
+    |> where([o], not is_nil(o.published_at) and o.published_at < ^NaiveDateTime.utc_now())
+    |> order_by(desc: :published_at)
     |> Repo.paginate(page: page)
   end
 
@@ -85,6 +113,24 @@ defmodule ElixirJobs.Offers do
     offer
     |> Offer.changeset(attrs)
     |> Repo.update()
+  end
+
+  @doc """
+  Publishes an offer.
+  Optionally you can provide a publication date
+
+  ## Examples
+
+      iex> publish_offer(offer)
+      {:ok, %Offer{}}
+
+      iex> publish_offer(offer, ~N[2002-01-13 23:00:07])
+      {:ok, %Offer{}}
+
+  """
+  def publish_offer(%Offer{} = offer), do: publish_offer(offer, NaiveDateTime.utc_now())
+  def publish_offer(%Offer{} = offer, date) do
+    update_offer(offer, %{published_at: date})
   end
 
   @doc """
