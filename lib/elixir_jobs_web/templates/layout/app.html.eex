@@ -7,9 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <meta name="apple-mobile-web-app-title" content="ElixirJobs">
-    <meta name="application-name" content="ElixirJobs">
+    <meta name="application-name" content="<%= gettext("ElixirJobs") %>">
     <meta name="theme-color" content="#8652ad">
-    <title>ElixirJobs</title>
+    <title><%= gettext("ElixirJobs") %></title>
     <link rel="apple-touch-icon" sizes="180x180" href="<%= static_path(@conn, "/icons/apple-touch-icon.png") %>">
     <link rel="icon" type="image/png" sizes="32x32" href="<%= static_path(@conn, "/icons/favicon-32x32.png") %>">
     <link rel="icon" type="image/png" sizes="16x16" href="<%= static_path(@conn, "/icons/favicon-16x16.png") %>">
