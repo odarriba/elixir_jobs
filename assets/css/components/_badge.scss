@@ -1,0 +1,27 @@
+.badge {
+  border: 2px solid #BBB;
+  border-radius: 2px;
+  padding: 0.25rem 0.8rem 0.35rem 0.8rem;
+  font-weight: bold;
+  background-color: #f3f3f3;
+  color: #000;
+  vertical-align: text-top;
+
+  &.badge-primary {
+    background-color: lighten($color-brand, 10%);
+    border-color: $color-brand;
+    color: #fff;
+  }
+
+  &.badge-success {
+    background-color: $color-success;
+    border-color: darken($color-success, 5%);
+    color: #fff;
+  }
+}
+
+@include screen-sm {
+  .badge {
+    padding: 0.15rem 0.6rem 0.15rem 0.6rem;
+  }
+}

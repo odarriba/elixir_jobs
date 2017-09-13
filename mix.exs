@@ -20,7 +20,11 @@ defmodule ElixirJobs.Mixfile do
   def application do
     [
       mod: {ElixirJobs.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [
+        :logger,
+        :runtime_tools,
+        :scrivener_ecto
+      ]
     ]
   end
 
@@ -42,7 +46,11 @@ defmodule ElixirJobs.Mixfile do
       {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
-      {:ecto_enum, "~> 1.0"}
+      {:ecto_enum, "~> 1.0"},
+      {:scrivener_ecto, "~> 1.0"},
+      {:earmark, "~> 1.2" },
+      {:phoenix_html_sanitizer, "~> 1.1.0-rc1"},
+      {:calendar, "~> 0.17"}
     ]
   end
 

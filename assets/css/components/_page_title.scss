@@ -1,0 +1,12 @@
+.page-title {
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+
+  padding-bottom: 0.5rem;
+  margin: 1.5rem 0.5rem;
+  border-bottom: 2px solid #d3d3d3;
+
+  @include screen-md {
+    margin: 1rem 0;
+  }
+}

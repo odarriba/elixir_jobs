@@ -24,13 +24,21 @@
   margin-left:  auto;
   margin-right: auto;
   padding: 1.25rem 0.5rem 0.5rem 0.5rem;
-  background: #E5EAED;
 }
 .footer {
   font-size: 14px;
   color: #aaa;
   padding: 10px;
   border-top: 2px solid #eee;
+}
+
+.row {
+  @include clearfix;
+}
+
+.col-2 {
+  width: 100%;
+  margin-right: 0;
 }
 
 
@@ -44,12 +52,22 @@
 @include screen-md {
   .content,
   .footer {
-    margin-left: 16rem;
+    margin-left: 14rem;
   }
   .content .container,
   .footer {
     padding-left: 2rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
+  }
+
+  .col-2 {
+    width: calc(50% - 0.5rem);
+    margin-right: 1rem;
+    float: left;
+
+    &:last-child{
+      margin-right: 0;
+    }
   }
 }
 

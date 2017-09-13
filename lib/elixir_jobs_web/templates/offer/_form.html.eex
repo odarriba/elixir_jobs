@@ -1,0 +1,93 @@
+<div class="<%= @css_class %> offer">
+  <%= form_for @changeset, @action, fn f -> %>
+    <fieldset>
+      <div class="field-container title-field">
+        <%= text_input(f, :title,
+          id: "offer_title",
+          class: class_with_error(f, :title, "title"),
+          placeholder: gettext("Title goes here (will be tweeted)")) %>
+        <%= error_tag(f, :title) %>
+      </div>
+
+      <div class="row">
+        <div class="field-container company-field col-2">
+          <%= text_input(f, :company,
+            id: "offer_company",
+            class: class_with_error(f, :company, "company"),
+            placeholder: gettext("Company name")) %>
+          <%= error_tag(f, :company) %>
+        </div>
+
+        <div class="field-container location-field col-2">
+          <%= text_input(f, :location,
+            id: "offer_location",
+            class: class_with_error(f, :location, "location"),
+            placeholder: gettext("Location of the job")) %>
+          <%= error_tag(f, :location) %>
+        </div>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="field-container">
+        <%= textarea(f, :description,
+          id: "offer_description",
+          class: class_with_error(f, :description, "description"),
+          placeholder: gettext("Text should describe the offer itself. Remember, this text can potentially engage your candidates!")) %>
+        <%= error_tag(f, :description) %>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <div class="row">
+        <div class="field-container col-2">
+          <%= select(f, :job_place, get_job_place_options()) %>
+        </div>
+
+        <div class="field-container col-2">
+          <%= select(f, :job_type, get_job_type_options()) %>
+        </div>
+      </div>
+
+
+
+      <div class="field-container">
+        <%= text_input(f, :url,
+          id: "offer_url",
+          class: class_with_error(f, :url, "url"),
+          placeholder: gettext("External URL of the job offer")) %>
+        <%= error_tag(f, :url) %>
+      </div>
+    </fieldset>
+
+    <div class="functions">
+      <div>
+        <small>
+          Your offer might be edited (typos, wording, etc.)<br>
+          You can use Markdown (<a href="#" data-toggle="#formatting-help">formatting help</a>).
+        </small>
+
+        <span>
+          <%= submit("Send this!", class: "btn-primary") %>
+        </span>
+      </div>
+    </div>
+
+    <div id="formatting-help" style="display: none;">
+      <table>
+        <tr>
+          <th>What you type</th>
+          <th>What you get</th>
+        </tr>
+        <%= for term <- ["[Link](https://github.com/)", "**bold**", "*italics*", "***highlight***", "`inline code`", "Indent with four spaces to render code blocks:\n\n    # This is rendered as a\n    # code block."] do %>
+          <tr>
+            <td><pre><%= raw term%></pre></td>
+            <td><%= sanitized_markdown(term) %></td>
+          </tr>
+        <% end %>
+      </table>
+    </div>
+  <% end %>
+
+  <div class="js-post-preview-inject"></div>
+</div>

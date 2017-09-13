@@ -6,33 +6,36 @@ defmodule ElixirJobs.OffersTest do
   describe "offers" do
     alias ElixirJobs.{
       Offers.Offer,
-      EctoEnums.JobTime,
+      EctoEnums.JobPlace,
       EctoEnums.JobType
     }
 
     @valid_attrs %{
       title: "some title",
+      company: "some company",
       description: "some description",
       location: "some location",
       url: "https://www.google.com",
-      job_type: "remote",
-      job_time: "full_time"
+      job_place: "remote",
+      job_type: "full_time"
     }
     @update_attrs %{
       title: "some updated title",
+      company: "some updated company",
       description: "some updated description",
       location: "some updated location",
       url: "https://www.google.es",
-      job_type: "onsite",
-      job_time: "part_time"
+      job_place: "onsite",
+      job_type: "part_time"
     }
     @invalid_attrs %{
       title: nil,
+      company: nil,
       description: nil,
       location: nil,
       url: nil,
-      job_type: "not_registered",
-      job_time: "not_registered"
+      job_place: "not_registered",
+      job_type: "not_registered"
     }
 
     def offer_fixture(attrs \\ %{}) do
@@ -57,11 +60,12 @@ defmodule ElixirJobs.OffersTest do
     test "create_offer/1 with valid data creates a offer" do
       assert {:ok, %Offer{} = offer} = Offers.create_offer(@valid_attrs)
       assert offer.title == "some title"
+      assert offer.company == "some company"
       assert offer.description == "some description"
       assert offer.location == "some location"
       assert offer.url == "https://www.google.com"
-      assert offer.job_type == :remote
-      assert offer.job_time == :full_time
+      assert offer.job_place == :remote
+      assert offer.job_type == :full_time
     end
 
     test "create_offer/1 with invalid data returns error changeset" do
@@ -73,11 +77,12 @@ defmodule ElixirJobs.OffersTest do
       assert {:ok, offer} = Offers.update_offer(offer, @update_attrs)
       assert %Offer{} = offer
       assert offer.title == "some updated title"
+      assert offer.company == "some updated company"
       assert offer.description == "some updated description"
       assert offer.location == "some updated location"
       assert offer.url == "https://www.google.es"
-      assert offer.job_type == :onsite
-      assert offer.job_time == :part_time
+      assert offer.job_place == :onsite
+      assert offer.job_type == :part_time
     end
 
     test "update_offer/2 with invalid data returns error changeset" do
@@ -97,8 +102,8 @@ defmodule ElixirJobs.OffersTest do
       assert %Ecto.Changeset{} = Offers.change_offer(offer)
     end
 
-    test "get_job_times/0 returns the expected value" do
-      assert Offers.get_job_times() == JobTime.__enum_map__()
+    test "get_job_places/0 returns the expected value" do
+      assert Offers.get_job_places() == JobPlace.__enum_map__()
     end
 
     test "get_job_types/0 returns the expected value" do

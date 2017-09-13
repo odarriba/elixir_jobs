@@ -1,0 +1,9 @@
+<%= for offer <- @offers do %>
+  <%= render("_offer.html", conn: @conn, offer: offer) %>
+<% end %>
+
+<%= if length(@offers) == 0 do %>
+  <%= render("_no-offer.html", conn: @conn) %>
+<% end %>
+
+<%= render_shared("_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
