@@ -18,7 +18,7 @@ defmodule ElixirJobsWeb.OfferController do
         _ -> 1
       end
 
-    page = Offers.list_offers(page_number)
+    page = Offers.list_published_offers(page_number)
 
     render conn, "index.html",
       offers: page.entries,
