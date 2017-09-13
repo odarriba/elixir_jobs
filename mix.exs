@@ -50,7 +50,8 @@ defmodule ElixirJobs.Mixfile do
       {:scrivener_ecto, "~> 1.0"},
       {:earmark, "~> 1.2" },
       {:phoenix_html_sanitizer, "~> 1.1.0-rc1"},
-      {:calendar, "~> 0.17"}
+      {:calendar, "~> 0.17"},
+      {:slugger, "~> 0.2"}
     ]
   end
 

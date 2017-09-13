@@ -1,0 +1,4 @@
+<%= render("_offer.html", conn: @conn, offer: @offer, show_cta: true) %>
+<div class="offer-link">
+  <%= link(gettext("Go to the offer!"), to: @offer.url, class: "btn btn-info") %>
+</div>

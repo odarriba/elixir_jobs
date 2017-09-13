@@ -19,9 +19,9 @@ defmodule ElixirJobsWeb.Router do
     get "/", OfferController, :index
     get "/rss", OfferController, :rss
     get "/page/:page_number", OfferController, :index
-
-    get "/offer/new", OfferController, :new
-    post "/offer/new", OfferController, :create
+    get "/offers/new", OfferController, :new
+    post "/offers/new", OfferController, :create
+    get "/offers/:slug", OfferController, :show
   end
 
   # Other scopes may use custom stacks.

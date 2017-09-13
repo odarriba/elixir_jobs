@@ -41,6 +41,11 @@ defmodule ElixirJobsWeb.OfferController do
     end
   end
 
+  def show(conn, %{"slug" => slug}) do
+    offer = Offers.get_offer_by_slug!(slug)
+    render conn, "show.html", offer: offer
+  end
+
   def rss(conn, _params) do
     offers = Offers.list_offers(1)
     render(conn, "rss.xml", offers: offers.entries)

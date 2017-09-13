@@ -17,6 +17,7 @@ defmodule ElixirJobs.Offers.Offer do
     field :description, :string
     field :location, :string
     field :url, :string
+    field :slug, :string
 
     field :job_place, JobPlace
     field :job_type, JobType
@@ -27,7 +28,7 @@ defmodule ElixirJobs.Offers.Offer do
   end
 
   @required_attrs [:title, :company, :description, :location, :url, :job_place, :job_type]
-  @optional_attrs []
+  @optional_attrs [:published_at, :slug]
   @attributes @required_attrs ++ @optional_attrs
 
   @doc false
@@ -43,5 +44,33 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_format(:url, ~r/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
     |> validate_inclusion(:job_place, JobPlace.__valid_values__())
     |> validate_inclusion(:job_type, JobType.__valid_values__())
+    |> unique_constraint(:slug)
+    |> generate_slug()
+  end
+
+  defp generate_slug(changeset) do
+    case get_field(changeset, :slug) do
+      nil -> put_change(changeset, :slug, do_generate_slug(changeset))
+      _ -> changeset
+    end
+  end
+
+  defp do_generate_slug(changeset) do
+    uid =
+      Ecto.UUID.generate()
+      |> to_string()
+      |> String.split("-")
+      |> List.first
+
+    title =
+      changeset
+      |> get_field(:title)
+      |> Slugger.slugify_downcase()
+    company =
+      changeset
+      |> get_field(:company)
+      |> Slugger.slugify_downcase()
+
+    "#{company}-#{title}-#{uid}"
   end
 end
