@@ -1,5 +1,5 @@
 <div class="no-offer">
   <i><%= gettext("Upss! There is nothing here") %></i>
   <br /><br/>
-  <a class="btn-primary" href="<%= offer_path(@conn, :new) %>"><%= gettext "Publish a job offer" %></a>
+  <a class="btn-primary" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
 </div>
