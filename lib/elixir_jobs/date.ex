@@ -32,6 +32,11 @@ defmodule ElixirJobs.Date do
   end
 
   # Casts Ecto.DateTimes coming into this module
+  defp castin(%Ecto.DateTime{} = date) do
+    date
+    |> Ecto.DateTime.to_erl
+    |> Calendar.DateTime.from_erl!("Etc/UTC")
+  end
   defp castin(date) do
     date
     |> NaiveDateTime.to_erl
