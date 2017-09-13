@@ -1,5 +1,5 @@
 <%= for offer <- @offers do %>
-  <%= render("_offer.html", conn: @conn, offer: offer) %>
+  <%= render("_offer.html", conn: @conn, offer: offer, show_cta: false) %>
 <% end %>
 
 <%= if length(@offers) == 0 do %>

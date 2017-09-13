@@ -1,6 +1,6 @@
 <div class="offer">
   <div class="title">
-    <%= link(@offer.title, to: @offer.url) %>
+    <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
     </a>
     <span class="company">
       <%= @offer.company %>
