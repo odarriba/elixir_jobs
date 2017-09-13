@@ -5,6 +5,7 @@
   font-weight: bold;
   background-color: #f3f3f3;
   color: #000;
+  vertical-align: text-top;
 
   &.badge-primary {
     background-color: lighten($color-brand, 10%);
@@ -21,6 +22,6 @@
 
 @include screen-sm {
   .badge {
-    padding: 0.05rem 0.6rem 0.15rem 0.6rem;
+    padding: 0.15rem 0.6rem 0.15rem 0.6rem;
   }
 }

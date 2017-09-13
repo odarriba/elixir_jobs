@@ -54,7 +54,7 @@
     margin-top: -.3rem;
     margin-bottom: 0.5rem;
     padding-bottom: 0.2rem;
-    color: #63407d;
+    color: #555;
     font-size: 0.85rem;
 
     strong {
@@ -86,6 +86,10 @@
         content: "";
       }
     }
+
+    .badge {
+      font-size: 0.7rem;
+    }
   }
 
   .description {
@@ -95,10 +99,6 @@
       color: #5E49BA;
       text-decoration: underline;
     }
-  }
-
-  .published {
-    color: #555;
   }
 }
 
