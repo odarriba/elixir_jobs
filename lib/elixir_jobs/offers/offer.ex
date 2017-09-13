@@ -65,11 +65,11 @@ defmodule ElixirJobs.Offers.Offer do
     title =
       changeset
       |> get_field(:title)
-      |> Slugger.slugify_downcase(50)
+      |> Slugger.slugify_downcase()
     company =
       changeset
       |> get_field(:company)
-      |> Slugger.slugify_downcase(50)
+      |> Slugger.slugify_downcase()
 
     "#{company}-#{title}-#{uid}"
   end

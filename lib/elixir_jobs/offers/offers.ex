@@ -6,13 +6,13 @@ defmodule ElixirJobs.Offers do
   offers in the app.
   """
 
-  import Ecto.Query, warn: false
-  alias ElixirJobs.Repo
+  alias ElixirJobs.Offers.Queries.Offer, as: OfferQuery
 
   alias ElixirJobs.{
     Offers.Offer,
     EctoEnums.JobPlace,
-    EctoEnums.JobType
+    EctoEnums.JobType,
+    Repo
   }
 
   @doc """
@@ -29,12 +29,12 @@ defmodule ElixirJobs.Offers do
   """
   def list_offers do
     Offer
-    |> order_by(desc: :inserted_at)
+    |> OfferQuery.order_inserted()
     |> Repo.all()
   end
   def list_offers(page) when is_integer(page) and page > 0 do
     Offer
-    |> order_by(desc: :inserted_at)
+    |> OfferQuery.order_inserted()
     |> Repo.paginate(page: page)
   end
 
@@ -52,14 +52,14 @@ defmodule ElixirJobs.Offers do
   """
   def list_published_offers do
     Offer
-    |> where([o], not is_nil(o.published_at) and o.published_at < ^NaiveDateTime.utc_now())
-    |> order_by(desc: :published_at)
+    |> OfferQuery.published()
+    |> OfferQuery.order_published()
     |> Repo.all()
   end
   def list_published_offers(page) when is_integer(page) and page > 0 do
     Offer
-    |> where([o], not is_nil(o.published_at) and o.published_at < ^NaiveDateTime.utc_now())
-    |> order_by(desc: :published_at)
+    |> OfferQuery.published()
+    |> OfferQuery.order_published()
     |> Repo.paginate(page: page)
   end
 
@@ -77,7 +77,32 @@ defmodule ElixirJobs.Offers do
       ** (Ecto.NoResultsError)
 
   """
-  def get_offer!(id), do: Repo.get!(Offer, id)
+  def get_offer!(id) do
+    Offer
+    |> OfferQuery.by_id(id)
+    |> Repo.one!()
+  end
+
+  @doc """
+  Gets a single offer by it's sluf.
+
+  Raises `Ecto.NoResultsError` if the Offer does not exist.
+
+  ## Examples
+
+      iex> get_offer!("existing-slug")
+      %Offer{}
+
+      iex> get_offer!("non-existent-slug")
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_offer_by_slug!(slug) do
+    Offer
+    |> OfferQuery.by_slug(slug)
+    |> OfferQuery.published()
+    |> Repo.one!()
+  end
 
   @doc """
   Creates a offer.
