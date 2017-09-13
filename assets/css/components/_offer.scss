@@ -63,6 +63,14 @@
       background-color: #ffa;
     }
 
+    .group {
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+
     span {
       display: block;
       margin: 10px 0;
@@ -76,15 +84,6 @@
       &:last-child::after{
         margin: 0;
         content: "";
-      }
-    }
-
-    a {
-      color: #9a9a9a;
-      text-decoration: none;
-      white-space: nowrap;
-      &:hover {
-        color: #555;
       }
     }
   }

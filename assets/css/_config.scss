@@ -4,6 +4,9 @@ $screen-md: 768px;
 $screen-sm: 600px;
 $screen-xs: 400px;
 
+$color-brand: #63407d;
+$color-success: #127429;
+
 // Buttons
 $btn-primary-color: #fff;
 $btn-primary-bg: #127429;
@@ -15,10 +18,10 @@ $btn-info-bg: #428bca;
 $btn-info-hover-color: #fff;
 $btn-info-hover-bg: #286090;
 
-$btn-success-color: #C9F0A9;
-$btn-success-bg: #86BB92;
-$btn-success-hover-color: #C9F0A9;
-$btn-success-hover-bg: #86BB92;
+$btn-success-color: #fff;
+$btn-success-bg: #127429;
+$btn-success-hover-color: #fff;
+$btn-success-hover-bg: #356841;
 
 $btn-danger-color: #fff;
 $btn-danger-bg: #c33;

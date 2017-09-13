@@ -12,8 +12,12 @@
       <span><%= @offer.location %></span>
     </div>
     <div class="group">
-      <span><%= @offer.job_place %></span>
-      <span><%= @offer.job_type %></span>
+      <span>
+        <a class="badge badge-success"><%= human_get_place(@offer.job_place) %></a>
+      </span>
+      <span>
+        <a class="badge badge-primary"><%= human_get_type(@offer.job_type) %></a>
+      </span>
     </div>
   </div>
   <div class="description">
