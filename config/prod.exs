@@ -23,6 +23,9 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
 # Do not print debug messages in production
 config :logger, level: :info
 
+# BCrypt configuration
+config :bcrypt_elixir, :log_rounds, 10
+
 # Configure your database
 config :elixir_jobs, ElixirJobs.Repo,
   adapter: Ecto.Adapters.Postgres,
