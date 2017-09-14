@@ -1,10 +1,8 @@
 defmodule ElixirJobsWeb.AuthController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.{
-    Guardian,
-    Users
-  }
+  alias ElixirJobs.Users
+  alias ElixirJobsWeb.Guardian
 
   plug :scrub_params, "auth" when action in [:create]
 
@@ -18,7 +16,7 @@ defmodule ElixirJobsWeb.AuthController do
          {:ok, admin} <- Users.auth_admin(email, password) do
         conn
         |> Guardian.Plug.sign_in(admin)
-        |> redirect(to: offer_path(:index))
+        |> redirect(to: offer_path(conn, :index))
     else
       _ ->
         conn
@@ -26,9 +24,15 @@ defmodule ElixirJobsWeb.AuthController do
     end
   end
 
-  def delete(conn, params) do
+  def delete(conn, _params) do
     conn
     |> Guardian.Plug.sign_out()
-    |> redirect(to: offer_path(:index))
+    |> redirect(to: offer_path(conn, :index))
+  end
+
+  def auth_error(conn, {_type, _reason}, _opts) do
+    conn
+    |> put_flash(:error, gettext("Authentication required"))
+    |> redirect(to: auth_path(conn, :new))
   end
 end
