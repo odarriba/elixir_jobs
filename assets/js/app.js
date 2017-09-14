@@ -15,4 +15,9 @@ jQuery(function ($) {
     var selector = $(this).data("toggle");
     $(selector).toggle();
   });
+
+  $(".alert .close").click(function (evt) {
+    evt.preventDefault();
+    $(this).closest(".alert").remove();
+  });
 });
