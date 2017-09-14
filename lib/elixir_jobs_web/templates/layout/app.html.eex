@@ -24,6 +24,7 @@
 
     <div class="content">
       <div class="container">
+        <%= render_shared "_alerts.html", conn: @conn %>
         <%= render @view_module, @view_template, assigns %>
       </div>
     </div>
