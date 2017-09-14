@@ -9,5 +9,8 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
 # Print only warnings and errors during test
 config :logger, level: :warn
 
+# BCrypt configuration
+config :bcrypt_elixir, :log_rounds, 4
+
 #Import custom configuration
 import_config "test.secret.exs"

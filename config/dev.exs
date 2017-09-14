@@ -48,5 +48,8 @@ config :logger, :console, format: "[$level] $message\n"
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
 
+# BCrypt configuration
+config :bcrypt_elixir, :log_rounds, 10
+
 # Import custom configuration
 import_config "dev.secret.exs"

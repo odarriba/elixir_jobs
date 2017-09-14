@@ -51,7 +51,9 @@ defmodule ElixirJobs.Mixfile do
       {:earmark, "~> 1.2" },
       {:phoenix_html_sanitizer, "~> 1.1.0-rc1"},
       {:calendar, "~> 0.17"},
-      {:slugger, "~> 0.2"}
+      {:slugger, "~> 0.2"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
     ]
   end
 
