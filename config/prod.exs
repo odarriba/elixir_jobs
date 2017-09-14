@@ -34,7 +34,7 @@ config :elixir_jobs, ElixirJobs.Repo,
   ssl: true
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs"
+  issuer: "ElixirJobs",
   secret_key: Map.fetch!(System.get_env(), "GUARDIAN_SECRET_KEY")
 
 # ## SSL Support

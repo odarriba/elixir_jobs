@@ -13,7 +13,7 @@ config :logger, level: :warn
 config :bcrypt_elixir, :log_rounds, 4
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs"
+  issuer: "ElixirJobs",
   secret_key: "MY_T3ST_K3Y"
 
 #Import custom configuration

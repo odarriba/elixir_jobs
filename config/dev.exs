@@ -52,7 +52,7 @@ config :phoenix, :stacktrace_depth, 20
 config :bcrypt_elixir, :log_rounds, 10
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs"
+  issuer: "ElixirJobs",
   secret_key: "MY_D3V_K3Y"
 
 # Import custom configuration
