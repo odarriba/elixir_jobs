@@ -1,7 +1,10 @@
 defmodule ElixirJobsWeb.AuthController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.Users
+  alias ElixirJobs.{
+    Guardian,
+    Users
+  }
 
   plug :scrub_params, "auth" when action in [:create]
 
@@ -14,11 +17,18 @@ defmodule ElixirJobsWeb.AuthController do
          {:ok, password} <- Map.fetch(auth_params, "password"),
          {:ok, admin} <- Users.auth_admin(email, password) do
         conn
+        |> Guardian.Plug.sign_in(admin)
         |> redirect(to: offer_path(:index))
     else
       _ ->
         conn
         |> put_flash(:error, "Invalid credentials!")
     end
+  end
+
+  def delete(conn, params) do
+    conn
+    |> Guardian.Plug.sign_out()
+    |> redirect(to: offer_path(:index))
   end
 end
