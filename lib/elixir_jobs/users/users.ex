@@ -43,6 +43,26 @@ defmodule ElixirJobs.Users do
   end
 
   @doc """
+  Gets a single admin by id.
+
+  Returns `nil` if the Admin does not exist.
+
+  ## Examples
+
+      iex> get_admin_by_id(123)
+      %Admin{}
+
+      iex> get_admin_by_id(456)
+      nil
+
+  """
+  def get_admin_by_id(id) do
+    Admin
+    |> AdminQuery.by_id(id)
+    |> Repo.one()
+  end
+
+  @doc """
   Gets a single admin by email.
 
   Raises `Ecto.NoResultsError` if the Admin does not exist.
