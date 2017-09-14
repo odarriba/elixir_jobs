@@ -22,6 +22,10 @@ defmodule ElixirJobsWeb.Router do
     get "/offers/new", OfferController, :new
     post "/offers/new", OfferController, :create
     get "/offers/:slug", OfferController, :show
+
+    get "/login", AuthController, :new
+    post "/login", AuthController, :create
+    get "/logout", AuthController, :delete
   end
 
   # Other scopes may use custom stacks.
