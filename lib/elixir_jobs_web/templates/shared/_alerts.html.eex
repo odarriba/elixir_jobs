@@ -1,6 +1,6 @@
 <%= for message <- get_flash_messages(@conn) do %>
 <div class="alert">
-  <%= message %>
+  <%= raw(message) %>
   <span class="close">&times;</span>
 </div>
 <% end %>
