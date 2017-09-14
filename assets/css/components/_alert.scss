@@ -1,0 +1,27 @@
+.alert {
+  position: relative;
+  margin: 1rem 0;
+  padding-bottom: 1px;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border: 1px solid $alert-border;
+  border-bottom-width: 4px;
+  border-radius: 4px;
+  background-color: $alert-bg;
+  color: $alert-color;
+  font-size: 0.9rem;
+
+  .close {
+    position: absolute;
+    top: 0rem;
+    right: 0.7rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
+
+@include screen-md(){
+  .alert {
+    margin-top: 0;
+  }
+}
