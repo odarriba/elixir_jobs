@@ -27,6 +27,17 @@ defmodule ElixirJobs.Users.Admin do
     |> generate_passwords()
   end
 
+  def check_password(%Admin{} = admin, password) do
+    case Comeonin.Bcrypt.checkpw(password, admin.encrypted_password) do
+      true -> {:ok, admin}
+      _ -> {:error, :wrong_credentials}
+    end
+  end
+  def check_password(_, _) do
+    Comeonin.Bcrypt.dummy_checkpw()
+    {:error, :wrong_credentials}
+  end
+
   defp validate_passwords(changeset) do
     case get_field(changeset, :encrypted_password) do
       nil ->
