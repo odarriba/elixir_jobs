@@ -11,5 +11,6 @@ defmodule ElixirJobs.Repo.Migrations.CreateAdmins do
       timestamps()
     end
 
+    create index(:admins, [:email], unique: true)
   end
 end

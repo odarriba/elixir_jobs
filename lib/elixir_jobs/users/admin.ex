@@ -11,13 +11,42 @@ defmodule ElixirJobs.Users.Admin do
     field :encrypted_password, :string
     field :name, :string
 
+    field :password, :string, virtual: true
+    field :password_confirmation, :string, virtual: true
+
     timestamps()
   end
 
   @doc false
   def changeset(%Admin{} = admin, attrs) do
     admin
-    |> cast(attrs, [:name, :email, :encrypted_password])
-    |> validate_required([:name, :email, :encrypted_password])
+    |> cast(attrs, [:name, :email, :password, :password_confirmation])
+    |> validate_required([:name, :email])
+    |> validate_passwords()
+    |> unique_constraint(:email)
+    |> generate_passwords()
   end
+
+  defp validate_passwords(changeset) do
+    case get_field(changeset, :encrypted_password) do
+      nil ->
+        changeset
+        |> validate_required([:password, :password_confirmation])
+        |> validate_confirmation(:password)
+      _ ->
+        changeset
+        |> validate_confirmation(:password)
+    end
+  end
+
+  defp generate_passwords(%Ecto.Changeset{errors: []} = changeset) do
+    case get_field(changeset, :password) do
+      password when not is_nil(password) ->
+        hash = Comeonin.Bcrypt.hashpwsalt(password)
+        put_change(changeset, :encrypted_password, hash)
+      _ ->
+        changeset
+    end
+  end
+  defp generate_passwords(changeset), do: changeset
 end
