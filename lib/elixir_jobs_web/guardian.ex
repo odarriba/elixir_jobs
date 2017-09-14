@@ -23,15 +23,4 @@ defmodule ElixirJobsWeb.Guardian do
   def resource_from_claims(_claims) do
     {:error, :resource_not_found}
   end
-
-  defmodule AuthErrorHandler do
-    import Plug.Conn
-    import Phoenix.Controller
-
-    def auth_error(conn, {type, reason}, _opts) do
-      conn
-      |> put_flash(:error, gettext("Authentication required"))
-      |> redirect(to: auth_path(:new))
-    end
-  end
 end
