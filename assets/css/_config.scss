@@ -6,6 +6,7 @@ $screen-xs: 400px;
 
 $color-brand: #63407d;
 $color-success: #127429;
+$color-danger: #c33;
 
 // Buttons
 $btn-primary-color: #fff;
@@ -27,3 +28,8 @@ $btn-danger-color: #fff;
 $btn-danger-bg: #c33;
 $btn-danger-hover-color: #fff;
 $btn-danger-hover-bg: #F01515;
+
+// Alerts
+$alert-color: #fff;
+$alert-bg: lighten($color-brand, 20%);
+$alert-border: $color-brand;

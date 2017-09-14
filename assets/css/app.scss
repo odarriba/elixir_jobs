@@ -12,10 +12,11 @@
 
 @import "layout/base";
 
+@import "components/alert";
+@import "components/badge";
 @import "components/btn";
-@import "components/sidebar";
-@import "components/offer";
 @import "components/formatting_help";
+@import "components/offer";
 @import "components/page_title";
 @import "components/pagination";
-@import "components/badge";
+@import "components/sidebar";

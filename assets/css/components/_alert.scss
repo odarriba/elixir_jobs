@@ -1,0 +1,19 @@
+.alert {
+  padding-bottom: 1px;
+  padding: 0.5rem 2rem 0.5rem 1rem;
+  border: 1px solid $alert-border;
+  border-bottom-width: 4px;
+  border-radius: 4px;
+  background-color: $alert-bg;
+  color: $alert-color;
+  font-size: 0.9rem;
+
+  .close {
+    float: right;
+    margin-top: -0.3rem;
+    margin-right: -1.3rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+}
