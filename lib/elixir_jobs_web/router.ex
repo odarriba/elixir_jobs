@@ -7,6 +7,12 @@ defmodule ElixirJobsWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Guardian.Plug.VerifyHeader
+  end
+
+  pipeline :authentication_required do
+    plug Guardian.Plug.EnsureAuthenticated,
+      error_handler: ElixirJobsWeb.AuthController
   end
 
   pipeline :api do
@@ -25,6 +31,11 @@ defmodule ElixirJobsWeb.Router do
 
     get "/login", AuthController, :new
     post "/login", AuthController, :create
+  end
+
+  scope "/", ElixirJobsWeb do
+    pipe_through [:browser, :authentication_required] # Use the default browser stack
+
     get "/logout", AuthController, :delete
   end
 
