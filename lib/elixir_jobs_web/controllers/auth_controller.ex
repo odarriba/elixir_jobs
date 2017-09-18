@@ -14,10 +14,10 @@ defmodule ElixirJobsWeb.AuthController do
     with {:ok, email} <- Map.fetch(auth_params, "email"),
          {:ok, password} <- Map.fetch(auth_params, "password"),
          {:ok, admin} <- Users.auth_admin(email, password) do
-        conn
-        |> Guardian.Plug.sign_in(admin)
-        |> put_flash(:info, gettext("Welcome %{user_name}!", user_name: admin.name))
-        |> redirect(to: offer_path(conn, :index))
+      conn
+      |> Guardian.Plug.sign_in(admin)
+      |> put_flash(:info, gettext("Welcome %{user_name}!", user_name: admin.name))
+      |> redirect(to: offer_path(conn, :index))
     else
       _ ->
         conn
