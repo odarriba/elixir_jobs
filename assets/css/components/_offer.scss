@@ -145,9 +145,18 @@
 }
 
 .offer-preview {
-  margin-bottom: -2rem;
-  border-bottom: 1px solid #fb0;
-  background-color: #ffe;
+  margin: 2rem 0;
+  padding: 1rem;
+  border: 1px solid #fb0;
+  border-radius: 7px;
+
+  .offer {
+    margin: 0;
+    padding: 0;
+  }
+  .offer-link {
+    margin-bottom: 0;
+  }
 }
 
 @include screen-sm {

@@ -23,9 +23,17 @@ defmodule ElixirJobsWeb.OfferView do
     end)
   end
 
+  def human_get_place("onsite"), do: human_get_place(:onsite)
+  def human_get_place("remote"), do: human_get_place(:remote)
+  def human_get_place("both"), do: human_get_place(:both)
+  def human_get_place("unknown"), do: human_get_place(:unknown)
   def human_get_place(:unknown), do: gettext("Not specified")
   def human_get_place(option), do: get_place_text(option)
 
+  def human_get_type("full_time"), do: human_get_type(:full_time)
+  def human_get_type("part_time"), do: human_get_type(:part_time)
+  def human_get_type("freelance"), do: human_get_type(:freelance)
+  def human_get_type("unknown"), do: human_get_type(:unknown)
   def human_get_type(:unknown), do: gettext("Not specified")
   def human_get_type(option), do: get_type_text(option)
 
