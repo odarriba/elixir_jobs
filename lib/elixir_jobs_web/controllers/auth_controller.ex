@@ -30,7 +30,7 @@ defmodule ElixirJobsWeb.AuthController do
     conn
     |> Guardian.Plug.sign_out()
     |> put_flash(:info, gettext("Successfully logged out! See you!"))
-    |> redirect(to: offer_path(conn, :index))
+    |> redirect(to: auth_path(conn, :new))
   end
 
   def auth_error(conn, {_type, _reason}, _opts) do
