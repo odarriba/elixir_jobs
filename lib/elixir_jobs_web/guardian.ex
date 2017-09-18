@@ -20,7 +20,4 @@ defmodule ElixirJobsWeb.Guardian do
       _ -> {:error, :resource_not_found}
     end
   end
-  def resource_from_claims(_claims) do
-    {:error, :resource_not_found}
-  end
 end
