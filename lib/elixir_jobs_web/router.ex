@@ -7,12 +7,12 @@ defmodule ElixirJobsWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
-    plug Guardian.Plug.VerifyHeader
+
+    plug ElixirJobsWeb.Plugs.GuardianPipeline
   end
 
   pipeline :authentication_required do
-    plug Guardian.Plug.EnsureAuthenticated,
-      error_handler: ElixirJobsWeb.AuthController
+    plug Guardian.Plug.EnsureAuthenticated
   end
 
   pipeline :api do
