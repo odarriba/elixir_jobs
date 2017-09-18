@@ -13,9 +13,15 @@
     <nav class="sidebar-nav">
       <a class="btn-publish" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
 
+      <%= if user_logged_in?(@conn) do %>
+      <span class="item text"><%= gettext "Admin" %></span>
+      <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Pending offers</a>
+      <a class="item" href="<%= auth_path(@conn, :delete) %>">Log out</a>
+      <% else %>
       <span class="item text"><%= gettext "You can follow via" %></span>
       <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Twitter</a>
       <a class="item" href="<%= offer_path(@conn, :rss) %>">RSS</a>
+      <% end %>
 
       <span class="item text"><%= gettext "Running on Phoenix!" %></span>
       <a class="item" href="https://github.com/odarriba/elixir_jobs" target="_blank"><%= gettext "Open Source" %></a>

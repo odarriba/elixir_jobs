@@ -23,6 +23,8 @@ defmodule ElixirJobsWeb do
       import Plug.Conn
       import ElixirJobsWeb.Router.Helpers
       import ElixirJobsWeb.Gettext
+
+      import ElixirJobsWeb.Plugs.CurrentUser, only: [current_user: 1, user_logged_in?: 1]
     end
   end
 
@@ -41,6 +43,8 @@ defmodule ElixirJobsWeb do
       import ElixirJobsWeb.ErrorHelpers
       import ElixirJobsWeb.ViewHelpers
       import ElixirJobsWeb.Gettext
+
+      import ElixirJobsWeb.Plugs.CurrentUser, only: [current_user: 1, user_logged_in?: 1]
 
       def render_shared(template, assigns \\ []) do
         render(ElixirJobsWeb.SharedView, template, assigns)

@@ -33,6 +33,10 @@ config :elixir_jobs, ElixirJobs.Repo,
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
 
+config :elixir_jobs, ElixirJobsWeb.Guardian,
+  issuer: "ElixirJobs",
+  secret_key: Map.fetch!(System.get_env(), "GUARDIAN_SECRET_KEY")
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

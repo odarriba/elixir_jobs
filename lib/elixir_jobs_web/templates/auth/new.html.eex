@@ -1,0 +1,27 @@
+<div class="login">
+  <%= form_for @conn, auth_path(@conn, :create), [as: :auth], fn f -> %>
+    <fieldset>
+      <div class="field-container">
+        <%= email_input(f, :email,
+          id: "auth_email",
+          class: class_with_error(f, :email, "email"),
+          placeholder: gettext("Your account's e-mail"),
+          required: true) %>
+        <%= error_tag(f, :email) %>
+      </div>
+      <div class="field-container">
+        <%= password_input(f, :password,
+          id: "auth_password",
+          class: class_with_error(f, :password, "password"),
+          placeholder: gettext("Your account's password"),
+          required: true) %>
+        <%= error_tag(f, :password) %>
+      </div>
+    </fieldset>
+    <fieldset>
+      <div class="field-container">
+        <%= submit("Submit", class: "btn btn-primary") %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
