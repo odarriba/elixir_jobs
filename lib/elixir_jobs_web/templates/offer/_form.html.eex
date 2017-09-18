@@ -68,7 +68,8 @@
         </small>
 
         <span>
-          <%= submit("Send this!", class: "btn-primary") %>
+          <button id="preview" class="btn-info"><%= gettext("Preview") %></button>
+          <%= submit(gettext("Send offer!"), class: "btn-primary") %>
         </span>
       </div>
     </div>
@@ -76,8 +77,8 @@
     <div id="formatting-help" style="display: none;">
       <table>
         <tr>
-          <th>What you type</th>
-          <th>What you get</th>
+          <th><%= gettext("What you type") %></th>
+          <th><%= gettext("What you get") %></th>
         </tr>
         <%= for term <- ["[Link](https://github.com/)", "**bold**", "*italics*", "***highlight***", "`inline code`", "Indent with four spaces to render code blocks:\n\n    # This is rendered as a\n    # code block."] do %>
           <tr>
@@ -89,5 +90,5 @@
     </div>
   <% end %>
 
-  <div class="js-post-preview-inject"></div>
+  <div class="offer-preview" style="display: none;"></div>
 </div>
