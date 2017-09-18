@@ -1,14 +1,17 @@
 <div class="offer">
   <div class="title">
+    <%= if @title_link do %>
     <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
-    </a>
+    <% else %>
+    <%= @offer.title%>
+    <% end %>
     <span class="company">
       <%= @offer.company %>
     </span>
   </div>
   <div class="meta">
     <div class="group">
-      <span class="published"><%= human_readable_date(@offer.inserted_at) %></span>
+      <span class="published"><%= human_readable_date(@offer.published_at) %></span>
       <span class="location"><%= @offer.location %></span>
     </div>
     <div class="group">
