@@ -27,6 +27,7 @@ defmodule ElixirJobsWeb.Router do
     get "/page/:page_number", OfferController, :index, as: :offer_page
     get "/offers/new", OfferController, :new
     post "/offers/new", OfferController, :create
+    post "/offers/preview", OfferController, :preview
     get "/offers/:slug", OfferController, :show
 
     get "/login", AuthController, :new
