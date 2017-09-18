@@ -6,7 +6,7 @@ defmodule ElixirJobsWeb.OfferController do
     Offers.Offer
   }
 
-  plug :scrub_params, "offer" when action in [:create]
+  plug :scrub_params, "offer" when action in [:create, :preview]
 
   def index(conn, params) do
     page_number =
@@ -44,9 +44,33 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def preview(conn, %{"offer" => offer_params}) do
+    job_place =
+      offer_params
+      |> Map.get("job_place")
+      |> Kernel.||("unknown")
+      |> String.to_existing_atom
+
+    job_type =
+      offer_params
+      |> Map.get("job_type")
+      |> Kernel.||("unknown")
+      |> String.to_existing_atom
+
+    offer_preview = %Offer{
+      title: Map.get(offer_params, "title") || gettext("Title of your offer"),
+      company: Map.get(offer_params, "company") || gettext("Company"),
+      description: Map.get(offer_params, "description") || gettext("Description of your offer"),
+      location: Map.get(offer_params, "location") || gettext("Location"),
+      url: Map.get(offer_params, "url") || "https://example.com",
+      slug: "",
+      job_place: job_place,
+      job_type: job_type,
+      published_at: Ecto.DateTime.utc()
+    }
+
     conn
     |> put_layout(false)
-    |> render("preview.html", offer: offer_params)
+    |> render("preview.html", offer: offer_preview)
   end
 
   def show(conn, %{"slug" => slug}) do
