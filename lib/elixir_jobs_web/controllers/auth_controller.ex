@@ -16,11 +16,13 @@ defmodule ElixirJobsWeb.AuthController do
          {:ok, admin} <- Users.auth_admin(email, password) do
         conn
         |> Guardian.Plug.sign_in(admin)
+        |> put_flash(:info, gettext("Welcome %{user_name}!", user_name: admin.name))
         |> redirect(to: offer_path(conn, :index))
     else
       _ ->
         conn
         |> put_flash(:error, "Invalid credentials!")
+        |> render("new.html")
     end
   end
 
