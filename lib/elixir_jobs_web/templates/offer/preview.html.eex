@@ -1,0 +1,26 @@
+<div class="offer">
+  <div class="title">
+    <%= link(@offer["title"], to: "#") %>
+    </a>
+    <span class="company">
+      <%= @offer["company"] %>
+    </span>
+  </div>
+  <div class="meta">
+    <div class="group">
+      <span class="published"><%= human_readable_date(Ecto.DateTime.uutc) %></span>
+      <span class="location"><%= @offer["location"] %></span>
+    </div>
+    <div class="group">
+      <span>
+        <a class="badge badge-success"><%= human_get_place(@offer["job_place"]) %></a>
+      </span>
+      <span>
+        <a class="badge badge-primary"><%= human_get_type(@offer["job_type"]) %></a>
+      </span>
+    </div>
+  </div>
+  <div class="description">
+    <%= sanitized_markdown(@offer["description"]) %>
+  </div>
+</div>

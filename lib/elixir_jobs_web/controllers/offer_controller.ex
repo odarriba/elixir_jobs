@@ -43,6 +43,12 @@ defmodule ElixirJobsWeb.OfferController do
     end
   end
 
+  def preview(conn, %{"offer" => offer_params}) do
+    conn
+    |> put_layout(false)
+    |> render("preview.html", offer: offer_params)
+  end
+
   def show(conn, %{"slug" => slug}) do
     offer = Offers.get_offer_by_slug!(slug)
     render(conn, "show.html", offer: offer)
