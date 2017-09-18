@@ -29,6 +29,7 @@ defmodule ElixirJobsWeb.AuthController do
   def delete(conn, _params) do
     conn
     |> Guardian.Plug.sign_out()
+    |> put_flash(:info, gettext("Successfully logged out! See you!"))
     |> redirect(to: offer_path(conn, :index))
   end
 
