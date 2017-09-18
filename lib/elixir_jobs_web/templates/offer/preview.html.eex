@@ -8,7 +8,7 @@
   </div>
   <div class="meta">
     <div class="group">
-      <span class="published"><%= human_readable_date(Ecto.DateTime.uutc) %></span>
+      <span class="published"><%= human_readable_date(Ecto.DateTime.utc) %></span>
       <span class="location"><%= @offer["location"] %></span>
     </div>
     <div class="group">
@@ -23,4 +23,7 @@
   <div class="description">
     <%= sanitized_markdown(@offer["description"]) %>
   </div>
+</div>
+<div class="offer-link">
+  <%= link(gettext("Go to the offer!"), to: @offer["url"], class: "btn btn-info", target: "_blank") %>
 </div>
