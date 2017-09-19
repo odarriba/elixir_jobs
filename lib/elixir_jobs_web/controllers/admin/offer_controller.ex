@@ -44,6 +44,38 @@ defmodule ElixirJobsWeb.Admin.OfferController do
       total_pages: pages.total_pages)
   end
 
+  def publish(conn, %{"slug" => slug}) do
+    slug
+    |> Offers.get_offer_by_slug!()
+    |> Offers.publish_offer()
+    |> case do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
+        |> redirect(to: admin_offer_path(conn, :index_unpublished))
+      {:error, _} ->
+        conn
+        |> put_flash(:info, gettext("<b>An error occurred while publishing the offer</b>"))
+        |> redirect(to: admin_offer_path(conn, :index_unpublished))
+    end
+  end
+
+  def unpublish(conn, %{"slug" => slug}) do
+    slug
+    |> Offers.get_offer_by_slug!()
+    |> Offers.unpublish_offer()
+    |> case do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, gettext("<b>Offer unpublished correctly!</b>"))
+        |> redirect(to: admin_offer_path(conn, :index_published))
+      {:error, _} ->
+        conn
+        |> put_flash(:info, gettext("<b>An error occurred while unpublishing the offer</b>"))
+        |> redirect(to: admin_offer_path(conn, :index_published))
+    end
+  end
+
   def edit(conn, %{"slug" => slug}) do
     offer_changeset =
       slug

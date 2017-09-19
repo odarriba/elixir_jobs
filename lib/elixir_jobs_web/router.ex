@@ -42,6 +42,8 @@ defmodule ElixirJobsWeb.Router do
     scope "/admin", Admin, as: :admin do
       get "/offers/published", OfferController, :index_published
       get "/offers/pending", OfferController, :index_unpublished
+      get "/offers/:slug/publish", OfferController, :publish
+      get "/offers/:slug/unpublish", OfferController, :unpublish
       get "/offers/:slug/edit", OfferController, :edit
       post "/offers/:slug/edit", OfferController, :edit
       delete "/offers/:slug", OfferController, :delete
