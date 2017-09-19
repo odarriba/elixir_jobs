@@ -109,23 +109,43 @@ defmodule ElixirJobs.Offers do
   end
 
   @doc """
-  Gets a single offer by it's sluf.
+  Gets a single published offer by it's slug.
 
   Raises `Ecto.NoResultsError` if the Offer does not exist.
 
   ## Examples
 
-      iex> get_offer!("existing-slug")
+      iex> get_offer_published_by_slug!("existing-slug")
       %Offer{}
 
-      iex> get_offer!("non-existent-slug")
+      iex> get_offer_published_by_slug!("non-existent-slug")
+      ** (Ecto.NoResultsError)
+
+  """
+  def get_offer_published_by_slug!(slug) do
+    Offer
+    |> OfferQuery.by_slug(slug)
+    |> OfferQuery.published()
+    |> Repo.one!()
+  end
+
+  @doc """
+  Gets a single offer by it's slug.
+
+  Raises `Ecto.NoResultsError` if the Offer does not exist.
+
+  ## Examples
+
+      iex> get_offer_by_slug!("existing-slug")
+      %Offer{}
+
+      iex> get_offer_by_slug!("non-existent-slug")
       ** (Ecto.NoResultsError)
 
   """
   def get_offer_by_slug!(slug) do
     Offer
     |> OfferQuery.by_slug(slug)
-    |> OfferQuery.published()
     |> Repo.one!()
   end
 
