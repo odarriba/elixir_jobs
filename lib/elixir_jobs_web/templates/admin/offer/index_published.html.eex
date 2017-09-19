@@ -22,7 +22,11 @@
             <%= link(gettext("View"), to: offer_path(@conn, :show, offer.slug), class: "btn-sm btn-success") %>
             <%= link(gettext("Unpublish"), to: admin_offer_path(@conn, :unpublish, offer.slug), class: "btn-sm btn-primary") %>
             <%= link(gettext("Edit"), to: admin_offer_path(@conn, :edit, offer.slug), class: "btn-sm btn-info") %>
-            <%= link(gettext("Delete"), to: offer_path(@conn, :show, offer.slug), class: "btn-sm btn-danger") %>
+            <%= link(gettext("Delete"),
+              to: admin_offer_path(@conn, :delete, offer.slug),
+              class: "btn-sm btn-danger",
+              method: :delete,
+              data: [confirm: gettext("Do you really want to delete this offer?")]) %>
           </td>
         </tr>
       <% end %>

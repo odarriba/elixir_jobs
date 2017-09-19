@@ -14,7 +14,7 @@
       <a class="btn-publish" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
 
       <%= if user_logged_in?(@conn) do %>
-      <span class="item text"><%= gettext "Admin" %></span>
+      <span class="item text"><%= gettext "Administration" %></span>
       <%= link(gettext("Published offers"), to: admin_offer_path(@conn, :index_published), class: "item")%>
       <%= link(gettext("Pending offers"), to: admin_offer_path(@conn, :index_unpublished), class: "item")%>
       <%= link(gettext("Log out"), to: auth_path(@conn, :delete)) %>
