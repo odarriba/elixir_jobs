@@ -1,6 +1,3 @@
-<h1 class="page-title">
-<%= gettext("Get the latest job offers! 🔥") %>
-</h1>
 <%= for offer <- @offers do %>
   <%= render("_offer.html", conn: @conn, offer: offer, title_link: true) %>
 <% end %>
