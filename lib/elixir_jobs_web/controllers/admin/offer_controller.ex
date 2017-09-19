@@ -77,25 +77,24 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   end
 
   def edit(conn, %{"slug" => slug}) do
-    offer_changeset =
-      slug
-      |> Offers.get_offer_by_slug!()
-      |> Offers.change_offer()
+    offer = Offers.get_offer_by_slug!(slug)
+    offer_changeset = Offers.change_offer(offer)
 
-    render(conn, "edit.html", changeset: offer_changeset)
+    render(conn, "edit.html", changeset: offer_changeset, offer: offer)
   end
 
   def update(conn, %{"slug" => slug, "offer" => offer_params}) do
-    slug
-    |> Offers.get_offer_by_slug!()
-    |> Offers.update_offer(offer_params)
-    |> case do
-      {:ok, _offer} ->
+    offer = Offers.get_offer_by_slug!(slug)
+
+    IO.inspect(offer_path(conn, :show, offer.slug))
+
+    case Offers.update_offer(offer, offer_params) do
+      {:ok, offer} ->
         conn
         |> put_flash(:info, gettext("<b>Job offer updated correctly!</b>"))
-        |> redirect(to: offer_path(conn, :show, slug))
+        |> redirect(to: offer_path(conn, :show, offer.slug))
       {:error, changeset} ->
-        render(conn, "edit.html", changeset: changeset)
+        render(conn, "edit.html", changeset: changeset, offer: offer)
     end
   end
 
