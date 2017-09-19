@@ -115,14 +115,14 @@ defmodule ElixirJobs.Offers do
 
   ## Examples
 
-      iex> get_offer_published_by_slug!("existing-slug")
+      iex> get_published_offer_by_slug!("existing-slug")
       %Offer{}
 
-      iex> get_offer_published_by_slug!("non-existent-slug")
+      iex> get_published_offer_by_slug!("non-existent-slug")
       ** (Ecto.NoResultsError)
 
   """
-  def get_offer_published_by_slug!(slug) do
+  def get_published_offer_by_slug!(slug) do
     Offer
     |> OfferQuery.by_slug(slug)
     |> OfferQuery.published()
