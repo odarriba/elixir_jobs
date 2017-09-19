@@ -26,7 +26,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
       total_pages: pages.total_pages)
   end
 
-  def index_unpublished(conn, _params) do
+  def index_unpublished(conn, params) do
     page_number =
       with {:ok, page_no} <- Map.fetch(params, "page_number"),
            true <- is_binary(page_no),
