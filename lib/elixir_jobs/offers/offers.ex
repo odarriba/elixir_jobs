@@ -43,10 +43,10 @@ defmodule ElixirJobs.Offers do
 
   ## Examples
 
-      iex> list_publsihed_offers()
+      iex> list_published_offers()
       [%Offer{}, ...]
 
-      iex> list_publsihed_offers(page_no)
+      iex> list_published_offers(page_no)
       [%Offer{}, ...]
 
   """
@@ -60,6 +60,31 @@ defmodule ElixirJobs.Offers do
     Offer
     |> OfferQuery.published()
     |> OfferQuery.order_published()
+    |> Repo.paginate(page: page)
+  end
+
+  @doc """
+  Returns the list of unpublished offers.
+
+  ## Examples
+
+      iex> list_unpublished_offers()
+      [%Offer{}, ...]
+
+      iex> list_unpublished_offers(page_no)
+      [%Offer{}, ...]
+
+  """
+  def list_unpublished_offers do
+    Offer
+    |> OfferQuery.unpublished()
+    |> OfferQuery.order_inserted()
+    |> Repo.all()
+  end
+  def list_unpublished_offers(page) when is_integer(page) and page > 0 do
+    Offer
+    |> OfferQuery.unpublished()
+    |> OfferQuery.order_inserted()
     |> Repo.paginate(page: page)
   end
 
@@ -156,6 +181,19 @@ defmodule ElixirJobs.Offers do
   def publish_offer(%Offer{} = offer), do: publish_offer(offer, NaiveDateTime.utc_now())
   def publish_offer(%Offer{} = offer, date) do
     update_offer(offer, %{published_at: date})
+  end
+
+  @doc """
+  Unpublishes an offer.
+
+  ## Examples
+
+      iex> unpublish_offer(offer)
+      {:ok, %Offer{}}
+
+  """
+  def unpublish_offer(%Offer{} = offer) do
+    update_offer(offer, %{published_at: nil})
   end
 
   @doc """
