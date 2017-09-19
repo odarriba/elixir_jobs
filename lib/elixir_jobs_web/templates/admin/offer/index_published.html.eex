@@ -1,0 +1,37 @@
+<h1 class="page-title">
+  <%= gettext("Published offers") %>
+</h1>
+<small><i><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></i></small>
+<table>
+  <thead>
+    <th><%= gettext("Offer") %></th>
+    <th><%= gettext("Publish date") %></th>
+    <th><%= gettext("Actions") %></th>
+  <thead>
+  <tbody>
+    <%= if length(@offers) == 0 do %>
+    <tr class="no-items">
+      <td colspan="3"><%= gettext("Opps! There is nothing here...") %></td>
+    </tr>
+    <% else %>
+      <%= for offer <- @offers do %>
+        <tr>
+          <td class="v-middle"><%= "#{offer.title} @ #{offer.company}" %></td>
+          <td class="v-middle h-center"><%= human_readable_date(offer.published_at, false) %></td>
+          <td class="v-middle h-right">
+            <%= link(gettext("View"), to: offer_path(@conn, :show, offer.slug), class: "btn-sm btn-success") %>
+            <%= link(gettext("Unpublish"), to: admin_offer_path(@conn, :unpublish, offer.slug), class: "btn-sm btn-primary") %>
+            <%= link(gettext("Edit"), to: admin_offer_path(@conn, :edit, offer.slug), class: "btn-sm btn-info") %>
+            <%= link(gettext("Delete"),
+              to: admin_offer_path(@conn, :delete, offer.slug),
+              class: "btn-sm btn-danger",
+              method: :delete,
+              data: [confirm: gettext("Do you really want to delete this offer?")]) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<%= render("_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages, method: :index_published) %>

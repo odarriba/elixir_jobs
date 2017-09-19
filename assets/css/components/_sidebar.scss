@@ -70,7 +70,7 @@
   display: none;
 
   .btn-publish {
-    @extend .btn-primary;
+    @extend .btn-success;
 
     display: block;
     line-height: 1.75;

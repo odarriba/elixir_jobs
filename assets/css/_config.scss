@@ -10,9 +10,9 @@ $color-danger: #c33;
 
 // Buttons
 $btn-primary-color: #fff;
-$btn-primary-bg: #127429;
+$btn-primary-bg: #63407d;
 $btn-primary-hover-color: #fff;
-$btn-primary-hover-bg: #356841;
+$btn-primary-hover-bg: darken($btn-primary-bg, 5%);
 
 $btn-info-color: #fff;
 $btn-info-bg: #428bca;

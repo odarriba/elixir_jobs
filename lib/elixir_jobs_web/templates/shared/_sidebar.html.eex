@@ -14,9 +14,10 @@
       <a class="btn-publish" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
 
       <%= if user_logged_in?(@conn) do %>
-      <span class="item text"><%= gettext "Admin" %></span>
-      <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Pending offers</a>
-      <a class="item" href="<%= auth_path(@conn, :delete) %>">Log out</a>
+      <span class="item text"><%= gettext "Administration" %></span>
+      <%= link(gettext("Published offers"), to: admin_offer_path(@conn, :index_published), class: "item")%>
+      <%= link(gettext("Pending offers"), to: admin_offer_path(@conn, :index_unpublished), class: "item")%>
+      <%= link(gettext("Log out"), to: auth_path(@conn, :delete)) %>
       <% else %>
       <span class="item text"><%= gettext "You can follow via" %></span>
       <a class="item" href="https://twitter.com/jobs_elixir" target="_blank">Twitter</a>

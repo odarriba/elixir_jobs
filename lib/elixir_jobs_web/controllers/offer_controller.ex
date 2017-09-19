@@ -74,7 +74,12 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def show(conn, %{"slug" => slug}) do
-    offer = Offers.get_offer_by_slug!(slug)
+    offer = if user_logged_in?(conn) do
+      Offers.get_offer_by_slug!(slug)
+    else
+      Offers.get_published_offer_by_slug!(slug)
+    end
+
     render(conn, "show.html", offer: offer)
   end
 

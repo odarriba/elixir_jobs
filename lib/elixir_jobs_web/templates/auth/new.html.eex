@@ -20,7 +20,7 @@
     </fieldset>
     <fieldset>
       <div class="field-container">
-        <%= submit("Submit", class: "btn btn-primary") %>
+        <%= submit("Submit", class: "btn btn-success") %>
       </div>
     </fieldset>
   <% end %>

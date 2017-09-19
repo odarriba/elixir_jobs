@@ -16,13 +16,18 @@ defmodule ElixirJobs.Offers.Queries.Offer do
       where: not is_nil(o.published_at) and o.published_at <= ^NaiveDateTime.utc_now()
   end
 
+  def unpublished(query) do
+    from o in query,
+      where: is_nil(o.published_at)
+  end
+
   def order_published(query) do
     from o in query,
-      order_by: o.published_at
+      order_by: [desc: o.published_at]
   end
 
   def order_inserted(query) do
     from o in query,
-      order_by: o.inserted_at
+      order_by: [desc: o.inserted_at]
   end
 end
