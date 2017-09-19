@@ -1,4 +1,23 @@
 <%= render("_offer.html", conn: @conn, offer: @offer, title_link: false) %>
 <div class="offer-link">
-  <%= link(gettext("Go to the offer!"), to: @offer.url, class: "btn btn-info", target: "_blank") %>
+  <%= link(gettext("Go to the offer!"), to: @offer.url, class: "btn-info", target: "_blank") %>
+  <%= if user_logged_in?(@conn) do %>
+    <%= link(gettext("Edit offer"),
+      to: admin_offer_path(@conn, :edit, @offer.slug),
+      class: "btn-success") %>
+    <%= if @offer.published_at do %>
+      <%= link(gettext("Unpublish offer"),
+        to: admin_offer_path(@conn, :unpublish, @offer.slug),
+        class: "btn-primary") %>
+    <% else %>
+      <%= link(gettext("Publish offer"),
+        to: admin_offer_path(@conn, :publish, @offer.slug),
+        class: "btn-primary") %>
+    <% end %>
+    <%= link(gettext("Delete offer"),
+      to: admin_offer_path(@conn, :delete, @offer.slug),
+      class: "btn-danger",
+      method: :delete,
+      data: [confirm: gettext("Do you really want to delete this offer?")]) %>
+  <% end %>
 </div>
