@@ -23,11 +23,11 @@ defmodule ElixirJobs.Offers.Queries.Offer do
 
   def order_published(query) do
     from o in query,
-      order_by: o.published_at
+      order_by: [desc: o.published_at]
   end
 
   def order_inserted(query) do
     from o in query,
-      order_by: o.inserted_at
+      order_by: [desc: o.inserted_at]
   end
 end
