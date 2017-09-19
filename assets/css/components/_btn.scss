@@ -1,17 +1,4 @@
-.btn-sign-in {
-  @include btn;
-
-  color: #fff;
-  background-color: #78669E;
-  border-color: #6540B2;
-
-  &:hover {
-    color: #fff;
-    background-color: #8163C0;
-    border-color: #6540B2;
-  }
-}
-
+// Button colors
 .btn-primary {
   @include btn;
 
@@ -70,4 +57,10 @@
     background-color: $btn-danger-hover-bg;
     border-color: darken($btn-danger-hover-bg, 10%);
   }
+}
+
+// Button-sizes
+.btn-sm {
+  padding: 5px 8px;
+  font-size: 12px;
 }

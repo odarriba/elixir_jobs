@@ -69,7 +69,7 @@
 
         <span>
           <button id="preview" class="btn-info" data-url="<%= offer_url(@conn, :preview) %>"><%= gettext("Preview") %></button>
-          <%= submit(gettext("Send offer!"), class: "btn-primary") %>
+          <%= submit(gettext("Send offer!"), class: "btn-success") %>
         </span>
       </div>
     </div>
