@@ -52,7 +52,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
       {:ok, _} ->
         conn
         |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
-        |> redirect(to: admin_offer_path(conn, :index_unpublished))
+        |> redirect(to: offer_path(conn, :show, slug))
       {:error, _} ->
         conn
         |> put_flash(:info, gettext("<b>An error occurred while publishing the offer</b>"))
@@ -68,7 +68,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
       {:ok, _} ->
         conn
         |> put_flash(:info, gettext("<b>Offer unpublished correctly!</b>"))
-        |> redirect(to: admin_offer_path(conn, :index_published))
+        |> redirect(to: offer_path(conn, :show, slug))
       {:error, _} ->
         conn
         |> put_flash(:info, gettext("<b>An error occurred while unpublishing the offer</b>"))
@@ -85,8 +85,6 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
   def update(conn, %{"slug" => slug, "offer" => offer_params}) do
     offer = Offers.get_offer_by_slug!(slug)
-
-    IO.inspect(offer_path(conn, :show, offer.slug))
 
     case Offers.update_offer(offer, offer_params) do
       {:ok, offer} ->
