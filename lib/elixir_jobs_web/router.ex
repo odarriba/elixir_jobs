@@ -38,6 +38,14 @@ defmodule ElixirJobsWeb.Router do
     pipe_through [:browser, :authentication_required] # Use the default browser stack
 
     get "/logout", AuthController, :delete
+
+    scope "/admin", Admin, as: :admin do
+      get "/offers/published", OfferController, :index_published
+      get "/offers/pending", OfferController, :index_unpublished
+      get "/offers/:slug/edit", OfferController, :edit
+      post "/offers/:slug/edit", OfferController, :edit
+      delete "/offers/:slug", OfferController, :delete
+    end
   end
 
   # Other scopes may use custom stacks.
