@@ -36,8 +36,8 @@ defmodule ElixirJobs.Offers.Offer do
     offer
     |> cast(attrs, @attributes)
     |> validate_required(@required_attrs)
-    |> validate_length(:title, min: 5, max: 80)
-    |> validate_length(:company, min: 2, max: 80)
+    |> validate_length(:title, min: 5, max: 50)
+    |> validate_length(:company, min: 2, max: 30)
     |> validate_length(:description, min: 10, max: 500)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
