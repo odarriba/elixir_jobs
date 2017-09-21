@@ -11,9 +11,9 @@
       github_link: "<a href=\"https://github.com/odarriba/elixir_jobs/issues/new\" target=\"_blank\">create a GitHub issue</a>") %></p>
 
     <p>
-      <%= link(gettext("Start"), to: offer_path(@conn, :index)) %>
+      <%= link(gettext("Job offers"), to: offer_path(@conn, :index)) %>
       |
-      <%= link(gettext("Post an offer"), to: offer_path(@conn, :new)) %>
+      <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %>
       |
       <%= link(gettext("About"), to: page_path(@conn, :about)) %>
     </p>
