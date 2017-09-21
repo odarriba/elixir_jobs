@@ -6,7 +6,9 @@
 
 <h2><%= raw gettext("Why should I post my job offers here?") %></h2>
 
-<p><%= raw gettext("Because it's free and will provide your offers of a larger visibility. Also, we will distribute your offer through RSS and Twitter ( %{follow_us} ), so they will potentially reach more developers.",
+<p><%= raw gettext("<b>Because it's free</b> and will provide your offers of a larger visibility.") %></p>
+
+<p><%= raw gettext("Also, we will distribute your offer through RSS and Twitter ( %{follow_us} ), so they will potentially reach more developers.",
   follow_us: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("follow us!")}</a>") %></p>
 
 
