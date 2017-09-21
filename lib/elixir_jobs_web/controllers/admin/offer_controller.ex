@@ -6,6 +6,8 @@ defmodule ElixirJobsWeb.Admin.OfferController do
     Offers.Offer
   }
 
+  alias ElixirJobsWeb.Twitter
+
   plug :scrub_params, "offer" when action in [:update]
 
   def index_published(conn, params) do
@@ -49,7 +51,9 @@ defmodule ElixirJobsWeb.Admin.OfferController do
     |> Offers.get_offer_by_slug!()
     |> Offers.publish_offer()
     |> case do
-      {:ok, _} ->
+      {:ok, offer} ->
+        Twitter.publish(conn, offer)
+
         conn
         |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, slug))
