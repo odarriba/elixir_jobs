@@ -1,0 +1,21 @@
+<div class="footer">
+  <div class="inner">
+    <p><%= raw gettext("ElixirJobs lets you publish and find job offers to work developing Erlang/Elixir applications.") %></p>
+
+    <p><%= raw gettext("Proudly powered by %{elixir_link} and %{phoenix_link}.",
+      elixir_link: "<a href=\"http://elixir-lang.org\" target=\"_blank\">Elixir</a>",
+      phoenix_link: "<a href=\"http://phoenixframework.org\" target=\"_blank\">Phoenix</a>") %></p>
+
+    <p><%= raw gettext("Please contact Óscar de Arriba (%{odarriba_link}) or %{github_link} if anything seems broken or worthy of improvement.",
+      odarriba_link: "<a href=\"https://twitter.com/odarriba\" target=\"_blank\">@odarriba</a>",
+      github_link: "<a href=\"https://github.com/odarriba/elixir_jobs/issues/new\" target=\"_blank\">create a GitHub issue</a>") %></p>
+
+    <p>
+      <%= link(gettext("Start"), to: offer_path(@conn, :index)) %>
+      |
+      <%= link(gettext("Post an offer"), to: offer_path(@conn, :new)) %>
+      |
+      <%= link(gettext("About"), to: page_path(@conn, :about)) %>
+    </p>
+  </div>
+</div>

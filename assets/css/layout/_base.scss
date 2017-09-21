@@ -26,10 +26,14 @@
   padding: 1.25rem 0.5rem 0.5rem 0.5rem;
 }
 .footer {
-  font-size: 14px;
+  font-size: 12px;
   color: #aaa;
   padding: 10px;
   border-top: 2px solid #eee;
+
+  p {
+    margin-bottom: 0.5rem;
+  }
 }
 
 .row {
