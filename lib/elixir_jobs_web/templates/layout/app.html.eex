@@ -40,5 +40,6 @@
     <%= render_shared "_footer.html", conn: @conn %>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= render_shared "_analytics.html", conn: @conn %>
   </body>
 </html>
