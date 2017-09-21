@@ -26,7 +26,7 @@
 
       <span class="item text"><%= gettext "Running on Phoenix!" %></span>
       <a class="item" href="https://github.com/odarriba/elixir_jobs" target="_blank"><%= gettext "Open Source" %></a>
-      <a class="item" href="#"><%= gettext "About" %></a>
+      <a class="item" href="<%= page_path(@conn, :about) %>"><%= gettext "About" %></a>
     </nav>
   </div>
 </div>
