@@ -6,7 +6,8 @@
 
 <p><%= raw gettext("Once you submit your offer, we will review it to avoid SPAM or dead links and, if everything is correct, we will publish it as son as possible!") %></p>
 
-<p><%= raw gettext("<b>Publishing an offer on ElixirJobs is free</b> and will be also posted to our Twitter account, so feel free of %{follow_link} and retweet your offer when published!", follow_link: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("follow us")}</a>") %></p>
+<p><%= raw gettext("<b>Publishing an offer on ElixirJobs is free</b> and will be also posted to our Twitter account, so feel free of %{follow_link} and retweet your offer when published!",
+  follow_link: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("follow us")}</a>") %></p>
 
 <hr />
 
