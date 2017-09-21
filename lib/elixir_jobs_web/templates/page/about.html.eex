@@ -1,0 +1,21 @@
+<h2><%= raw gettext("What is this?") %></h2>
+
+<p><%= raw gettext("ElixirJobs is a site built to help developers to find their next Elixir job, and to help companies to reach the vibrant community that are the Elixir developers.") %></p>
+
+<p><%= raw gettext("Also, our aim is to gain visibility for the Elixir job market, showing potential offers to developers all around the world, and using the tools they like to use.") %></p>
+
+<h2><%= raw gettext("Why should I post my job offers here?") %></h2>
+
+<p><%= raw gettext("Because it's free and will provide your offers of a larger visibility. Also, we will distribute your offer through RSS and Twitter ( %{follow_us} ), so they will potentially reach more developers.",
+  follow_us: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("follow us!")}</a>") %></p>
+
+
+<h2><%= raw gettext("Closing thoughts") %></h2>
+
+<p><%= raw gettext("Last but not least, ElixirJobs is a web app written in Elixir + Phoenix running in production, also serving as an example to whoever wants to take a look at it's %{source_code}, improve it or fork it.",
+  source_code: "<a href=\"https://github.com/odarriba/elixir_jobs\" target=\"_blank\">#{gettext("source code")}</a>") %></p>
+
+<p><%= raw gettext("We also like to thanks %{rene_link}, creator of %{elixir_status_link}, which project served as base and inspiration to create this site.",
+  rene_link: "<a href=\"https://twitter.com/rrrene\" target=\"_blank\">René Föhring</a>",
+  elixir_status_link: "<a href=\"http://elixirstatus.com/\" target=\"_blank\">ElixirStatus</a>"
+  ) %></p>
