@@ -1,10 +1,7 @@
 defmodule ElixirJobsWeb.Admin.OfferController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.{
-    Offers,
-    Offers.Offer
-  }
+  alias ElixirJobs.Offers
 
   alias ElixirJobsWeb.Twitter
 
