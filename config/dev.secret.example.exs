@@ -8,3 +8,10 @@ config :elixir_jobs, ElixirJobs.Repo,
   database: "elixir_jobs_dev",
   hostname: "localhost",
   pool_size: 10
+
+config :extwitter, :oauth, [
+   consumer_key: "",
+   consumer_secret: "",
+   access_token: "",
+   access_token_secret: ""
+]
