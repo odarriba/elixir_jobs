@@ -36,6 +36,13 @@ You can create a dummy administration user (credetials: dummy@user.com / 123456)
 $ mix run priv/repo/seeds.exs
 ```
 
+## TODO
+
+Some things are missing yet:
+
+1. More and better testing
+2. Check Credo
+
 ## Thanks
 
 Thanks to anyone which has contributed or it's going to contribute this project. No, seriously, you are awesome.
