@@ -1,0 +1,21 @@
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#64386b",
+      "text": "#ffcdfd"
+    },
+    "button": {
+      "background": "#f8a8ff",
+      "text": "#3f0045"
+    }
+  },
+  "position": "bottom-right",
+  "content": {
+    "message": "<%= gettext("By using this website, you allow us to use some cookies to improve your experience and provide statistics") %>"
+  }
+})});
+</script>
