@@ -3,8 +3,8 @@ defmodule ElixirJobsWeb.SeoHelper do
 
   import Phoenix.Controller, only: [controller_module: 1, action_name: 1]
 
-  @default_page_title "Find your next Elixir job"
-  @default_page_description "ElixirJobs helps developers to find their next Elixir job and companies to reach the right Elixir developers."
+  @default_page_title "Find your next dream job"
+  @default_page_description "ElixirJobs helps developers to find their next Elixir job and companies to spread their offers."
 
   alias ElixirJobs.Offers.Offer
 
