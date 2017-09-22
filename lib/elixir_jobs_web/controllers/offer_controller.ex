@@ -10,7 +10,7 @@ defmodule ElixirJobsWeb.OfferController do
 
   def index(conn, params) do
     page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page_number"),
+      with {:ok, page_no} <- Map.fetch(params, "page"),
            true <- is_binary(page_no),
            {value, _} <- Integer.parse(page_no) do
         value

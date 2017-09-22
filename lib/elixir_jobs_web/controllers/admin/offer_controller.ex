@@ -9,7 +9,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
   def index_published(conn, params) do
     page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page_number"),
+      with {:ok, page_no} <- Map.fetch(params, "page"),
            true <- is_binary(page_no),
            {value, _} <- Integer.parse(page_no) do
         value
@@ -27,7 +27,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
   def index_unpublished(conn, params) do
     page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page_number"),
+      with {:ok, page_no} <- Map.fetch(params, "page"),
            true <- is_binary(page_no),
            {value, _} <- Integer.parse(page_no) do
         value
