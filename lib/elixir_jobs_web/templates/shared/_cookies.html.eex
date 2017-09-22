@@ -15,7 +15,7 @@ window.cookieconsent.initialise({
   },
   "position": "bottom-right",
   "content": {
-    "message": "By using this website, you allow us to use some cookies to improve your experience and provide statistics"
+    "message": "<%= gettext("By using this website, you allow us to use some cookies to improve your experience and provide statistics") %>"
   }
 })});
 </script>
