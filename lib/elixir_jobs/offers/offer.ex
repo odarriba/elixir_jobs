@@ -41,7 +41,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:description, min: 10, max: 500)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
-    |> validate_format(:url, ~r/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/)
+    |> validate_format(:url, ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/)
     |> validate_inclusion(:job_place, JobPlace.__valid_values__())
     |> validate_inclusion(:job_type, JobType.__valid_values__())
     |> unique_constraint(:slug)
