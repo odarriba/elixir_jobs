@@ -22,10 +22,10 @@
     </div>
     <div class="group">
       <span>
-        <a class="badge badge-success"><%= human_get_place(@offer.job_place) %></a>
+        <a class="badge badge-success"><%= human_get_place(@offer.job_place, gettext("Unknown")) %></a>
       </span>
       <span>
-        <a class="badge badge-primary"><%= human_get_type(@offer.job_type) %></a>
+        <a class="badge badge-primary"><%= human_get_type(@offer.job_type, gettext("Unknown")) %></a>
       </span>
     </div>
   </div>
