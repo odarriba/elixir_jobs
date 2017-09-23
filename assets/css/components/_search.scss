@@ -17,19 +17,12 @@
 
   input {
     background-color: #fafafa;
-    padding: 6px;
+    padding: 5px;
   }
 
   select {
     background-color: #fafafa;
     padding: 5px;
-  }
-
-  button {
-    padding: 3px 10px;
-    margin: 2px 3px;
-    width: 70px;
-    float: right;
   }
 
   .filters {
@@ -40,10 +33,6 @@
         width: 100%;
         float: left;
         padding: 2px 3px;
-
-        input {
-          padding: 6px;
-        }
       }
 
       &.select {
@@ -53,6 +42,18 @@
 
         select {
           width: 100%;
+        }
+      }
+
+      &.button {
+        width: 70px;
+        float: right;
+        margin: 0 5px;
+        padding: 2px 0;
+
+        button {
+          width: 100%;
+          padding: 3px 10px;
         }
       }
 

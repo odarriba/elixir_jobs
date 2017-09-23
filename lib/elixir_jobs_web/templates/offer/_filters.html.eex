@@ -12,7 +12,9 @@
     <div class="field select type">
     <%= select(f, :job_type, get_job_type_options(gettext("Unknown")), prompt: gettext("Any job type")) %>
     </div>
-    <%= submit(gettext("Search"), class: "btn-success") %>
+    <div class="field button">
+      <%= submit(gettext("Search"), class: "btn-success") %>
+    </div>
   <% end %>
   <div class="page-info"><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></div>
 </div>
