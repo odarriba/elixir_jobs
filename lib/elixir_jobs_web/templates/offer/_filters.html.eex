@@ -1,0 +1,12 @@
+<div class="filters">
+  <%= form_for @conn, offer_path(@conn, :index), [as: :filter], fn f -> %>
+    <%= text_input(f, :text,
+      id: "filter_text",
+      class: class_with_error(f, :text, "text"),
+      placeholder: gettext("Search by title, location..."),
+      required: true) %>
+    <%= select(f, :job_place, get_job_place_options(gettext("Any job place"))) %>
+    <%= select(f, :job_type, get_job_type_options(gettext("Any job type"))) %>
+    <%= submit(gettext("Filter"), class: "btn-success") %>
+  <% end %>
+</div>
