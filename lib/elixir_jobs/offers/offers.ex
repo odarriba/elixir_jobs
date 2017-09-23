@@ -27,15 +27,16 @@ defmodule ElixirJobs.Offers do
       [%Offer{}, ...]
 
   """
-  def list_offers do
-    Offer
-    |> OfferQuery.order_inserted()
-    |> Repo.all()
-  end
-  def list_offers(page) when is_integer(page) and page > 0 do
-    Offer
-    |> OfferQuery.order_inserted()
-    |> Repo.paginate(page: page)
+  def list_offers(page \\ nil) do
+    query =  OfferQuery.order_inserted(Offer)
+
+    case page do
+      page_no when is_integer(page_no) and page_no > 0 ->
+        Repo.paginate(query, page: page)
+
+      _ ->
+        Repo.all(query)
+    end
   end
 
   @doc """
@@ -50,17 +51,53 @@ defmodule ElixirJobs.Offers do
       [%Offer{}, ...]
 
   """
-  def list_published_offers do
-    Offer
-    |> OfferQuery.published()
-    |> OfferQuery.order_published()
-    |> Repo.all()
+  def list_published_offers(page \\ nil) do
+    query =
+      Offer
+      |> OfferQuery.published()
+      |> OfferQuery.order_published()
+
+    case page do
+      page_no when is_integer(page_no) and page_no > 0 ->
+        Repo.paginate(query, page: page)
+
+      _ ->
+        Repo.all(query)
+    end
   end
-  def list_published_offers(page) when is_integer(page) and page > 0 do
-    Offer
-    |> OfferQuery.published()
-    |> OfferQuery.order_published()
-    |> Repo.paginate(page: page)
+
+  @doc """
+  Returns the list of published offers.
+
+  ## Examples
+
+      iex> list_published_offers()
+      [%Offer{}, ...]
+
+      iex> list_published_offers(page_no)
+      [%Offer{}, ...]
+
+  """
+  def filter_published_offers(filters, page \\ nil) do
+    job_type = Map.get(filters, "job_type", nil)
+    job_place = Map.get(filters, "job_place", nil)
+    text = Map.get(filters, "text", nil)
+
+    query =
+      Offer
+      |> OfferQuery.published()
+      |> OfferQuery.order_published()
+      |> OfferQuery.by_job_type(job_type)
+      |> OfferQuery.by_job_place(job_place)
+      |> OfferQuery.by_text(text)
+
+    case page do
+      page_no when is_integer(page_no) and page_no > 0 ->
+        Repo.paginate(query, page: page)
+
+      _ ->
+        Repo.all(query)
+    end
   end
 
   @doc """
@@ -75,17 +112,19 @@ defmodule ElixirJobs.Offers do
       [%Offer{}, ...]
 
   """
-  def list_unpublished_offers do
-    Offer
-    |> OfferQuery.unpublished()
-    |> OfferQuery.order_inserted()
-    |> Repo.all()
-  end
-  def list_unpublished_offers(page) when is_integer(page) and page > 0 do
-    Offer
-    |> OfferQuery.unpublished()
-    |> OfferQuery.order_inserted()
-    |> Repo.paginate(page: page)
+  def list_unpublished_offers(page \\ nil) do
+    query =
+      Offer
+      |> OfferQuery.unpublished()
+      |> OfferQuery.order_inserted()
+
+    case page do
+      page_no when is_integer(page_no) and page_no > 0 ->
+        Repo.paginate(query, page: page)
+
+      _ ->
+        Repo.all(query)
+    end
   end
 
   @doc """
