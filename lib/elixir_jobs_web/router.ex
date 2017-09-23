@@ -25,6 +25,7 @@ defmodule ElixirJobsWeb.Router do
     get "/", OfferController, :index
     get "/about", PageController, :about
     get "/rss", OfferController, :rss
+    get "/sitemap.xml", SitemapController, :sitemap
     get "/page/:page", OfferController, :index, as: :offer_page
     get "/offers/new", OfferController, :new
     post "/offers/new", OfferController, :create

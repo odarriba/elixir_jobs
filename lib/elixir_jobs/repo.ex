@@ -1,6 +1,6 @@
 defmodule ElixirJobs.Repo do
   use Ecto.Repo, otp_app: :elixir_jobs
-  use Scrivener, page_size: 10
+  use Scrivener, page_size: Application.get_env(:elixir_jobs, :items_per_page)
 
   @doc """
   Dynamically loads the repository url from the
