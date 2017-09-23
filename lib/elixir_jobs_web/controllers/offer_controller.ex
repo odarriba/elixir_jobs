@@ -34,7 +34,8 @@ defmodule ElixirJobsWeb.OfferController do
 
   def create(conn, %{"offer" => offer_params}) do
     case Offers.create_offer(offer_params) do
-      {:ok, _offer} ->
+      {:ok, offer} ->
+        send_creation_email(offer)
         conn
         |> put_flash(:info, gettext("<b>Job offer created correctly!</b> We will review and publish it soon"))
         |> redirect(to: offer_path(conn, :index))
@@ -87,4 +88,9 @@ defmodule ElixirJobsWeb.OfferController do
     offers = Offers.list_offers(1)
     render(conn, "rss.xml", offers: offers.entries)
   end
+
+  def send_creation_email(offer) do
+    ElixirJobsWeb.Email.notification_offer_created_html(offer)
+  end
+
 end

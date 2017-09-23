@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Job Offer For Review</title>
+  </head>
+  <body>
+    <div style="width: 80%; max-width: 500px; font-size: 18px; font-family: Verdana, Helvetica, sans-serif; margin: 50px auto; padding: 10px;">
+      <%= render @view_module, @view_template, assigns %>
+      <div class="email-signature">
+        <p> - Elixir Jobs</p>
+      </div>
+    </div>
+  </body>
+  <style>
+
+    .email-signature {
+      font-size: 14px;
+      color:rgb(175,175,175);
+    }
+  </style>
+</html>

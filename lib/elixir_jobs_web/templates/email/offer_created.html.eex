@@ -1,0 +1,14 @@
+<h1 style="text-align: center; padding: 20px; background-color: #976eb5; color: white;">A new offer has been created!</h1>
+<div style="padding: 20px; font-size: 16px; background-color: rgb(225,225,225);">
+  <a href="<%= Application.get_env(:elixir_jobs, :home_url) %>admin/offers/<%= @offer.slug %>/edit" target="_blank">Edit Offer</a>
+  <h4>Title: <%= @offer.title %></h4>
+  <p>Company: <%= @offer.company %></p>
+  <br>
+  <p>Description: <%= @offer.description %></p>
+  <p>Location: <%= @offer.location %></p>
+  <a href="<%= @offer.url %>" target="_blank">Company url: <%= @offer.url %></a>
+  <br>
+  <p>Place: <%= @offer.job_place %></p>
+  <p>Type: <%= @offer.job_type %></p>
+
+</div>

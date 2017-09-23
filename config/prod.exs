@@ -44,6 +44,8 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
    access_token_secret: System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
 ]
 
+config :elixir_jobs, :home_url, "https://elixirjobs.net/"
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

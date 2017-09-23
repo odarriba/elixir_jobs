@@ -1,0 +1,10 @@
+<%= @offer.title %>
+<%= @offer.company %>
+-
+<%= @offer.description %>
+<%= @offer.location %>
+-
+<%= @offer.url %>
+-
+<%= @offer.job_place %>
+<%= @offer.job_type %>

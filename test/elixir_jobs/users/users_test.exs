@@ -26,7 +26,7 @@ defmodule ElixirJobs.UsersTest do
 
     test "get_admin!/1 returns the admin with given id" do
       admin = admin_fixture()
-      assert Users.get_admin!(admin.id).__struct__ == ElixirJobs.Users.Admin
+      assert Users.get_admin_by_id!(admin.id).__struct__ == ElixirJobs.Users.Admin
     end
 
     test "create_admin/1 with valid data creates a admin" do
@@ -56,7 +56,7 @@ defmodule ElixirJobs.UsersTest do
     test "delete_admin/1 deletes the admin" do
       admin = admin_fixture()
       assert {:ok, %Admin{}} = Users.delete_admin(admin)
-      assert_raise Ecto.NoResultsError, fn -> Users.get_admin!(admin.id) end
+      assert_raise Ecto.NoResultsError, fn -> Users.get_admin_by_id!(admin.id) end
     end
 
     test "change_admin/1 returns a admin changeset" do
