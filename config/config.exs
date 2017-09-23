@@ -9,6 +9,9 @@ use Mix.Config
 config :elixir_jobs,
   ecto_repos: [ElixirJobs.Repo]
 
+config :elixir_jobs,
+  items_per_page: 10
+
 # Configures the endpoint
 config :elixir_jobs, ElixirJobsWeb.Endpoint,
   url: [host: "localhost"],
