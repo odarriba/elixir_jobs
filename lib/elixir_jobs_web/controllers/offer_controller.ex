@@ -36,7 +36,21 @@ defmodule ElixirJobsWeb.OfferController do
         _ -> 1
       end
 
-    page = Offers.list_published_offers(page_number)
+    filters =
+      params
+      |> Map.get("filters", %{})
+      |> Enum.map(fn({k, v}) ->
+        val = case v do
+          "" -> nil
+          str when is_binary(str) -> String.trim(str)
+          val -> val
+        end
+
+        {k, val}
+      end)
+      |> Enum.reject(&(is_nil(&1) or (is_binary(&1) and length(&1) == 0)))
+
+    page = Offers.list_published_offers(page_number, filters)
 
     render(conn, "search.html",
       offers: page.entries,
