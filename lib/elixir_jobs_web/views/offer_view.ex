@@ -23,15 +23,15 @@ defmodule ElixirJobsWeb.OfferView do
     end)
   end
 
-  def human_get_place("onsite", default), do: human_get_place(:onsite, default)
-  def human_get_place("remote", default), do: human_get_place(:remote, default)
-  def human_get_place("both", default), do: human_get_place(:both, default)
-  def human_get_place(option, default), do: default
+  def human_get_place("onsite", default), do: get_place_text(:onsite, default)
+  def human_get_place("remote", default), do: get_place_text(:remote, default)
+  def human_get_place("both", default), do: get_place_text(:both, default)
+  def human_get_place(option, default), do: get_place_text(option, default)
 
-  def human_get_type("full_time", default), do: human_get_type(:full_time, default)
-  def human_get_type("part_time", default), do: human_get_type(:part_time, default)
-  def human_get_type("freelance", default), do: human_get_type(:freelance, default)
-  def human_get_type(_option, default), do: default
+  def human_get_type("full_time", default), do: get_type_text(:full_time, default)
+  def human_get_type("part_time", default), do: get_type_text(:part_time, default)
+  def human_get_type("freelance", default), do: get_type_text(:freelance, default)
+  def human_get_type(option, default), do: get_type_text(option, default)
 
   defp get_place_text(:onsite, _default), do: gettext("On site")
   defp get_place_text(:remote, _default), do: gettext("Remote")
