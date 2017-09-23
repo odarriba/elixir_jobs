@@ -24,7 +24,8 @@ defmodule ElixirJobs.Mixfile do
         :logger,
         :runtime_tools,
         :scrivener_ecto,
-        :extwitter
+        :extwitter,
+        :appsignal
       ]
     ]
   end
@@ -56,7 +57,8 @@ defmodule ElixirJobs.Mixfile do
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
       {:guardian, "~> 1.0-beta"},
-      {:extwitter, "~> 0.8"}
+      {:extwitter, "~> 0.8"},
+      {:appsignal, "~> 1.0"}
     ]
   end
 
