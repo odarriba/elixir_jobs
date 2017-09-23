@@ -14,5 +14,5 @@
     </div>
     <%= submit(gettext("Search"), class: "btn-success") %>
   <% end %>
-  <div class="stats"><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></div>
+  <div class="page-info"><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></div>
 </div>

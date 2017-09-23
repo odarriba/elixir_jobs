@@ -1,5 +1,5 @@
 .search {
-
+  @include clearfix();
   border-bottom: 1px solid #e3e3e3;
   padding: 0.5rem 0;
   font-size: 0.8rem;
@@ -101,8 +101,14 @@
         &.select {
           display: none;
         }
+      }
 
-        @include screen-md() {
+      @include screen-md {
+        float: right;
+        width: calc(100% - 170px);
+        min-width: 200px;
+
+        .field {
           &.text {
             input {
               max-width: 300px;
@@ -110,7 +116,18 @@
             }
           }
         }
+
+        & + .page-info {
+          margin-top: 17px;
+          float: left;
+          width: 150px;
+        }
       }
     }
+  }
+
+  .page-info {
+    margin: 0 5px 5px 5px;
+    float: right;
   }
 }
