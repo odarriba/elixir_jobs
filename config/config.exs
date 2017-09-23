@@ -17,6 +17,17 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
   pubsub: [name: ElixirJobs.PubSub,
            adapter: Phoenix.PubSub.PG2]
 
+# Appsignal
+config :elixir_jobs, ElixirJobsWeb.Endpoint,
+  instrumenters: [Appsignal.Phoenix.Instrumenter]
+
+config :phoenix, :template_engines,
+  eex: Appsignal.Phoenix.Template.EExEngine,
+  exs: Appsignal.Phoenix.Template.ExsEngine
+
+config :elixir_jobs, ElixirJobs.Repo,
+  loggers: [Appsignal.Ecto, Ecto.LogEntry]
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
