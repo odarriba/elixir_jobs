@@ -60,3 +60,5 @@ Also, special thanks to :
 All contributions are welcome, and we really hope this repo will serve for beginners as well for more advanced developers.
 
 If you have any doubt, feel free to ask, but always respecting our [Code of Conduct](https://github.com/odarriba/elixir_jobs/blob/master/CODE_OF_CONDUCT.md).
+
+To contribute, create a fork of the repository, make your changes and create a PR. And remember, talking on PRs/issues is a must!
