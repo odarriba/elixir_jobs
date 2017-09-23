@@ -6,6 +6,8 @@ defmodule ElixirJobsWeb.OfferController do
     Offers.Offer
   }
 
+  @filters_available ["text", "job_type", "job_place"]
+
   plug :scrub_params, "offer" when action in [:create, :preview]
 
   def index(conn, params) do
@@ -38,19 +40,17 @@ defmodule ElixirJobsWeb.OfferController do
 
     filters =
       params
-      |> Map.get("filters", %{})
-      |> Enum.map(fn({k, v}) ->
-        val = case v do
-          "" -> nil
-          str when is_binary(str) -> String.trim(str)
-          val -> val
+      |> Map.get("filter", %{})
+      |> Enum.reduce(%{}, fn({k, v}, acc) ->
+        case {k, v} do
+          {key, _} when key not in @filters_available -> acc
+          {_, val} when val in ["", nil] -> acc
+          {key, str} when is_binary(str) -> Map.put(acc, key, String.trim(str))
+          {key, val} -> Map.put(acc, key, val)
         end
-
-        {k, val}
       end)
-      |> Enum.reject(&(is_nil(&1) or (is_binary(&1) and length(&1) == 0)))
 
-    page = Offers.list_published_offers(page_number, filters)
+    page = Offers.filter_published_offers(filters, page_number)
 
     render(conn, "search.html",
       offers: page.entries,
