@@ -57,7 +57,7 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
 
 config :elixir_jobs, ElixirJobsWeb.Mailer,
   adapter: Bamboo.SMTPAdapter,
-  server: "smtp.sendgrid.net",
+  server: System.get_env("SMTP_SERVER"),
   port: 587,
   username: System.get_env("SMTP_USERNAME"),
   password: System.get_env("SMTP_PASSWORD"),

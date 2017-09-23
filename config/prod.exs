@@ -44,6 +44,16 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
    access_token_secret: System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
 ]
 
+config :elixir_jobs, ElixirJobsWeb.Mailer,
+  adapter: Bamboo.SMTPAdapter,
+  server: System.get_env("SMTP_SERVER"),
+  port: 587,
+  username: System.get_env("SMTP_USERNAME"),
+  password: System.get_env("SMTP_PASSWORD"),
+  tls: :if_available, # can be `:always` or `:never`
+  ssl: false, # can be `true`
+  retries: 1
+
 config :elixir_jobs, :home_url, "https://elixirjobs.net/"
 
 # ## SSL Support
