@@ -26,6 +26,24 @@ defmodule ElixirJobsWeb.OfferController do
       total_pages: page.total_pages)
   end
 
+  def search(conn, params) do
+    page_number =
+      with {:ok, page_no} <- Map.fetch(params, "page"),
+           true <- is_binary(page_no),
+           {value, _} <- Integer.parse(page_no) do
+        value
+      else
+        _ -> 1
+      end
+
+    page = Offers.list_published_offers(page_number)
+
+    render(conn, "search.html",
+      offers: page.entries,
+      page_number: page.page_number,
+      total_pages: page.total_pages)
+  end
+
   def new(conn, _params) do
     changeset = Offers.change_offer(%Offer{})
 
