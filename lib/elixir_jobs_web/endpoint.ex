@@ -38,6 +38,7 @@ defmodule ElixirJobsWeb.Endpoint do
     key: "_elixir_jobs_key",
     signing_salt: "JReEffn+"
 
+  use Appsignal.Phoenix
   plug ElixirJobsWeb.Router
 
   @doc """
