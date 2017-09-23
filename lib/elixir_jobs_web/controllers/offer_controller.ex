@@ -49,6 +49,8 @@ defmodule ElixirJobsWeb.OfferController do
           {key, val} -> Map.put(acc, key, val)
         end
       end)
+      |> Enum.reject(fn({_, v}) -> is_nil(v) or v == "" end)
+      |> Enum.into(%{})
 
     page = Offers.filter_published_offers(filters, page_number)
 
