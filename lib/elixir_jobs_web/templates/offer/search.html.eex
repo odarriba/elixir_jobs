@@ -1,5 +1,5 @@
 <div class="search">
-  <%= form_for @conn, offer_path(@conn, :search), [as: :filter, method: :get, class: "full-filter"], fn f -> %>
+  <%= form_for @conn, offer_path(@conn, :search), [as: :filter, method: :get, class: "filters full"], fn f -> %>
     <div class="field text">
       <%= text_input(f, :text,
         id: "filter_text",

@@ -32,7 +32,7 @@
     float: right;
   }
 
-  .full-filters {
+  .filters {
     .field {
       margin-bottom: 5px;
 
@@ -62,6 +62,7 @@
         }
 
         &.select {
+          display: auto;
           width: 150px;
         }
       }
@@ -72,6 +73,7 @@
         }
 
         &.select {
+          display: auto;
           width: calc(50% - 40px);
         }
       }
@@ -82,7 +84,31 @@
         }
 
         &.select {
+          display: auto;
           width: 150px;
+        }
+      }
+    }
+
+    // Small filters don't show the selects on mobile
+    &.small {
+      .field {
+        &.text {
+          float: left;
+          width: calc(100% - 80px);
+        }
+
+        &.select {
+          display: none;
+        }
+
+        @include screen-md() {
+          &.text {
+            input {
+              max-width: 300px;
+              float: right;
+            }
+          }
         }
       }
     }

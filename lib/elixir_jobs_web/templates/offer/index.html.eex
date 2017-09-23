@@ -1,5 +1,19 @@
 <div class="search">
-  <%= button(gettext("Search"), to: "#", method: :get, class: "btn-sm btn-info") %>
+  <%= form_for @conn, offer_path(@conn, :search), [as: :filter, method: :get, class: "filters small"], fn f -> %>
+    <div class="field text">
+      <%= text_input(f, :text,
+        id: "filter_text",
+        class: class_with_error(f, :text, "text"),
+        placeholder: gettext("Search offers by title, location...")) %>
+    </div>
+    <div class="field select place">
+      <%= select(f, :job_place, get_job_place_options(gettext("Unknown")), prompt: gettext("Any job place")) %>
+    </div>
+    <div class="field select type">
+    <%= select(f, :job_type, get_job_type_options(gettext("Unknown")), prompt: gettext("Any job type")) %>
+    </div>
+    <%= submit(gettext("Search"), class: "btn-success") %>
+  <% end %>
 </div>
 
 <%= for offer <- @offers do %>
