@@ -40,7 +40,7 @@ defmodule ElixirJobsWeb.OfferController do
 
     filters =
       params
-      |> Map.get("filter", %{})
+      |> Map.get("filters", %{})
       |> Enum.reduce(%{}, fn({k, v}, acc) ->
         case {k, v} do
           {key, _} when key not in @filters_available -> acc
