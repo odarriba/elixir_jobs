@@ -1,4 +1,6 @@
-<%= render("_filters.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
+<div class="search">
+  <%= button(gettext("Search"), to: "#", method: :get, class: "btn-sm btn-info") %>
+</div>
 
 <%= for offer <- @offers do %>
   <%= render("_offer.html", conn: @conn, offer: offer, title_link: true) %>
