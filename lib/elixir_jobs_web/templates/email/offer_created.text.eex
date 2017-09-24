@@ -1,10 +1,9 @@
-<%= @offer.title %>
-<%= @offer.company %>
--
-<%= @offer.description %>
-<%= @offer.location %>
--
-<%= @offer.url %>
--
-<%= @offer.job_place %>
-<%= @offer.job_type %>
+A new offer has been created!
+View: <%= ElixirJobsWeb.Router.Helpers.offer_url(ElixirJobsWeb.Endpoint, :show, @offer.slug) %>
+Title: <%= @offer.title %>
+Company: <%= @offer.company %>
+Description: <%= @offer.description %>
+Location: <%= @offer.location %>
+Company url: <%= @offer.url %>
+Place: <%= @offer.job_place %>
+Type: <%= @offer.job_type %>

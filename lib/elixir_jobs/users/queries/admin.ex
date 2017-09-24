@@ -17,7 +17,7 @@ defmodule ElixirJobs.Users.Queries.Admin do
   ## Examples
     iex>
   """
-  def admin_emails(query) do
+  def only_admin_emails(query) do
     from admin in query,
       select: {admin.name, admin.email}
   end

@@ -8,9 +8,6 @@ defmodule ElixirJobsWeb.EmailsTest do
   import Ecto.Query, only: [from: 2]
 
   describe "offers" do
-    alias ElixirJobs.{
-      Offers.Offer
-    }
 
     @valid_offer %{
       title: "some title",
@@ -40,18 +37,16 @@ defmodule ElixirJobsWeb.EmailsTest do
       Users.create_admin(@valid_admin_1)
       Users.create_admin(@valid_admin_2)
       assert length(Users.list_admins()) == 2
-      conn = post conn, offer_path(conn, :create), offer: @valid_offer
-      query = Ecto.Query
-      offer = ElixirJobs.Repo.one(from offer in ElixirJobs.Offers.Offer, order_by: [desc: offer.inserted_at], limit: 1)
-      assert_delivered_email ElixirJobsWeb.Email.notification_offer_created_html(offer)
+      post conn, offer_path(conn, :create), offer: @valid_offer
+      offer = ElixirJobs.Repo.one(from offer in Offers.Offer, order_by: [desc: offer.inserted_at], limit: 1)
+      assert_delivered_email ElixirJobsWeb.Email.notification_offer_created_html({offer, :default})
     end
 
     test "doesn't raise error without admins on offer creation", %{conn: conn} do
       conn = post conn, offer_path(conn, :create), offer: @valid_offer
       assert redirected_to(conn) == offer_path(conn, :index)
-      assert conn.status == 302
       assert get_flash(conn, :info) == "<b>Job offer created correctly!</b> We will review and publish it soon"
-      assert_no_emails_delivered
+      assert_no_emails_delivered()
     end
 
   end

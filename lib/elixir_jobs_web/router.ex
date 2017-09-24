@@ -34,6 +34,10 @@ defmodule ElixirJobsWeb.Router do
 
     get "/login", AuthController, :new
     post "/login", AuthController, :create
+
+    #if Mix.env == :dev do
+      #forward "/sent_emails", Bamboo.SentEmailViewerPlug
+    #end
   end
 
   scope "/", ElixirJobsWeb do

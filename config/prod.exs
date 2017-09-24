@@ -54,7 +54,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
   ssl: false, # can be `true`
   retries: 1
 
-config :elixir_jobs, :home_url, "https://elixirjobs.net/"
+config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 
 # ## SSL Support
 #

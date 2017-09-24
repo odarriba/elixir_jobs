@@ -56,16 +56,9 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
   secret_key: "MY_D3V_K3Y"
 
 config :elixir_jobs, ElixirJobsWeb.Mailer,
-  adapter: Bamboo.SMTPAdapter,
-  server: System.get_env("SMTP_SERVER"),
-  port: 587,
-  username: System.get_env("SMTP_USERNAME"),
-  password: System.get_env("SMTP_PASSWORD"),
-  tls: :if_available, # can be `:always` or `:never`
-  ssl: false, # can be `true`
-  retries: 1
+  adapter: Bamboo.LocalAdapter
 
-config :elixir_jobs, :home_url, "http://localhost:4000/"
+config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 
 # Import custom configuration
 import_config "dev.secret.exs"

@@ -25,7 +25,8 @@ defmodule ElixirJobs.Mixfile do
         :runtime_tools,
         :scrivener_ecto,
         :extwitter,
-        :appsignal
+        :appsignal,
+        :bamboo
       ]
     ]
   end
@@ -59,8 +60,8 @@ defmodule ElixirJobs.Mixfile do
       {:guardian, "~> 1.0-beta"},
       {:extwitter, "~> 0.8"},
       {:appsignal, "~> 1.0"},
-      {:bamboo, "~> 0.7"},
-      {:bamboo_smtp, "~> 1.2.1"}
+      {:bamboo, "~> 0.8"},
+      {:bamboo_smtp, "~> 1.4.0"}
     ]
   end
 

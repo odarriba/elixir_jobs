@@ -21,7 +21,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
 
 config :bamboo, :refute_timeout, 3
 
-config :elixir_jobs, :home_url, "http://localhost:4000/"
+config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 
 #Import custom configuration
 import_config "test.secret.exs"
