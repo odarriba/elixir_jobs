@@ -49,7 +49,10 @@ exports.config = {
       ignore: [/vendor/]
     },
     sass: {
-      mode: "native" // This is the important part!
+      mode: "native", // This is the important part!
+      options: {
+        includePaths: ['node_modules']
+      }
     }
   },
 
