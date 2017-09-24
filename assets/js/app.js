@@ -8,6 +8,7 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import "jquery";
+import "rrssb/js/rrssb";
 
 jQuery(function ($) {
   $("a[data-toggle]").click(function (evt) {
@@ -36,5 +37,11 @@ jQuery(function ($) {
         scrollTop: $preview_div.offset().top
       }, 'slow');
     });
+  });
+
+  $(".rrssb-buttons").rrssb({
+    title: document.title,
+    url: document.location.href,
+    description: $('meta[name=description]').attr("content")
   });
 });
