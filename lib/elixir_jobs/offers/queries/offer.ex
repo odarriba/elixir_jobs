@@ -11,6 +11,29 @@ defmodule ElixirJobs.Offers.Queries.Offer do
       where: o.slug == ^slug
   end
 
+  def by_job_type(query, nil), do: query
+  def by_job_type(query, type) do
+    from o in query,
+      where: o.job_type == ^type
+  end
+
+  def by_job_place(query, nil), do: query
+  def by_job_place(query, place) do
+    from o in query,
+      where: o.job_place == ^place
+  end
+
+  def by_text(query, nil), do: query
+  def by_text(query, text) do
+    text
+    |> String.split(" ")
+    |> Enum.map(&("%#{&1}%"))
+    |> Enum.reduce(query, fn(keyword, q) ->
+      from o in q,
+        where: ilike(o.title, ^keyword) or ilike(o.company, ^keyword) or ilike(o.description, ^keyword)
+    end)
+  end
+
   def published(query) do
     from o in query,
       where: not is_nil(o.published_at) and o.published_at <= ^NaiveDateTime.utc_now()

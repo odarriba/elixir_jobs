@@ -1,6 +1,7 @@
 input[type=text],
 input[type=email],
 input[type=password],
+select,
 textarea {
   border: 1px solid #d3d3d3;
   border-radius: 4px;
@@ -10,6 +11,7 @@ textarea {
   background: #fafafa;
   font-family: inherit;
   font-size: inherit;
+  line-height: 1.42857143;
 
   &:focus {
     background: #fff;
@@ -20,14 +22,24 @@ textarea {
 }
 
 select {
+  width: 100%;
+  padding: 10px 12px;
+
+  box-shadow: none;
+  background: #fff url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2211%22%20height%3D%2211%22%20viewBox%3D%220%200%2011%2011%22%3E%3Cpath%20d%3D%22M4.33%208.5L0%201L8.66%201z%22%20fill%3D%22%23666%22%2F%3E%3C%2Fsvg%3E') right 5px center no-repeat;
+  -webkit-appearance: none;
+  outline: none;
+  cursor: pointer;
+
+  /* Hide arrow on FF */
+  -moz-appearance: none;
+  text-indent: 0.01px;
+  text-overflow: ellipsis;
+
   font-family: inherit;
   font-size: inherit;
-  padding: 10px 12px;
   line-height: 1.42857143;
   color: #555;
-  background-image: none;
-  border: 1px solid #ccc;
-  border-radius: 4px;
 }
 
 input.error,

@@ -47,10 +47,18 @@ Some things are missing yet:
 
 Thanks to anyone which has contributed or it's going to contribute this project. No, seriously, you are awesome.
 
-Also, special thanks to [@rrrene](https://github.com/rrrene) for his awesome job with [ElixirStatus](https://github.com/rrrene/elixirstatus-web), which was the base at the beginning of this project.
+Also, special thanks to :
+
+- [@rrrene](https://github.com/rrrene) for his awesome job with [ElixirStatus](https://github.com/rrrene/elixirstatus-web), which was the base at the beginning of this project.
+
+- [@carloscabo](https://github.com/carloscabo) for his [pure-css-select-style](https://github.com/carloscabo/pure-css-select-style) repository.
+
+
 
 ## Contribute
 
 All contributions are welcome, and we really hope this repo will serve for beginners as well for more advanced developers.
 
 If you have any doubt, feel free to ask, but always respecting our [Code of Conduct](https://github.com/odarriba/elixir_jobs/blob/master/CODE_OF_CONDUCT.md).
+
+To contribute, create a fork of the repository, make your changes and create a PR. And remember, talking on PRs/issues is a must!

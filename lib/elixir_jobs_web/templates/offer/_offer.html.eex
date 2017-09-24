@@ -22,10 +22,14 @@
     </div>
     <div class="group">
       <span>
-        <a class="badge badge-success"><%= human_get_place(@offer.job_place) %></a>
+        <%= link(human_get_place(@offer.job_place, gettext("Unknown")),
+              to: offer_path(@conn, :search, filters: [job_place: @offer.job_place]),
+              class: "badge badge-success") %>
       </span>
       <span>
-        <a class="badge badge-primary"><%= human_get_type(@offer.job_type) %></a>
+        <%= link(human_get_type(@offer.job_type, gettext("Unknown")),
+              to: offer_path(@conn, :search, filters: [job_type: @offer.job_type]),
+              class: "badge badge-primary") %>
       </span>
     </div>
   </div>

@@ -1,0 +1,134 @@
+.search {
+  @include clearfix();
+  border-bottom: 1px solid #e3e3e3;
+  padding: 0.5rem 0;
+  font-size: 0.8rem;
+
+  h5 {
+    margin: 0 3px 10px 3px;
+    font-weight: bold;
+    font-size: 0.8rem;
+  }
+
+  form {
+   @include clearfix();
+   padding: 0.5rem 0;
+  }
+
+  input {
+    background-color: #fafafa;
+    padding: 5px;
+  }
+
+  select {
+    background-color: #fafafa;
+    padding: 5px;
+  }
+
+  .filters {
+    .field {
+      margin-bottom: 5px;
+
+      &.text{
+        width: 100%;
+        float: left;
+        padding: 2px 3px;
+      }
+
+      &.select {
+        width: 50%;
+        float: left;
+        padding: 2px 3px;
+
+        select {
+          width: 100%;
+        }
+      }
+
+      &.button {
+        width: 70px;
+        float: right;
+        margin: 0 5px;
+        padding: 2px 0;
+
+        button {
+          width: 100%;
+          padding: 3px 10px;
+        }
+      }
+
+      @include screen-sm() {
+        &.text {
+          width: calc(100% - 380px);
+        }
+
+        &.select {
+          display: auto;
+          width: 150px;
+        }
+      }
+
+      @include screen-md() {
+        &.text {
+          width: 100%;
+        }
+
+        &.select {
+          display: auto;
+          width: calc(50% - 40px);
+        }
+      }
+
+      @include screen-lg() {
+        &.text {
+          width: calc(100% - 380px);
+        }
+
+        &.select {
+          display: auto;
+          width: 150px;
+        }
+      }
+    }
+
+    // Small filters don't show the selects on mobile
+    &.small {
+      .field {
+        &.text {
+          float: left;
+          width: calc(100% - 80px);
+        }
+
+        &.select {
+          display: none;
+        }
+      }
+
+      @include screen-md {
+        float: right;
+        width: calc(100% - 170px);
+        min-width: 200px;
+
+        .field {
+          &.text {
+            input {
+              max-width: 300px;
+              float: right;
+            }
+          }
+        }
+
+        & + .page-info {
+          margin-top: 17px;
+          float: left;
+          width: 150px;
+        }
+      }
+    }
+  }
+
+  .page-info {
+    margin: 0 5px 5px 5px;
+    float: right;
+  }
+}

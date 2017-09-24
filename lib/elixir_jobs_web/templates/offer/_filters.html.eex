@@ -1,0 +1,20 @@
+<div class="search">
+  <%= form_for @conn, offer_path(@conn, :search), [as: :filters, method: :get, class: "filters #{@aspect}"], fn f -> %>
+    <div class="field text">
+      <%= text_input(f, :text,
+        id: "filter_text",
+        class: class_with_error(f, :text, "text"),
+        placeholder: gettext("Search offers by title, location...")) %>
+    </div>
+    <div class="field select place">
+      <%= select(f, :job_place, get_job_place_options(gettext("Unknown")), prompt: gettext("Any job place")) %>
+    </div>
+    <div class="field select type">
+    <%= select(f, :job_type, get_job_type_options(gettext("Unknown")), prompt: gettext("Any job type")) %>
+    </div>
+    <div class="field button">
+      <%= submit(gettext("Search"), class: "btn-success") %>
+    </div>
+  <% end %>
+  <div class="page-info"><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></div>
+</div>
