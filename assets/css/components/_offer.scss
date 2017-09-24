@@ -102,6 +102,17 @@
   }
 }
 
+.rrssb-buttons-wrapper {
+  padding: 0;
+  .rrssb-buttons-title {
+    font-weight: bold;
+    margin: 0.6rem auto 0.4rem;
+  }
+  .rrssb-buttons {
+    margin-left: -2px;
+  }
+}
+
 .offer-link {
   margin: 3rem 0;
 }
@@ -184,6 +195,9 @@
       }
     }
   }
+  .rrssb-buttons-wrapper {
+    padding: .5rem .5rem 0 .5rem;
+  }
 }
 
 @include screen-md {
@@ -207,5 +221,8 @@
         margin-bottom: 0;
       }
     }
+  }
+  .rrssb-buttons-wrapper {
+    padding: 0;
   }
 }
