@@ -36,5 +36,6 @@ defmodule ElixirJobsWeb.SeoHelper do
     |> HtmlSanitizeEx.strip_tags()
     |> String.slice(0, 100)
   end
+  defp get_page_description(PageController, :about, _), do: gettext("Built on Elixir + Phoenix, ElixirJobs is a open source project that aims to help Elixir developers to find their next dream job.")
   defp get_page_description(_, _, _), do: gettext(@default_page_description)
 end
