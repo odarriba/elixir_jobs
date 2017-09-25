@@ -8,7 +8,7 @@ defmodule ElixirJobsWeb.Email do
       recipients ->
         for recipient <- recipients do
           put_basic_layouts({from, recipient})
-          |> subject("A new job offer was posted")
+          |> subject(gettext("ElixirJobs - A new job offer was received"))
           |> render("offer_created.text", offer: offer)
           |> render("offer_created.html", offer: offer)
           |> ElixirJobsWeb.Mailer.deliver_later
