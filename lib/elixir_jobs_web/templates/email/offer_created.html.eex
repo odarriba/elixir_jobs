@@ -1,14 +1,15 @@
-<h1 style="text-align: center; padding: 20px; background-color: #976eb5; color: white;">A new offer has been created!</h1>
+<div style="text-align: center; padding: 20px; background-color: #976eb5; color: white;">
+  <h2><%= gettext("A new offer has been created!") %></h2>
+</div>
 <div style="padding: 20px; font-size: 16px; background-color: rgb(225,225,225);">
-  <a href="<%= ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug) %>" target="_blank">View Offer</a>
-  <h4>Title: <%= @offer.title %></h4>
-  <p>Company: <%= @offer.company %></p>
-  <br>
-  <p>Description: <%= @offer.description %></p>
-  <p>Location: <%= @offer.location %></p>
-  <a href="<%= @offer.url %>" target="_blank">Company url: <%= @offer.url %></a>
-  <br>
-  <p>Place: <%= @offer.job_place %></p>
-  <p>Type: <%= @offer.job_type %></p>
-
+  <h4><%= gettext("Title") %>: <%= @offer.title %></h4>
+  <p><%= gettext("Company") %>: <%= @offer.company %></p>
+  <hr />
+  <p><%= gettext("Description") %>: <%= @offer.description %></p>
+  <p><%= gettext("Location") %>: <%= @offer.location %></p>
+  <p><%= gettext("URL") %>: <a href="<%= @offer.url %>" target="_blank"><%= @offer.url %></a></p>
+  <p><%= gettext("Place") %>: <%= human_get_place(@offer.job_place, gettext("Unknown")) %></p>
+  <p><%= gettext("Type") %>: <%= human_get_type(@offer.job_type, gettext("Unknown")) %></p>
+  <hr />
+  <%= link(gettext("View Offer"), to: ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug)) %>
 </div>
