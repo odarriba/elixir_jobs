@@ -22,6 +22,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
 config :bamboo, :refute_timeout, 3
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
+config :elixir_jobs, :analytics_id, ""
 
 #Import custom configuration
 import_config "test.secret.exs"

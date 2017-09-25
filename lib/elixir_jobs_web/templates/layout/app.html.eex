@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><%= SeoHelper.page_title(@conn) %> - <%= gettext("ElixirJobs") %></title>
     <meta name="description" content="<%= SeoHelper.page_description(@conn) %>">
+    <meta name="keywords" content="elixir,jobs,community,job,board,phoenix,positions,junior,senior,full time,part time,freelance,contract,publish">
     <meta property="og:url" content="<%= current_url(@conn) %>" />
     <meta property="og:title" content="<%= SeoHelper.page_title(@conn) %> - <%= gettext("ElixirJobs") %>" />
     <meta property="og:description" content="<%= SeoHelper.page_description(@conn) %>" />
@@ -42,5 +43,6 @@
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render_shared "_analytics.html", conn: @conn %>
     <%= render_shared "_cookies.html", conn: @conn %>
+    <%= raw render_microdata(@conn) %>
   </body>
 </html>

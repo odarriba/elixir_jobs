@@ -37,12 +37,12 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
   issuer: "ElixirJobs",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
-  config :extwitter, :oauth, [
-   consumer_key: System.get_env("TWITTER_ACCESS_CONSUMER_KEY"),
-   consumer_secret: System.get_env("TWITTER_ACCESS_CONSUMER_SECRET"),
-   access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
-   access_token_secret: System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
-]
+config :extwitter, :oauth, [
+    consumer_key: System.get_env("TWITTER_ACCESS_CONSUMER_KEY"),
+    consumer_secret: System.get_env("TWITTER_ACCESS_CONSUMER_SECRET"),
+    access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
+    access_token_secret: System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
+  ]
 
 config :elixir_jobs, ElixirJobsWeb.Mailer,
   adapter: Bamboo.MailgunAdapter,
@@ -50,6 +50,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
   domain: "elixirjobs.net"
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
+config :elixir_jobs, :analytics_id, "UA-106824960-1"
 
 # ## SSL Support
 #
