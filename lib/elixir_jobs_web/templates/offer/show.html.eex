@@ -1,5 +1,4 @@
 <%= render("_offer.html", conn: @conn, offer: @offer, title_link: false) %>
-<%= render(ElixirJobsWeb.SharedView, "_share.html") %>
 <div class="offer-link">
   <%= link(gettext("Go to the offer!"), to: @offer.url, class: "btn-info", target: "_blank") %>
   <%= if user_logged_in?(@conn) do %>
@@ -22,3 +21,4 @@
       data: [confirm: gettext("Do you really want to delete this offer?")]) %>
   <% end %>
 </div>
+<%= render(ElixirJobsWeb.SharedView, "_share.html") %>
