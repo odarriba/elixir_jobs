@@ -21,4 +21,4 @@
       data: [confirm: gettext("Do you really want to delete this offer?")]) %>
   <% end %>
 </div>
-<%= render(ElixirJobsWeb.SharedView, "_share.html") %>
+<%= render_shared("_share.html") %>
