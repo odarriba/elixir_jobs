@@ -6,28 +6,30 @@ defmodule ElixirJobsWeb.Email do
       [] ->
         {:ok}
       recipients ->
-        put_basic_layouts({from, recipients})
-        |> subject("A new job offer was posted")
-        |> render("offer_created.text", offer: offer)
-        |> render("offer_created.html", offer: offer)
-        |> ElixirJobsWeb.Mailer.deliver_later
+        for recipient <- recipients do
+          put_basic_layouts({from, recipient})
+          |> subject("A new job offer was posted")
+          |> render("offer_created.text", offer: offer)
+          |> render("offer_created.html", offer: offer)
+          |> ElixirJobsWeb.Mailer.deliver_later
+        end
     end
   end
 
-  defp put_basic_layouts({from, recipients}) do
+  defp put_basic_layouts({from, recipient}) do
     new_email()
-    |> bcc(recipients)
+    |> to(recipient)
     |> put_text_layout({ElixirJobsWeb.LayoutView, "email.text"})
     |> put_html_layout({ElixirJobsWeb.LayoutView, "email.html"})
     |> put_from(from)
   end
 
   defp put_from(email, :default) do
-    email |> from(Application.get_env(:elixir_jobs, :default_app_email))
+    from(email, Application.get_env(:elixir_jobs, :default_app_email))
   end
 
   defp put_from(email, from) do
-    email |> from(from)
+    from(email, from)
   end
 
 end
