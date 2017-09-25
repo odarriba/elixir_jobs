@@ -11,12 +11,6 @@ defmodule ElixirJobs.Users.Queries.Admin do
       where: a.email == ^email
   end
 
-  @doc """
-  Selects only emails of admins
-
-  ## Examples
-    iex>
-  """
   def only_admin_emails(query) do
     from admin in query,
       select: {admin.name, admin.email}

@@ -1,5 +1,5 @@
 A new offer has been created!
-View: <%= ElixirJobsWeb.Router.Helpers.offer_url(ElixirJobsWeb.Endpoint, :show, @offer.slug) %>
+View: <%= ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug) %>
 Title: <%= @offer.title %>
 Company: <%= @offer.company %>
 Description: <%= @offer.description %>

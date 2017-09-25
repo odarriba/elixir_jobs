@@ -182,7 +182,8 @@ defmodule ElixirJobs.Users do
 
   ## Examples
 
-    iex>
+    iex> admin_emails
+    {"admin_name", "admin_email"}
   """
 
   def admin_emails do
