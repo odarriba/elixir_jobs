@@ -42,5 +42,6 @@
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
     <%= render_shared "_analytics.html", conn: @conn %>
     <%= render_shared "_cookies.html", conn: @conn %>
+    <%= raw render_microdata(@conn) %>
   </body>
 </html>
