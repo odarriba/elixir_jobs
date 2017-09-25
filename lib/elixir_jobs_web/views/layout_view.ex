@@ -40,6 +40,7 @@ defmodule ElixirJobsWeb.LayoutView do
     ]
     |> Kernel.++([get_organization(conn)])
   end
+  defp get_microdata(conn, _, _), do: get_organization(conn)
 
   defp get_organization(conn) do
     %{
