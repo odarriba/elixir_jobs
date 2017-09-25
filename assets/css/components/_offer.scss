@@ -103,27 +103,33 @@
 }
 
 .rrssb-buttons-wrapper {
-  border-top: 1px solid #dedede;
   padding: 0.5rem 0 0 0;
   margin: 1rem 0;
+
   .rrssb-buttons-title {
-    font-weight: bold;
     margin: 0.6rem auto 0.4rem;
   }
+
   .rrssb-buttons {
     margin-left: -2px;
 
     li {
-      height: 100%;
-    }
+      max-width: 40px;
+      min-width: 40px;
+      height: 40px;
+      margin: 0 2px;
+      padding: 0;
 
-    .rrssb-icon svg {
-      height: 60% !important;
+      .rrssb-icon {
+        left: 11px;
+        padding-top: 9px;
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
     }
-  }
-  .rrssb-text {
-    font-size: 14px;
-    line-height: 9px;
   }
 }
 
