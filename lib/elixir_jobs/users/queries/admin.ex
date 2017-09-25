@@ -10,4 +10,10 @@ defmodule ElixirJobs.Users.Queries.Admin do
     from a in query,
       where: a.email == ^email
   end
+
+  def only_admin_emails(query) do
+    from admin in query,
+      select: {admin.name, admin.email}
+  end
+
 end

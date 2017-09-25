@@ -55,5 +55,10 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
   issuer: "ElixirJobs",
   secret_key: "MY_D3V_K3Y"
 
+config :elixir_jobs, ElixirJobsWeb.Mailer,
+  adapter: Bamboo.LocalAdapter
+
+config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
+
 # Import custom configuration
 import_config "dev.secret.exs"

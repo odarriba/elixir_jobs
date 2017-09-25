@@ -38,6 +38,10 @@ defmodule ElixirJobsWeb.Router do
     post "/login", AuthController, :create
   end
 
+  if Mix.env == :dev do
+    forward "/sent_emails", Bamboo.EmailPreviewPlug
+  end
+
   scope "/", ElixirJobsWeb do
     pipe_through [:browser, :authentication_required] # Use the default browser stack
 

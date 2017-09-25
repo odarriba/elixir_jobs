@@ -16,5 +16,12 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
   issuer: "ElixirJobs",
   secret_key: "MY_T3ST_K3Y"
 
+config :elixir_jobs, ElixirJobsWeb.Mailer,
+  adapter: Bamboo.TestAdapter
+
+config :bamboo, :refute_timeout, 3
+
+config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
+
 #Import custom configuration
 import_config "test.secret.exs"
