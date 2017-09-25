@@ -60,8 +60,7 @@ defmodule ElixirJobs.Mixfile do
       {:guardian, "~> 1.0-beta"},
       {:extwitter, "~> 0.8"},
       {:appsignal, "~> 1.0"},
-      {:bamboo, "~> 0.8"},
-      {:bamboo_smtp, "~> 1.4.0"}
+      {:bamboo, "~> 0.8"}
     ]
   end
 

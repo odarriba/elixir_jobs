@@ -45,14 +45,9 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
 ]
 
 config :elixir_jobs, ElixirJobsWeb.Mailer,
-  adapter: Bamboo.SMTPAdapter,
-  server: System.get_env("SMTP_SERVER"),
-  port: 587,
-  username: System.get_env("SMTP_USERNAME"),
-  password: System.get_env("SMTP_PASSWORD"),
-  tls: :if_available, # can be `:always` or `:never`
-  ssl: false, # can be `true`
-  retries: 1
+  adapter: Bamboo.MailgunAdapter,
+  api_key: System.get_env("MAILGUN_API_KEY"),
+  domain: "elixirjobs.net"
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 

@@ -47,6 +47,11 @@ Some things are missing yet:
 
 Thanks to anyone which has contributed or it's going to contribute this project. No, seriously, you are awesome.
 
+Some of our contributors:
+
+- [@mnussbaumer](https://github.com/mnussbaumer)
+- [@dreamingechoes](https://github.com/dreamingechoes)
+
 Also, special thanks to :
 
 - [@rrrene](https://github.com/rrrene) for his awesome job with [ElixirStatus](https://github.com/rrrene/elixirstatus-web), which was the base at the beginning of this project.
