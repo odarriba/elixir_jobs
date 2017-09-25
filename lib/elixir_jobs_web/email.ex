@@ -1,6 +1,8 @@
 defmodule ElixirJobsWeb.Email do
   use Bamboo.Phoenix, view: ElixirJobsWeb.EmailView
 
+  import ElixirJobsWeb.Gettext
+
   def notification_offer_created_html({offer, from}) do
     case ElixirJobs.Users.admin_emails do
       [] ->
