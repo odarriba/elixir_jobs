@@ -111,6 +111,14 @@
   }
   .rrssb-buttons {
     margin-left: -2px;
+
+    li {
+      height: 100%;
+    }
+
+    .rrssb-icon svg {
+      height: 60% !important;
+    }
   }
   .rrssb-text {
     font-size: 14px;
