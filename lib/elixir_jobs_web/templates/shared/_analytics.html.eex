@@ -5,5 +5,5 @@
   function gtag(){dataLayer.push(arguments)};
   gtag('js', new Date());
 
-  gtag('config', 'UA-106824960-1');
+  gtag('config', '<%= Application.get_env(:elixir_jobs, :analytics_id) %>');
 </script>

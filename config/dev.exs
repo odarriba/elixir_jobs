@@ -59,6 +59,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
   adapter: Bamboo.LocalAdapter
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
+config :elixir_jobs, :analytics_id, ""
 
 # Import custom configuration
 import_config "dev.secret.exs"
