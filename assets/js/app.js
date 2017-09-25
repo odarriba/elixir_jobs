@@ -42,6 +42,6 @@ jQuery(function ($) {
   $(".rrssb-buttons").rrssb({
     title: document.title,
     url: document.location.href,
-    description: $('meta[name=description]').attr("content")
+    description: $('title').html()
   });
 });
