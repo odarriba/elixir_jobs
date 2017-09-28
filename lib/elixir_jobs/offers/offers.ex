@@ -80,14 +80,20 @@ defmodule ElixirJobs.Offers do
   """
   def filter_published_offers(filters, page \\ nil) do
     job_type =
-      filters
-      |> Map.get("job_type", nil)
-      |> Enum.filter(&(&1 in get_job_types()))
+      with {:ok, type} <- Map.fetch(filters, "job_type"),
+            true <- type in get_job_types() do
+        type
+      else
+        _ -> nil
+      end
 
     job_place =
-      filters
-      |> Map.get("job_place", nil)
-      |> Enum.filter(&(&1 in get_job_places()))
+      with {:ok, place} <- Map.fetch(filters, "job_place"),
+            true <- place in get_job_places() do
+        place
+      else
+        _ -> nil
+      end
 
     text = Map.get(filters, "text", nil)
 
