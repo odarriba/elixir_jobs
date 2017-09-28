@@ -31,6 +31,11 @@ config :phoenix, :template_engines,
 config :elixir_jobs, ElixirJobs.Repo,
   loggers: [Appsignal.Ecto, Ecto.LogEntry]
 
+# Fix some strange mimetypes from feed readers
+config :mime, :types, %{
+  "\\*/\\*" => ["html"]
+}
+
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",
