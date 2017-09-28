@@ -79,8 +79,16 @@ defmodule ElixirJobs.Offers do
 
   """
   def filter_published_offers(filters, page \\ nil) do
-    job_type = Map.get(filters, "job_type", nil)
-    job_place = Map.get(filters, "job_place", nil)
+    job_type =
+      filters
+      |> Map.get("job_type", nil)
+      |> Enum.filter(&(&1 in get_job_types()))
+
+    job_place =
+      filters
+      |> Map.get("job_place", nil)
+      |> Enum.filter(&(&1 in get_job_places()))
+
     text = Map.get(filters, "text", nil)
 
     query =
