@@ -14,6 +14,9 @@
             </font><br />
             <font color="#aaa">
               <%= gettext "Job type:" %> <%= human_get_type(offer.job_type, gettext("Unknown")) %>
+            </font><br />
+            <font color="#aaa">
+              <%= gettext "Job location:" %> <%= xml_strip_tags(offer.location) %>
             </font>
           </font>
           <%= xml_sanitized_markdown(offer.description) %>
