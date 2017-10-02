@@ -7,18 +7,13 @@ defmodule ElixirJobsWeb.OfferController do
   }
 
   @filters_available ["text", "job_type", "job_place"]
+  @type_filters Enum.map(Offers.get_job_types(), &to_string/1)
+  @place_filters Enum.map(Offers.get_job_places(), &to_string/1)
 
   plug :scrub_params, "offer" when action in [:create, :preview]
 
   def index(conn, params) do
-    page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page"),
-           true <- is_binary(page_no),
-           {value, _} <- Integer.parse(page_no) do
-        value
-      else
-        _ -> 1
-      end
+    page_number = get_page_number(params)
 
     page = Offers.list_published_offers(page_number)
 
@@ -28,15 +23,36 @@ defmodule ElixirJobsWeb.OfferController do
       total_pages: page.total_pages)
   end
 
+  def index_type(conn, %{"filter" => filter} = params) when filter in @type_filters do
+    page_number = get_page_number(params)
+
+    page = Offers.filter_published_offers(%{"job_type" => filter}, page_number)
+
+    render(conn, "index_type.html",
+      offers: page.entries,
+      page_number: page.page_number,
+      total_pages: page.total_pages)
+  end
+  def index_type(conn, _params) do
+    raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
+  end
+
+  def index_place(conn, %{"filter" => filter} = params) when filter in @place_filters do
+    page_number = get_page_number(params)
+
+    page = Offers.filter_published_offers(%{"job_place" => filter}, page_number)
+
+    render(conn, "index_place.html",
+      offers: page.entries,
+      page_number: page.page_number,
+      total_pages: page.total_pages)
+  end
+  def index_place(conn, _params) do
+    raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
+  end
+
   def search(conn, params) do
-    page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page"),
-           true <- is_binary(page_no),
-           {value, _} <- Integer.parse(page_no) do
-        value
-      else
-        _ -> 1
-      end
+    page_number = get_page_number(params)
 
     filters =
       params
@@ -121,6 +137,16 @@ defmodule ElixirJobsWeb.OfferController do
   def rss(conn, _params) do
     offers = Offers.list_offers(1)
     render(conn, "rss.xml", offers: offers.entries)
+  end
+
+  defp get_page_number(params) do
+    with {:ok, page_no} <- Map.fetch(params, "page"),
+          true <- is_binary(page_no),
+          {value, _} <- Integer.parse(page_no) do
+      value
+    else
+      _ -> 1
+    end
   end
 
 end
