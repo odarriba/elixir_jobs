@@ -7,18 +7,13 @@ defmodule ElixirJobsWeb.OfferController do
   }
 
   @filters_available ["text", "job_type", "job_place"]
+  @type_filters Enum.map(Offers.get_job_types(), &to_string/1)
+  @place_filters Enum.map(Offers.get_job_places(), &to_string/1)
 
   plug :scrub_params, "offer" when action in [:create, :preview]
 
   def index(conn, params) do
-    page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page"),
-           true <- is_binary(page_no),
-           {value, _} <- Integer.parse(page_no) do
-        value
-      else
-        _ -> 1
-      end
+    page_number = get_page_number(params)
 
     page = Offers.list_published_offers(page_number)
 
@@ -28,15 +23,32 @@ defmodule ElixirJobsWeb.OfferController do
       total_pages: page.total_pages)
   end
 
+  def index_filtered(conn, %{"filter" => filter} = params) when filter in @type_filters do
+    updated_params = %{"filters" => %{"job_type" => filter}}
+
+    updated_conn =
+      conn
+      |> Map.put(:query_params, updated_params)
+      |> Map.put(:params, updated_params)
+
+    search(updated_conn, updated_params)
+  end
+  def index_filtered(conn, %{"filter" => filter} = params) when filter in @place_filters do
+    updated_params = %{"filters" => %{"job_place" => filter}}
+
+    updated_conn =
+      conn
+      |> Map.put(:query_params, updated_params)
+      |> Map.put(:params, updated_params)
+
+    search(updated_conn, updated_params)
+  end
+  def index_filtered(conn, _params) do
+    raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
+  end
+
   def search(conn, params) do
-    page_number =
-      with {:ok, page_no} <- Map.fetch(params, "page"),
-           true <- is_binary(page_no),
-           {value, _} <- Integer.parse(page_no) do
-        value
-      else
-        _ -> 1
-      end
+    page_number = get_page_number(params)
 
     filters =
       params
@@ -121,6 +133,16 @@ defmodule ElixirJobsWeb.OfferController do
   def rss(conn, _params) do
     offers = Offers.list_offers(1)
     render(conn, "rss.xml", offers: offers.entries)
+  end
+
+  defp get_page_number(params) do
+    with {:ok, page_no} <- Map.fetch(params, "page"),
+          true <- is_binary(page_no),
+          {value, _} <- Integer.parse(page_no) do
+      value
+    else
+      _ -> 1
+    end
   end
 
 end
