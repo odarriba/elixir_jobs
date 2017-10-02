@@ -17,15 +17,18 @@
     </p>
 
     <p>
-      <%= link(gettext("All job offers"), to: offer_path(@conn, :index)) %>
+      <%= link(gettext("All Elixir job offers"), to: offer_path(@conn, :index)) %>
       |
-      <%= link(gettext("On site job offers"), to: offer_path(@conn, :index_filtered, "onsite")) %>
+      <%= link(gettext("On site Elixir job offers"), to: offer_path(@conn, :index_filtered, "onsite")) %>
       |
-      <%= link(gettext("Remote job offers"), to: offer_path(@conn, :index_filtered, "remote")) %>
+      <%= link(gettext("Remote Elixir job offers"), to: offer_path(@conn, :index_filtered, "remote")) %>
+    </p>
+    <p>
+      <%= link(gettext("Full time Elixir job offers"), to: offer_path(@conn, :index_filtered, "full_time")) %>
       |
-      <%= link(gettext("Full time job offers"), to: offer_path(@conn, :index_filtered, "full_time")) %>
+      <%= link(gettext("Part time Elixir job offers"), to: offer_path(@conn, :index_filtered, "part_time")) %>
       |
-      <%= link(gettext("Part time job offers"), to: offer_path(@conn, :index_filtered, "part_time")) %>
+      <%= link(gettext("Freelance Elixir job offers"), to: offer_path(@conn, :index_filtered, "freelance")) %>
     </p>
 
   </div>
