@@ -1,0 +1,16 @@
+<p>
+  <%= raw gettext("The job offers shown below are the latest published in the category of <b>%{type} jobs</b>", type: human_get_filter(@filter, gettext("Unclassified"), @filter_type)) %><br />
+  <%= raw gettext("Remeber that if you know about one not present here %{link}!", link: "<a href=\"#{offer_path(@conn, :new)}\">#{gettext("you can send it to us")}</a>") %>
+<p>
+
+<%= render("_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
+
+<%= for offer <- @offers do %>
+  <%= render("_offer.html", conn: @conn, offer: offer, title_link: true) %>
+<% end %>
+
+<%= if length(@offers) == 0 do %>
+  <%= render("_no-offer.html", conn: @conn) %>
+<% end %>
+
+<%= render("_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
