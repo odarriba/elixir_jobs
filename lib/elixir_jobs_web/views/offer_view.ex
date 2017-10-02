@@ -23,6 +23,9 @@ defmodule ElixirJobsWeb.OfferView do
     end)
   end
 
+  def human_get_filter(option, default, :type), do: human_get_type(option, default)
+  def human_get_filter(option, default, :place), do: human_get_place(option, default)
+
   def human_get_place("onsite", default), do: get_place_text(:onsite, default)
   def human_get_place("remote", default), do: get_place_text(:remote, default)
   def human_get_place("both", default), do: get_place_text(:both, default)
