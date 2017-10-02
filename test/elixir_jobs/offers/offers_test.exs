@@ -13,6 +13,7 @@ defmodule ElixirJobs.OffersTest do
     @valid_attrs %{
       title: "some title",
       company: "some company",
+      summary: "some summary",
       description: "some description",
       location: "some location",
       url: "https://www.google.com",
@@ -22,6 +23,7 @@ defmodule ElixirJobs.OffersTest do
     @update_attrs %{
       title: "some updated title",
       company: "some updated company",
+      summary: "some updated summary",
       description: "some updated description",
       location: "some updated location",
       url: "https://www.google.es",
@@ -61,6 +63,7 @@ defmodule ElixirJobs.OffersTest do
       assert {:ok, %Offer{} = offer} = Offers.create_offer(@valid_attrs)
       assert offer.title == "some title"
       assert offer.company == "some company"
+      assert offer.summary == "some summary"
       assert offer.description == "some description"
       assert offer.location == "some location"
       assert offer.url == "https://www.google.com"
@@ -78,6 +81,7 @@ defmodule ElixirJobs.OffersTest do
       assert %Offer{} = offer
       assert offer.title == "some updated title"
       assert offer.company == "some updated company"
+      assert offer.summary == "some updated summary"
       assert offer.description == "some updated description"
       assert offer.location == "some updated location"
       assert offer.url == "https://www.google.es"

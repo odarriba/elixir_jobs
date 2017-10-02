@@ -12,6 +12,7 @@ defmodule ElixirJobsWeb.EmailsTest do
     @valid_offer %{
       title: "some title",
       company: "some company",
+      summary: "some summary",
       description: "some description",
       location: "some location",
       url: "https://www.google.com",
