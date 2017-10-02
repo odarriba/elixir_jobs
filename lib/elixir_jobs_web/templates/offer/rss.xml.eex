@@ -16,6 +16,7 @@
               <%= gettext "Job type:" %> <%= human_get_type(offer.job_type, gettext("Unknown")) %>
             </font>
           </font>
+          <%= offer.summary %>
           <%= xml_sanitized_markdown(offer.description) %>
         ]]></description>
         <pubDate><%= xml_readable_date(offer.inserted_at) %></pubDate>
