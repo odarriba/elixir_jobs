@@ -23,31 +23,31 @@ defmodule ElixirJobsWeb.OfferController do
       total_pages: page.total_pages)
   end
 
-  def index_type(conn, %{"filter" => filter} = params) when filter in @type_filters do
+  def index_filtered(conn, %{"filter" => filter} = params) when filter in @type_filters do
     page_number = get_page_number(params)
 
     page = Offers.filter_published_offers(%{"job_type" => filter}, page_number)
 
-    render(conn, "index_type.html",
+    render(conn, "index_filtered.html",
       offers: page.entries,
+      filter: filter,
+      filter_type: :type,
       page_number: page.page_number,
       total_pages: page.total_pages)
   end
-  def index_type(conn, _params) do
-    raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
-  end
-
-  def index_place(conn, %{"filter" => filter} = params) when filter in @place_filters do
+  def index_filtered(conn, %{"filter" => filter} = params) when filter in @place_filters do
     page_number = get_page_number(params)
 
     page = Offers.filter_published_offers(%{"job_place" => filter}, page_number)
 
-    render(conn, "index_place.html",
+    render(conn, "index_filtered.html",
       offers: page.entries,
+      filter: filter,
+      filter_type: :place,
       page_number: page.page_number,
       total_pages: page.total_pages)
   end
-  def index_place(conn, _params) do
+  def index_filtered(conn, _params) do
     raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
   end
 
