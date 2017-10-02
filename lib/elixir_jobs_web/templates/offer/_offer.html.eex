@@ -33,7 +33,15 @@
       </span>
     </div>
   </div>
-  <div class="description">
-    <%= sanitized_markdown(@offer.description) %>
-  </div>
+  <%= if @details do %>
+    <div class="description">
+      <p> <%= @offer.summary %> </p>
+      <%= sanitized_markdown(@offer.description) %>
+    </div>
+  <% else %>
+    <div class="summary">
+      <%= @offer.summary %>
+    </div>
+  <% end %>
+
 </div>
