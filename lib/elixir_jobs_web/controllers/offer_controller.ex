@@ -79,6 +79,9 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def create(conn, %{"offer" => offer_params}) do
+    # Line breaks sent by the browser are received as two bytes, while Ecto
+    # changeset counts only one, causing issues with limited fields.
+    # This snippet solves that.
     offer_corrected = Enum.reduce(offer_params, %{}, fn(el, acc) ->
       case el do
         {k, v} when is_binary(v) -> Map.put(acc, k, String.replace(v, "\r\n", "\n"))
