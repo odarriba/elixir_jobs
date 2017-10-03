@@ -79,7 +79,15 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def create(conn, %{"offer" => offer_params}) do
-    case Offers.create_offer(offer_params) do
+    offer_corrected = Enum.reduce(offer_params, %{}, fn(el, acc) ->
+      case el do
+        {k, v} when is_binary(v) -> Map.put(acc, k, String.replace(v, "\r\n", "\n"))
+        {k, v} -> Map.put(acc, k, v)
+        _ -> acc
+      end
+    end)
+
+    case Offers.create_offer(offer_corrected) do
       {:ok, offer} ->
         ElixirJobsWeb.Email.notification_offer_created_html({offer, :default})
         conn
