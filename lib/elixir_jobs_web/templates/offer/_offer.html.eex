@@ -1,9 +1,9 @@
 <div class="offer">
   <div class="title">
-    <%= if @title_link do %>
-    <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
-    <% else %>
+    <%= if @details do %>
     <%= @offer.title%>
+    <% else %>
+    <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
     <% end %>
     <span class="company">
       <%= @offer.company %>
@@ -39,7 +39,8 @@
     </div>
   <% else %>
     <div class="summary">
-      <%= @offer.summary %>
+      <p><%= @offer.summary %></p>
+      <p><%= link(gettext("Read more"), to: offer_path(@conn, :show, @offer.slug)) %></p>
     </div>
   <% end %>
 
