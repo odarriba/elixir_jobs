@@ -32,7 +32,7 @@
       <div class="field-container">
         <%= textarea(f, :summary,
           rows: 3,
-          maxlength: 200,
+          maxlength: 350,
           id: "offer_summary",
           class: class_with_error(f, :summary, "summary"),
           placeholder: gettext("Summary (will be shown in listings, max 200 characters)")) %>

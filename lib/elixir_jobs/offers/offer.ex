@@ -40,7 +40,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:title, min: 5, max: 50)
     |> validate_length(:company, min: 2, max: 30)
     |> validate_length(:description, min: 10, max: 1000)
-    |> validate_length(:summary, min: 10, max: 200)
+    |> validate_length(:summary, min: 10, max: 350)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/)
