@@ -30,7 +30,7 @@ defmodule ElixirJobs.Offers.Queries.Offer do
     |> Enum.map(&("%#{&1}%"))
     |> Enum.reduce(query, fn(keyword, q) ->
       from o in q,
-        where: ilike(o.title, ^keyword) or ilike(o.company, ^keyword) or ilike(o.description, ^keyword) or ilike(o.location, ^keyword)
+        where: ilike(o.title, ^keyword) or ilike(o.company, ^keyword) or ilike(o.description, ^keyword) or ilike(o.summary, ^keyword) or ilike(o.location, ^keyword)
     end)
   end
 
