@@ -3,7 +3,7 @@ defmodule ElixirJobs.Repo.Migrations.AddSummaryToOffers do
 
   def change do
     alter table(:offers) do
-      add :summary, :string
+      add :summary, :string, size: 200
     end
 
   end
