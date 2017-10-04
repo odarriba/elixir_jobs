@@ -28,8 +28,8 @@ defmodule ElixirJobs.Offers.Offer do
     timestamps()
   end
 
-  @required_attrs [:title, :company, :description, :location, :url, :job_place, :job_type]
-  @optional_attrs [:published_at, :slug, :summary]
+  @required_attrs [:title, :company, :description, :location, :url, :job_place, :job_type, :summary]
+  @optional_attrs [:published_at, :slug]
   @attributes @required_attrs ++ @optional_attrs
 
   @doc false
@@ -40,7 +40,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:title, min: 5, max: 50)
     |> validate_length(:company, min: 2, max: 30)
     |> validate_length(:description, min: 10, max: 1000)
-    |> validate_length(:summary, max: 200)
+    |> validate_length(:summary, min: 10, max: 200)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/)
