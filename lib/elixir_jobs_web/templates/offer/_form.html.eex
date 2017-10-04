@@ -35,7 +35,7 @@
           maxlength: 200,
           id: "offer_summary",
           class: class_with_error(f, :summary, "summary"),
-          placeholder: gettext("Offer summary (max 200 characters)")) %>
+          placeholder: gettext("Summary (will be shown in listings, max 200 characters)")) %>
         <%= error_tag(f, :summary) %>
       </div>
     </fieldset>
@@ -46,7 +46,7 @@
           maxlength: 1000,
           id: "offer_description",
           class: class_with_error(f, :description, "description"),
-          placeholder: gettext("Text should describe the offer itself. Remember, this text can potentially engage your candidates!")) %>
+          placeholder: gettext("Text should describe the offer itself and engage your candidates (will be shown in offer details page)")) %>
         <%= error_tag(f, :description) %>
       </div>
     </fieldset>
