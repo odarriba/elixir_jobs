@@ -5,6 +5,7 @@
   <h4><%= gettext("Title") %>: <%= @offer.title %></h4>
   <p><%= gettext("Company") %>: <%= @offer.company %></p>
   <hr />
+  <p><%= gettext("Summary") %>: <%= @offer.summary %></p>
   <p><%= gettext("Description") %>: <%= @offer.description %></p>
   <p><%= gettext("Location") %>: <%= @offer.location %></p>
   <p><%= gettext("URL") %>: <a href="<%= @offer.url %>" target="_blank"><%= @offer.url %></a></p>

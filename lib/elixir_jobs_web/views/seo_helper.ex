@@ -51,8 +51,7 @@ defmodule ElixirJobsWeb.SeoHelper do
 
   defp get_page_description(OfferController, :new, _), do: gettext("Post your job offer to reach more Elixir developers and find the right hire for your company!")
   defp get_page_description(OfferController, :show, %{:offer => %Offer{} = offer}) do
-    offer.description
-    |> Earmark.as_html!()
+    offer.summary
     |> HtmlSanitizeEx.strip_tags()
     |> String.slice(0, 100)
   end

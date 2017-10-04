@@ -1,7 +1,7 @@
 <%= render("_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
 
 <%= for offer <- @offers do %>
-  <%= render("_offer.html", conn: @conn, offer: offer, title_link: true) %>
+  <%= render("_offer.html", conn: @conn, offer: offer, title_link: true, details: false) %>
 <% end %>
 
 <%= if length(@offers) == 0 do %>
