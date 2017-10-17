@@ -1,5 +1,6 @@
 defmodule ElixirJobsWeb.Twitter do
   alias ElixirJobs.Offers.Offer
+  import ElixirJobsWeb.HumanizeHelper
 
   @short_link_length 25
   @twitter_limit 140
@@ -33,8 +34,8 @@ defmodule ElixirJobsWeb.Twitter do
     |> ExTwitter.update()
   end
 
-  defp get_text(%Offer{company: company, title: title}) do
-    "#{title} @ #{company}"
+  defp get_text(%Offer{company: company, title: title, job_place: job_place}) do
+    "#{title} @ #{company} / #{human_get_place(job_place,"Unknown Place")}"
   end
 
   defp get_tags() do
