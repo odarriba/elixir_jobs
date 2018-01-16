@@ -1,0 +1,14 @@
+.sponsors {
+  margin: 40px 0 30px 0;
+  text-align: center;
+
+  a {
+    display:inline-block;
+    margin: 0 10px;
+    max-width: calc(33.333% - 20px);
+
+    img {
+      margin: 0;
+    }
+  }
+}
