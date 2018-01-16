@@ -21,3 +21,14 @@
   rene_link: "<a href=\"https://twitter.com/rrrene\" target=\"_blank\">René Föhring</a>",
   elixir_status_link: "<a href=\"http://elixirstatus.com/\" target=\"_blank\">ElixirStatus</a>"
   ) %></p>
+
+<h2><%= raw gettext("Sponsors") %></h2>
+
+<p><%= raw gettext("Last but not least, we want to thanks the companies that are helping ElixirJobs:"
+  ) %></p>
+
+<p class="sponsors">
+  <a href="https://appsignal.com/?utm_source=ElixirJobs" title="AppSignal" target="_blank">
+    <%= img_tag(static_path(@conn, "/images/sponsors/appsignal.svg"), alt: "AppSignal", width: 250) %>
+  </a>
+</p>

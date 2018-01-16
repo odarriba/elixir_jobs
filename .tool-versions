@@ -1,2 +1,3 @@
 elixir 1.5.1
-erlang 20.0
+erlang 20.1
+nodejs 8.9.1

@@ -23,7 +23,7 @@ defmodule ElixirJobsWeb.OfferController do
       total_pages: page.total_pages)
   end
 
-  def index_filtered(conn, %{"filter" => filter} = params) when filter in @type_filters do
+  def index_filtered(conn, %{"filter" => filter}) when filter in @type_filters do
     updated_params = %{"filters" => %{"job_type" => filter}}
 
     updated_conn =
@@ -33,7 +33,7 @@ defmodule ElixirJobsWeb.OfferController do
 
     search(updated_conn, updated_params)
   end
-  def index_filtered(conn, %{"filter" => filter} = params) when filter in @place_filters do
+  def index_filtered(conn, %{"filter" => filter}) when filter in @place_filters do
     updated_params = %{"filters" => %{"job_place" => filter}}
 
     updated_conn =
