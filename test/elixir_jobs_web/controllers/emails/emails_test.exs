@@ -13,7 +13,6 @@ defmodule ElixirJobsWeb.EmailsTest do
       title: "some title",
       company: "some company",
       summary: "some summary",
-      description: "some description",
       location: "some location",
       url: "https://www.google.com",
       job_place: "remote",

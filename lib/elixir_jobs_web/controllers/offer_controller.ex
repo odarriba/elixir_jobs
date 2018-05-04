@@ -117,7 +117,6 @@ defmodule ElixirJobsWeb.OfferController do
     offer_preview = %Offer{
       title: Map.get(offer_params, "title") || gettext("Title of your offer"),
       company: Map.get(offer_params, "company") || gettext("Company"),
-      description: Map.get(offer_params, "description") || gettext("Description of your offer"),
       summary: Map.get(offer_params, "summary") || gettext("summary of your offer"),
       location: Map.get(offer_params, "location") || gettext("Location"),
       url: Map.get(offer_params, "url") || "https://example.com",

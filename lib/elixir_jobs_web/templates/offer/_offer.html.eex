@@ -33,15 +33,11 @@
       </span>
     </div>
   </div>
-  <%= if @details do %>
-    <div class="description">
-      <%= sanitized_markdown(@offer.description) %>
-    </div>
-  <% else %>
-    <div class="summary">
-      <p><%= @offer.summary %></p>
-      <p><%= link(gettext("Read more"), to: offer_path(@conn, :show, @offer.slug)) %></p>
-    </div>
-  <% end %>
+  <div class="summary">
+    <p><%= @offer.summary %></p>
+    <%= if not @details do %>
+    <p><%= link(gettext("Read more"), to: offer_path(@conn, :show, @offer.slug)) %></p>
+    <% end %>
+  </div>
 
 </div>

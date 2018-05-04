@@ -2,19 +2,16 @@ defmodule ElixirJobs.Offers.Offer do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ElixirJobs.{
-    Offers.Offer,
-    EctoEnums.JobPlace,
-    EctoEnums.JobType
-  }
-
+  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.EctoEnums.JobPlace
+  alias ElixirJobs.EctoEnums.JobType
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
+
   schema "offers" do
     field :title, :string
     field :company, :string
-    field :description, :string
     field :location, :string
     field :url, :string
     field :slug, :string
@@ -28,7 +25,7 @@ defmodule ElixirJobs.Offers.Offer do
     timestamps()
   end
 
-  @required_attrs [:title, :company, :description, :location, :url, :job_place, :job_type, :summary]
+  @required_attrs [:title, :company, :location, :url, :job_place, :job_type, :summary]
   @optional_attrs [:published_at, :slug]
   @attributes @required_attrs ++ @optional_attrs
 
@@ -39,8 +36,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_required(@required_attrs)
     |> validate_length(:title, min: 5, max: 50)
     |> validate_length(:company, min: 2, max: 30)
-    |> validate_length(:description, min: 10, max: 1000)
-    |> validate_length(:summary, min: 10, max: 350)
+    |> validate_length(:summary, min: 10, max: 450)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/)
@@ -68,6 +64,7 @@ defmodule ElixirJobs.Offers.Offer do
       changeset
       |> get_field(:title)
       |> Slugger.slugify_downcase()
+
     company =
       changeset
       |> get_field(:company)
