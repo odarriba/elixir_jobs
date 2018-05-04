@@ -1,4 +1,8 @@
 defmodule ElixirJobs.Offers.Queries.Offer do
+  @moduledoc """
+  Module to build queries related to the Offer schema
+  """
+
   import Ecto.Query, warn: false
 
   def by_id(query, id) do

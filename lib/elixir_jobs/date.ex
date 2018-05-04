@@ -1,4 +1,8 @@
 defmodule ElixirJobs.Date do
+  @moduledoc """
+  Module with date-related calculation and helper functions.
+  """
+
   @seconds_per_day 24 * 60 * 60
 
   def diff(date1, date2) do

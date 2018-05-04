@@ -1,10 +1,13 @@
 defmodule ElixirJobsWeb.Guardian do
+  @moduledoc """
+  Main Guardian module definition, including how to store and recover users from
+  and to the session.
+  """
+
   use Guardian, otp_app: :elixir_jobs
 
-  alias ElixirJobs.{
-    Users,
-    Users.Admin
-  }
+  alias ElixirJobs.Users
+  alias ElixirJobs.Users.Admin
 
   def subject_for_token(%Admin{} = resource, _claims) do
     {:ok, to_string(resource.id)}

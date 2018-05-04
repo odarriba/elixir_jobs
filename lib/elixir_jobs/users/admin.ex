@@ -1,6 +1,12 @@
 defmodule ElixirJobs.Users.Admin do
+  @moduledoc """
+  Admin schema
+  """
+
   use Ecto.Schema
+
   import Ecto.Changeset
+
   alias ElixirJobs.Users.Admin
 
   @primary_key {:id, :binary_id, autogenerate: true}

@@ -1,4 +1,8 @@
 defmodule ElixirJobsWeb.Email do
+  @moduledoc """
+  Module with functions related to email sending.
+  """
+
   use Bamboo.Phoenix, view: ElixirJobsWeb.EmailView
 
   import ElixirJobsWeb.Gettext

@@ -1,4 +1,10 @@
 defmodule ElixirJobs.Application do
+  @moduledoc """
+  Main Application module.
+
+  It starts all the processes related to the application in order to boot it up
+  and start serving requests.
+  """
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html

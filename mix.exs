@@ -40,26 +40,34 @@ defmodule ElixirJobs.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      # Phoenix
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:ecto, "~> 2.2.0"},
-      {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
       {:gettext, "~> 0.11"},
       {:cowboy, "~> 1.0"},
+      # Database
+      {:ecto, "~> 2.2.0"},
+      {:postgrex, ">= 0.0.0"},
+      # Auth
+      {:guardian, "~> 1.0"},
+      {:comeonin, "~> 4.0"},
+      {:bcrypt_elixir, "~> 1.0"},
+      # External services
+      {:extwitter, "~> 0.8"},
+      {:bamboo, "~> 0.8"},
+      # Monitoring
+      {:appsignal, "~> 1.0"},
+      # Misc
+      {:slugger, "~> 0.2"},
       {:ecto_enum, "~> 1.0"},
       {:scrivener_ecto, "~> 1.0"},
       {:phoenix_html_sanitizer, "~> 1.1.0-rc1"},
       {:calendar, "~> 0.17"},
-      {:slugger, "~> 0.2"},
-      {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 1.0"},
-      {:extwitter, "~> 0.8"},
-      {:appsignal, "~> 1.0"},
-      {:bamboo, "~> 0.8"}
+      # Tests and dev
+      {:phoenix_live_reload, "~> 1.0", only: :dev},
+      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
     ]
   end
 

@@ -1,4 +1,7 @@
 defmodule ElixirJobs.Offers.Offer do
+  @moduledoc """
+  Offer schema.
+  """
   use Ecto.Schema
   import Ecto.Changeset
 

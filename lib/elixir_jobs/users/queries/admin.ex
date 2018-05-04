@@ -1,4 +1,8 @@
 defmodule ElixirJobs.Users.Queries.Admin do
+  @moduledoc """
+  Module to build queries related to the Admin schema
+  """
+
   import Ecto.Query, warn: false
 
   def by_id(query, id) do

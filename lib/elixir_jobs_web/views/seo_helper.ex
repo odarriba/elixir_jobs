@@ -1,4 +1,9 @@
 defmodule ElixirJobsWeb.SeoHelper do
+  @moduledoc """
+  Module with SEO-related functions like the ones to generate descriptions,
+  titles, etc.
+  """
+
   use ElixirJobsWeb, :view
 
   import Phoenix.Controller, only: [controller_module: 1, action_name: 1]

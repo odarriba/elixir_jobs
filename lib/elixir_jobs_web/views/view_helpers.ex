@@ -1,4 +1,8 @@
 defmodule ElixirJobsWeb.ViewHelpers do
+  @moduledoc """
+  Module with helpers commonly used in other views.
+  """
+
   use PhoenixHtmlSanitizer, :markdown_html
 
   def class_with_error(form, field, base_class) do

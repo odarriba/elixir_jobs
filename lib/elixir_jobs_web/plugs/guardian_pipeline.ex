@@ -1,4 +1,8 @@
 defmodule ElixirJobsWeb.Plugs.GuardianPipeline do
+  @moduledoc """
+  Main pipeline for Guardian set-up on each request.
+  """
+
   use Guardian.Plug.Pipeline, otp_app: :elixir_jobs
 
   alias ElixirJobsWeb.Plugs.CurrentUser
