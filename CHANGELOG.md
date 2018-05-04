@@ -5,6 +5,7 @@
 - Removed Markdown and long descriptions
 - Updated to Elixir 1.6.4 and Erlang 20.3.2
 - Add formatter
+- Add Credo
 
 ## v1.0
 
