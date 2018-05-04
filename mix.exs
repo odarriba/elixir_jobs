@@ -5,7 +5,7 @@ defmodule ElixirJobs.Mixfile do
     [
       app: :elixir_jobs,
       version: "0.0.1",
-      elixir: "~> 1.4",
+      elixir: "~> 1.5",
       elixirc_paths: elixirc_paths(Mix.env),
       compilers: [:phoenix, :gettext] ++ Mix.compilers,
       start_permanent: Mix.env == :prod,
@@ -43,7 +43,7 @@ defmodule ElixirJobs.Mixfile do
       {:phoenix, "~> 1.3.0"},
       {:phoenix_pubsub, "~> 1.0"},
       {:phoenix_ecto, "~> 3.2"},
-      {:ecto, "~> 2.1.0"},
+      {:ecto, "~> 2.2.0"},
       {:postgrex, ">= 0.0.0"},
       {:phoenix_html, "~> 2.10"},
       {:phoenix_live_reload, "~> 1.0", only: :dev},
@@ -57,7 +57,7 @@ defmodule ElixirJobs.Mixfile do
       {:slugger, "~> 0.2"},
       {:comeonin, "~> 4.0"},
       {:bcrypt_elixir, "~> 1.0"},
-      {:guardian, "~> 1.0-beta"},
+      {:guardian, "~> 1.0"},
       {:extwitter, "~> 0.8"},
       {:appsignal, "~> 1.0"},
       {:bamboo, "~> 0.8"}
