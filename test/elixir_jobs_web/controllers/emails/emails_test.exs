@@ -40,7 +40,10 @@ defmodule ElixirJobsWeb.EmailsTest do
       assert length(Users.list_admins()) == 2
       post conn, offer_path(conn, :create), offer: @valid_offer
       offer = ElixirJobs.Repo.one(from offer in Offers.Offer, order_by: [desc: offer.inserted_at], limit: 1)
-      assert_delivered_email ElixirJobsWeb.Email.notification_offer_created_html({offer, :default})
+
+      for email <- ElixirJobsWeb.Email.notification_offer_created_html({offer, :default}) do
+        assert_delivered_email email
+      end
     end
 
     test "doesn't raise error without admins on offer creation", %{conn: conn} do
