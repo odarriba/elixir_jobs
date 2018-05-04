@@ -3,13 +3,14 @@ defmodule ElixirJobsWeb.Email do
 
   import ElixirJobsWeb.Gettext
 
-  def notification_offer_created_html({offer, from}) do
-    case ElixirJobs.Users.admin_emails do
+  def notification_offer_created_html(offer, from \\ :default) do
+    case ElixirJobs.Users.admin_emails() do
       [] ->
-        {:ok}
+        []
       recipients ->
         for recipient <- recipients do
-          put_basic_layouts({from, recipient})
+          from
+          |> put_basic_layouts(recipient)
           |> subject(gettext("ElixirJobs - A new job offer was received"))
           |> render("offer_created.text", offer: offer)
           |> render("offer_created.html", offer: offer)
@@ -18,20 +19,17 @@ defmodule ElixirJobsWeb.Email do
     end
   end
 
-  defp put_basic_layouts({from, recipient}) do
+  defp put_basic_layouts(from, recipient) do
+    actual_from = get_from(from)
+
     new_email()
     |> to(recipient)
-    |> put_from(from)
+    |> from(actual_from)
     |> put_text_layout({ElixirJobsWeb.LayoutView, "email.text"})
     |> put_html_layout({ElixirJobsWeb.LayoutView, "email.html"})
   end
 
-  defp put_from(email, :default) do
-    from(email, Application.get_env(:elixir_jobs, :default_app_email))
-  end
-
-  defp put_from(email, from) do
-    from(email, from)
-  end
+  defp get_from(:default), do: Application.get_env(:elixir_jobs, :default_app_email)
+  defp get_from(from), do: from
 
 end

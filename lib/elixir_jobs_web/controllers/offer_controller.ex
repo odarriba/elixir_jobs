@@ -92,7 +92,7 @@ defmodule ElixirJobsWeb.OfferController do
 
     case Offers.create_offer(offer_corrected) do
       {:ok, offer} ->
-        ElixirJobsWeb.Email.notification_offer_created_html({offer, :default})
+        ElixirJobsWeb.Email.notification_offer_created_html(offer)
         conn
         |> put_flash(:info, gettext("<b>Job offer created correctly!</b> We will review and publish it soon"))
         |> redirect(to: offer_path(conn, :index))

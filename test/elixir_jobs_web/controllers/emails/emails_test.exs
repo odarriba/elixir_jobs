@@ -40,7 +40,7 @@ defmodule ElixirJobsWeb.EmailsTest do
       post conn, offer_path(conn, :create), offer: @valid_offer
       offer = ElixirJobs.Repo.one(from offer in Offers.Offer, order_by: [desc: offer.inserted_at], limit: 1)
 
-      for email <- ElixirJobsWeb.Email.notification_offer_created_html({offer, :default}) do
+      for email <- ElixirJobsWeb.Email.notification_offer_created_html(offer) do
         assert_delivered_email email
       end
     end
