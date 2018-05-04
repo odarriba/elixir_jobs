@@ -20,6 +20,7 @@ defmodule ElixirJobsWeb.Twitter do
     case status_length do
       n when n <= @twitter_limit ->
         Enum.join([text, tags, url], " ")
+
       n ->
         exceed = n - @twitter_limit
         max_text_length = String.length(text) - exceed
@@ -35,12 +36,12 @@ defmodule ElixirJobsWeb.Twitter do
   end
 
   defp get_text(%Offer{company: company, title: title, job_place: job_place}) do
-    "#{title} @ #{company} / #{human_get_place(job_place,"Unknown Place")}"
+    "#{title} @ #{company} / #{human_get_place(job_place, "Unknown Place")}"
   end
 
   defp get_tags() do
     @tags
-    |> Enum.map(&("##{&1}"))
+    |> Enum.map(&"##{&1}")
     |> Enum.join(" ")
   end
 

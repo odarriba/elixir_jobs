@@ -11,7 +11,7 @@ defmodule ElixirJobs.Application do
       # Start the Ecto repository
       supervisor(ElixirJobs.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(ElixirJobsWeb.Endpoint, []),
+      supervisor(ElixirJobsWeb.Endpoint, [])
       # Start your own worker by calling: ElixirJobs.Worker.start_link(arg1, arg2, arg3)
       # worker(ElixirJobs.Worker, [arg1, arg2, arg3]),
     ]

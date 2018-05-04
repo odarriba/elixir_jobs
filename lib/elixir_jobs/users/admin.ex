@@ -3,7 +3,6 @@ defmodule ElixirJobs.Users.Admin do
   import Ecto.Changeset
   alias ElixirJobs.Users.Admin
 
-
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
   schema "admins" do
@@ -33,6 +32,7 @@ defmodule ElixirJobs.Users.Admin do
       _ -> {:error, :wrong_credentials}
     end
   end
+
   def check_password(_, _) do
     Comeonin.Bcrypt.dummy_checkpw()
     {:error, :wrong_credentials}
@@ -44,6 +44,7 @@ defmodule ElixirJobs.Users.Admin do
         changeset
         |> validate_required([:password, :password_confirmation])
         |> validate_confirmation(:password)
+
       _ ->
         changeset
         |> validate_confirmation(:password)
@@ -55,9 +56,11 @@ defmodule ElixirJobs.Users.Admin do
       password when not is_nil(password) ->
         hash = Comeonin.Bcrypt.hashpwsalt(password)
         put_change(changeset, :encrypted_password, hash)
+
       _ ->
         changeset
     end
   end
+
   defp generate_passwords(changeset), do: changeset
 end

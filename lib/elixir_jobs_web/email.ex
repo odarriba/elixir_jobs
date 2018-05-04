@@ -7,6 +7,7 @@ defmodule ElixirJobsWeb.Email do
     case ElixirJobs.Users.admin_emails() do
       [] ->
         []
+
       recipients ->
         for recipient <- recipients do
           from
@@ -14,7 +15,7 @@ defmodule ElixirJobsWeb.Email do
           |> subject(gettext("ElixirJobs - A new job offer was received"))
           |> render("offer_created.text", offer: offer)
           |> render("offer_created.html", offer: offer)
-          |> ElixirJobsWeb.Mailer.deliver_later
+          |> ElixirJobsWeb.Mailer.deliver_later()
         end
     end
   end
@@ -31,5 +32,4 @@ defmodule ElixirJobsWeb.Email do
 
   defp get_from(:default), do: Application.get_env(:elixir_jobs, :default_app_email)
   defp get_from(from), do: from
-
 end

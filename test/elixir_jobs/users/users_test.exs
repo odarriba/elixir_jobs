@@ -6,8 +6,18 @@ defmodule ElixirJobs.UsersTest do
   describe "admins" do
     alias ElixirJobs.Users.Admin
 
-    @valid_attrs %{email: "some email", password: "123456", password_confirmation: "123456", name: "some name"}
-    @update_attrs %{email: "some updated email", password: "1234567", password_confirmation: "1234567", name: "some updated name"}
+    @valid_attrs %{
+      email: "some email",
+      password: "123456",
+      password_confirmation: "123456",
+      name: "some name"
+    }
+    @update_attrs %{
+      email: "some updated email",
+      password: "1234567",
+      password_confirmation: "1234567",
+      name: "some updated name"
+    }
     @invalid_attrs %{email: nil, password: nil, password_confirmation: nil, name: nil}
 
     def admin_fixture(attrs \\ %{}) do

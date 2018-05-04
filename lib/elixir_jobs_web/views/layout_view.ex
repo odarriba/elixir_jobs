@@ -12,7 +12,9 @@ defmodule ElixirJobsWeb.LayoutView do
 
       microdatas when is_list(microdatas) ->
         microdatas
-        |> Enum.map(&("<script type=\"application/ld+json\">#{Poison.encode!(&1)}</script>"))
+        |> Enum.map(fn data ->
+          "<script type=\"application/ld+json\">#{Poison.encode!(data)}</script>"
+        end)
         |> Enum.join("")
 
       _ ->
@@ -23,7 +25,7 @@ defmodule ElixirJobsWeb.LayoutView do
   defp get_microdata(%Plug.Conn{request_path: "/"} = conn, _, _) do
     url =
       conn
-      |> offer_url(:search, [filters: [text: "search_term_string"]])
+      |> offer_url(:search, filters: [text: "search_term_string"])
       |> String.replace("search_term_string", "{search_term_string}")
 
     [
@@ -40,6 +42,7 @@ defmodule ElixirJobsWeb.LayoutView do
     ]
     |> Kernel.++([get_organization(conn)])
   end
+
   defp get_microdata(conn, _, _), do: get_organization(conn)
 
   defp get_organization(conn) do

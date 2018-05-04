@@ -28,7 +28,7 @@ defmodule ElixirJobs.Offers do
 
   """
   def list_offers(page \\ nil) do
-    query =  OfferQuery.order_inserted(Offer)
+    query = OfferQuery.order_inserted(Offer)
 
     case page do
       page_no when is_integer(page_no) and page_no > 0 ->
@@ -79,12 +79,15 @@ defmodule ElixirJobs.Offers do
 
   """
   def filter_published_offers(filters, page \\ nil) do
-    job_types = Enum.reduce(get_job_types(), get_job_types(), fn(el, acc) -> acc ++ [to_string(el)] end)
-    job_places = Enum.reduce(get_job_places(), get_job_places(), fn(el, acc) -> acc ++ [to_string(el)] end)
+    job_types =
+      Enum.reduce(get_job_types(), get_job_types(), fn el, acc -> acc ++ [to_string(el)] end)
+
+    job_places =
+      Enum.reduce(get_job_places(), get_job_places(), fn el, acc -> acc ++ [to_string(el)] end)
 
     job_type =
       with {:ok, type} <- Map.fetch(filters, "job_type"),
-            true <- type in job_types do
+           true <- type in job_types do
         type
       else
         _ -> nil
@@ -92,7 +95,7 @@ defmodule ElixirJobs.Offers do
 
     job_place =
       with {:ok, place} <- Map.fetch(filters, "job_place"),
-            true <- place in job_places do
+           true <- place in job_places do
         place
       else
         _ -> nil
@@ -255,6 +258,7 @@ defmodule ElixirJobs.Offers do
 
   """
   def publish_offer(%Offer{} = offer), do: publish_offer(offer, NaiveDateTime.utc_now())
+
   def publish_offer(%Offer{} = offer, date) do
     update_offer(offer, %{published_at: date})
   end
@@ -300,8 +304,6 @@ defmodule ElixirJobs.Offers do
   def change_offer(%Offer{} = offer) do
     Offer.changeset(offer, %{})
   end
-
-
 
   @doc """
   Returns registered job palces.

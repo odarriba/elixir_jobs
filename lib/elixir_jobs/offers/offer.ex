@@ -9,6 +9,8 @@ defmodule ElixirJobs.Offers.Offer do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
+  @url_regexp ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/
+
   schema "offers" do
     field :title, :string
     field :company, :string
@@ -39,7 +41,7 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:summary, min: 10, max: 450)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
-    |> validate_format(:url, ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/)
+    |> validate_format(:url, @url_regexp)
     |> validate_inclusion(:job_place, JobPlace.__valid_values__())
     |> validate_inclusion(:job_type, JobType.__valid_values__())
     |> unique_constraint(:slug)
@@ -58,7 +60,7 @@ defmodule ElixirJobs.Offers.Offer do
       Ecto.UUID.generate()
       |> to_string()
       |> String.split("-")
-      |> List.first
+      |> List.first()
 
     title =
       changeset

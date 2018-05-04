@@ -19,10 +19,11 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
     pages = Offers.list_published_offers(page_number)
 
-    render(conn, "index_published.html",
-      offers: pages.entries,
-      page_number: pages.page_number,
-      total_pages: pages.total_pages)
+    conn
+    |> assign(:offers, pages.entries)
+    |> assign(:page_number, pages.page_number)
+    |> assign(:total_pages, pages.total_pages)
+    |> render("index_published.html")
   end
 
   def index_unpublished(conn, params) do
@@ -37,10 +38,11 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
     pages = Offers.list_unpublished_offers(page_number)
 
-    render(conn, "index_unpublished.html",
-      offers: pages.entries,
-      page_number: pages.page_number,
-      total_pages: pages.total_pages)
+    conn
+    |> assign(:offers, pages.entries)
+    |> assign(:page_number, pages.page_number)
+    |> assign(:total_pages, pages.total_pages)
+    |> render("index_unpublished.html")
   end
 
   def publish(conn, %{"slug" => slug}) do
@@ -54,6 +56,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         conn
         |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, slug))
+
       {:error, _} ->
         conn
         |> put_flash(:info, gettext("<b>An error occurred while publishing the offer</b>"))
@@ -70,6 +73,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         conn
         |> put_flash(:info, gettext("<b>Offer unpublished correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, slug))
+
       {:error, _} ->
         conn
         |> put_flash(:info, gettext("<b>An error occurred while unpublishing the offer</b>"))
@@ -92,6 +96,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         conn
         |> put_flash(:info, gettext("<b>Job offer updated correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, offer.slug))
+
       {:error, changeset} ->
         render(conn, "edit.html", changeset: changeset, offer: offer)
     end
@@ -106,6 +111,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         conn
         |> put_flash(:info, gettext("<b>Job offer removed correctly!</b>"))
         |> redirect(to: admin_offer_path(conn, :index_published))
+
       {:error, _} ->
         conn
         |> put_flash(:error, gettext("<b>Job offer couldn't be removed correctly!</b>"))
