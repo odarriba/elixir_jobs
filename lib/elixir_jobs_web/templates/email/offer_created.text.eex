@@ -4,7 +4,6 @@
 <%= gettext("Company") %>: <%= @offer.company %>
 ----
 <%= gettext("Summary") %>: <%= @offer.summary %>
-<%= gettext("Description") %>: <%= @offer.description %>
 <%= gettext("Location") %>: <%= @offer.location %>
 <%= gettext("URL") %>: <%= @offer.url %>
 ----

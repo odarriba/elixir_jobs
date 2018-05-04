@@ -6,7 +6,6 @@
   <p><%= gettext("Company") %>: <%= @offer.company %></p>
   <hr />
   <p><%= gettext("Summary") %>: <%= @offer.summary %></p>
-  <p><%= gettext("Description") %>: <%= @offer.description %></p>
   <p><%= gettext("Location") %>: <%= @offer.location %></p>
   <p><%= gettext("URL") %>: <a href="<%= @offer.url %>" target="_blank"><%= @offer.url %></a></p>
   <p><%= gettext("Place") %>: <%= human_get_place(@offer.job_place, gettext("Unknown")) %></p>

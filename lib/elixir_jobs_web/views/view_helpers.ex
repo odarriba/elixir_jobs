@@ -15,17 +15,6 @@ defmodule ElixirJobsWeb.ViewHelpers do
     |> Enum.member?(field)
   end
 
-  ###
-  # Markdown related functions
-  ###
-
-  def sanitized_markdown(nil), do: ""
-  def sanitized_markdown(text) do
-    text
-    |> Earmark.as_html!
-    |> sanitize
-  end
-
   def do_strip_tags(text) do
     sanitize(text, :strip_tags)
   end
@@ -36,11 +25,6 @@ defmodule ElixirJobsWeb.ViewHelpers do
 
   def xml_strip_tags(text) do
     {:safe, text} = do_strip_tags(text)
-    text
-  end
-
-  def xml_sanitized_markdown(text) do
-    {:safe, text} = sanitized_markdown(text)
     text
   end
 

@@ -14,7 +14,6 @@ defmodule ElixirJobs.OffersTest do
       title: "some title",
       company: "some company",
       summary: "some summary",
-      description: "some description",
       location: "some location",
       url: "https://www.google.com",
       job_place: "remote",
@@ -24,7 +23,6 @@ defmodule ElixirJobs.OffersTest do
       title: "some updated title",
       company: "some updated company",
       summary: "some updated summary",
-      description: "some updated description",
       location: "some updated location",
       url: "https://www.google.es",
       job_place: "onsite",
@@ -33,7 +31,6 @@ defmodule ElixirJobs.OffersTest do
     @invalid_attrs %{
       title: nil,
       company: nil,
-      description: nil,
       location: nil,
       url: nil,
       job_place: "not_registered",
@@ -64,7 +61,6 @@ defmodule ElixirJobs.OffersTest do
       assert offer.title == "some title"
       assert offer.company == "some company"
       assert offer.summary == "some summary"
-      assert offer.description == "some description"
       assert offer.location == "some location"
       assert offer.url == "https://www.google.com"
       assert offer.job_place == :remote
@@ -82,7 +78,6 @@ defmodule ElixirJobs.OffersTest do
       assert offer.title == "some updated title"
       assert offer.company == "some updated company"
       assert offer.summary == "some updated summary"
-      assert offer.description == "some updated description"
       assert offer.location == "some updated location"
       assert offer.url == "https://www.google.es"
       assert offer.job_place == :onsite

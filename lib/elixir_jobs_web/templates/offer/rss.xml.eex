@@ -19,7 +19,7 @@
               <%= gettext "Job location:" %> <%= xml_strip_tags(offer.location) %>
             </font>
           </font>
-          <%= xml_sanitized_markdown(offer.description) %>
+          <%= offer.summary %>
         ]]></description>
         <pubDate><%= xml_readable_date(offer.inserted_at) %></pubDate>
         <link><%= offer.url %></link>
