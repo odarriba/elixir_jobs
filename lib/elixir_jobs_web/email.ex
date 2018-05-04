@@ -21,9 +21,9 @@ defmodule ElixirJobsWeb.Email do
   defp put_basic_layouts({from, recipient}) do
     new_email()
     |> to(recipient)
+    |> put_from(from)
     |> put_text_layout({ElixirJobsWeb.LayoutView, "email.text"})
     |> put_html_layout({ElixirJobsWeb.LayoutView, "email.html"})
-    |> put_from(from)
   end
 
   defp put_from(email, :default) do
