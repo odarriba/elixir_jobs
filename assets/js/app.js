@@ -25,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   particles.initParticles();
   navbar.initNavbar();
+  navbarScroll();
 
   $(".offer-new form button#preview").click(function (evt) {
     evt.preventDefault();
