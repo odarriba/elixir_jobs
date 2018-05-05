@@ -5,7 +5,7 @@
         <%= img_tag static_path(@conn, "/images/logo.svg"), class: "logo" %>
         <%= gettext("ElixirJobs") %>
       </a>
-      <span class="navbar-burger burger" data-target="navbarMenu">
+      <span class="navbar-burger burger" data-target="navbar">
         <span></span>
         <span></span>
         <span></span>

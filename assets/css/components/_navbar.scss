@@ -12,6 +12,17 @@ $navbar_color: #5c18bf;
     background-color: transparent;
   }
 
+  @media screen and (max-width: $desktop) {
+    &.mobile-opened {
+      background-color: $navbar_color;
+
+      .navbar-menu {
+        display: block;
+        padding: 5px 10px;
+      }
+    }
+  }
+
   .navbar-menu {
     background-color: $navbar_color;
 

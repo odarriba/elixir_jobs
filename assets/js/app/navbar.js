@@ -6,7 +6,7 @@ function initNavbar() {
         var target = $el.dataset.target;
         var $target = document.getElementById(target);
         $el.classList.toggle('is-active');
-        $target.classList.toggle('is-active');
+        $target.classList.toggle('mobile-opened');
 
         if ($target.classList.contains('is-active')) {
           document.querySelectorAll('.navbar.main')
