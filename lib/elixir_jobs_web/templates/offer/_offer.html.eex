@@ -27,13 +27,13 @@
         <div class="control">
           <span class="tags has-addons">
             <span class="tag is-dark"><%= gettext("Workplace") %></span>
-            <span class="tag is-warning"><%= human_get_place(@offer.job_place, gettext("Unknown")) %></span>
+            <span class="tag is-warning"><%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %></span>
           </span>
         </div>
         <div class="control">
           <span class="tags has-addons">
             <span class="tag is-dark"><%= gettext("Type") %></span>
-            <span class="tag is-primary"><%= human_get_type(@offer.job_type, gettext("Unknown")) %></span>
+            <span class="tag is-primary"><%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %></span>
           </span>
         </div>
       </div>
