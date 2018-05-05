@@ -8,13 +8,22 @@ import "phoenix_html"
 // import socket from "./socket"
 
 import "jquery";
+import * as particles from "./app/particles.js";
 import "rrssb/js/rrssb";
 
-jQuery(function ($) {
-  $(".alert .close").click(function (evt) {
-    evt.preventDefault();
-    $(this).closest(".alert").remove();
-  });
+function navbarScroll() {
+  var navbar = document.getElementsByClassName("navbar is-fixed-top")[0];
+  if (navbar && (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
+    navbar.classList.remove("is-transparent");
+  } else {
+    navbar.classList.add("is-transparent");
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  window.onscroll = navbarScroll;
+
+  particles.initParticles();
 
   $(".offer-new form button#preview").click(function (evt) {
     evt.preventDefault();

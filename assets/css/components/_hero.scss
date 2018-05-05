@@ -1,0 +1,47 @@
+.hero.main {
+  .hero-body {
+    padding-bottom: 5rem;
+    padding-top: 7rem;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  @media screen and (min-width: $tablet) {
+    .hero-body {
+      padding-bottom: 7rem;
+      padding-top: 7rem;
+    }
+    .title {
+      margin-bottom: 1.5rem;
+      font-size: 1.7rem;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    .hero-body {
+      padding-bottom: 8.5rem;
+      padding-top: 8.5rem;
+    }
+    .title {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+#particles {
+  canvas{
+    position: absolute;
+    top: 0;
+  }
+}
