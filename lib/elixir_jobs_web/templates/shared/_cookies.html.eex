@@ -6,11 +6,11 @@ window.cookieconsent.initialise({
   "palette": {
     "popup": {
       "background": "#5c18bf",
-      "text": "#b842e1"
+      "text": "#fff"
     },
     "button": {
       "background": "#b842e1",
-      "text": "#5c18bf"
+      "text": "#fff"
     }
   },
   "position": "bottom-right",
