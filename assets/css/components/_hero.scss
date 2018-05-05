@@ -1,7 +1,7 @@
 .hero.main {
   .hero-body {
-    padding-bottom: 5rem;
-    padding-top: 7rem;
+    padding-bottom: 3rem;
+    padding-top: 6rem;
   }
 
   .title {
@@ -13,9 +13,15 @@
     font-size: 1rem;
   }
 
+  .new-offer-btn {
+    background-color: $navbar_color;
+    margin-top: 0.9rem;
+    z-index: 20;
+  }
+
   @media screen and (min-width: $tablet) {
     .hero-body {
-      padding-bottom: 7rem;
+      padding-bottom: 3.5rem;
       padding-top: 7rem;
     }
     .title {
@@ -29,7 +35,7 @@
 
   @media screen and (min-width: $desktop) {
     .hero-body {
-      padding-bottom: 8.5rem;
+      padding-bottom: 4rem;
       padding-top: 8.5rem;
     }
     .title {

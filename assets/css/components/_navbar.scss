@@ -30,6 +30,8 @@
     }
 
     a {
+      text-transform: uppercase;
+      font-weight: lighter;
       color: $white;
       &:hover {
         color: $navbar_color;

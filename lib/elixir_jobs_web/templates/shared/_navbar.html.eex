@@ -13,6 +13,7 @@
     </div>
     <div id="navbarMenu" class="navbar-menu">
       <div class="navbar-start">
+        <a class="navbar-item" href="<%= offer_path(@conn, :new) %>"><%= gettext "Publish an offer" %></a>
         <a class="navbar-item" href="<%= page_path(@conn, :about) %>"><%= gettext "About" %></a>
         <%= if user_logged_in?(@conn) do %>
         <span class="item text"><%= gettext "Administration" %></span>
