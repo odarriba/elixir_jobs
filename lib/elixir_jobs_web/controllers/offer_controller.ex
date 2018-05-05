@@ -100,7 +100,7 @@ defmodule ElixirJobsWeb.OfferController do
         ElixirJobsWeb.Email.notification_offer_created_html(offer)
 
         flash_msg =
-          gettext("<b>Job offer created correctly!</b> We will review and publish it soon")
+          gettext("<b>Job offer successfully sent!</b> We will review and publish it soon")
 
         conn
         |> put_flash(:info, flash_msg)
