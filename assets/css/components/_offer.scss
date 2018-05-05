@@ -30,6 +30,29 @@
   }
 }
 
-.offer-actions {
-  margin: 10px 0;
+.offer-actions.level {
+  margin: 2em 0 2.5em 0;
+}
+
+.offer-share {
+  text-align: center;
+
+  .level {
+    margin-top: 1em;
+  }
+
+  a.button.twitter {
+    background-color: #26c4f1;
+    color: #fff;
+  }
+
+  a.button.linkedin {
+    background-color: #007bb6;
+    color: #fff;
+  }
+
+  a.button.google {
+    background-color: #e93f2e;
+    color: #fff;
+  }
 }

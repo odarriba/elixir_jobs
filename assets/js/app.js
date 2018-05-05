@@ -9,8 +9,6 @@ import "phoenix_html"
 
 import "jquery";
 import * as particles from "./app/particles.js";
-import * as navbar from "./app/navbar.js";
-import "rrssb/js/rrssb";
 
 function navbarScroll() {
   var navbar = document.getElementsByClassName("navbar is-fixed-top")[0];
@@ -42,11 +40,5 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollTop: $preview_div.offset().top
       }, 'slow');
     });
-  });
-
-  $(".rrssb-buttons").rrssb({
-    title: document.title,
-    url: document.location.href,
-    description: $('title').html()
   });
 });

@@ -31,4 +31,4 @@
   <% end %>
 </nav>
 
-<%= render_shared("_share.html") %>
+<%= render("_share.html", conn: @conn, offer: @offer) %>

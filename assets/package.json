@@ -13,8 +13,7 @@
     "jquery": "^3.2.1",
     "particles.js": "^2.0.0",
     "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html",
-    "rrssb": "^1.14.0"
+    "phoenix_html": "file:../deps/phoenix_html"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
