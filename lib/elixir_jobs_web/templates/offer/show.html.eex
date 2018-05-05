@@ -1,24 +1,34 @@
 <%= render("_offer.html", conn: @conn, offer: @offer, details: true) %>
-<div class="offer-link">
-  <%= link(gettext("Go to the offer!"), to: @offer.url, class: "btn-info", target: "_blank") %>
+
+<nav class="level offer-actions">
+  <p class="level-item has-text-centered">
+    <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
+  </p>
   <%= if user_logged_in?(@conn) do %>
+    <p class="level-item has-text-centered">
     <%= link(gettext("Edit offer"),
       to: admin_offer_path(@conn, :edit, @offer.slug),
-      class: "btn-success") %>
+      class: "button is-success is-medium") %>
+    </p>
+    <p class="level-item has-text-centered">
     <%= if @offer.published_at do %>
       <%= link(gettext("Unpublish offer"),
         to: admin_offer_path(@conn, :unpublish, @offer.slug),
-        class: "btn-primary") %>
+        class: "button is-primary is-medium") %>
     <% else %>
       <%= link(gettext("Publish offer"),
         to: admin_offer_path(@conn, :publish, @offer.slug),
-        class: "btn-primary") %>
+        class: "button is-primary is-medium") %>
     <% end %>
+    </p>
+    <p class="level-item has-text-centered">
     <%= link(gettext("Delete offer"),
       to: admin_offer_path(@conn, :delete, @offer.slug),
-      class: "btn-danger",
+      class: "button is-danger is-medium",
       method: :delete,
       data: [confirm: gettext("Do you really want to delete this offer?")]) %>
+    </p>
   <% end %>
-</div>
+</nav>
+
 <%= render_shared("_share.html") %>
