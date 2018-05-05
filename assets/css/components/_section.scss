@@ -1,0 +1,9 @@
+@media screen and (max-width: $desktop) {
+  .level-left + .level-right {
+      margin-top: 1rem;
+  }
+
+  .section {
+    padding: 1.5rem 1.5rem;
+  }
+}
