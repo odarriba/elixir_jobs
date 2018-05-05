@@ -41,6 +41,22 @@
     margin-top: 1em;
   }
 
+  .share-buttons {
+    text-align: center;
+    margin-top: 10px;
+
+    @media screen and (max-width: $tablet) {
+      span.share-button {
+        display: block;
+      }
+
+      a.button {
+        width: 100%;
+        max-width: 250px;
+      }
+    }
+  }
+
   a.button.twitter {
     background-color: #26c4f1;
     color: #fff;
