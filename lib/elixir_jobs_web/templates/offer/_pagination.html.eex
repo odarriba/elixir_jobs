@@ -1,4 +1,5 @@
-<nav class="pagination is-centered" role="navigation" aria-label="pagination">
+<hr class="divider" />
+<nav class="pagination is-medium is-centered" role="navigation" aria-label="pagination">
   <ul class="pagination-list">
     <li>
       <%= if @page_number > 1 do %>
