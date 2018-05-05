@@ -9,6 +9,7 @@ import "phoenix_html"
 
 import "jquery";
 import * as particles from "./app/particles.js";
+import * as navbar from "./app/navbar.js";
 
 function navbarScroll() {
   var navbar = document.getElementsByClassName("navbar is-fixed-top")[0];
