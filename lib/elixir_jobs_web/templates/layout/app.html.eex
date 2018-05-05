@@ -33,7 +33,7 @@
     <%= render_shared "_navbar.html", conn: @conn %>
     <%= render_shared "_hero.html", conn: @conn %>
 
-    <section class="section">
+    <section class="section app">
       <div class="container">
         <%= render_shared "_alerts.html", conn: @conn %>
         <%= render @view_module, @view_template, assigns %>

@@ -10,6 +10,7 @@ import "phoenix_html"
 import "jquery";
 import * as particles from "./app/particles.js";
 import * as navbar from "./app/navbar.js";
+import * as notifications from "./app/notifications.js";
 
 function navbarScroll() {
   var navbar = document.getElementsByClassName("navbar is-fixed-top")[0];
@@ -25,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   particles.initParticles();
   navbar.initNavbar();
+  notifications.initNotifications();
   navbarScroll();
 
   $(".offer-new form button#preview").click(function (evt) {
