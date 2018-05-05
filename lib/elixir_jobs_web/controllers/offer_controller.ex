@@ -104,7 +104,7 @@ defmodule ElixirJobsWeb.OfferController do
 
         conn
         |> put_flash(:info, flash_msg)
-        |> redirect(to: offer_path(conn, :index))
+        |> redirect(to: offer_path(conn, :new))
 
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
