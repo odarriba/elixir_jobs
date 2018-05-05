@@ -1,0 +1,29 @@
+.footer {
+  margin-top: 1rem;
+  padding: 2.3rem 1.5rem 1rem 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: $white;
+
+  strong {
+    color: $white;
+  }
+
+  .title {
+    margin-bottom: 0.5rem;
+  }
+
+  .columns {
+    margin-bottom: 0;
+  }
+
+  a {
+    color: lighten($link, 30%);
+  }
+
+  .copyright {
+    font-size: 0.7rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: whitesmoke
+  }
+}
