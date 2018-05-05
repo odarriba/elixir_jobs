@@ -1,0 +1,34 @@
+<%
+url =
+  @conn
+  |> offer_url(:show, @offer.slug)
+  |> URI.encode()
+
+twitter_link = "https://twitter.com/intent/tweet?via=jobs_elixir&hashtags=myelixirstatus,jobs&text=#{@offer.title}&url=#{url}"
+linkedin_link = "http://www.linkedin.com/shareArticle?mini=true&url=#{url}&title=#{@offer.title}"
+google_link = "https://plus.google.com/share?url=#{url}"
+%>
+
+<hr class="divider" />
+<div class="offer-share">
+  <strong><%= gettext("Do you like this offer for someone else? Share it!") %></strong>
+  <div class="share-buttons">
+    <span class="share-button">
+      <a class="button twitter is-medium" target="_blank" href="<%= twitter_link %>">
+        <i class="fab fa-twitter"></i>&nbsp;&nbsp;Twitter
+      </a>
+    </span>
+    &nbsp;
+    <span class="share-button">
+      <a class="button linkedin is-medium" target="_blank" href="<%= linkedin_link %>">
+        <i class="fab fa-linkedin-in"></i>&nbsp;&nbsp;LinkedIn
+      </a>
+    </span>
+    &nbsp;
+    <span class="share-button">
+      <a class="button google is-medium" target="_blank" href="<%= google_link %>">
+        <i class="fab fa-google-plus-g"></i>&nbsp;&nbsp;Google+
+      </a>
+    </span>
+  </div>
+</div>

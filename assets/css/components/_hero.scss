@@ -1,0 +1,56 @@
+.hero.main {
+  .hero-body {
+    padding-bottom: 3.5rem;
+    padding-top: 7rem;
+  }
+
+  .title {
+    margin-bottom: 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .new-offer-btn {
+    background-color: $navbar_color;
+    margin-top: 0.9rem;
+    z-index: 20;
+  }
+
+  @media screen and (min-width: $tablet) {
+    .hero-body {
+      padding-bottom: 4.5rem;
+      padding-top: 7rem;
+    }
+    .title {
+      margin-bottom: 1.5rem;
+      font-size: 1.7rem;
+    }
+    .subtitle {
+      font-size: 1.3rem;
+    }
+  }
+
+  @media screen and (min-width: $desktop) {
+    .hero-body {
+      padding-bottom: 5rem;
+      padding-top: 8.5rem;
+    }
+    .title {
+      margin-bottom: 2rem;
+      font-size: 2.5rem;
+    }
+  }
+}
+
+#particles {
+  position: relative;
+  canvas{
+    position: absolute;
+    top: 4.4rem;
+    left: 0;
+    height: calc(100% - 4.4rem);
+  }
+}

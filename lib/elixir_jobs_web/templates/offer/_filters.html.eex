@@ -1,20 +1,29 @@
-<div class="search">
-  <%= form_for @conn, offer_path(@conn, :search), [as: :filters, method: :get, class: "filters #{@aspect}"], fn f -> %>
-    <div class="field text">
-      <%= text_input(f, :text,
-        id: "filter_text",
-        class: class_with_error(f, :text, "text"),
-        placeholder: gettext("Search offers by title, location...")) %>
+<nav class="level">
+  <div class="level-left">
+    <div class="level-item">
+      <%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %>
     </div>
-    <div class="field select place">
-      <%= select(f, :job_place, get_job_place_options(gettext("Unknown")), prompt: gettext("Any job place")) %>
-    </div>
-    <div class="field select type">
-    <%= select(f, :job_type, get_job_type_options(gettext("Unknown")), prompt: gettext("Any job type")) %>
-    </div>
-    <div class="field button">
-      <%= submit(gettext("Search"), class: "btn-success") %>
-    </div>
-  <% end %>
-  <div class="page-info"><%= gettext("Showing page %{page} of %{total_pages}", page: @page_number, total_pages: @total_pages) %></div>
-</div>
+  </div>
+
+  <div class="level-right">
+    <p class="level-item">
+      <%= form_for @conn, offer_path(@conn, :search), [as: :filters, method: :get, class: "filters #{@aspect}"], fn f -> %>
+        <div class="field is-grouped">
+          <p class="control is-expanded has-icons-left">
+            <%= text_input(f, :text,
+                  id: "filter_text",
+                  class: "input is-rounded",
+                  placeholder: gettext("Search offers...")) %>
+            <span class="icon is-small is-left">
+              <i class="fas fa-search"></i>
+            </span>
+          </p>
+          <p class="control">
+            <%= submit(gettext("Search"), class: "button is-rounded is-info") %>
+          </p>
+        </div>
+      <% end %>
+    </p>
+  </div>
+</nav>
+<hr class="divider" />

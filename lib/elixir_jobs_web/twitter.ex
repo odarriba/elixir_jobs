@@ -7,7 +7,7 @@ defmodule ElixirJobsWeb.Twitter do
   alias ElixirJobs.Offers.Offer
   alias ElixirJobsWeb.Router.Helpers, as: RouterHelpers
 
-  import ElixirJobsWeb.HumanizeHelper
+  alias ElixirJobsWeb.HumanizeHelper
 
   @short_link_length 25
   @twitter_limit 140
@@ -45,7 +45,7 @@ defmodule ElixirJobsWeb.Twitter do
   end
 
   defp get_text(%Offer{company: company, title: title, job_place: job_place}) do
-    "#{title} @ #{company} / #{human_get_place(job_place, "Unknown Place")}"
+    "#{title} @ #{company} / #{HumanizeHelper.human_get_place(job_place, "Unknown Place")}"
   end
 
   defp get_tags do

@@ -12,11 +12,8 @@ defmodule ElixirJobsWeb.SeoHelper do
   @default_page_description "ElixirJobs helps developers to find their next Elixir job and companies to spread their offers. Use our search engine to find your next dream job."
 
   alias ElixirJobs.Offers.Offer
-
-  alias ElixirJobsWeb.{
-    OfferController,
-    PageController
-  }
+  alias ElixirJobsWeb.OfferController
+  alias ElixirJobsWeb.PageController
 
   def page_title(%Plug.Conn{} = conn) do
     get_page_title(controller_module(conn), action_name(conn), conn.assigns, conn.params)

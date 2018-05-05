@@ -1,22 +1,7 @@
 .login {
-  max-width: 650px;
-  margin: 20px auto;
-  border: 1px solid #f0f0f0;
-  border-radius: 7px;
-  padding: 20px;
-
-  input {
-    padding: 10px;
-  }
-
-  button {
-    display: block;
-    width: 100%;
-  }
-
-  fieldset:last-child{
-    border: 0;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
+  width: 500px;
+  margin: 2rem auto;
+  padding: 1rem;
+  border: 2px solid $light;
+  border-radius: 10px;
 }

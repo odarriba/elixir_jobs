@@ -1,27 +1,13 @@
 /* This file is for your main application css. */
-@import "config";
+@import "_config";
 
-@import "rrssb/scss/rrssb";
+@import "~bulma/bulma.sass";
 
-@import "mixins/commons";
-@import "mixins/btn";
-@import "mixins/responsive";
-
-@import "base/commons";
-@import "base/forms";
-@import "base/syntax";
-@import "base/table";
-@import "base/typography";
-
-@import "layout/base";
-
-@import "components/alert";
-@import "components/badge";
-@import "components/btn";
+@import "components/layout";
+@import "components/navbar";
+@import "components/footer";
+@import "components/hero";
+@import "components/section";
 @import "components/offer";
-@import "components/page_title";
-@import "components/pagination";
-@import "components/sidebar";
+@import "components/about";
 @import "components/login";
-@import "components/search";
-@import "components/sponsors";

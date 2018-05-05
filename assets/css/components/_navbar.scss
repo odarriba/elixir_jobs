@@ -1,0 +1,73 @@
+.navbar {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  color: #fff;
+
+  &.is-primary {
+    background-color: $navbar_color;
+  }
+
+  &.is-transparent {
+    background-color: transparent;
+  }
+
+  @media screen and (max-width: $desktop) {
+    &.mobile-opened {
+      background-color: $navbar_color;
+
+      .navbar-menu {
+        display: block;
+        padding: 5px 10px;
+      }
+    }
+  }
+
+  .navbar-menu {
+    background-color: $navbar_color;
+
+    @media screen and (min-width: $desktop) {
+      background-color: transparent;
+    }
+
+    a {
+      text-transform: uppercase;
+      font-weight: lighter;
+      color: $white;
+      &:hover {
+        color: $navbar_color;
+      }
+    }
+  }
+
+  .navbar-burger {
+    height: 4.4rem;
+  }
+
+  .navbar-brand {
+    color: #fff;
+    font-family: sans-serif;
+    font-size: 1.5rem;
+    line-height: 32px;
+    margin: 0 10px;
+    font-weight: bold;
+
+    .logo {
+      margin-right: 5px;
+      margin-top: -2px;
+    }
+
+    .navbar-item:hover {
+      padding-bottom: 0.5rem;
+      border-bottom: none;
+    }
+  }
+
+  .navbar-item {
+    line-height: 2.3;
+
+    &:hover {
+      padding-bottom: calc(0.5rem - 2px);
+      border-bottom: 2px solid whitesmoke;
+    }
+  }
+}

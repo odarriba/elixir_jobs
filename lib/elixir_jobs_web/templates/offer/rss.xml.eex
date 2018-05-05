@@ -10,10 +10,10 @@
         <description><![CDATA[
           <font color="#aaa">
             <font color="#aaa">
-              <%= gettext "Job place:" %> <%= human_get_place(offer.job_place, gettext("Unknown")) %>
+              <%= gettext "Job place:" %> <%= HumanizeHelper.human_get_place(offer.job_place, gettext("Unknown")) %>
             </font><br />
             <font color="#aaa">
-              <%= gettext "Job type:" %> <%= human_get_type(offer.job_type, gettext("Unknown")) %>
+              <%= gettext "Job type:" %> <%= HumanizeHelper.human_get_type(offer.job_type, gettext("Unknown")) %>
             </font><br />
             <font color="#aaa">
               <%= gettext "Job location:" %> <%= xml_strip_tags(offer.location) %>

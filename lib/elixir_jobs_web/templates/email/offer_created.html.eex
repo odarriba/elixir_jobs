@@ -8,8 +8,8 @@
   <p><%= gettext("Summary") %>: <%= @offer.summary %></p>
   <p><%= gettext("Location") %>: <%= @offer.location %></p>
   <p><%= gettext("URL") %>: <a href="<%= @offer.url %>" target="_blank"><%= @offer.url %></a></p>
-  <p><%= gettext("Place") %>: <%= human_get_place(@offer.job_place, gettext("Unknown")) %></p>
-  <p><%= gettext("Type") %>: <%= human_get_type(@offer.job_type, gettext("Unknown")) %></p>
+  <p><%= gettext("Place") %>: <%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %></p>
+  <p><%= gettext("Type") %>: <%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %></p>
   <hr />
   <%= link(gettext("View Offer"), to: ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug)) %>
 </div>
