@@ -1,11 +1,34 @@
+$navbar_color: #5c18bf;
 .navbar {
   -webkit-box-shadow: none;
   box-shadow: none;
   color: #fff;
-  background-color: #5c18bf !important;
+
+  &.is-primary {
+    background-color: $navbar_color;
+  }
 
   &.is-transparent {
-    background-color: transparent !important;
+    background-color: transparent;
+  }
+
+  .navbar-menu {
+    background-color: $navbar_color;
+
+    @media screen and (min-width: $desktop) {
+      background-color: transparent;
+    }
+
+    a {
+      color: $white;
+      &:hover {
+        color: $navbar_color;
+      }
+    }
+  }
+
+  .navbar-burger {
+    height: 4.4rem;
   }
 
   .navbar-brand {

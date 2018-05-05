@@ -9,6 +9,7 @@ import "phoenix_html"
 
 import "jquery";
 import * as particles from "./app/particles.js";
+import * as navbar from "./app/navbar.js";
 import "rrssb/js/rrssb";
 
 function navbarScroll() {
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
   window.onscroll = navbarScroll;
 
   particles.initParticles();
+  navbar.initNavbar();
 
   $(".offer-new form button#preview").click(function (evt) {
     evt.preventDefault();
