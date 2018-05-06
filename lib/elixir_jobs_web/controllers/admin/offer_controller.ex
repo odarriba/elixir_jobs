@@ -2,8 +2,8 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   use ElixirJobsWeb, :controller
 
   alias ElixirJobs.Offers
-
   alias ElixirJobsWeb.Twitter
+  alias ElixirJobsWeb.Telegram
 
   plug :scrub_params, "offer" when action in [:update]
 
@@ -78,6 +78,30 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         conn
         |> put_flash(:info, gettext("<b>An error occurred while unpublishing the offer</b>"))
         |> redirect(to: admin_offer_path(conn, :index_published))
+    end
+  end
+
+  def send_twitter(conn, %{"slug" => slug}) do
+    offer = Offers.get_offer_by_slug!(slug)
+
+    Twitter.publish(conn, offer)
+
+    conn
+    |> put_flash(:info, gettext("<b>Offer correctly sent to Twitter account!</b>"))
+    |> redirect(to: offer_path(conn, :show, slug))
+  end
+
+  def send_telegram(conn, %{"slug" => slug}) do
+    offer = Offers.get_offer_by_slug!(slug)
+
+    case Telegram.send(conn, offer) do
+      :ok ->
+        conn
+        |> put_flash(:info, gettext("<b>Offer correctly sent to Telegram channel!</b>"))
+        |> redirect(to: offer_path(conn, :show, slug))
+
+      error ->
+        raise error
     end
   end
 
