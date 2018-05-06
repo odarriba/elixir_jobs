@@ -1,5 +1,5 @@
 <section class="hero main is-primary is-medium is-bold">
-  <div id="particles" class="hero-body">
+  <div class="hero-body particles-container">
     <div class="container has-text-centered">
       <h1 class="title">
         <%= gettext("Connect with jobs that matter") %>
@@ -11,6 +11,7 @@
       <%= link(gettext("Post a job offer!"), to: offer_path(@conn, :new), class: "button new-offer-btn is-primary is-large") %>
       <% end %>
     </div>
+    <div id="particles"></div>
   </div>
 </section>
 <div class="box cta">

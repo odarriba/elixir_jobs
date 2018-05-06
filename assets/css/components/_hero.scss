@@ -57,12 +57,14 @@
   }
 }
 
-#particles {
+.particles-container {
   position: relative;
-  canvas{
-    position: absolute;
-    top: 4.4rem;
-    left: 0;
-    height: calc(100% - 4.4rem);
-  }
+}
+
+#particles {
+  position: absolute;
+  top: 4.4rem;
+  left: 0;
+  width: 100%;
+  height: calc(100% - 4.4rem);
 }
