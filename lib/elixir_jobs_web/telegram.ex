@@ -11,7 +11,7 @@ defmodule ElixirJobsWeb.Telegram do
   require ElixirJobsWeb.Gettext
 
   def send(%Plug.Conn{} = conn, %Offer{} = offer) do
-    channel = Application.get_env(:elixir_jobs, :telegram_channel, "")
+    channel = get_channel()
     send(conn, offer, channel)
   end
 
@@ -35,5 +35,9 @@ defmodule ElixirJobsWeb.Telegram do
       error ->
         error
     end
+  end
+
+  def get_channel() do
+    Application.get_env(:elixir_jobs, :telegram_channel, "")
   end
 end

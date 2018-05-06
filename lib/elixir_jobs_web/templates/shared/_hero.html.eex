@@ -1,5 +1,3 @@
-
-
 <section class="hero main is-primary is-medium is-bold">
   <div id="particles" class="hero-body">
     <div class="container has-text-centered">
@@ -15,3 +13,10 @@
     </div>
   </div>
 </section>
+<div class="box cta">
+  <p class="has-text-centered">
+    <span class="tag is-danger"><%= gettext("NEW") %></span>&nbsp;
+    <%= raw gettext("Subscribe to our Telegram channel to get last job offers on your phone! %{join_now}",
+          join_now: "<a href='https://t.me/#{get_telegram_channel()}' class='button is-small is-info is-rounded' target='_blank'>Join now!&nbsp;<i class='fab fa-telegram-plane'></i></a>") %>
+  </p>
+</div>

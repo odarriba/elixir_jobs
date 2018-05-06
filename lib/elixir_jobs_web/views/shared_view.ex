@@ -3,6 +3,7 @@ defmodule ElixirJobsWeb.SharedView do
 
   alias ElixirJobsWeb.OfferController
   alias ElixirJobsWeb.PageController
+  alias ElixirJobsWeb.Telegram
 
   import Phoenix.Controller, only: [controller_module: 1, action_name: 1]
 
@@ -24,4 +25,6 @@ defmodule ElixirJobsWeb.SharedView do
       _ -> false
     end
   end
+
+  def get_telegram_channel(), do: Telegram.get_channel()
 end
