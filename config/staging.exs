@@ -43,6 +43,8 @@ config :extwitter, :oauth,
   access_token: System.get_env("TWITTER_ACCESS_TOKEN"),
   access_token_secret: System.get_env("TWITTER_ACCESS_TOKEN_SECRET")
 
+config :nadia, token: {:system, "TELEGRAM_TOKEN", ""}
+
 config :elixir_jobs, ElixirJobsWeb.Mailer,
   adapter: Bamboo.MailgunAdapter,
   api_key: System.get_env("MAILGUN_API_KEY"),
@@ -50,6 +52,7 @@ config :elixir_jobs, ElixirJobsWeb.Mailer,
 
 config :elixir_jobs, :default_app_email, "no-reply@staging.elixirjobs.net"
 config :elixir_jobs, :analytics_id, ""
+config :elixir_jobs, :telegram_channel, "elixir_jobs_st"
 
 # ## SSL Support
 #

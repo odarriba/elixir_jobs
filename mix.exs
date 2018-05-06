@@ -57,6 +57,7 @@ defmodule ElixirJobs.Mixfile do
       # External services
       {:extwitter, "~> 0.8"},
       {:bamboo, "~> 0.8"},
+      {:nadia, "~> 0.4"},
       # Monitoring
       {:appsignal, "~> 1.0"},
       # Misc
