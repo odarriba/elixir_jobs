@@ -29,7 +29,6 @@
           <td class="v-middle h-center"><%= human_readable_date(offer.published_at, false) %></td>
           <td class="v-middle h-right">
             <%= link(gettext("View"), to: offer_path(@conn, :show, offer.slug), class: "button is-success is-small") %>
-            <%= link(gettext("Unpublish"), to: admin_offer_path(@conn, :unpublish, offer.slug), class: "button is-primary is-small") %>
             <%= link(gettext("Edit"), to: admin_offer_path(@conn, :edit, offer.slug), class: "button is-info is-small") %>
             <%= link(gettext("Delete"),
               to: admin_offer_path(@conn, :delete, offer.slug),
