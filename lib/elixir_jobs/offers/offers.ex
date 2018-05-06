@@ -264,19 +264,6 @@ defmodule ElixirJobs.Offers do
   end
 
   @doc """
-  Unpublishes an offer.
-
-  ## Examples
-
-      iex> unpublish_offer(offer)
-      {:ok, %Offer{}}
-
-  """
-  def unpublish_offer(%Offer{} = offer) do
-    update_offer(offer, %{published_at: nil})
-  end
-
-  @doc """
   Deletes a Offer.
 
   ## Examples

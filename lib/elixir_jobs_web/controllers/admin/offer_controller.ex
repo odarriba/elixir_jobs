@@ -64,23 +64,6 @@ defmodule ElixirJobsWeb.Admin.OfferController do
     end
   end
 
-  def unpublish(conn, %{"slug" => slug}) do
-    slug
-    |> Offers.get_offer_by_slug!()
-    |> Offers.unpublish_offer()
-    |> case do
-      {:ok, _} ->
-        conn
-        |> put_flash(:info, gettext("<b>Offer unpublished correctly!</b>"))
-        |> redirect(to: offer_path(conn, :show, slug))
-
-      {:error, _} ->
-        conn
-        |> put_flash(:info, gettext("<b>An error occurred while unpublishing the offer</b>"))
-        |> redirect(to: admin_offer_path(conn, :index_published))
-    end
-  end
-
   def send_twitter(conn, %{"slug" => slug}) do
     offer = Offers.get_offer_by_slug!(slug)
 

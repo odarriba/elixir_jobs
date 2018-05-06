@@ -55,7 +55,6 @@ defmodule ElixirJobsWeb.Router do
       get "/offers/published", OfferController, :index_published
       get "/offers/pending", OfferController, :index_unpublished
       get "/offers/:slug/publish", OfferController, :publish
-      get "/offers/:slug/unpublish", OfferController, :unpublish
       get "/offers/:slug/send_twitter", OfferController, :send_twitter
       get "/offers/:slug/send_telegram", OfferController, :send_telegram
       get "/offers/:slug/edit", OfferController, :edit
