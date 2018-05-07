@@ -93,7 +93,7 @@
         <div class="field">
           <div class="control">
             <button id="preview" class="button is-medium" data-url="<%= offer_url(@conn, :preview) %>"><%= gettext("Preview") %></button>
-            <%= submit(gettext("Submit"), class: "button is-primary is-medium") %>
+            <%= submit(gettext("Submit"), class: "button is-info is-medium") %>
           </div>
         </div>
       </div>

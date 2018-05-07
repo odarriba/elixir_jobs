@@ -17,6 +17,7 @@
     background-color: $navbar_color;
     margin-top: 0.9rem;
     z-index: 20;
+    border: 1px solid $primary-light;
   }
 
   @media screen and (min-width: $tablet) {

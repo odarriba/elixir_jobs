@@ -14,7 +14,7 @@
       <div class="field is-grouped is-grouped-multiline">
         <div class="control">
           <span class="tags has-addons">
-            <span class="tag is-dark"><%= gettext("Date") %></span>
+            <span class="tag"><%= gettext("Date") %></span>
             <span class="tag is-danger">
               <%= if @offer.published_at do %>
               <%= human_readable_date(@offer.published_at) %>
@@ -26,13 +26,13 @@
         </div>
         <div class="control">
           <span class="tags has-addons">
-            <span class="tag is-dark"><%= gettext("Workplace") %></span>
+            <span class="tag"><%= gettext("Workplace") %></span>
             <span class="tag is-warning"><%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %></span>
           </span>
         </div>
         <div class="control">
           <span class="tags has-addons">
-            <span class="tag is-dark"><%= gettext("Type") %></span>
+            <span class="tag"><%= gettext("Type") %></span>
             <span class="tag is-primary"><%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %></span>
           </span>
         </div>
