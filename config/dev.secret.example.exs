@@ -9,9 +9,10 @@ config :elixir_jobs, ElixirJobs.Repo,
   hostname: "localhost",
   pool_size: 10
 
-config :extwitter, :oauth, [
-   consumer_key: "",
-   consumer_secret: "",
-   access_token: "",
-   access_token_secret: ""
-]
+config :extwitter, :oauth,
+  consumer_key: "",
+  consumer_secret: "",
+  access_token: "",
+  access_token_secret: ""
+
+config :nadia, token: ""

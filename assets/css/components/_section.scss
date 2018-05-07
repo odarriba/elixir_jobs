@@ -1,0 +1,9 @@
+@media screen and (max-width: $tablet) {
+  .level-left + .level-right {
+      margin-top: 1rem;
+  }
+}
+
+.section {
+  padding: 1.7rem 1.5rem;
+}

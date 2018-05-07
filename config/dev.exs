@@ -11,8 +11,7 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
   debug_errors: true,
   code_reloader: true,
   check_origin: false,
-  watchers: [node: ["node_modules/brunch/bin/brunch", "watch", "--stdin",
-                    cd: Path.expand("../assets", __DIR__)]]
+  watchers: [npm: ["run", "watch", "--stdin", cd: Path.expand("../assets/", __DIR__)]]
 
 # ## SSL Support
 #
@@ -55,11 +54,11 @@ config :elixir_jobs, ElixirJobsWeb.Guardian,
   issuer: "ElixirJobs",
   secret_key: "MY_D3V_K3Y"
 
-config :elixir_jobs, ElixirJobsWeb.Mailer,
-  adapter: Bamboo.LocalAdapter
+config :elixir_jobs, ElixirJobsWeb.Mailer, adapter: Bamboo.LocalAdapter
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 config :elixir_jobs, :analytics_id, ""
+config :elixir_jobs, :telegram_channel, "elixir_jobs_st"
 
 # Import custom configuration
 import_config "dev.secret.exs"

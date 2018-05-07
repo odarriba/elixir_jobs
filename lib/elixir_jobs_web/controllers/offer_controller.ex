@@ -17,10 +17,11 @@ defmodule ElixirJobsWeb.OfferController do
 
     page = Offers.list_published_offers(page_number)
 
-    render(conn, "index.html",
-      offers: page.entries,
-      page_number: page.page_number,
-      total_pages: page.total_pages)
+    conn
+    |> assign(:offers, page.entries)
+    |> assign(:page_number, page.page_number)
+    |> assign(:total_pages, page.total_pages)
+    |> render("index.html")
   end
 
   def index_filtered(conn, %{"filter" => filter}) when filter in @type_filters do
@@ -33,6 +34,7 @@ defmodule ElixirJobsWeb.OfferController do
 
     search(updated_conn, updated_params)
   end
+
   def index_filtered(conn, %{"filter" => filter}) when filter in @place_filters do
     updated_params = %{"filters" => %{"job_place" => filter}}
 
@@ -43,6 +45,7 @@ defmodule ElixirJobsWeb.OfferController do
 
     search(updated_conn, updated_params)
   end
+
   def index_filtered(conn, _params) do
     raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
   end
@@ -53,7 +56,7 @@ defmodule ElixirJobsWeb.OfferController do
     filters =
       params
       |> Map.get("filters", %{})
-      |> Enum.reduce(%{}, fn({k, v}, acc) ->
+      |> Enum.reduce(%{}, fn {k, v}, acc ->
         case {k, v} do
           {key, _} when key not in @filters_available -> acc
           {_, val} when val in ["", nil] -> acc
@@ -61,15 +64,16 @@ defmodule ElixirJobsWeb.OfferController do
           {key, val} -> Map.put(acc, key, val)
         end
       end)
-      |> Enum.reject(fn({_, v}) -> is_nil(v) or v == "" end)
+      |> Enum.reject(fn {_, v} -> is_nil(v) or v == "" end)
       |> Enum.into(%{})
 
     page = Offers.filter_published_offers(filters, page_number)
 
-    render(conn, "search.html",
-      offers: page.entries,
-      page_number: page.page_number,
-      total_pages: page.total_pages)
+    conn
+    |> assign(:offers, page.entries)
+    |> assign(:page_number, page.page_number)
+    |> assign(:total_pages, page.total_pages)
+    |> render("search.html")
   end
 
   def new(conn, _params) do
@@ -82,20 +86,26 @@ defmodule ElixirJobsWeb.OfferController do
     # Line breaks sent by the browser are received as two bytes, while Ecto
     # changeset counts only one, causing issues with limited fields.
     # This snippet solves that.
-    offer_corrected = Enum.reduce(offer_params, %{}, fn(el, acc) ->
-      case el do
-        {k, v} when is_binary(v) -> Map.put(acc, k, String.replace(v, "\r\n", "\n"))
-        {k, v} -> Map.put(acc, k, v)
-        _ -> acc
-      end
-    end)
+    offer_corrected =
+      Enum.reduce(offer_params, %{}, fn el, acc ->
+        case el do
+          {k, v} when is_binary(v) -> Map.put(acc, k, String.replace(v, "\r\n", "\n"))
+          {k, v} -> Map.put(acc, k, v)
+          _ -> acc
+        end
+      end)
 
     case Offers.create_offer(offer_corrected) do
       {:ok, offer} ->
-        ElixirJobsWeb.Email.notification_offer_created_html({offer, :default})
+        ElixirJobsWeb.Email.notification_offer_created_html(offer)
+
+        flash_msg =
+          gettext("<b>Job offer successfully sent!</b> We will review and publish it soon")
+
         conn
-        |> put_flash(:info, gettext("<b>Job offer created correctly!</b> We will review and publish it soon"))
-        |> redirect(to: offer_path(conn, :index))
+        |> put_flash(:info, flash_msg)
+        |> redirect(to: offer_path(conn, :new))
+
       {:error, changeset} ->
         render(conn, "new.html", changeset: changeset)
     end
@@ -106,19 +116,18 @@ defmodule ElixirJobsWeb.OfferController do
       offer_params
       |> Map.get("job_place")
       |> Kernel.||("unknown")
-      |> String.to_existing_atom
+      |> String.to_existing_atom()
 
     job_type =
       offer_params
       |> Map.get("job_type")
       |> Kernel.||("unknown")
-      |> String.to_existing_atom
+      |> String.to_existing_atom()
 
     offer_preview = %Offer{
       title: Map.get(offer_params, "title") || gettext("Title of your offer"),
       company: Map.get(offer_params, "company") || gettext("Company"),
-      description: Map.get(offer_params, "description") || gettext("Description of your offer"),
-      summary: Map.get(offer_params, "summary") || gettext("summary of your offer"),
+      summary: Map.get(offer_params, "summary") || gettext("Summary of your offer"),
       location: Map.get(offer_params, "location") || gettext("Location"),
       url: Map.get(offer_params, "url") || "https://example.com",
       slug: "",
@@ -133,11 +142,12 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def show(conn, %{"slug" => slug}) do
-    offer = if user_logged_in?(conn) do
-      Offers.get_offer_by_slug!(slug)
-    else
-      Offers.get_published_offer_by_slug!(slug)
-    end
+    offer =
+      if user_logged_in?(conn) do
+        Offers.get_offer_by_slug!(slug)
+      else
+        Offers.get_published_offer_by_slug!(slug)
+      end
 
     render(conn, "show.html", offer: offer)
   end
@@ -149,12 +159,11 @@ defmodule ElixirJobsWeb.OfferController do
 
   defp get_page_number(params) do
     with {:ok, page_no} <- Map.fetch(params, "page"),
-          true <- is_binary(page_no),
-          {value, _} <- Integer.parse(page_no) do
+         true <- is_binary(page_no),
+         {value, _} <- Integer.parse(page_no) do
       value
     else
       _ -> 1
     end
   end
-
 end

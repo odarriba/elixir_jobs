@@ -1,6 +1,13 @@
 defmodule ElixirJobsWeb.Twitter do
+  @moduledoc """
+  Twitter-related functions to ease the publishing of new offers in that social
+  network.
+  """
+
   alias ElixirJobs.Offers.Offer
-  import ElixirJobsWeb.HumanizeHelper
+  alias ElixirJobsWeb.Router.Helpers, as: RouterHelpers
+
+  alias ElixirJobsWeb.HumanizeHelper
 
   @short_link_length 25
   @twitter_limit 140
@@ -17,34 +24,37 @@ defmodule ElixirJobsWeb.Twitter do
 
     status_length = String.length(text) + String.length(tags) + 3 + @short_link_length
 
-    case status_length do
-      n when n <= @twitter_limit ->
-        Enum.join([text, tags, url], " ")
-      n ->
-        exceed = n - @twitter_limit
-        max_text_length = String.length(text) - exceed
+    status =
+      case status_length do
+        n when n <= @twitter_limit ->
+          Enum.join([text, tags, url], " ")
 
-        short_text =
-          text
-          |> String.slice(0, max_text_length - 3)
-          |> Kernel.<>("...")
+        n ->
+          exceed = n - @twitter_limit
+          max_text_length = String.length(text) - exceed
 
-        Enum.join([short_text, tags, url], " ")
-    end
-    |> ExTwitter.update()
+          short_text =
+            text
+            |> String.slice(0, max_text_length - 3)
+            |> Kernel.<>("...")
+
+          Enum.join([short_text, tags, url], " ")
+      end
+
+    ExTwitter.update(status)
   end
 
   defp get_text(%Offer{company: company, title: title, job_place: job_place}) do
-    "#{title} @ #{company} / #{human_get_place(job_place,"Unknown Place")}"
+    "#{title} @ #{company} / #{HumanizeHelper.human_get_place(job_place, "Unknown Place")}"
   end
 
-  defp get_tags() do
+  defp get_tags do
     @tags
-    |> Enum.map(&("##{&1}"))
+    |> Enum.map(&"##{&1}")
     |> Enum.join(" ")
   end
 
   defp get_url(%Plug.Conn{} = conn, %Offer{slug: slug}) do
-    ElixirJobsWeb.Router.Helpers.offer_url(conn, :show, slug)
+    RouterHelpers.offer_url(conn, :show, slug)
   end
 end

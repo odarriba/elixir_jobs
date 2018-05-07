@@ -176,7 +176,6 @@ defmodule ElixirJobs.Users do
     Admin.changeset(admin, %{})
   end
 
-
   @doc """
   Returns an array of tuples with {%Admin{name}, %Admin{email}} to be used on email sending
 
@@ -188,9 +187,7 @@ defmodule ElixirJobs.Users do
 
   def admin_emails do
     Admin
-    |> AdminQuery.only_admin_emails
-    |> Repo.all
+    |> AdminQuery.only_admin_emails()
+    |> Repo.all()
   end
-
-
 end

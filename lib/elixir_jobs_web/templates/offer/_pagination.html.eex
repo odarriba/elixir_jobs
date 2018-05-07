@@ -1,16 +1,23 @@
-<div class="pagination">
-  <%= if @page_number > 1 do %>
-    <%= link(gettext("Previous"),
-      to: Phoenix.Controller.current_path(@conn, Map.put(@conn.params, "page", @page_number - 1)),
-      class: "item item-older") %>
-  <% else %>
-    <span class="item item-older"><%= gettext("Previous") %></span>
-  <% end %>
-  <%= if @page_number < @total_pages do %>
-    <%= link(gettext("Next"),
-      to: Phoenix.Controller.current_path(@conn, Map.put(@conn.params, "page", @page_number + 1)),
-      class: "item item-newer") %>
-  <% else %>
-    <span class="item item-newer"><%= gettext("Next") %></span>
-  <% end %>
-</div>
+<hr class="divider" />
+<nav class="pagination is-medium is-centered" role="navigation" aria-label="pagination">
+  <ul class="pagination-list">
+    <li>
+      <%= if @page_number > 1 do %>
+        <%= link(gettext("Previous page"),
+          to: Phoenix.Controller.current_path(@conn, Map.put(@conn.params, "page", @page_number - 1)),
+          class: "pagination-link") %>
+      <% else %>
+        <a class="pagination-link" disabled><%= gettext("Previous page") %></a>
+      <% end %>
+    </li>
+    <li>
+      <%= if @page_number < @total_pages do %>
+        <%= link(gettext("Next page"),
+          to: Phoenix.Controller.current_path(@conn, Map.put(@conn.params, "page", @page_number + 1)),
+          class: "pagination-link") %>
+      <% else %>
+        <a class="pagination-link" disabled><%= gettext("Next page") %></a>
+      <% end %>
+    </li>
+  </ul>
+</nav>

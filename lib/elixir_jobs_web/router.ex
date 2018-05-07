@@ -20,7 +20,8 @@ defmodule ElixirJobsWeb.Router do
   end
 
   scope "/", ElixirJobsWeb do
-    pipe_through :browser # Use the default browser stack
+    # Use the default browser stack
+    pipe_through :browser
 
     get "/", OfferController, :index
     get "/about", PageController, :about
@@ -40,12 +41,13 @@ defmodule ElixirJobsWeb.Router do
     post "/login", AuthController, :create
   end
 
-  if Mix.env == :dev do
+  if Mix.env() == :dev do
     forward "/sent_emails", Bamboo.EmailPreviewPlug
   end
 
   scope "/", ElixirJobsWeb do
-    pipe_through [:browser, :authentication_required] # Use the default browser stack
+    # Use the default browser stack
+    pipe_through [:browser, :authentication_required]
 
     get "/logout", AuthController, :delete
 
@@ -53,7 +55,8 @@ defmodule ElixirJobsWeb.Router do
       get "/offers/published", OfferController, :index_published
       get "/offers/pending", OfferController, :index_unpublished
       get "/offers/:slug/publish", OfferController, :publish
-      get "/offers/:slug/unpublish", OfferController, :unpublish
+      get "/offers/:slug/send_twitter", OfferController, :send_twitter
+      get "/offers/:slug/send_telegram", OfferController, :send_telegram
       get "/offers/:slug/edit", OfferController, :edit
       put "/offers/:slug/edit", OfferController, :update
       delete "/offers/:slug", OfferController, :delete

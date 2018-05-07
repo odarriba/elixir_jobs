@@ -1,47 +1,46 @@
-<div class="offer">
-  <div class="title">
-    <%= if @details do %>
-    <%= @offer.title%>
-    <% else %>
-    <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
-    <% end %>
-    <span class="company">
-      <%= @offer.company %>
-    </span>
-  </div>
-  <div class="meta">
-    <div class="group">
-      <span class="published">
-        <%= if @offer.published_at do %>
-        <%= human_readable_date(@offer.published_at) %>
-        <% else %>
-        <%= human_readable_date(@offer.inserted_at) %>
-        <% end %>
-      </span>
-      <span class="location"><%= @offer.location %></span>
-    </div>
-    <div class="group">
-      <span>
-        <%= link(human_get_place(@offer.job_place, gettext("Unknown")),
-              to: offer_path(@conn, :search, filters: [job_place: @offer.job_place]),
-              class: "badge badge-success") %>
-      </span>
-      <span>
-        <%= link(human_get_type(@offer.job_type, gettext("Unknown")),
-              to: offer_path(@conn, :search, filters: [job_type: @offer.job_type]),
-              class: "badge badge-primary") %>
-      </span>
-    </div>
-  </div>
-  <%= if @details do %>
-    <div class="description">
-      <%= sanitized_markdown(@offer.description) %>
-    </div>
-  <% else %>
-    <div class="summary">
+<article class="media offer">
+  <div class="media-content">
+    <div class="content">
+      <p class="title">
+        <strong>
+          <%= if @details do %>
+          <%= @offer.title%>
+          <% else %>
+          <%= link(@offer.title, to: offer_path(@conn, :show, @offer.slug)) %>
+          <% end %>
+        </strong>
+        <small><%= @offer.company %> - <%= @offer.location %></small>
+      </p>
+      <div class="field is-grouped is-grouped-multiline">
+        <div class="control">
+          <span class="tags has-addons">
+            <span class="tag"><%= gettext("Date") %></span>
+            <span class="tag is-danger">
+              <%= if @offer.published_at do %>
+              <%= human_readable_date(@offer.published_at) %>
+              <% else %>
+              <%= human_readable_date(@offer.inserted_at) %>
+              <% end %>
+            </span>
+          </span>
+        </div>
+        <div class="control">
+          <span class="tags has-addons">
+            <span class="tag"><%= gettext("Workplace") %></span>
+            <span class="tag is-warning"><%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %></span>
+          </span>
+        </div>
+        <div class="control">
+          <span class="tags has-addons">
+            <span class="tag"><%= gettext("Type") %></span>
+            <span class="tag is-primary"><%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %></span>
+          </span>
+        </div>
+      </div>
       <p><%= @offer.summary %></p>
+      <%= if not @details do %>
       <p><%= link(gettext("Read more"), to: offer_path(@conn, :show, @offer.slug)) %></p>
+      <% end %>
     </div>
-  <% end %>
-
-</div>
+  </div>
+</article>

@@ -4,11 +4,10 @@
 <%= gettext("Company") %>: <%= @offer.company %>
 ----
 <%= gettext("Summary") %>: <%= @offer.summary %>
-<%= gettext("Description") %>: <%= @offer.description %>
 <%= gettext("Location") %>: <%= @offer.location %>
 <%= gettext("URL") %>: <%= @offer.url %>
 ----
-<%= gettext("Place") %>: <%= human_get_place(@offer.job_place, gettext("Unknown")) %>
-<%= gettext("Type") %>: <%= human_get_type(@offer.job_type, gettext("Unknown")) %>
+<%= gettext("Place") %>: <%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %>
+<%= gettext("Type") %>: <%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %>
 ----
 <%= gettext("View") %>: <%= ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug) %>

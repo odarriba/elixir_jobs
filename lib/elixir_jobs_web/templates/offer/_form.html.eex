@@ -1,103 +1,102 @@
-<div class="<%= @css_class %> offer">
+<div class="offer-new">
   <%= form_for @changeset, @action, fn f -> %>
-    <fieldset>
-      <div class="field-container title-field">
-        <%= text_input(f, :title,
-          id: "offer_title",
-          class: class_with_error(f, :title, "title"),
-          placeholder: gettext("Title goes here (will be tweeted)")) %>
-        <%= error_tag(f, :title) %>
+    <div class="field is-horizontal">
+      <div class="field-label is-large">
+        <label class="label"><%= gettext("Title") %></label>
       </div>
-
-      <div class="row">
-        <div class="field-container company-field col-2">
+      <div class="field-body">
+        <div class="field">
+          <%= text_input(f, :title,
+                id: "offer_title",
+                class: "input is-large",
+                placeholder: gettext("Title goes here (will be tweeted)")) %>
+          <%= error_tag(f, :title) %>
+        </div>
+      </div>
+    </div>
+    <div class="field is-horizontal">
+      <div class="field-label is-medium">
+        <label class="label"><%= gettext("Company") %></label>
+      </div>
+      <div class="field-body">
+        <div class="field">
           <%= text_input(f, :company,
-            id: "offer_company",
-            class: class_with_error(f, :company, "company"),
-            placeholder: gettext("Company name")) %>
+                id: "offer_company",
+                class: "input is-medium",
+                placeholder: gettext("Company name")) %>
           <%= error_tag(f, :company) %>
         </div>
-
-        <div class="field-container location-field col-2">
+        <div class="field">
           <%= text_input(f, :location,
-            id: "offer_location",
-            class: class_with_error(f, :location, "location"),
-            placeholder: gettext("Location of the job")) %>
+                id: "offer_location",
+                class: "input is-medium",
+                placeholder: gettext("Location of the job")) %>
           <%= error_tag(f, :location) %>
         </div>
       </div>
-    </fieldset>
+    </div>
 
-    <fieldset>
-      <div class="field-container">
-        <%= textarea(f, :summary,
-          rows: 3,
-          maxlength: 350,
-          id: "offer_summary",
-          class: class_with_error(f, :summary, "summary"),
-          placeholder: gettext("Summary (will be shown in listings, max 200 characters)")) %>
-        <%= error_tag(f, :summary) %>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label"><%= gettext("URL of the offer") %></label>
       </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="field-container">
-        <%= textarea(f, :description,
-          maxlength: 1000,
-          id: "offer_description",
-          class: class_with_error(f, :description, "description"),
-          placeholder: gettext("Text should describe the offer itself and engage your candidates (will be shown in offer details page)")) %>
-        <%= error_tag(f, :description) %>
-      </div>
-    </fieldset>
-
-    <fieldset>
-      <div class="row">
-        <div class="field-container col-2">
-          <%= select(f, :job_place, get_job_place_options(gettext("Select a job place"))) %>
+      <div class="field-body">
+        <div class="field">
+          <%= text_input(f, :url,
+                id: "offer_url",
+                class: "input",
+                placeholder: gettext("External URL of the job offer")) %>
+          <%= error_tag(f, :url) %>
         </div>
-
-        <div class="field-container col-2">
-          <%= select(f, :job_type, get_job_type_options(gettext("Select a job type"))) %>
-        </div>
-      </div>
-
-      <div class="field-container">
-        <%= text_input(f, :url,
-          id: "offer_url",
-          class: class_with_error(f, :url, "url"),
-          placeholder: gettext("External URL of the job offer")) %>
-        <%= error_tag(f, :url) %>
-      </div>
-    </fieldset>
-
-    <div class="functions">
-      <div>
-        <small>
-          Your offer might be edited (typos, wording, etc.)<br>
-          You can use Markdown for description (<a href="#" data-toggle="#formatting-help">formatting help</a>).
-        </small>
-
-        <span>
-          <button id="preview" class="btn-info" data-url="<%= offer_url(@conn, :preview) %>"><%= gettext("Preview") %></button>
-          <%= submit(gettext("Submit"), class: "btn-success") %>
-        </span>
       </div>
     </div>
 
-    <div id="formatting-help" style="display: none;">
-      <table>
-        <tr>
-          <th><%= gettext("What you type") %></th>
-          <th><%= gettext("What you get") %></th>
-        </tr>
-        <%= for term <- ["[Link](https://github.com/)", "**bold**", "*italics*", "***highlight***", "`inline code`", "Indent with four spaces to render code blocks:\n\n    # This is rendered as a\n    # code block."] do %>
-          <tr>
-            <td><pre><%= raw term%></pre></td>
-            <td><%= sanitized_markdown(term) %></td>
-          </tr>
-        <% end %>
-      </table>
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label"><%= gettext("About the job") %></label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="select is-fullwidth">
+            <%= select(f, :job_place, get_job_place_options(gettext("Select a job place")), class: "select") %>
+          </div>
+        </div>
+        <div class="field">
+          <div class="select is-fullwidth">
+            <%= select(f, :job_type, get_job_type_options(gettext("Select a job type")), class: "select") %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <%= textarea(f, :summary,
+                rows: 3,
+                maxlength: 450,
+                id: "offer_summary",
+                class: "textarea",
+                placeholder: gettext("Summary (max 450 characters)")) %>
+          <%= error_tag(f, :summary) %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label">
+        <!-- Left empty for spacing -->
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <div class="control">
+            <button id="preview" class="button is-medium" data-url="<%= offer_url(@conn, :preview) %>"><%= gettext("Preview") %></button>
+            <%= submit(gettext("Submit"), class: "button is-info is-medium") %>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 

@@ -14,6 +14,8 @@ defmodule ElixirJobs.DataCase do
 
   use ExUnit.CaseTemplate
 
+  alias Ecto.Adapters.SQL.Sandbox, as: SQLSandbox
+
   using do
     quote do
       alias ElixirJobs.Repo
@@ -26,10 +28,10 @@ defmodule ElixirJobs.DataCase do
   end
 
   setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(ElixirJobs.Repo)
+    :ok = SQLSandbox.checkout(ElixirJobs.Repo)
 
     unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(ElixirJobs.Repo, {:shared, self()})
+      SQLSandbox.mode(ElixirJobs.Repo, {:shared, self()})
     end
 
     :ok

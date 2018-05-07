@@ -22,5 +22,4 @@ defmodule ElixirJobsWeb.HumanizeHelper do
   def get_type_text(:part_time, _default), do: gettext("Part time")
   def get_type_text(:freelance, _default), do: gettext("Freelance")
   def get_type_text(_, default), do: default
-
 end

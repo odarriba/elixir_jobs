@@ -1,12 +1,17 @@
 defmodule ElixirJobsWeb.Plugs.CurrentUser do
+  @moduledoc """
+  Plug to store current user (if defined) on the connection.
+  """
+
   import Plug.Conn
 
   alias ElixirJobs.Users.Admin
+  alias ElixirJobsWeb.Guardian.Plug, as: GuardianPlug
 
   def init(_), do: []
 
   def call(conn, _) do
-    case ElixirJobsWeb.Guardian.Plug.current_resource(conn) do
+    case GuardianPlug.current_resource(conn) do
       %Admin{} = user -> assign(conn, :current_user, user)
       _ -> conn
     end

@@ -1,4 +1,10 @@
 defmodule ElixirJobs.Application do
+  @moduledoc """
+  Main Application module.
+
+  It starts all the processes related to the application in order to boot it up
+  and start serving requests.
+  """
   use Application
 
   # See https://hexdocs.pm/elixir/Application.html
@@ -11,7 +17,7 @@ defmodule ElixirJobs.Application do
       # Start the Ecto repository
       supervisor(ElixirJobs.Repo, []),
       # Start the endpoint when the application starts
-      supervisor(ElixirJobsWeb.Endpoint, []),
+      supervisor(ElixirJobsWeb.Endpoint, [])
       # Start your own worker by calling: ElixirJobs.Worker.start_link(arg1, arg2, arg3)
       # worker(ElixirJobs.Worker, [arg1, arg2, arg3]),
     ]

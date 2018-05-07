@@ -1,4 +1,8 @@
 defmodule ElixirJobsWeb.ViewHelpers do
+  @moduledoc """
+  Module with helpers commonly used in other views.
+  """
+
   use PhoenixHtmlSanitizer, :markdown_html
 
   def class_with_error(form, field, base_class) do
@@ -11,19 +15,8 @@ defmodule ElixirJobsWeb.ViewHelpers do
 
   def error_on_field?(form, field) do
     form.errors
-    |> Enum.map(fn({attr, _message}) -> attr end)
+    |> Enum.map(fn {attr, _message} -> attr end)
     |> Enum.member?(field)
-  end
-
-  ###
-  # Markdown related functions
-  ###
-
-  def sanitized_markdown(nil), do: ""
-  def sanitized_markdown(text) do
-    text
-    |> Earmark.as_html!
-    |> sanitize
   end
 
   def do_strip_tags(text) do
@@ -39,19 +32,16 @@ defmodule ElixirJobsWeb.ViewHelpers do
     text
   end
 
-  def xml_sanitized_markdown(text) do
-    {:safe, text} = sanitized_markdown(text)
-    text
-  end
-
   @doc "Returns a date formatted for humans."
   def human_readable_date(date, use_abbrevs? \\ true) do
     if use_abbrevs? && this_year?(date) do
       cond do
         today?(date) ->
           "Today"
+
         yesterday?(date) ->
           "Yesterday"
+
         true ->
           ElixirJobs.Date.strftime(date, "%e %b")
       end
@@ -69,15 +59,15 @@ defmodule ElixirJobsWeb.ViewHelpers do
   # Private functions
   ###
 
-  defp this_year?(date), do: date.year == Ecto.DateTime.utc.year
+  defp this_year?(date), do: date.year == Ecto.DateTime.utc().year
 
   defp today?(date) do
-    now = Ecto.DateTime.utc
+    now = Ecto.DateTime.utc()
     date.day == now.day && date.month == now.month && date.year == now.year
   end
 
   def yesterday?(date) do
-    now = Ecto.DateTime.utc
+    now = Ecto.DateTime.utc()
     difference = ElixirJobs.Date.diff(now, date)
     difference < 2 * 24 * 60 * 60 && difference > 1 * 24 * 60 * 60
   end

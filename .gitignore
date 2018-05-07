@@ -156,3 +156,5 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.gitignore.io/api/osx,linux,elixir,erlang,phoenix,windows,sublimetext,visualstudiocode
+
+.elixir_ls

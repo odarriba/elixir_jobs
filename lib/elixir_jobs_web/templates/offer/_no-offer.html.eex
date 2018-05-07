@@ -1,5 +1,10 @@
-<div class="no-offer">
-  <i><%= gettext("Upss! There is nothing here") %></i>
-  <br /><br/>
-  <a class="btn-success" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
-</div>
+<article class="media no-offer">
+  <div class="media-content">
+    <div class="content">
+      <p>
+        <i><%= gettext("Upss! There is nothing here") %></i>
+      </p>
+      <a class="button is-primary is-medium" href="<%= offer_path(@conn, :new) %>"><%= gettext "Post a job offer!" %></a>
+    </div>
+  </div>
+</article>
