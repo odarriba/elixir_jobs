@@ -51,8 +51,6 @@ defmodule ElixirJobsWeb.Admin.OfferController do
     |> Offers.publish_offer()
     |> case do
       {:ok, offer} ->
-        Twitter.publish(conn, offer)
-
         conn
         |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, slug))
