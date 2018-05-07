@@ -1,5 +1,6 @@
 {
     "name": "ElixirJobs",
+    "short_name": "ElixirJobs",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
@@ -12,7 +13,7 @@
             "type": "image/png"
         }
     ],
-    "theme_color": "#8652ad",
-    "background_color": "#8652ad",
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
     "display": "standalone"
 }
