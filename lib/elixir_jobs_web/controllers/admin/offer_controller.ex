@@ -50,7 +50,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
     |> Offers.get_offer_by_slug!()
     |> Offers.publish_offer()
     |> case do
-      {:ok, offer} ->
+      {:ok, _offer} ->
         conn
         |> put_flash(:info, gettext("<b>Offer published correctly!</b>"))
         |> redirect(to: offer_path(conn, :show, slug))
