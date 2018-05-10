@@ -51,7 +51,7 @@ config :phoenix, :stacktrace_depth, 20
 config :bcrypt_elixir, :log_rounds, 10
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs",
+  issuer: "Elixir Jobs",
   secret_key: "MY_D3V_K3Y"
 
 config :elixir_jobs, ElixirJobsWeb.Mailer, adapter: Bamboo.LocalAdapter

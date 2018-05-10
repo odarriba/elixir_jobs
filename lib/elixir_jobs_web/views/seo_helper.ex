@@ -9,7 +9,7 @@ defmodule ElixirJobsWeb.SeoHelper do
   import Phoenix.Controller, only: [controller_module: 1, action_name: 1]
 
   @default_page_title "Find your next job the right way"
-  @default_page_description "ElixirJobs helps developers to find their next Elixir job and companies to spread their offers. Use our search engine to find your next dream job."
+  @default_page_description "Elixir Jobs helps developers to find their next Elixir job and companies to spread their offers. Use our search engine to find your next dream job."
 
   alias ElixirJobs.Offers.Offer
   alias ElixirJobsWeb.OfferController
@@ -76,7 +76,7 @@ defmodule ElixirJobsWeb.SeoHelper do
   defp get_page_description(PageController, :about, _),
     do:
       gettext(
-        "Built on Elixir + Phoenix, ElixirJobs is a open source project that aims to help Elixir developers to find their next dream job."
+        "Built on Elixir + Phoenix, Elixir Jobs is a open source project that aims to help Elixir developers to find their next dream job."
       )
 
   defp get_page_description(_, _, _), do: gettext(@default_page_description)

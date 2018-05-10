@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0">
   <channel>
-    <title><%= gettext("ElixirJobs") %></title>
+    <title><%= gettext("Elixir Jobs") %></title>
     <description><%= gettext "Find your next Elixir job." %></description>
     <link><%= offer_url(@conn, :index) %></link>
     <%= for offer <- @offers do %>

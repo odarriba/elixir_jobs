@@ -13,16 +13,15 @@ config :logger, level: :warn
 config :bcrypt_elixir, :log_rounds, 4
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs",
+  issuer: "Elixir Jobs",
   secret_key: "MY_T3ST_K3Y"
 
-config :elixir_jobs, ElixirJobsWeb.Mailer,
-  adapter: Bamboo.TestAdapter
+config :elixir_jobs, ElixirJobsWeb.Mailer, adapter: Bamboo.TestAdapter
 
 config :bamboo, :refute_timeout, 3
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 config :elixir_jobs, :analytics_id, ""
 
-#Import custom configuration
+# Import custom configuration
 import_config "test.secret.exs"

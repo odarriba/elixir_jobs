@@ -4,20 +4,20 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= SeoHelper.page_title(@conn) %> - <%= gettext("ElixirJobs") %></title>
+    <title><%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %></title>
     <meta name="description" content="<%= SeoHelper.page_description(@conn) %>">
     <meta name="keywords" content="elixir,jobs,community,job,board,phoenix,positions,junior,senior,full time,part time,freelance,contract,publish">
     <meta property="og:url" content="<%= current_url(@conn) %>" />
-    <meta property="og:title" content="<%= SeoHelper.page_title(@conn) %> - <%= gettext("ElixirJobs") %>" />
+    <meta property="og:title" content="<%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %>" />
     <meta property="og:description" content="<%= SeoHelper.page_description(@conn) %>" />
     <meta property="og:image" content="<%= static_url(@conn, "/images/logo.png") %>" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:site" content="@jobs_elixir" />
-    <meta name="twitter:title" content="<%= SeoHelper.page_title(@conn) %> - <%= gettext("ElixirJobs") %>" />
+    <meta name="twitter:title" content="<%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %>" />
     <meta name="twitter:description" content="<%= SeoHelper.page_description(@conn) %>" />
     <meta name="twitter:image" content="<%= static_url(@conn, "/images/logo.png") %>" />
-    <meta name="application-name" content="<%= gettext("ElixirJobs") %>">
-    <meta name="apple-mobile-web-app-title" content="<%= gettext("ElixirJobs") %>">
+    <meta name="application-name" content="<%= gettext("Elixir Jobs") %>">
+    <meta name="apple-mobile-web-app-title" content="<%= gettext("Elixir Jobs") %>">
     <meta name="theme-color" content="#ffffff">
     <meta name="msapplication-TileColor" content="#5c18bf">
     <link rel="apple-touch-icon" sizes="180x180" href="<%= static_path(@conn, "/icons/apple-touch-icon.png") %>">
@@ -27,7 +27,7 @@
     <link rel="manifest" href="/manifest.json">
     <meta name="msapplication-TileColor" content="#5c18bf">
     <meta name="theme-color" content="#ffffff">
-    <link rel="alternate" type="application/rss+xml" title="ElixirJobs - RSS" href="<%= offer_path(@conn, :rss) %>" />
+    <link rel="alternate" type="application/rss+xml" title="Elixir Jobs - RSS" href="<%= offer_path(@conn, :rss) %>" />
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
   </head>

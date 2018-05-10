@@ -1,6 +1,6 @@
-# ElixirJobs
+# Elixir Jobs
 
-ElixirJobs is a job board based in Elixir + Phoenix.
+Elixir Jobs is a job board based in Elixir + Phoenix.
 
 ## Technologies used
 

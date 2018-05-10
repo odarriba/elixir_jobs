@@ -34,7 +34,7 @@ config :elixir_jobs, ElixirJobs.Repo,
   ssl: true
 
 config :elixir_jobs, ElixirJobsWeb.Guardian,
-  issuer: "ElixirJobs",
+  issuer: "Elixir Jobs",
   secret_key: System.get_env("GUARDIAN_SECRET_KEY")
 
 config :extwitter, :oauth,

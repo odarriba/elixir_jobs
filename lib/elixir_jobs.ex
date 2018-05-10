@@ -1,6 +1,6 @@
 defmodule ElixirJobs do
   @moduledoc """
-  ElixirJobs keeps the contexts that define your domain
+  Elixir Jobs keeps the contexts that define your domain
   and business logic.
 
   Contexts are also responsible for managing your data, regardless

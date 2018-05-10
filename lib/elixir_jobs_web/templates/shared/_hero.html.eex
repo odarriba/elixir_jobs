@@ -5,7 +5,7 @@
         <%= gettext("Connect with jobs that matter") %>
       </h1>
       <h2 class="subtitle">
-        <%= gettext("With ElixirJobs you can find your next Elixir job directly on your feed.") %>
+        <%= gettext("With Elixir Jobs you can find your next Elixir job directly on your feed.") %>
       </h2>
       <%= if (show_new_offer_button(@conn)) do %>
       <%= link(gettext("Post a job offer!"), to: offer_path(@conn, :new), class: "button new-offer-btn is-primary is-large") %>

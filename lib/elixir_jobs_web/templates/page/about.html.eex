@@ -1,7 +1,7 @@
 <div class="content about">
   <h2><%= raw gettext("What is this?") %></h2>
 
-  <p><%= raw gettext("ElixirJobs is a site built to help developers to find their next Elixir job, and to help companies to reach the vibrant Elixir community of developers.") %></p>
+  <p><%= raw gettext("Elixir Jobs is a site built to help developers to find their next Elixir job, and to help companies to reach the vibrant Elixir community of developers.") %></p>
 
   <p><%= raw gettext("Also, our aim is to gain visibility for the Elixir job market, showing potential offers to developers all around the world, and using the tools they like to use.") %></p>
 
@@ -15,12 +15,12 @@
 
   <h2><%= raw gettext("Closing thoughts") %></h2>
 
-  <p><%= raw gettext("Last but not least, ElixirJobs is a web app written in Elixir + Phoenix running in production (you can check its %{source_code}), so it's also a live example that Elixir and Phoenix are production-ready.",
+  <p><%= raw gettext("Last but not least, Elixir Jobs is a web app written in Elixir + Phoenix running in production (you can check its %{source_code}), so it's also a live example that Elixir and Phoenix are production-ready.",
     source_code: "<a href=\"https://github.com/odarriba/elixir_jobs\" target=\"_blank\">#{gettext("source code")}</a>") %></p>
 
   <h2><%= raw gettext("Sponsors") %></h2>
 
-  <p><%= raw gettext("Last but not least, we want to thanks the companies that are helping ElixirJobs:"
+  <p><%= raw gettext("Last but not least, we want to thanks the companies that are helping Elixir Jobs:"
     ) %></p>
 
   <nav class="level sponsors">

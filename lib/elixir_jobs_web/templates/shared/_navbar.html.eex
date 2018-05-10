@@ -3,7 +3,7 @@
     <div class="navbar-brand">
       <a class="navbar-item" href="<%= offer_path(@conn, :index) %>">
         <%= img_tag static_path(@conn, "/images/logo.svg"), class: "logo" %>
-        <%= gettext("ElixirJobs") %>
+        <%= gettext("Elixir Jobs") %>
       </a>
       <span class="navbar-burger burger" data-target="navbar">
         <span></span>
