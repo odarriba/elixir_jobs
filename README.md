@@ -20,6 +20,7 @@ $ cd elixir_jobs
 $ mix deps.get
 $ mix ecto.create
 $ mix ecto.migrate
+$ cd assets && yarn install && cd ..
 ```
 
 You might encounter some errors about the secrets files. That's because you need to copy the template files under `./config` and personalise them with your local configuration.
