@@ -2,8 +2,8 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   use ElixirJobsWeb, :controller
 
   alias ElixirJobs.Offers
-  alias ElixirJobsWeb.Twitter
   alias ElixirJobsWeb.Telegram
+  alias ElixirJobsWeb.Twitter
 
   plug :scrub_params, "offer" when action in [:update]
 

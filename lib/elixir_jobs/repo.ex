@@ -1,5 +1,8 @@
 defmodule ElixirJobs.Repo do
-  use Ecto.Repo, otp_app: :elixir_jobs
+  use Ecto.Repo,
+    otp_app: :elixir_jobs,
+    adapter: Ecto.Adapters.Postgres
+
   use Scrivener, page_size: Application.get_env(:elixir_jobs, :items_per_page)
 
   @doc """

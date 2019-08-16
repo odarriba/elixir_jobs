@@ -133,7 +133,7 @@ defmodule ElixirJobsWeb.OfferController do
       slug: "",
       job_place: job_place,
       job_type: job_type,
-      published_at: Ecto.DateTime.utc()
+      published_at: DateTime.utc_now()
     }
 
     conn

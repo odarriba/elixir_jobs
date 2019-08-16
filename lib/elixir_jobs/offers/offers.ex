@@ -8,12 +8,10 @@ defmodule ElixirJobs.Offers do
 
   alias ElixirJobs.Offers.Queries.Offer, as: OfferQuery
 
-  alias ElixirJobs.{
-    Offers.Offer,
-    EctoEnums.JobPlace,
-    EctoEnums.JobType,
-    Repo
-  }
+  alias ElixirJobs.EctoEnums.JobPlace
+  alias ElixirJobs.EctoEnums.JobType
+  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.Repo
 
   @doc """
   Returns the list of offers.

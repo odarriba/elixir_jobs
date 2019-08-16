@@ -33,7 +33,7 @@ defmodule ElixirJobs.Users.Admin do
   end
 
   def check_password(%Admin{} = admin, password) do
-    case Comeonin.Bcrypt.checkpw(password, admin.encrypted_password) do
+    case Bcrypt.verify_pass(password, admin.encrypted_password) do
       true -> {:ok, admin}
       _ -> {:error, :wrong_credentials}
     end

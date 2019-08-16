@@ -1,4 +1,5 @@
 [
+  import_deps: [:phoenix],
   inputs: [
     "lib/**/*.{ex,exs}",
     "test/**/*.{ex,exs}",
@@ -53,7 +54,7 @@
     options: 3,
     pipe_through: 1,
 
-    #EctoEnum
+    # EctoEnum
     defenum: 3
   ]
 ]

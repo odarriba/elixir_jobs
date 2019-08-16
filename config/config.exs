@@ -17,19 +17,19 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
   url: [host: "localhost"],
   secret_key_base: "IcrUuGYFkGys3tgfqEL5aGCHiAq4/bz4UcpvXFpLZde9Z3oWv//NdWfkXWA2BLNd",
   render_errors: [view: ElixirJobsWeb.ErrorView, accepts: ~w(html json)],
-  pubsub: [name: ElixirJobs.PubSub,
-           adapter: Phoenix.PubSub.PG2]
+  pubsub: [name: ElixirJobs.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Appsignal
-config :elixir_jobs, ElixirJobsWeb.Endpoint,
-  instrumenters: [Appsignal.Phoenix.Instrumenter]
+config :elixir_jobs, ElixirJobsWeb.Endpoint, instrumenters: [Appsignal.Phoenix.Instrumenter]
 
 config :phoenix, :template_engines,
   eex: Appsignal.Phoenix.Template.EExEngine,
   exs: Appsignal.Phoenix.Template.ExsEngine
 
-config :elixir_jobs, ElixirJobs.Repo,
-  loggers: [Appsignal.Ecto, Ecto.LogEntry]
+# Use Jason for JSON parsing in Phoenix
+config :phoenix, :json_library, Jason
+
+config :elixir_jobs, ElixirJobs.Repo, loggers: [Appsignal.Ecto, Ecto.LogEntry]
 
 # Configures Elixir's Logger
 config :logger, :console,
@@ -38,4 +38,4 @@ config :logger, :console,
 
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
-import_config "#{Mix.env}.exs"
+import_config "#{Mix.env()}.exs"
