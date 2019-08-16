@@ -26,5 +26,5 @@ defmodule ElixirJobsWeb.SharedView do
     end
   end
 
-  def get_telegram_channel(), do: Telegram.get_channel()
+  def get_telegram_channel, do: Telegram.get_channel()
 end

@@ -4,9 +4,9 @@ defmodule ElixirJobsWeb.Telegram do
   """
 
   alias ElixirJobs.Offers.Offer
-  alias ElixirJobsWeb.Router.Helpers, as: Routehelpers
-  alias ElixirJobsWeb.HumanizeHelper
   alias ElixirJobsWeb.Gettext
+  alias ElixirJobsWeb.HumanizeHelper
+  alias ElixirJobsWeb.Router.Helpers, as: Routehelpers
 
   require ElixirJobsWeb.Gettext
 
@@ -37,7 +37,7 @@ defmodule ElixirJobsWeb.Telegram do
     end
   end
 
-  def get_channel() do
+  def get_channel do
     Application.get_env(:elixir_jobs, :telegram_channel, "")
   end
 end

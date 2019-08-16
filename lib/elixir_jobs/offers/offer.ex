@@ -5,9 +5,9 @@ defmodule ElixirJobs.Offers.Offer do
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ElixirJobs.Offers.Offer
   alias ElixirJobs.EctoEnums.JobPlace
   alias ElixirJobs.EctoEnums.JobType
+  alias ElixirJobs.Offers.Offer
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id

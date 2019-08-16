@@ -1,15 +1,12 @@
 defmodule ElixirJobs.OffersTest do
   use ElixirJobs.DataCase
 
+  alias ElixirJobs.EctoEnums.JobPlace
+  alias ElixirJobs.EctoEnums.JobType
   alias ElixirJobs.Offers
+  alias ElixirJobs.Offers.Offer
 
   describe "offers" do
-    alias ElixirJobs.{
-      Offers.Offer,
-      EctoEnums.JobPlace,
-      EctoEnums.JobType
-    }
-
     @valid_attrs %{
       title: "some title",
       company: "some company",
