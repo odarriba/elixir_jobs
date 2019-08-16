@@ -1,7 +1,9 @@
 defmodule ElixirJobsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :elixir_jobs
 
-  socket("/socket", ElixirJobsWeb.UserSocket)
+  socket "/socket", ElixirJobsWeb.UserSocket,
+    websocket: true,
+    longpoll: [timeout: 45_000]
 
   # Serve at "/" the static files from "priv/static" directory.
   #
@@ -28,7 +30,7 @@ defmodule ElixirJobsWeb.Endpoint do
   plug Plug.Parsers,
     parsers: [:urlencoded, :multipart, :json],
     pass: ["*/*"],
-    json_decoder: Poison
+    json_decoder: Jason
 
   plug Plug.MethodOverride
   plug Plug.Head

@@ -41,34 +41,37 @@ defmodule ElixirJobs.Mixfile do
   defp deps do
     [
       # Phoenix
-      {:phoenix, "~> 1.3.0"},
-      {:phoenix_pubsub, "~> 1.0"},
-      {:phoenix_ecto, "~> 3.2"},
-      {:phoenix_html, "~> 2.10"},
-      {:gettext, "~> 0.11"},
-      {:cowboy, "~> 1.0"},
+      {:phoenix, "~> 1.4"},
+      {:phoenix_pubsub, "~> 1.1"},
+      {:phoenix_html, "~> 2.13"},
+      {:gettext, "~> 0.17.0"},
+      {:cowboy, "~> 2.6"},
+      {:plug_cowboy, "~> 2.0"},
+      {:plug, "~> 1.7"},
       # Database
-      {:ecto, "~> 2.2.0"},
+      {:phoenix_ecto, "~> 4.0"},
+      {:ecto_sql, "~> 3.0"},
       {:postgrex, ">= 0.0.0"},
       # Auth
-      {:guardian, "~> 1.0"},
-      {:comeonin, "~> 4.0"},
-      {:bcrypt_elixir, "~> 1.0"},
+      {:guardian, "~> 2.0"},
+      {:comeonin, "~> 5.1"},
+      {:bcrypt_elixir, "~> 2.0"},
       # External services
       {:extwitter, "~> 0.8"},
-      {:bamboo, "~> 0.8"},
-      {:nadia, "~> 0.4"},
+      {:bamboo, "~> 1.3"},
+      {:nadia, "~> 0.5"},
       # Monitoring
-      {:appsignal, "~> 1.0"},
+      {:appsignal, "~> 1.10"},
       # Misc
-      {:slugger, "~> 0.2"},
-      {:ecto_enum, "~> 1.0"},
-      {:scrivener_ecto, "~> 1.0"},
-      {:phoenix_html_sanitizer, "~> 1.1.0-rc1"},
-      {:calendar, "~> 0.17"},
+      {:slugger, "~> 0.3.0"},
+      {:ecto_enum, "~> 1.3"},
+      {:scrivener_ecto, "~> 2.2"},
+      {:phoenix_html_sanitizer, "~> 1.1"},
+      {:calendar, "~> 0.18.0"},
+      {:jason, "~> 1.0"},
       # Tests and dev
-      {:phoenix_live_reload, "~> 1.0", only: :dev},
-      {:credo, "~> 0.9.1", only: [:dev, :test], runtime: false}
+      {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
 

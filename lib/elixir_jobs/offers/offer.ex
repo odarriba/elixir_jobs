@@ -25,7 +25,7 @@ defmodule ElixirJobs.Offers.Offer do
     field :job_place, JobPlace
     field :job_type, JobType
 
-    field :published_at, :naive_datetime
+    field :published_at, :utc_datetime
 
     timestamps()
   end
@@ -68,11 +68,13 @@ defmodule ElixirJobs.Offers.Offer do
     title =
       changeset
       |> get_field(:title)
+      |> Kernel.||("")
       |> Slugger.slugify_downcase()
 
     company =
       changeset
       |> get_field(:company)
+      |> Kernel.||("")
       |> Slugger.slugify_downcase()
 
     "#{company}-#{title}-#{uid}"
