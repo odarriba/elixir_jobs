@@ -7,7 +7,7 @@ Elixir Jobs is a job board based in Elixir + Phoenix.
 1. Erlang 22.0
 2. Elixir 1.9.1
 3. Phoenix 1.4
-4. PostgreSQl
+4. PostgreSQL
 
 Some of the versions are set on `.tool_versions` file, so you can use it with [asdf version manager](https://github.com/asdf-vm/asdf)
 
@@ -48,10 +48,7 @@ Some of our contributors:
 Also, special thanks to :
 
 - [@rrrene](https://github.com/rrrene) for his awesome job with [ElixirStatus](https://github.com/rrrene/elixirstatus-web), which was the base at the beginning of this project.
-
 - [@carloscabo](https://github.com/carloscabo) for his [pure-css-select-style](https://github.com/carloscabo/pure-css-select-style) repository.
-
-
 
 ## Contribute
 
