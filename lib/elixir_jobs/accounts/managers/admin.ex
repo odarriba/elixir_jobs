@@ -27,14 +27,14 @@ defmodule ElixirJobs.Accounts.Managers.Admin do
 
   ## Examples
 
-      iex> get_admin_by_id!(123)
+      iex> get_admin!(123)
       %Admin{}
 
-      iex> get_admin_by_id!(456)
+      iex> get_admin!(456)
       ** (Ecto.NoResultsError)
 
   """
-  def get_admin_by_id!(id) do
+  def get_admin!(id) do
     Admin
     |> AdminQuery.by_id(id)
     |> Repo.one!()
