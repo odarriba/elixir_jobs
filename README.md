@@ -4,10 +4,10 @@ Elixir Jobs is a job board based in Elixir + Phoenix.
 
 ## Technologies used
 
-1. Erlang 22.0
-2. Elixir 1.9.1
-3. Phoenix 1.4
-4. PostgreSQL
+- Erlang 22.0
+- Elixir 1.9.1
+- Phoenix 1.4
+- PostgreSQL
 
 Some of the versions are set on `.tool_versions` file, so you can use it with [asdf version manager](https://github.com/asdf-vm/asdf)
 
@@ -26,7 +26,7 @@ You might encounter some errors about the secrets files. That's because you need
 
 Also, assets now live on `./assets`, so NPM and brunch configurations are there.
 
-### Users
+### Seeds
 
 The project has the model of Administrators, which take care of approving the offers before showing them on the site.
 
@@ -35,20 +35,6 @@ You can create a dummy administration user (credetials: dummy@user.com / 123456)
 ```
 $ mix run priv/repo/seeds.exs
 ```
-
-## Thanks
-
-Thanks to anyone which has contributed or it's going to contribute this project. No, seriously, you are awesome.
-
-Some of our contributors:
-
-- [@mnussbaumer](https://github.com/mnussbaumer)
-- [@dreamingechoes](https://github.com/dreamingechoes)
-
-Also, special thanks to :
-
-- [@rrrene](https://github.com/rrrene) for his awesome job with [ElixirStatus](https://github.com/rrrene/elixirstatus-web), which was the base at the beginning of this project.
-- [@carloscabo](https://github.com/carloscabo) for his [pure-css-select-style](https://github.com/carloscabo/pure-css-select-style) repository.
 
 ## Contribute
 

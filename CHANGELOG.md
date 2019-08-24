@@ -1,5 +1,11 @@
 # Elixir Jobs changelog
 
+## v2.1
+
+- Updated to Elixir 1.9.1 and Erlang 22.0
+- Update Ecto and Phoenix
+- Update DateTime helper functions
+
 ## v2.0
 
 - Removed Markdown and long descriptions
