@@ -51,7 +51,8 @@ defmodule ElixirJobsWeb.OfferController do
     page_number = get_page_number(params)
 
     opts =
-      Enum.reduce(filters, Keyword.new(), fn
+      filters
+      |> Enum.reduce(Keyword.new(), fn
         {"job_place", value}, acc ->
           Keyword.put(acc, :job_place, value)
 
