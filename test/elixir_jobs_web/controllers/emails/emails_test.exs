@@ -11,7 +11,7 @@ defmodule ElixirJobsWeb.EmailsTest do
     @valid_offer %{
       title: "some title",
       company: "some company",
-      summary: "some summary",
+      summary: "some summary text for the offer",
       location: "some location",
       url: "https://www.google.com",
       job_place: "remote",
@@ -52,10 +52,11 @@ defmodule ElixirJobsWeb.EmailsTest do
 
     test "doesn't raise error without admins on offer creation", %{conn: conn} do
       conn = post conn, offer_path(conn, :create), offer: @valid_offer
-      assert redirected_to(conn) == offer_path(conn, :index)
+
+      assert redirected_to(conn) == offer_path(conn, :new)
 
       assert get_flash(conn, :info) ==
-               "<b>Job offer created correctly!</b> We will review and publish it soon"
+               "<b>Job offer successfully sent!</b> We will review and publish it soon"
 
       assert_no_emails_delivered()
     end

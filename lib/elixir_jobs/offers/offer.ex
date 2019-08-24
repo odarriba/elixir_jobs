@@ -27,7 +27,7 @@ defmodule ElixirJobs.Offers.Offer do
 
     field :published_at, :utc_datetime
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @required_attrs [:title, :company, :location, :url, :job_place, :job_type, :summary]

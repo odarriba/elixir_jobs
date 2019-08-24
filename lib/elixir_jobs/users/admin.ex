@@ -19,7 +19,7 @@ defmodule ElixirJobs.Users.Admin do
     field :password, :string, virtual: true
     field :password_confirmation, :string, virtual: true
 
-    timestamps()
+    timestamps(type: :utc_datetime)
   end
 
   @doc false
@@ -60,7 +60,7 @@ defmodule ElixirJobs.Users.Admin do
   defp generate_passwords(%Ecto.Changeset{errors: []} = changeset) do
     case get_field(changeset, :password) do
       password when not is_nil(password) ->
-        hash = Comeonin.Bcrypt.hashpwsalt(password)
+        hash = Bcrypt.hash_pwd_salt(password)
         put_change(changeset, :encrypted_password, hash)
 
       _ ->
