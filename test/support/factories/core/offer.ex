@@ -9,11 +9,11 @@ defmodule ElixirJobs.Factories.Core.Offer do
 
   def build_factory do
     %{
-      title: Faker.Lorem.sentence(),
-      company: Faker.Company.name(),
+      title: Faker.Lorem.sentence(2),
+      company: Faker.Lorem.sentence(2),
       location: Faker.StarWars.planet(),
       url: Faker.Internet.url(),
-      summary: Faker.Lorem.sentence(),
+      summary: Faker.Lorem.sentence(8..10),
       job_place: Enum.random(JobPlace.available_values()),
       job_type: Enum.random(JobType.available_values())
     }

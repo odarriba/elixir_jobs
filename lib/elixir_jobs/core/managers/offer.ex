@@ -1,9 +1,6 @@
-defmodule ElixirJobs.Core.Managers.Offers do
+defmodule ElixirJobs.Core.Managers.Offer do
   @moduledoc """
-  The Offers context.
-
-  At the moment this context o ly have the Offer schema and functions to manage
-  offers in the app.
+  The Offer monoger.
   """
 
   alias ElixirJobs.Core.Queries.Offer, as: OfferQuery
@@ -49,11 +46,9 @@ defmodule ElixirJobs.Core.Managers.Offers do
 
   Accepts some options:
 
-  - page: number of the page. If not passed, no pagination is made.
   - published: returns only published or unpublished offers.
   - job_place: filter offers by job place
   - job_type: filter offers by job type
-  - search_text: filter offers by text
 
   ## Examples
 
@@ -78,11 +73,9 @@ defmodule ElixirJobs.Core.Managers.Offers do
 
   Accepts some options:
 
-  - page: number of the page. If not passed, no pagination is made.
   - published: returns only published or unpublished offers.
   - job_place: filter offers by job place
   - job_type: filter offers by job type
-  - search_text: filter offers by text
 
   ## Examples
 
