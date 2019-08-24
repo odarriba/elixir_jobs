@@ -65,7 +65,6 @@ defmodule ElixirJobs.Mixfile do
       {:appsignal, "~> 1.10"},
       # Misc
       {:slugger, "~> 0.3.0"},
-      {:ecto_enum, "~> 1.3"},
       {:scrivener_ecto, "~> 2.2"},
       {:phoenix_html_sanitizer, "~> 1.1"},
       {:calendar, "~> 0.18.0"},
