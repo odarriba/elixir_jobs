@@ -51,15 +51,21 @@ defmodule ElixirJobs.Accounts.Schemas.Admin do
   # Function to validate passwords only if they are changed or the admin is new.
   #
   defp validate_passwords(changeset) do
-    case get_field(changeset, :encrypted_password) do
-      nil ->
+    current_password_hash = get_field(changeset, :encrypted_password)
+    new_password = get_change(changeset, :password)
+
+    case [current_password_hash, new_password] do
+      [nil, _] ->
         changeset
         |> validate_required([:password, :password_confirmation])
         |> validate_confirmation(:password)
 
+      [_, pass] when pass not in ["", nil] ->
+        changeset
+        |> validate_confirmation(:password, required: true)
+
       _ ->
         changeset
-        |> validate_confirmation(:password)
     end
   end
 
@@ -68,7 +74,7 @@ defmodule ElixirJobs.Accounts.Schemas.Admin do
   #
   defp generate_passwords(%Ecto.Changeset{errors: []} = changeset) do
     case get_field(changeset, :password) do
-      password when not is_nil(password) ->
+      password when password not in ["", nil] ->
         hash = Bcrypt.hash_pwd_salt(password)
         put_change(changeset, :encrypted_password, hash)
 
