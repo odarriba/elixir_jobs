@@ -6,8 +6,8 @@ defmodule ElixirJobsWeb.Guardian do
 
   use Guardian, otp_app: :elixir_jobs
 
-  alias ElixirJobs.Users
-  alias ElixirJobs.Users.Admin
+  alias ElixirJobs.Accounts
+  alias ElixirJobs.Accounts.Schemas.Admin
 
   def subject_for_token(%Admin{} = resource, _claims) do
     {:ok, to_string(resource.id)}
@@ -18,9 +18,9 @@ defmodule ElixirJobsWeb.Guardian do
   end
 
   def resource_from_claims(claims) do
-    case Users.get_admin_by_id(claims["sub"]) do
-      %Admin{} = admin -> {:ok, admin}
-      _ -> {:error, :resource_not_found}
-    end
+    admin = Accounts.get_admin_by_id!(claims["sub"])
+    {:ok, admin}
+  rescue
+    Ecto.NoResultsError -> {:error, :resource_not_found}
   end
 end

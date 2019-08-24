@@ -1,13 +1,11 @@
-defmodule ElixirJobs.Users do
+defmodule ElixirJobs.Accounts.Managers.Admin do
   @moduledoc """
-  The Users context.
+  The Admin manager.
   """
 
+  alias ElixirJobs.Accounts.Queries.Admin, as: AdminQuery
+  alias ElixirJobs.Accounts.Schemas.Admin
   alias ElixirJobs.Repo
-
-  alias ElixirJobs.Users.Queries.Admin, as: AdminQuery
-
-  alias ElixirJobs.Users.Admin
 
   @doc """
   Returns the list of admins.
@@ -43,26 +41,6 @@ defmodule ElixirJobs.Users do
   end
 
   @doc """
-  Gets a single admin by id.
-
-  Returns `nil` if the Admin does not exist.
-
-  ## Examples
-
-      iex> get_admin_by_id(123)
-      %Admin{}
-
-      iex> get_admin_by_id(456)
-      nil
-
-  """
-  def get_admin_by_id(id) do
-    Admin
-    |> AdminQuery.by_id(id)
-    |> Repo.one()
-  end
-
-  @doc """
   Gets a single admin by email.
 
   Raises `Ecto.NoResultsError` if the Admin does not exist.
@@ -80,35 +58,6 @@ defmodule ElixirJobs.Users do
     Admin
     |> AdminQuery.by_email(email)
     |> Repo.one!()
-  end
-
-  @doc """
-  Gets a single admin by email.
-
-  Raises `Ecto.NoResultsError` if the Admin does not exist.
-
-  ## Examples
-
-      iex> auth_admin!("admin@elixirjobs.net", "123456")
-      {:ok, %Admin{}}
-
-      iex> auth_admin!("admin@elixirjobs.net", "wrong_password")
-      {:error, :wrong_credentials}
-
-      iex> auth_admin!("non-admin@elixirjobs.net", "password")
-      {:error, :wrong_credentials}
-
-  """
-  def auth_admin(email, password) do
-    admin =
-      Admin
-      |> AdminQuery.by_email(email)
-      |> Repo.one()
-
-    case Admin.check_password(admin, password) do
-      {:ok, admin} -> {:ok, admin}
-      {:error, error} -> {:error, error}
-    end
   end
 
   @doc """

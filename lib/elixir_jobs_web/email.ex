@@ -8,7 +8,7 @@ defmodule ElixirJobsWeb.Email do
   import ElixirJobsWeb.Gettext
 
   def notification_offer_created_html(offer, from \\ :default) do
-    case ElixirJobs.Users.admin_emails() do
+    case ElixirJobs.Accounts.admin_emails() do
       [] ->
         []
 
