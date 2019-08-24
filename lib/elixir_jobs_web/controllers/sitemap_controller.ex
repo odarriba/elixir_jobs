@@ -1,12 +1,12 @@
 defmodule ElixirJobsWeb.SitemapController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.Offers
+  alias ElixirJobs.Core
 
   @items_per_page Application.get_env(:elixir_jobs, :items_per_page)
 
   def sitemap(conn, _params) do
-    offers = Offers.list_published_offers()
+    offers = Core.list_published_offers()
 
     total_pages =
       offers

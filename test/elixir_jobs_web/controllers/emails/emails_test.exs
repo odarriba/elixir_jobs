@@ -2,7 +2,7 @@ defmodule ElixirJobsWeb.EmailsTest do
   use ElixirJobsWeb.ConnCase
   use Bamboo.Test, shared: true
 
-  alias ElixirJobs.Offers
+  alias ElixirJobs.Core
   alias ElixirJobs.Users
 
   import Ecto.Query, only: [from: 2]
@@ -39,7 +39,7 @@ defmodule ElixirJobsWeb.EmailsTest do
       post conn, offer_path(conn, :create), offer: @valid_offer
 
       query =
-        from offer in Offers.Schemas.Offer,
+        from offer in Core.Schemas.Offer,
           order_by: [desc: offer.inserted_at],
           limit: 1
 

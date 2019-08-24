@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Offers.Queries.Offer do
+defmodule ElixirJobs.Core.Queries.Offer do
   @moduledoc """
   Module to build queries related to the Offer schema
   """

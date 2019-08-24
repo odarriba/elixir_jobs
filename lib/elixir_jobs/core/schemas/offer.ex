@@ -1,12 +1,12 @@
-defmodule ElixirJobs.Offers.Schemas.Offer do
+defmodule ElixirJobs.Core.Schemas.Offer do
   @moduledoc """
   Offer schema.
   """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ElixirJobs.Offers.Fields.JobPlace
-  alias ElixirJobs.Offers.Fields.JobType
+  alias ElixirJobs.Core.Fields.JobPlace
+  alias ElixirJobs.Core.Fields.JobType
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id

@@ -1,11 +1,11 @@
-defmodule ElixirJobs.Factories.Offers.Offer do
+defmodule ElixirJobs.Factories.Core.Offer do
   @moduledoc false
 
   use ElixirJobs.Factories.Base, :offer
 
-  alias ElixirJobs.Offers.Fields.JobPlace
-  alias ElixirJobs.Offers.Fields.JobType
-  alias ElixirJobs.Offers.Schemas.Offer
+  alias ElixirJobs.Core.Fields.JobPlace
+  alias ElixirJobs.Core.Fields.JobType
+  alias ElixirJobs.Core.Schemas.Offer
 
   def build_factory do
     %{

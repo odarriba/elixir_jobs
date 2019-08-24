@@ -3,7 +3,7 @@ defmodule ElixirJobsWeb.Telegram do
   Module to send new elixir job offers to telegram channel.
   """
 
-  alias ElixirJobs.Offers.Schemas.Offer
+  alias ElixirJobs.Core.Schemas.Offer
   alias ElixirJobsWeb.Gettext
   alias ElixirJobsWeb.HumanizeHelper
   alias ElixirJobsWeb.Router.Helpers, as: Routehelpers

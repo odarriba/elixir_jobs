@@ -11,7 +11,7 @@ defmodule ElixirJobsWeb.SeoHelper do
   @default_page_title "Find your next job the right way"
   @default_page_description "Elixir Jobs helps developers to find their next Elixir job and companies to spread their offers. Use our search engine to find your next dream job."
 
-  alias ElixirJobs.Offers.Schemas.Offer
+  alias ElixirJobs.Core.Schemas.Offer
   alias ElixirJobsWeb.OfferController
   alias ElixirJobsWeb.PageController
 

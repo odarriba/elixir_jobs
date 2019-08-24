@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Offers do
+defmodule ElixirJobs.Core do
   @moduledoc """
   The Offers context.
 
@@ -6,11 +6,11 @@ defmodule ElixirJobs.Offers do
   offers in the app.
   """
 
-  alias ElixirJobs.Offers.Queries.Offer, as: OfferQuery
+  alias ElixirJobs.Core.Queries.Offer, as: OfferQuery
 
-  alias ElixirJobs.Offers.Fields.JobPlace
-  alias ElixirJobs.Offers.Fields.JobType
-  alias ElixirJobs.Offers.Schemas.Offer
+  alias ElixirJobs.Core.Fields.JobPlace
+  alias ElixirJobs.Core.Fields.JobType
+  alias ElixirJobs.Core.Schemas.Offer
   alias ElixirJobs.Repo
 
   @doc """

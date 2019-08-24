@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Offers.Fields.JobPlace do
+defmodule ElixirJobs.Core.Fields.JobType do
   @moduledoc """
   Field definition module to save in the database the type of an account
   """
@@ -7,9 +7,9 @@ defmodule ElixirJobs.Offers.Fields.JobPlace do
 
   @values [
     :unknown,
-    :onsite,
-    :remote,
-    :both
+    :full_time,
+    :part_time,
+    :freelance
   ]
 
   def available_values, do: @values
@@ -18,15 +18,15 @@ defmodule ElixirJobs.Offers.Fields.JobPlace do
   def type, do: :string
 
   @doc """
-  Cast an job place from the value input to verify that it's a registered value.
+  Cast an job type from the value input to verify that it's a registered value.
 
   ## Examples
 
-    iex> cast(:onsite)
-    {:ok, :onsite}
+    iex> cast(:full_time)
+    {:ok, :full_time}
 
-    iex> cast("onsite")
-    {:ok, :onsite}
+    iex> cast("full_time")
+    {:ok, :full_time}
 
     iex> cast(:wadus)
     :error
@@ -38,12 +38,12 @@ defmodule ElixirJobs.Offers.Fields.JobPlace do
   def cast(_value), do: :error
 
   @doc """
-  Load a job place value from the adapter to adapt it to the desired format in the app.
+  Load a job type value from the adapter to adapt it to the desired format in the app.
 
   ## Examples
 
-    iex> load("onsite")
-    {:ok, :onsite}
+    iex> load("full_time")
+    {:ok, :full_time}
 
     iex> load("wadus")
     :error
@@ -69,8 +69,8 @@ defmodule ElixirJobs.Offers.Fields.JobPlace do
 
   ## Examples
 
-    iex> dump(:onsite)
-    {:ok, "onsite"}
+    iex> dump(:full_time)
+    {:ok, "full_time"}
 
     iex> dump(:wadus)
     :error
