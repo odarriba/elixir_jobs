@@ -72,6 +72,7 @@ defmodule ElixirJobs.Mixfile do
       {:jason, "~> 1.0"},
       # Tests and dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:faker, "~> 0.12", only: :test},
       {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end
