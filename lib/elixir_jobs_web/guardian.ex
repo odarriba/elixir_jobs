@@ -17,8 +17,8 @@ defmodule ElixirJobsWeb.Guardian do
     {:error, :unknown_resource}
   end
 
-  def resource_from_claims(claims) do
-    admin = Accounts.get_admin_by_id!(claims["sub"])
+  def resource_from_claims(%{"sub" => admin_id}) do
+    admin = Accounts.get_admin_by_id!(admin_id)
     {:ok, admin}
   rescue
     Ecto.NoResultsError -> {:error, :resource_not_found}

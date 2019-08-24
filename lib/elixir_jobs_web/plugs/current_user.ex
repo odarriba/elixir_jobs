@@ -5,7 +5,7 @@ defmodule ElixirJobsWeb.Plugs.CurrentUser do
 
   import Plug.Conn
 
-  alias ElixirJobs.Accounts.Admin
+  alias ElixirJobs.Accounts.Schemas.Admin
   alias ElixirJobsWeb.Guardian.Plug, as: GuardianPlug
 
   def init(_), do: []
