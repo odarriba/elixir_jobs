@@ -7,6 +7,7 @@ defmodule ElixirJobs.Factory do
   alias ElixirJobs.Repo
 
   # Factories included
+  use ElixirJobs.Factories.Accounts.Admin
   use ElixirJobs.Factories.Core.Offer
 
   def params_for(schema, attrs \\ []) do
