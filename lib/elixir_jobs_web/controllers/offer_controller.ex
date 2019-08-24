@@ -4,7 +4,6 @@ defmodule ElixirJobsWeb.OfferController do
   alias ElixirJobs.Core
   alias ElixirJobs.Core.Schemas.Offer
 
-  @filters_available ["text", "job_type", "job_place"]
   @type_filters Enum.map(Core.get_job_types(), &to_string/1)
   @place_filters Enum.map(Core.get_job_places(), &to_string/1)
 
@@ -13,7 +12,7 @@ defmodule ElixirJobsWeb.OfferController do
   def index(conn, params) do
     page_number = get_page_number(params)
 
-    page = Core.list_published_offers(page_number)
+    page = Core.list_offers(published: true, page: page_number)
 
     conn
     |> assign(:offers, page.entries)
@@ -48,24 +47,27 @@ defmodule ElixirJobsWeb.OfferController do
     raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
   end
 
-  def search(conn, params) do
+  def search(conn, %{"filters" => filters} = params) do
     page_number = get_page_number(params)
 
-    filters =
-      params
-      |> Map.get("filters", %{})
-      |> Enum.reduce(%{}, fn {k, v}, acc ->
-        case {k, v} do
-          {key, _} when key not in @filters_available -> acc
-          {_, val} when val in ["", nil] -> acc
-          {key, str} when is_binary(str) -> Map.put(acc, key, String.trim(str))
-          {key, val} -> Map.put(acc, key, val)
-        end
+    opts =
+      Enum.reduce(filters, Keyword.new(), fn
+        {"job_place", value}, acc ->
+          Keyword.put(acc, :job_place, value)
+
+        {"job_type", value}, acc ->
+          Keyword.put(acc, :job_type, value)
+
+        {"text", value}, acc when is_binary(value) ->
+          Keyword.put(acc, :search_text, String.trim(value))
+
+        _, acc ->
+          acc
       end)
       |> Enum.reject(fn {_, v} -> is_nil(v) or v == "" end)
-      |> Enum.into(%{})
+      |> Keyword.put(:page, page_number)
 
-    page = Core.filter_published_offers(filters, page_number)
+    page = Core.list_offers(opts)
 
     conn
     |> assign(:offers, page.entries)
@@ -144,14 +146,14 @@ defmodule ElixirJobsWeb.OfferController do
       if user_logged_in?(conn) do
         Core.get_offer_by_slug!(slug)
       else
-        Core.get_published_offer_by_slug!(slug)
+        Core.get_offer_by_slug!(slug, published: true)
       end
 
     render(conn, "show.html", offer: offer)
   end
 
   def rss(conn, _params) do
-    offers = Core.list_offers(1)
+    offers = Core.list_offers(published: true, page: 1)
     render(conn, "rss.xml", offers: offers.entries)
   end
 

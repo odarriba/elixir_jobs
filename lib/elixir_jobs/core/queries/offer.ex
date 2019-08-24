@@ -5,6 +5,30 @@ defmodule ElixirJobs.Core.Queries.Offer do
 
   import Ecto.Query, warn: false
 
+  def build(query, opts) do
+    Enum.reduce(opts, query, fn
+      {:published, true}, q ->
+        q
+        |> published()
+        |> order_published()
+
+      {:published, false}, q ->
+        unpublished(q)
+
+      {:job_place, value}, q ->
+        by_job_place(q, value)
+
+      {:job_type, value}, q ->
+        by_job_type(q, value)
+
+      {:search_text, text}, q ->
+        by_text(q, text)
+
+      _, q ->
+        q
+    end)
+  end
+
   def by_id(query, id) do
     from o in query, where: o.id == ^id
   end
@@ -13,21 +37,23 @@ defmodule ElixirJobs.Core.Queries.Offer do
     from o in query, where: o.slug == ^slug
   end
 
-  def by_job_type(query, nil), do: query
-
-  def by_job_type(query, type) do
-    from o in query, where: o.job_type == ^type
+  def by_job_type(query, values) when is_list(values) do
+    from o in query, where: o.job_type in ^values
   end
 
-  def by_job_place(query, nil), do: query
-
-  def by_job_place(query, place) do
-    from o in query, where: o.job_place == ^place
+  def by_job_type(query, value) do
+    from o in query, where: o.job_type == ^value
   end
 
-  def by_text(query, nil), do: query
+  def by_job_place(query, values) when is_list(values) do
+    from o in query, where: o.job_place in ^values
+  end
 
-  def by_text(query, text) do
+  def by_job_place(query, value) do
+    from o in query, where: o.job_place == ^value
+  end
+
+  def by_text(query, text) when is_binary(text) do
     text
     |> String.split(" ")
     |> Enum.map(&"%#{&1}%")
@@ -41,7 +67,7 @@ defmodule ElixirJobs.Core.Queries.Offer do
 
   def published(query) do
     from o in query,
-      where: not is_nil(o.published_at) and o.published_at <= ^NaiveDateTime.utc_now()
+      where: not is_nil(o.published_at) and o.published_at <= ^DateTime.utc_now()
   end
 
   def unpublished(query) do
@@ -50,9 +76,5 @@ defmodule ElixirJobs.Core.Queries.Offer do
 
   def order_published(query) do
     from o in query, order_by: [desc: o.published_at]
-  end
-
-  def order_inserted(query) do
-    from o in query, order_by: [desc: o.inserted_at]
   end
 end

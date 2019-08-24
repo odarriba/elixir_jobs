@@ -17,7 +17,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         _ -> 1
       end
 
-    pages = Core.list_published_offers(page_number)
+    pages = Core.list_offers(published: true, page: page_number)
 
     conn
     |> assign(:offers, pages.entries)
@@ -36,7 +36,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         _ -> 1
       end
 
-    pages = Core.list_unpublished_offers(page_number)
+    pages = Core.list_offers(published: false, page: page_number)
 
     conn
     |> assign(:offers, pages.entries)
