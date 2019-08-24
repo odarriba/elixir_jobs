@@ -1,5 +1,6 @@
 defmodule ElixirJobsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :elixir_jobs
+  use Appsignal.Phoenix
 
   socket "/socket", ElixirJobsWeb.UserSocket,
     websocket: true,
@@ -43,7 +44,6 @@ defmodule ElixirJobsWeb.Endpoint do
     key: "_elixir_jobs_key",
     signing_salt: "JReEffn+"
 
-  use Appsignal.Phoenix
   plug ElixirJobsWeb.Router
 
   @doc """

@@ -12,6 +12,14 @@ defmodule ElixirJobs.Application do
   def start(_type, _args) do
     import Supervisor.Spec
 
+    # AppSignal
+    :telemetry.attach(
+      "appsignal-ecto",
+      [:my_app, :repo, :query],
+      &Appsignal.Ecto.handle_event/4,
+      nil
+    )
+
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
