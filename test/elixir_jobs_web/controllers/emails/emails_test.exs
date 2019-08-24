@@ -2,8 +2,8 @@ defmodule ElixirJobsWeb.EmailsTest do
   use ElixirJobsWeb.ConnCase
   use Bamboo.Test, shared: true
 
-  alias ElixirJobs.Core
   alias ElixirJobs.Accounts
+  alias ElixirJobs.Core
 
   import Ecto.Query, only: [from: 2]
 
