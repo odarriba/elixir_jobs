@@ -1,13 +1,12 @@
-defmodule ElixirJobs.Offers.Offer do
+defmodule ElixirJobs.Offers.Schemas.Offer do
   @moduledoc """
   Offer schema.
   """
   use Ecto.Schema
   import Ecto.Changeset
 
-  alias ElixirJobs.EctoEnums.JobPlace
-  alias ElixirJobs.EctoEnums.JobType
-  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.Offers.Fields.JobPlace
+  alias ElixirJobs.Offers.Fields.JobType
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -35,7 +34,7 @@ defmodule ElixirJobs.Offers.Offer do
   @attributes @required_attrs ++ @optional_attrs
 
   @doc false
-  def changeset(%Offer{} = offer, attrs) do
+  def changeset(offer, attrs) do
     offer
     |> cast(attrs, @attributes)
     |> validate_required(@required_attrs)
@@ -45,8 +44,8 @@ defmodule ElixirJobs.Offers.Offer do
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, @url_regexp)
-    |> validate_inclusion(:job_place, JobPlace.__valid_values__())
-    |> validate_inclusion(:job_type, JobType.__valid_values__())
+    |> validate_inclusion(:job_place, JobPlace.available_values())
+    |> validate_inclusion(:job_type, JobType.available_values())
     |> unique_constraint(:slug)
     |> generate_slug()
   end

@@ -8,9 +8,9 @@ defmodule ElixirJobs.Offers do
 
   alias ElixirJobs.Offers.Queries.Offer, as: OfferQuery
 
-  alias ElixirJobs.EctoEnums.JobPlace
-  alias ElixirJobs.EctoEnums.JobType
-  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.Offers.Fields.JobPlace
+  alias ElixirJobs.Offers.Fields.JobType
+  alias ElixirJobs.Offers.Schemas.Offer
   alias ElixirJobs.Repo
 
   @doc """
@@ -299,7 +299,7 @@ defmodule ElixirJobs.Offers do
       [:unknown, :onsite, :remote, :both]
 
   """
-  def get_job_places, do: JobPlace.__enum_map__()
+  def get_job_places, do: JobPlace.available_values()
 
   @doc """
   Returns registered job types.
@@ -310,5 +310,5 @@ defmodule ElixirJobs.Offers do
       [:unknown, :full_time, :part_time, :freelance]
 
   """
-  def get_job_types, do: JobType.__enum_map__()
+  def get_job_types, do: JobType.available_values()
 end

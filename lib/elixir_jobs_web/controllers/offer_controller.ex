@@ -3,7 +3,7 @@ defmodule ElixirJobsWeb.OfferController do
 
   alias ElixirJobs.{
     Offers,
-    Offers.Offer
+    Offers.Schemas.Offer
   }
 
   @filters_available ["text", "job_type", "job_place"]

@@ -4,7 +4,7 @@ defmodule ElixirJobsWeb.Twitter do
   network.
   """
 
-  alias ElixirJobs.Offers.Offer
+  alias ElixirJobs.Offers.Schemas.Offer
   alias ElixirJobsWeb.Router.Helpers, as: RouterHelpers
 
   alias ElixirJobsWeb.HumanizeHelper
