@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Date do
+defmodule ElixirJobsWeb.Date do
   @moduledoc """
   Module with date-related calculation and helper functions.
   """
