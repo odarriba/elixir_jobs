@@ -4,9 +4,9 @@ Elixir Jobs is a job board based in Elixir + Phoenix.
 
 ## Technologies used
 
-1. Erlang 20.0
-2. Elixir 1.5.1
-3. Phoenix 1.3.0 (with contexts!)
+1. Erlang 22.0
+2. Elixir 1.9.1
+3. Phoenix 1.4
 4. PostgreSQl
 
 Some of the versions are set on `.tool_versions` file, so you can use it with [asdf version manager](https://github.com/asdf-vm/asdf)
@@ -35,13 +35,6 @@ You can create a dummy administration user (credetials: dummy@user.com / 123456)
 ```
 $ mix run priv/repo/seeds.exs
 ```
-
-## TODO
-
-Some things are missing yet:
-
-1. More and better testing
-2. Check Credo
 
 ## Thanks
 
