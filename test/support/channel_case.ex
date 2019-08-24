@@ -24,6 +24,8 @@ defmodule ElixirJobsWeb.ChannelCase do
 
       # The default endpoint for testing
       @endpoint ElixirJobsWeb.Endpoint
+
+      import ElixirJobs.Factory
     end
   end
 

@@ -2,8 +2,8 @@ defmodule ElixirJobsWeb.EmailsTest do
   use ElixirJobsWeb.ConnCase
   use Bamboo.Test, shared: true
 
-  alias ElixirJobs.Offers
-  alias ElixirJobs.Users
+  alias ElixirJobs.Accounts
+  alias ElixirJobs.Core
 
   import Ecto.Query, only: [from: 2]
 
@@ -33,13 +33,13 @@ defmodule ElixirJobsWeb.EmailsTest do
     }
 
     test "emails get sent to admins on offer creation", %{conn: conn} do
-      Users.create_admin(@valid_admin_1)
-      Users.create_admin(@valid_admin_2)
-      assert length(Users.list_admins()) == 2
+      Accounts.create_admin(@valid_admin_1)
+      Accounts.create_admin(@valid_admin_2)
+      assert length(Accounts.list_admins()) == 2
       post conn, offer_path(conn, :create), offer: @valid_offer
 
       query =
-        from offer in Offers.Offer,
+        from offer in Core.Schemas.Offer,
           order_by: [desc: offer.inserted_at],
           limit: 1
 

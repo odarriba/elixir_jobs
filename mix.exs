@@ -65,13 +65,13 @@ defmodule ElixirJobs.Mixfile do
       {:appsignal, "~> 1.10"},
       # Misc
       {:slugger, "~> 0.3.0"},
-      {:ecto_enum, "~> 1.3"},
       {:scrivener_ecto, "~> 2.2"},
       {:phoenix_html_sanitizer, "~> 1.1"},
       {:calendar, "~> 0.18.0"},
       {:jason, "~> 1.0"},
       # Tests and dev
       {:phoenix_live_reload, "~> 1.2", only: :dev},
+      {:faker, "~> 0.12", only: :test},
       {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
     ]
   end

@@ -29,8 +29,6 @@ config :phoenix, :template_engines,
 # Use Jason for JSON parsing in Phoenix
 config :phoenix, :json_library, Jason
 
-config :elixir_jobs, ElixirJobs.Repo, loggers: [Appsignal.Ecto, Ecto.LogEntry]
-
 # Configures Elixir's Logger
 config :logger, :console,
   format: "$time $metadata[$level] $message\n",

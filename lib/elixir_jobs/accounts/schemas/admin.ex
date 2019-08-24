@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Users.Admin do
+defmodule ElixirJobs.Accounts.Schemas.Admin do
   @moduledoc """
   Admin schema
   """
@@ -6,8 +6,6 @@ defmodule ElixirJobs.Users.Admin do
   use Ecto.Schema
 
   import Ecto.Changeset
-
-  alias ElixirJobs.Users.Admin
 
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
@@ -23,7 +21,7 @@ defmodule ElixirJobs.Users.Admin do
   end
 
   @doc false
-  def changeset(%Admin{} = admin, attrs) do
+  def changeset(admin, attrs) do
     admin
     |> cast(attrs, [:name, :email, :password, :password_confirmation])
     |> validate_required([:name, :email])
@@ -32,34 +30,51 @@ defmodule ElixirJobs.Users.Admin do
     |> generate_passwords()
   end
 
-  def check_password(%Admin{} = admin, password) do
+  @doc """
+  Function to check the `password` of a given `admin`.
+  """
+  def check_password(admin, password) do
     case Bcrypt.verify_pass(password, admin.encrypted_password) do
       true -> {:ok, admin}
       _ -> {:error, :wrong_credentials}
     end
   end
 
-  def check_password(_, _) do
-    Comeonin.Bcrypt.dummy_checkpw()
+  @doc """
+  Function to simulate checking a password to avoid time-based user discovery
+  """
+  def dummy_check_password do
+    Bcrypt.no_user_verify()
     {:error, :wrong_credentials}
   end
 
+  # Function to validate passwords only if they are changed or the admin is new.
+  #
   defp validate_passwords(changeset) do
-    case get_field(changeset, :encrypted_password) do
-      nil ->
+    current_password_hash = get_field(changeset, :encrypted_password)
+    new_password = get_change(changeset, :password)
+
+    case [current_password_hash, new_password] do
+      [nil, _] ->
         changeset
         |> validate_required([:password, :password_confirmation])
         |> validate_confirmation(:password)
 
+      [_, pass] when pass not in ["", nil] ->
+        changeset
+        |> validate_confirmation(:password, required: true)
+
       _ ->
         changeset
-        |> validate_confirmation(:password)
     end
   end
 
+  # Function to generate password hash when creating/changing the password of an
+  # admin account
+  #
   defp generate_passwords(%Ecto.Changeset{errors: []} = changeset) do
     case get_field(changeset, :password) do
-      password when not is_nil(password) ->
+      password when password not in ["", nil] ->
         hash = Bcrypt.hash_pwd_salt(password)
         put_change(changeset, :encrypted_password, hash)
 

@@ -1,21 +1,18 @@
 defmodule ElixirJobsWeb.OfferController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.{
-    Offers,
-    Offers.Offer
-  }
+  alias ElixirJobs.Core
+  alias ElixirJobs.Core.Schemas.Offer
 
-  @filters_available ["text", "job_type", "job_place"]
-  @type_filters Enum.map(Offers.get_job_types(), &to_string/1)
-  @place_filters Enum.map(Offers.get_job_places(), &to_string/1)
+  @type_filters Enum.map(Core.get_job_types(), &to_string/1)
+  @place_filters Enum.map(Core.get_job_places(), &to_string/1)
 
   plug :scrub_params, "offer" when action in [:create, :preview]
 
   def index(conn, params) do
     page_number = get_page_number(params)
 
-    page = Offers.list_published_offers(page_number)
+    page = Core.list_offers(published: true, page: page_number)
 
     conn
     |> assign(:offers, page.entries)
@@ -50,24 +47,28 @@ defmodule ElixirJobsWeb.OfferController do
     raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
   end
 
-  def search(conn, params) do
+  def search(conn, %{"filters" => filters} = params) do
     page_number = get_page_number(params)
 
-    filters =
-      params
-      |> Map.get("filters", %{})
-      |> Enum.reduce(%{}, fn {k, v}, acc ->
-        case {k, v} do
-          {key, _} when key not in @filters_available -> acc
-          {_, val} when val in ["", nil] -> acc
-          {key, str} when is_binary(str) -> Map.put(acc, key, String.trim(str))
-          {key, val} -> Map.put(acc, key, val)
-        end
+    opts =
+      filters
+      |> Enum.reduce(Keyword.new(), fn
+        {"job_place", value}, acc ->
+          Keyword.put(acc, :job_place, value)
+
+        {"job_type", value}, acc ->
+          Keyword.put(acc, :job_type, value)
+
+        {"text", value}, acc when is_binary(value) ->
+          Keyword.put(acc, :search_text, String.trim(value))
+
+        _, acc ->
+          acc
       end)
       |> Enum.reject(fn {_, v} -> is_nil(v) or v == "" end)
-      |> Enum.into(%{})
+      |> Keyword.put(:page, page_number)
 
-    page = Offers.filter_published_offers(filters, page_number)
+    page = Core.list_offers(opts)
 
     conn
     |> assign(:offers, page.entries)
@@ -77,7 +78,7 @@ defmodule ElixirJobsWeb.OfferController do
   end
 
   def new(conn, _params) do
-    changeset = Offers.change_offer(%Offer{})
+    changeset = Core.change_offer(%Offer{})
 
     render(conn, "new.html", changeset: changeset)
   end
@@ -95,7 +96,7 @@ defmodule ElixirJobsWeb.OfferController do
         end
       end)
 
-    case Offers.create_offer(offer_corrected) do
+    case Core.create_offer(offer_corrected) do
       {:ok, offer} ->
         ElixirJobsWeb.Email.notification_offer_created_html(offer)
 
@@ -144,16 +145,16 @@ defmodule ElixirJobsWeb.OfferController do
   def show(conn, %{"slug" => slug}) do
     offer =
       if user_logged_in?(conn) do
-        Offers.get_offer_by_slug!(slug)
+        Core.get_offer_by_slug!(slug)
       else
-        Offers.get_published_offer_by_slug!(slug)
+        Core.get_offer_by_slug!(slug, published: true)
       end
 
     render(conn, "show.html", offer: offer)
   end
 
   def rss(conn, _params) do
-    offers = Offers.list_offers(1)
+    offers = Core.list_offers(published: true, page: 1)
     render(conn, "rss.xml", offers: offers.entries)
   end
 

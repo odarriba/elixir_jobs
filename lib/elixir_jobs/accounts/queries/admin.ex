@@ -1,4 +1,4 @@
-defmodule ElixirJobs.Users.Queries.Admin do
+defmodule ElixirJobs.Accounts.Queries.Admin do
   @moduledoc """
   Module to build queries related to the Admin schema
   """

@@ -1,7 +1,7 @@
 defmodule ElixirJobsWeb.Admin.OfferController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.Offers
+  alias ElixirJobs.Core
   alias ElixirJobsWeb.Telegram
   alias ElixirJobsWeb.Twitter
 
@@ -17,7 +17,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         _ -> 1
       end
 
-    pages = Offers.list_published_offers(page_number)
+    pages = Core.list_offers(published: true, page: page_number)
 
     conn
     |> assign(:offers, pages.entries)
@@ -36,7 +36,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
         _ -> 1
       end
 
-    pages = Offers.list_unpublished_offers(page_number)
+    pages = Core.list_offers(published: false, page: page_number)
 
     conn
     |> assign(:offers, pages.entries)
@@ -47,8 +47,8 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
   def publish(conn, %{"slug" => slug}) do
     slug
-    |> Offers.get_offer_by_slug!()
-    |> Offers.publish_offer()
+    |> Core.get_offer_by_slug!()
+    |> Core.publish_offer()
     |> case do
       {:ok, _offer} ->
         conn
@@ -63,7 +63,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   end
 
   def send_twitter(conn, %{"slug" => slug}) do
-    offer = Offers.get_offer_by_slug!(slug)
+    offer = Core.get_offer_by_slug!(slug)
 
     Twitter.publish(conn, offer)
 
@@ -73,7 +73,7 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   end
 
   def send_telegram(conn, %{"slug" => slug}) do
-    offer = Offers.get_offer_by_slug!(slug)
+    offer = Core.get_offer_by_slug!(slug)
 
     case Telegram.send(conn, offer) do
       :ok ->
@@ -87,16 +87,16 @@ defmodule ElixirJobsWeb.Admin.OfferController do
   end
 
   def edit(conn, %{"slug" => slug}) do
-    offer = Offers.get_offer_by_slug!(slug)
-    offer_changeset = Offers.change_offer(offer)
+    offer = Core.get_offer_by_slug!(slug)
+    offer_changeset = Core.change_offer(offer)
 
     render(conn, "edit.html", changeset: offer_changeset, offer: offer)
   end
 
   def update(conn, %{"slug" => slug, "offer" => offer_params}) do
-    offer = Offers.get_offer_by_slug!(slug)
+    offer = Core.get_offer_by_slug!(slug)
 
-    case Offers.update_offer(offer, offer_params) do
+    case Core.update_offer(offer, offer_params) do
       {:ok, offer} ->
         conn
         |> put_flash(:info, gettext("<b>Job offer updated correctly!</b>"))
@@ -109,8 +109,8 @@ defmodule ElixirJobsWeb.Admin.OfferController do
 
   def delete(conn, %{"slug" => slug}) do
     slug
-    |> Offers.get_offer_by_slug!()
-    |> Offers.delete_offer()
+    |> Core.get_offer_by_slug!()
+    |> Core.delete_offer()
     |> case do
       {:ok, _} ->
         conn

@@ -25,6 +25,8 @@ defmodule ElixirJobsWeb.ConnCase do
 
       # The default endpoint for testing
       @endpoint ElixirJobsWeb.Endpoint
+
+      import ElixirJobs.Factory
     end
   end
 

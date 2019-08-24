@@ -1,12 +1,12 @@
 defmodule ElixirJobsWeb.OfferView do
   use ElixirJobsWeb, :view
 
-  alias ElixirJobs.Offers
+  alias ElixirJobs.Core
 
   alias ElixirJobsWeb.HumanizeHelper
 
   def get_job_place_options(default) do
-    Enum.reduce(Offers.get_job_places(), [], fn option, acc ->
+    Enum.reduce(Core.get_job_places(), [], fn option, acc ->
       select_option = [
         {HumanizeHelper.get_place_text(option, default), option}
       ]
@@ -16,7 +16,7 @@ defmodule ElixirJobsWeb.OfferView do
   end
 
   def get_job_type_options(default) do
-    Enum.reduce(Offers.get_job_types(), [], fn option, acc ->
+    Enum.reduce(Core.get_job_types(), [], fn option, acc ->
       select_option = [
         {HumanizeHelper.get_type_text(option, default), option}
       ]

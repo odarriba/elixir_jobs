@@ -43,16 +43,16 @@ defmodule ElixirJobsWeb.ViewHelpers do
           "Yesterday"
 
         true ->
-          ElixirJobs.Date.strftime(date, "%e %b")
+          ElixirJobsWeb.Date.strftime(date, "%e %b")
       end
     else
-      ElixirJobs.Date.strftime(date, "%e %b %Y")
+      ElixirJobsWeb.Date.strftime(date, "%e %b %Y")
     end
   end
 
   @doc "Returns a date formatted for RSS clients."
   def xml_readable_date(date) do
-    ElixirJobs.Date.strftime(date, "%e %b %Y %T %z")
+    ElixirJobsWeb.Date.strftime(date, "%e %b %Y %T %z")
   end
 
   ###
