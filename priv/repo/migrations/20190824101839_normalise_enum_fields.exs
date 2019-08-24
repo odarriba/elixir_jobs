@@ -7,7 +7,7 @@ defmodule ElixirJobs.Repo.Migrations.NormaliseEnumFields do
       modify(:job_type, :string, null: false)
     end
 
-    Ecto.Migration.execute("DROP TYPE job_place")
-    Ecto.Migration.execute("DROP TYPE job_type")
+    Ecto.Migration.execute("DROP TYPE IF EXISTS job_place")
+    Ecto.Migration.execute("DROP TYPE IF EXISTS job_type")
   end
 end

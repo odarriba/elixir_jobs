@@ -39,7 +39,7 @@ defmodule ElixirJobsWeb.EmailsTest do
       post conn, offer_path(conn, :create), offer: @valid_offer
 
       query =
-        from offer in Offers.Offer,
+        from offer in Offers.Schemas.Offer,
           order_by: [desc: offer.inserted_at],
           limit: 1
 
