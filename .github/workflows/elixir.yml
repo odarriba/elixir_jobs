@@ -4,29 +4,70 @@ on: [push, pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-18.04
 
     container:
-      image: elixir:1.9.1-slim
+      image: elixir:1.9.1
+
+    services:
+      postgres:
+        image: postgres
+        ports:
+        - 5432/tcp
+        env:
+          POSTGRES_USER: elixir_jobs
+          POSTGRES_PASSWORD: elixir_jobs
+          POSTGRES_DB: elixir_jobs_test
 
     steps:
     - uses: actions/checkout@v1
     - name: Install Dependencies
+      env:
+        MIX_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        POSTGRES_USERNAME: elixir_jobs
+        POSTGRES_PASSWORD: elixir_jobs
+        POSTGRES_DB: elixir_jobs_test
       run: |
+        cp config/test.secret.ci.exs config/test.secret.exs
         mix local.rebar --force
         mix local.hex --force
+        apt-get update -qqq && apt-get install make gcc -y -qqq
         mix deps.get
     - name: Compile
       env:
         MIX_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        POSTGRES_USERNAME: elixir_jobs
+        POSTGRES_PASSWORD: elixir_jobs
+        POSTGRES_DB: elixir_jobs_test
       run: mix compile --warnings-as-errors
-    - name: Check code quality
+    - name: Run formatter
       env:
         MIX_ENV: test
-      run: |
-        mix credo
-        mix format
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        POSTGRES_USERNAME: elixir_jobs
+        POSTGRES_PASSWORD: elixir_jobs
+        POSTGRES_DB: elixir_jobs_test
+      run: mix format --check-formatted
+    - name: Run Credo
+      env:
+        MIX_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        POSTGRES_USERNAME: elixir_jobs
+        POSTGRES_PASSWORD: elixir_jobs
+        POSTGRES_DB: elixir_jobs_test
+      run: mix credo
     - name: Run Tests
       env:
         MIX_ENV: test
+        POSTGRES_HOST: postgres
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        POSTGRES_USERNAME: elixir_jobs
+        POSTGRES_PASSWORD: elixir_jobs
+        POSTGRES_DB: elixir_jobs_test
       run: mix test
