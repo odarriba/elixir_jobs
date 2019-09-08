@@ -9,9 +9,8 @@
               phoenix_link: "<a href=\"http://phoenixframework.org\" target=\"_blank\">Phoenix</a>") %>
           </strong>
         </p>
-        <p><%= raw gettext("Please contact <b>Óscar de Arriba</b> (%{odarriba_link}) or %{github_link} if anything seems broken or worthy of improvement.",
-                odarriba_link: "<a href=\"https://twitter.com/odarriba\" target=\"_blank\">@odarriba</a>",
-                github_link: "<a href=\"https://github.com/odarriba/elixir_jobs/issues/new\" target=\"_blank\">create a GitHub issue</a>") %></p>
+        <p><%= raw gettext("Please contact <b>Óscar de Arriba</b> (%{odarriba_link}) if anything seems broken or worthy of improvement.",
+                odarriba_link: "<a href=\"https://twitter.com/odarriba\" target=\"_blank\">@odarriba</a>") %></p>
       </div>
       <div class="column has-text-centered has-text-right-desktop">
         <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %><br />
