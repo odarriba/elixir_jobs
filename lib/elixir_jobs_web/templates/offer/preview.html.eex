@@ -1,9 +1,16 @@
 <hr class="divider"/>
-<%= render("_offer.html", conn: @conn, offer: @offer, title_link: false, details: true) %>
 
-<nav class="level offer-actions">
-  <p class="level-item has-text-centered">
-    <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
-  </p>
-</nav>
-<hr class="divider"/>
+<div class="offers-show">
+  <div class="offer">
+    <%= render("_offer_header.html", conn: @conn, offer: @offer) %>
+    <hr />
+
+    <div class="body"><%= text_to_html(@offer.summary) %></div>
+
+    <nav class="level offer-actions">
+      <p class="level-item has-text-centered">
+        <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
+      </p>
+    </nav>
+  </div>
+</div>

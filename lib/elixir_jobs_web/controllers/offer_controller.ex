@@ -71,10 +71,11 @@ defmodule ElixirJobsWeb.OfferController do
     page = Core.list_offers(opts)
 
     conn
+    |> assign(:is_search, true)
     |> assign(:offers, page.entries)
     |> assign(:page_number, page.page_number)
     |> assign(:total_pages, page.total_pages)
-    |> render("search.html")
+    |> render("index.html")
   end
 
   def new(conn, _params) do

@@ -1,5 +1,9 @@
 <section class="offers-index">
-  <%= render("index/_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
+  <%= if @is_search do %>
+    <%= render("index/_filters.html", conn: @conn, aspect: "full", page_number: @page_number, total_pages: @total_pages) %>
+  <% else %>
+    <%= render("index/_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
+  <% end %>
 
   <%= for offer <- @offers do %>
     <%= link(to: offer_path(@conn, :show, offer.slug)) do %>
