@@ -22,8 +22,8 @@
           <%= offer.summary %>
         ]]></description>
         <pubDate><%= xml_readable_date(offer.inserted_at) %></pubDate>
-        <link><%= offer.url %></link>
-        <guid><%= offer.url %></guid>
+        <link><%= offer_url(@conn, :show, offer.slug) %></link>
+        <guid><%= offer_url(@conn, :show, offer.slug) %></guid>
       </item>
     <% end %>
   </channel>
