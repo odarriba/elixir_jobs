@@ -4,34 +4,30 @@
       <div class="column has-text-centered has-text-left-desktop">
         <p>
           <strong>
-            <%= raw gettext("Proudly powered by %{elixir_link} and %{phoenix_link}.",
-              elixir_link: "<a href=\"http://elixir-lang.org\" target=\"_blank\">Elixir</a>",
-              phoenix_link: "<a href=\"http://phoenixframework.org\" target=\"_blank\">Phoenix</a>") %>
+            <%= raw gettext("ElixirJobs.net &copy %{year}", year: DateTime.utc_now.year) %>
           </strong>
         </p>
-        <p><%= raw gettext("Please contact <b>Óscar de Arriba</b> (%{odarriba_link}) or %{github_link} if anything seems broken or worthy of improvement.",
-                odarriba_link: "<a href=\"https://twitter.com/odarriba\" target=\"_blank\">@odarriba</a>",
-                github_link: "<a href=\"https://github.com/odarriba/elixir_jobs/issues/new\" target=\"_blank\">create a GitHub issue</a>") %></p>
+        <p>
+          <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %>
+          |
+          <%= link(gettext("About this site"), to: page_path(@conn, :about)) %>
+        </p>
       </div>
       <div class="column has-text-centered has-text-right-desktop">
-        <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %><br />
-        <%= link(gettext("All offers"), to: offer_path(@conn, :index)) %>
-        |
-        <%= link(gettext("On site offers"), to: offer_path(@conn, :index_filtered, "onsite")) %>
-        |
-        <%= link(gettext("Remote offers"), to: offer_path(@conn, :index_filtered, "remote")) %><br />
-        <%= link(gettext("Full time offers"), to: offer_path(@conn, :index_filtered, "full_time")) %>
-        |
-        <%= link(gettext("Part time offers"), to: offer_path(@conn, :index_filtered, "part_time")) %>
-        |
-        <%= link(gettext("Freelance offers"), to: offer_path(@conn, :index_filtered, "freelance")) %>
+        <p><%= link(gettext("Recent job postings"), to: offer_path(@conn, :index)) %></p>
+        <p>
+          <%= link(gettext("On site jobs"), to: offer_path(@conn, :index_filtered, "onsite")) %>
+          |
+          <%= link(gettext("Remote jobs"), to: offer_path(@conn, :index_filtered, "remote")) %>
+        </p>
+        <p>
+          <%= link(gettext("Full time jobs"), to: offer_path(@conn, :index_filtered, "full_time")) %>
+          |
+          <%= link(gettext("Part time jobs"), to: offer_path(@conn, :index_filtered, "part_time")) %>
+          |
+          <%= link(gettext("Freelance jobs"), to: offer_path(@conn, :index_filtered, "freelance")) %>
+        </p>
       </div>
-    </div>
-    <div class="content has-text-centered">
-
-      <p>
-
-      </p>
     </div>
   </div>
 </footer>

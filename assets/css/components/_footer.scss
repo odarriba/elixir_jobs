@@ -1,10 +1,10 @@
 .footer {
   margin-top: 1rem;
-  padding: 3rem 1.5rem 1.5rem 1.5rem;
+  padding: 3rem 1.5rem 2.5rem 1.5rem;
   background-color: rgba(0, 0, 0, 0.87);
   color: darken($white, 35%);
 
-  font-size: 0.9rem;
+  font-size: 0.8rem;
 
   strong {
     color: darken($white, 35%);
@@ -20,6 +20,11 @@
 
   a {
     color: $white;
+  }
+
+  p {
+    text-transform: uppercase;
+    margin: 0.3rem 0;
   }
 
   .copyright {
