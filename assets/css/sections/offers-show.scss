@@ -4,7 +4,10 @@
 
     hr {
       margin: 0 0 1.5rem 0;
-      background-color: darken($light, 10%);
+    }
+
+    .body p {
+      margin-bottom: 0.8rem;
     }
   }
 }

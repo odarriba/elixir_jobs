@@ -3,7 +3,7 @@
     <%= render("_offer_header.html", conn: @conn, offer: @offer) %>
     <hr />
 
-    <p><%= @offer.summary %></p>
+    <div class="body"><%= text_to_html(@offer.summary) %></div>
 
     <nav class="level offer-actions">
       <p class="level-item has-text-centered">

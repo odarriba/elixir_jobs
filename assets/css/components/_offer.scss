@@ -6,6 +6,12 @@
     color: $primary;
     font-size: 1.5rem;
 
+    @media screen and (max-width: $tablet) {
+      strong {
+        display: block;
+      }
+    }
+
     small {
       font-weight: bold;
       text-transform: uppercase;
