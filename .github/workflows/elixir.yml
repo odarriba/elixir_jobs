@@ -13,11 +13,12 @@ jobs:
       postgres:
         image: postgres
         ports:
-        - 5432/tcp
+          - 5432:5432
         env:
           POSTGRES_USER: elixir_jobs
           POSTGRES_PASSWORD: elixir_jobs
           POSTGRES_DB: elixir_jobs_test
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
     steps:
     - uses: actions/checkout@v1
