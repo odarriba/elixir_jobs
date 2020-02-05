@@ -4,6 +4,10 @@ body {
   flex-direction: column;
 }
 
+.container {
+  max-width: 960px !important;
+}
+
 .section.app {
   flex: 1;
 }

@@ -1,10 +1,21 @@
-<%= render("_offer.html", conn: @conn, offer: @offer, details: true) %>
+<section class="offers-show">
+  <div class="offer">
+    <%= render("_offer_header.html", conn: @conn, offer: @offer) %>
+    <hr />
 
-<nav class="level offer-actions">
-  <p class="level-item has-text-centered">
-    <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
-  </p>
+    <div class="body"><%= text_to_html(@offer.summary) %></div>
+
+    <nav class="level offer-actions">
+      <p class="level-item has-text-centered">
+        <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
+      </p>
+    </nav>
+
+    <%= render("show/_share.html", conn: @conn, offer: @offer) %>
+  </div>
+
   <%= if user_logged_in?(@conn) do %>
+  <nav class="level offer-actions">
     <p class="level-item has-text-centered">
     <%= unless @offer.published_at do %>
       <%= link(gettext("Publish offer"),
@@ -36,7 +47,6 @@
       method: :delete,
       data: [confirm: gettext("Do you really want to delete this offer?")]) %>
     </p>
+  </nav>
   <% end %>
-</nav>
-
-<%= render("_share.html", conn: @conn, offer: @offer) %>
+</section>

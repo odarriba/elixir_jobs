@@ -2,34 +2,21 @@
   padding-bottom: 10px;
 
   p.title {
-    margin: 0.3em 0 0.7em 0;
+    margin: 0 0 0.7em 0;
+    color: $primary;
     font-size: 1.5rem;
+
+    @media screen and (max-width: $tablet) {
+      strong {
+        display: block;
+      }
+    }
 
     small {
       font-weight: bold;
       text-transform: uppercase;
       font-size: 0.9rem;
       color: $grey;
-    }
-  }
-
-  a {
-    color: $primary;
-  }
-}
-
-.no-offer {
-  margin: 3rem 0;
-  border: 2px solid $light;
-  border-radius: 10px;
-  padding: 3rem;
-  position: relative;
-
-  .content {
-    text-align: center;
-
-    .button {
-      margin-top: 1rem;
     }
   }
 }
