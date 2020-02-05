@@ -1,0 +1,10 @@
+.offers-show {
+  .offer {
+    margin-top: 1rem;
+
+    hr {
+      margin: 0 0 1.5rem 0;
+      background-color: darken($light, 10%);
+    }
+  }
+}

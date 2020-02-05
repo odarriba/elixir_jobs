@@ -32,6 +32,7 @@ defmodule ElixirJobsWeb do
     quote do
       use Phoenix.View,
         root: "lib/elixir_jobs_web/templates",
+        pattern: "**/*",
         namespace: ElixirJobsWeb
 
       # Import convenience functions from controllers
