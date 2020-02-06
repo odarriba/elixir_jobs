@@ -12,6 +12,9 @@
           |
           <%= link(gettext("About this site"), to: page_path(@conn, :about)) %>
         </p>
+        <p>
+          <a href="mailto:hi@elixirjobs.net">Contact us</a>
+        </p>
       </div>
       <div class="column has-text-centered has-text-right-desktop">
         <p><%= link(gettext("Recent job postings"), to: offer_path(@conn, :index)) %></p>
