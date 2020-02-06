@@ -1,27 +1,24 @@
 <div class="content about">
-  <h2><%= raw gettext("What is this?") %></h2>
+  <h2><%= raw gettext("What is Elixir Jobs?") %></h2>
 
-  <p><%= raw gettext("Elixir Jobs is a site built to help developers to find their next Elixir job, and to help companies to reach the vibrant Elixir community of developers.") %></p>
+  <p><%= raw gettext("Elixir Jobs is a site built to help developers to find their next Elixir job, and to help companies to reach the vibrant Elixir community.") %></p>
 
   <p><%= raw gettext("Also, our aim is to gain visibility for the Elixir job market, showing potential offers to developers all around the world, and using the tools they like to use.") %></p>
 
   <h2><%= raw gettext("Why should I post my job offers here?") %></h2>
 
-  <p><%= raw gettext("<b>Because it's free</b> and will provide your offers of a larger visibility.") %></p>
-
-  <p><%= raw gettext("By posting your offer on our site, it will be distributed also using RSS and Twitter (why not start %{following_us}?), so you will potentially reach more developers than using other ways. And more important: <b>you will be reaching developers that want a new job</b>.",
+  <p><%= raw gettext("By posting your offer on our site, it will be distributed also using Telegram, RSS and Twitter (why not start %{following_us}?), so you will potentially reach more developers than using other ways. And more important: <b>you will be reaching developers that want a new job</b>.",
     following_us: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("following us")}</a>") %></p>
 
+  <p><%= raw gettext("Also, because you can <b>post your offers for free</b>.") %></p>
 
-  <h2><%= raw gettext("Closing thoughts") %></h2>
+  <h2><%= raw gettext("Get in touch") %></h2>
 
-  <p><%= raw gettext("Last but not least, Elixir Jobs is a web app written in Elixir + Phoenix running in production (you can check its %{source_code}), so it's also a live example that Elixir and Phoenix are production-ready.",
-    source_code: "<a href=\"https://github.com/odarriba/elixir_jobs\" target=\"_blank\">#{gettext("source code")}</a>") %></p>
+  <p><%= raw gettext("If you need to contact us regarding a job offer, for commercial enquiries or just to say something, you can send us an email to <a href=\"mailto:hi@elixirjobs.net\">hi@elixirjobs.net</a>") %></p>
 
   <h2><%= raw gettext("Sponsors") %></h2>
 
-  <p><%= raw gettext("Last but not least, we want to thanks the companies that are helping Elixir Jobs:"
-    ) %></p>
+  <p><%= raw gettext("Last but not least, we want to thanks the companies that are helping Elixir Jobs:") %></p>
 
   <nav class="level sponsors">
     <div class="level-item">
