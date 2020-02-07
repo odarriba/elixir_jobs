@@ -47,11 +47,12 @@ defmodule ElixirJobsWeb.OfferController do
     raise Phoenix.Router.NoRouteError, conn: conn, router: ElixirJobsWeb.Router
   end
 
-  def search(conn, %{"filters" => filters} = params) do
+  def search(conn, params) do
     page_number = get_page_number(params)
 
     opts =
-      filters
+      params
+      |> Map.get("filters", %{})
       |> Enum.reduce(Keyword.new(), fn
         {"job_place", value}, acc ->
           Keyword.put(acc, :job_place, value)
