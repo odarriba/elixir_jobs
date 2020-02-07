@@ -11,9 +11,9 @@
         <span class="tag is-light is-rounded"><%= gettext("Date") %></span>
         <span class="tag is-danger is-rounded">
           <%= if @offer.published_at do %>
-          <%= human_readable_date(@offer.published_at) %>
+          <%= HumanizeHelper.readable_date(@offer.published_at) %>
           <% else %>
-          <%= human_readable_date(@offer.inserted_at) %>
+          <%= HumanizeHelper.readable_date(@offer.inserted_at) %>
           <% end %>
         </span>
       </span>

@@ -1,4 +1,4 @@
-defmodule ElixirJobsWeb.ErrorHelpers do
+defmodule ElixirJobsWeb.ErrorHelper do
   @moduledoc """
   Conveniences for translating and building error messages.
   """

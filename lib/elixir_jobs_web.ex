@@ -42,15 +42,31 @@ defmodule ElixirJobsWeb do
       use Phoenix.HTML
 
       import ElixirJobsWeb.Router.Helpers
-      import ElixirJobsWeb.ErrorHelpers
-      import ElixirJobsWeb.ViewHelpers
+      import ElixirJobsWeb.ErrorHelper
+      import ElixirJobsWeb.ViewHelper
       import ElixirJobsWeb.Gettext
+
+      alias ElixirJobsWeb.DateHelper
+      alias ElixirJobsWeb.HumanizeHelper
 
       def render_shared(template, assigns \\ []) do
         render(ElixirJobsWeb.SharedView, template, assigns)
       end
 
       def user_logged_in?(conn), do: !is_nil(Map.get(conn.assigns, :current_user))
+    end
+  end
+
+  def helper do
+    quote do
+      # Import convenience functions from controllers
+      import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
+
+      # Use all HTML functionality (forms, tags, etc)
+      use Phoenix.HTML
+
+      import ElixirJobsWeb.Router.Helpers
+      import ElixirJobsWeb.Gettext
     end
   end
 
