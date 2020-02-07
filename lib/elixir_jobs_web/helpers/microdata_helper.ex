@@ -1,4 +1,5 @@
 defmodule ElixirJobsWeb.MicrodataHelper do
+  @moduledoc false
   use ElixirJobsWeb, :helper
 
   alias ElixirJobs.Core.Schemas.Offer
