@@ -49,7 +49,7 @@ defmodule ElixirJobsWeb.MicrodataHelper do
   end
 
   defp offer_microdata(conn, offer) do
-    publication_date = offer.published_at || offer.created_at
+    publication_date = offer.published_at || offer.inserted_at
     publication_date_str = DateHelper.strftime(publication_date, "%Y-%m-%d")
 
     employment_type =
