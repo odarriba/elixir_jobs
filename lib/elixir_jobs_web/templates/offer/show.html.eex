@@ -15,38 +15,6 @@
   </div>
 
   <%= if user_logged_in?(@conn) do %>
-  <nav class="level offer-actions">
-    <p class="level-item has-text-centered">
-    <%= unless @offer.published_at do %>
-      <%= link(gettext("Publish offer"),
-        to: admin_offer_path(@conn, :publish, @offer.slug),
-        class: "button is-primary is-medium") %>
-    <% end %>
-    </p>
-    <%= if @offer.published_at do %>
-    <p class="level-item has-text-centered">
-    <%= link(gettext("Send to Twitter"),
-      to: admin_offer_path(@conn, :send_twitter, @offer.slug),
-      class: "button is-dark is-medium") %>
-    </p>
-    <p class="level-item has-text-centered">
-    <%= link(gettext("Send to Telegram"),
-      to: admin_offer_path(@conn, :send_telegram, @offer.slug),
-      class: "button is-dark is-medium") %>
-    </p>
-    <% end %>
-    <p class="level-item has-text-centered">
-    <%= link(gettext("Edit offer"),
-      to: admin_offer_path(@conn, :edit, @offer.slug),
-      class: "button is-success is-medium") %>
-    </p>
-    <p class="level-item has-text-centered">
-    <%= link(gettext("Delete offer"),
-      to: admin_offer_path(@conn, :delete, @offer.slug),
-      class: "button is-danger is-medium",
-      method: :delete,
-      data: [confirm: gettext("Do you really want to delete this offer?")]) %>
-    </p>
-  </nav>
+    <%= render("show/_administration.html", conn: @conn, offer: @offer) %>
   <% end %>
 </section>
