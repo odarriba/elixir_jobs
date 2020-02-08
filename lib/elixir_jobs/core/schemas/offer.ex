@@ -11,8 +11,6 @@ defmodule ElixirJobs.Core.Schemas.Offer do
   @primary_key {:id, :binary_id, autogenerate: true}
   @foreign_key_type :binary_id
 
-  @url_regexp ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/
-
   schema "offers" do
     field :title, :string
     field :company, :string
@@ -24,26 +22,41 @@ defmodule ElixirJobs.Core.Schemas.Offer do
     field :job_place, JobPlace
     field :job_type, JobType
 
+    field :contact_email, :string
+
     field :published_at, :utc_datetime
 
     timestamps(type: :utc_datetime)
   end
 
-  @required_attrs [:title, :company, :location, :url, :job_place, :job_type, :summary]
+  @required_attrs [
+    :title,
+    :company,
+    :contact_email,
+    :location,
+    :url,
+    :job_place,
+    :job_type,
+    :summary
+  ]
   @optional_attrs [:published_at, :slug]
-  @attributes @required_attrs ++ @optional_attrs
+
+  @email_regexp ~r/^[A-Za-z0-9._%+-+']+@[A-Za-z0-9.-]+\.[A-Za-z]+$/
+  @url_regexp ~r/^\b((https?:\/\/?)[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))$/
 
   @doc false
   def changeset(offer, attrs) do
     offer
-    |> cast(attrs, @attributes)
+    |> cast(attrs, @required_attrs ++ @optional_attrs)
     |> validate_required(@required_attrs)
     |> validate_length(:title, min: 5, max: 50)
     |> validate_length(:company, min: 2, max: 30)
-    |> validate_length(:summary, min: 10, max: 450)
+    |> validate_length(:summary, min: 10, max: 2000)
     |> validate_length(:location, min: 3, max: 50)
     |> validate_length(:url, min: 1, max: 255)
     |> validate_format(:url, @url_regexp)
+    |> validate_length(:contact_email, min: 1, max: 255)
+    |> validate_format(:contact_email, @email_regexp)
     |> validate_inclusion(:job_place, JobPlace.available_values())
     |> validate_inclusion(:job_type, JobType.available_values())
     |> unique_constraint(:slug)
