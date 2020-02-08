@@ -14,7 +14,16 @@ defmodule ElixirJobs.Core.Schemas.OfferTest do
       assert result.valid?
     end
 
-    required_attrs = [:title, :company, :location, :url, :job_place, :job_type, :summary]
+    required_attrs = [
+      :title,
+      :company,
+      :contact_email,
+      :location,
+      :url,
+      :job_place,
+      :job_type,
+      :summary
+    ]
 
     Enum.each(required_attrs, fn attr ->
       test "validates that #{attr} is required" do
@@ -86,7 +95,7 @@ defmodule ElixirJobs.Core.Schemas.OfferTest do
       refute changeset.valid?
       assert Enum.any?(changeset.errors, &(elem(&1, 0) == :summary))
 
-      attrs = params_for(:offer, summary: Faker.Lorem.sentence(451))
+      attrs = params_for(:offer, summary: Faker.Lorem.sentence(2001))
       changeset = Offer.changeset(%Offer{}, attrs)
 
       refute changeset.valid?
@@ -143,6 +152,36 @@ defmodule ElixirJobs.Core.Schemas.OfferTest do
 
       assert changeset.valid?
       refute Enum.any?(changeset.errors, &(elem(&1, 0) == :url))
+    end
+
+    test "contact_email length is checked" do
+      attrs = params_for(:offer, contact_email: "#{Faker.Lorem.characters(256)}@test.com")
+      changeset = Offer.changeset(%Offer{}, attrs)
+
+      refute changeset.valid?
+      assert Enum.any?(changeset.errors, &(elem(&1, 0) == :contact_email))
+    end
+
+    test "contact_email format is checked" do
+      # Not an email at all
+      attrs = params_for(:offer, contact_email: "fake url")
+      changeset = Offer.changeset(%Offer{}, attrs)
+
+      refute changeset.valid?
+      assert Enum.any?(changeset.errors, &(elem(&1, 0) == :contact_email))
+
+      # Invalid address
+      attrs = params_for(:offer, contact_email: "google.es")
+      changeset = Offer.changeset(%Offer{}, attrs)
+
+      refute changeset.valid?
+      assert Enum.any?(changeset.errors, &(elem(&1, 0) == :contact_email))
+
+      attrs = params_for(:offer, contact_email: "test_google.com")
+      changeset = Offer.changeset(%Offer{}, attrs)
+
+      refute changeset.valid?
+      assert Enum.any?(changeset.errors, &(elem(&1, 0) == :contact_email))
     end
 
     test "job_place is validated" do

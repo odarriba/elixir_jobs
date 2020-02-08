@@ -13,6 +13,7 @@ defmodule ElixirJobs.Factories.Core.Offer do
       company: Faker.Lorem.sentence(2),
       location: Faker.StarWars.planet(),
       url: Faker.Internet.url(),
+      contact_email: Faker.Internet.email(),
       summary: Faker.Lorem.sentence(8..10),
       job_place: Enum.random(JobPlace.available_values()),
       job_type: Enum.random(JobType.available_values())
