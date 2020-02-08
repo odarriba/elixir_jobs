@@ -15,6 +15,7 @@ defmodule ElixirJobsWeb.OfferController do
     page = Core.list_offers(published: true, page: page_number)
 
     conn
+    |> assign(:show_hero, true)
     |> assign(:offers, page.entries)
     |> assign(:page_number, page.page_number)
     |> assign(:total_pages, page.total_pages)
@@ -72,6 +73,7 @@ defmodule ElixirJobsWeb.OfferController do
     page = Core.list_offers(opts)
 
     conn
+    |> assign(:show_hero, true)
     |> assign(:offers, page.entries)
     |> assign(:page_number, page.page_number)
     |> assign(:total_pages, page.total_pages)

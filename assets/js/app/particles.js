@@ -1,6 +1,12 @@
 import "particles.js"
 
 function initParticles() {
+  var has_hero = document.getElementsByClassName("hero main").length > 0;
+
+  if (!has_hero) {
+    return false;
+  }
+
   particlesJS("particles", {
     "particles": {
       "number": {

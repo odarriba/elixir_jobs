@@ -1,12 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <%= render("shared/head.html", conn: @conn) %>
+    <%= render("shared/_head.html", conn: @conn) %>
   </head>
 
   <body>
     <%= render "shared/_navbar.html", conn: @conn %>
-    <%= render "shared/_hero.html", conn: @conn %>
+
+    <%= if @conn.assigns[:show_hero] do %>
+      <%= render "shared/_hero.html", conn: @conn %>
+    <% else %>
+      <div class="navbar-spacing"></div>
+    <% end %>
+
+    <div class="box cta">
+      <p class="has-text-centered">
+        <%= raw gettext("Subscribe to our <b>Telegram</b> channel to get last job offers on your phone!") %>
+        <%= link raw(gettext("Join now!&nbsp;<i class='fab fa-telegram-plane'></i>")), to: "https://t.me/#{Telegram.get_channel()}", class: "button is-small is-info is-rounded", target: "_blank" %>
+      </p>
+    </div>
 
     <section class="section app">
       <div class="container">
