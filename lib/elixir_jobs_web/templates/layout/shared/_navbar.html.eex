@@ -22,7 +22,7 @@
         <%= link(gettext("Published offers"), to: admin_offer_path(@conn, :index_published), class: "navbar-item")%>
         <%= link(gettext("Log out"), to: auth_path(@conn, :delete), class: "navbar-item") %>
         <% end %>
-        <a class="navbar-item" href="<%= "https://t.me/#{get_telegram_channel()}" %>" target="_blank">
+        <a class="navbar-item" href="<%= "https://t.me/#{Telegram.get_channel()}" %>" target="_blank">
           <i class="fab fa-telegram-plane"></i><span class="is-hidden-desktop">&nbsp;&nbsp;Telegram</span>
         </a>
         <a class="navbar-item" href="https://twitter.com/jobs_elixir" target="_blank">

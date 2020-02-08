@@ -1,53 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %></title>
-    <meta name="description" content="<%= SeoHelper.page_description(@conn) %>">
-    <meta name="keywords" content="elixir,jobs,community,job,board,phoenix,positions,junior,senior,full time,part time,freelance,contract,publish">
-    <meta property="og:url" content="<%= current_url(@conn) %>" />
-    <meta property="og:title" content="<%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %>" />
-    <meta property="og:description" content="<%= SeoHelper.page_description(@conn) %>" />
-    <meta property="og:image" content="<%= static_url(@conn, "/images/logo.png") %>" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:site" content="@jobs_elixir" />
-    <meta name="twitter:title" content="<%= gettext("Elixir Jobs") %> - <%= SeoHelper.page_title(@conn) %>" />
-    <meta name="twitter:description" content="<%= SeoHelper.page_description(@conn) %>" />
-    <meta name="twitter:image" content="<%= static_url(@conn, "/images/logo.png") %>" />
-    <meta name="application-name" content="<%= gettext("Elixir Jobs") %>">
-    <meta name="apple-mobile-web-app-title" content="<%= gettext("Elixir Jobs") %>">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="msapplication-TileColor" content="#5c18bf">
-    <link rel="apple-touch-icon" sizes="180x180" href="<%= static_path(@conn, "/icons/apple-touch-icon.png") %>">
-    <link rel="icon" type="image/png" sizes="32x32" href="<%= static_path(@conn, "/icons/favicon-32x32.png") %>">
-    <link rel="icon" type="image/png" sizes="16x16" href="<%= static_path(@conn, "/icons/favicon-16x16.png") %>">
-    <link rel="mask-icon" href="<%= static_path(@conn, "/icons/safari-pinned-tab.svg") %>" color="#5c18bf">
-    <link rel="manifest" href="/manifest.json">
-    <meta name="msapplication-TileColor" content="#5c18bf">
-    <meta name="theme-color" content="#ffffff">
-    <link rel="alternate" type="application/rss+xml" title="Elixir Jobs - RSS" href="<%= offer_path(@conn, :rss) %>" />
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <%= render("shared/head.html", conn: @conn) %>
   </head>
 
   <body>
-    <%= render_shared "_navbar.html", conn: @conn %>
-    <%= render_shared "_hero.html", conn: @conn %>
+    <%= render "shared/_navbar.html", conn: @conn %>
+    <%= render "shared/_hero.html", conn: @conn %>
 
     <section class="section app">
       <div class="container">
-        <%= render_shared "_alerts.html", conn: @conn %>
+        <%= render "shared/_alerts.html", conn: @conn %>
         <%= render @view_module, @view_template, assigns %>
       </div>
     </section>
 
-    <%= render_shared "_footer.html", conn: @conn %>
+    <%= render "shared/_footer.html", conn: @conn %>
 
     <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <%= render_shared "_analytics.html", conn: @conn %>
-    <%= render_shared "_cookies.html", conn: @conn %>
+    <%= render "shared/_analytics.html", conn: @conn %>
+    <%= render "shared/_cookies.html", conn: @conn %>
     <%= raw MicrodataHelper.render_microdata(@conn) %>
   </body>
 </html>

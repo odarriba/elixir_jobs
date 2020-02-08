@@ -49,10 +49,6 @@ defmodule ElixirJobsWeb do
       alias ElixirJobsWeb.DateHelper
       alias ElixirJobsWeb.HumanizeHelper
 
-      def render_shared(template, assigns \\ []) do
-        render(ElixirJobsWeb.SharedView, template, assigns)
-      end
-
       def user_logged_in?(conn), do: !is_nil(Map.get(conn.assigns, :current_user))
     end
   end
