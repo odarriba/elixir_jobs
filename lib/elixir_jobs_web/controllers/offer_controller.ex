@@ -54,7 +54,7 @@ defmodule ElixirJobsWeb.OfferController do
     opts =
       params
       |> Map.get("filters", %{})
-      |> Enum.reduce(Keyword.new(), fn
+      |> Enum.reduce([published: true], fn
         {"job_place", value}, acc ->
           Keyword.put(acc, :job_place, value)
 
