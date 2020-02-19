@@ -7,7 +7,7 @@
 
     <nav class="level offer-actions">
       <p class="level-item has-text-centered">
-        <%= link(gettext("Go to the offer!"), to: @offer.url, class: "button is-info is-medium", target: "_blank") %>
+        <%= link(gettext("Go to the offer!"), to: offer_url(@offer), class: "button is-info is-medium", target: "_blank") %>
       </p>
     </nav>
 
