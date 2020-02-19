@@ -1,0 +1,34 @@
+!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%= render(ElixirJobsWeb.LayoutView, "shared/_head.html", conn: @conn) %>
+  </head>
+
+  <body>
+    <%= render ElixirJobsWeb.LayoutView, "shared/_navbar.html", conn: @conn %>
+
+    <div class="navbar-spacing"></div>
+    <div class="navbar-spacing"></div>
+
+    <section class="section app">
+      <div class="container">
+        <h1 class="title is-1"><%= gettext("Whoops! Nothing to see here") %></h1>
+        <h3 class="subtitle is-4"><%= gettext("We couldn't find waht you are looking for...") %></h3>
+        <hr />
+        <h3 class="subtitle is-5">
+          <%= gettext("You can check newest offers on our ") %>
+          <%= link(gettext("home page"), to: offer_path(@conn, :index)) %>
+        </h3>
+      </div>
+    </section>
+
+    <div class="navbar-spacing"></div>
+    <div class="navbar-spacing"></div>
+
+    <%= render ElixirJobsWeb.LayoutView, "shared/_footer.html", conn: @conn %>
+
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <%= render ElixirJobsWeb.LayoutView, "shared/_analytics.html", conn: @conn %>
+    <%= render ElixirJobsWeb.LayoutView, "shared/_cookies.html", conn: @conn %>
+  </body>
+</html>
