@@ -26,5 +26,10 @@
         <%= img_tag(static_path(@conn, "/images/sponsors/appsignal.svg"), alt: "AppSignal", width: 250) %>
       </a>
     </div>
+    <div class="level-item">
+      <a href="https://futurepool.io/?utm_source=ElixirJobs" title="FuturePool.io - Chia farming pool" target="_blank">
+        <%= img_tag(static_path(@conn, "/images/sponsors/futurepool.svg"), alt: "FuturePool.io - Chia farming pool", width: 250) %>
+      </a>
+    </div>
   </nav>
 </div>
