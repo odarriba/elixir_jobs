@@ -20,7 +20,7 @@ defmodule ElixirJobsWeb.EmailsTest do
 
       offer = ElixirJobs.Repo.one(query)
 
-      for email <- ElixirJobsWeb.Email.notification_offer_created_html(offer) do
+      for {:ok, email} <- ElixirJobsWeb.Email.notification_offer_created_html(offer) do
         assert_delivered_email(email)
       end
     end

@@ -35,6 +35,8 @@ defmodule ElixirJobsWeb do
         pattern: "**/*",
         namespace: ElixirJobsWeb
 
+      use Appsignal.Phoenix.View
+
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]
 

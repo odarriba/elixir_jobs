@@ -3,7 +3,7 @@ defmodule ElixirJobs.Core.Fields.JobPlace do
   Field definition module to save in the database the type of an account
   """
 
-  @behaviour Ecto.Type
+  use Ecto.Type
 
   @values [
     :unknown,

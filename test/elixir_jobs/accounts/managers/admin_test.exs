@@ -62,7 +62,7 @@ defmodule ElixirJobs.Accounts.Managers.AdminTest do
 
       assert result == :ok
       assert %Admin{} = resource
-      assert %Admin{id: id} = Manager.get_admin!(resource.id)
+      assert %Admin{} = Manager.get_admin!(resource.id)
     end
 
     test "with invalid data returns error changeset" do

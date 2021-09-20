@@ -1,13 +1,13 @@
 name: Elixir CI
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-20.04
 
     container:
-      image: elixir:1.9.1
+      image: hexpm/elixir:1.12.3-erlang-24.0-alpine-3.14.0
 
     services:
       postgres:
@@ -34,7 +34,7 @@ jobs:
         cp config/test.secret.ci.exs config/test.secret.exs
         mix local.rebar --force
         mix local.hex --force
-        apt-get update -qqq && apt-get install make gcc -y -qqq
+        apk add --update-cache build-base
         mix deps.get
     - name: Compile
       env:

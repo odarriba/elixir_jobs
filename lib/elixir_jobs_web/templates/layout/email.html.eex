@@ -8,7 +8,7 @@
   </head>
   <body>
     <div style="width: 80%; max-width: 500px; font-size: 18px; font-family: Verdana, Helvetica, sans-serif; margin: 50px auto; padding: 10px;">
-      <%= render @view_module, @view_template, assigns %>
+      <%= @inner_content %>
       <div class="email-signature">
         <p> - Elixir Jobs</p>
       </div>
