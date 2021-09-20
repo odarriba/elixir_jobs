@@ -14,6 +14,12 @@ import * as notifications from "./app/notifications.js";
 
 function navbarScroll() {
   var navbar = document.getElementsByClassName("navbar is-fixed-top")[0];
+  var has_hero = document.getElementsByClassName("hero main").length > 0;
+
+  if (!has_hero) {
+    return true;
+  }
+
   if (navbar && (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50)) {
     navbar.classList.remove("is-transparent");
   } else {

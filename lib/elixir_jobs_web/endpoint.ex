@@ -1,5 +1,6 @@
 defmodule ElixirJobsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :elixir_jobs
+  use Appsignal.Phoenix
 
   socket "/socket", ElixirJobsWeb.UserSocket,
     websocket: true,
@@ -43,7 +44,6 @@ defmodule ElixirJobsWeb.Endpoint do
     key: "_elixir_jobs_key",
     signing_salt: "JReEffn+"
 
-  use Appsignal.Phoenix
   plug ElixirJobsWeb.Router
 
   @doc """
@@ -52,6 +52,7 @@ defmodule ElixirJobsWeb.Endpoint do
   It receives the endpoint configuration and checks if
   configuration should be loaded from the system environment.
   """
+  @impl true
   def init(_key, config) do
     if config[:load_from_system_env] do
       port = System.get_env("PORT") || raise "expected the PORT environment variable to be set"

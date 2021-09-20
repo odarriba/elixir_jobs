@@ -1,11 +1,18 @@
-<%= render("_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
+<section class="offers-index">
+  <%= render("index/_filters.html", conn: @conn, aspect: "small", page_number: @page_number, total_pages: @total_pages) %>
 
-<%= for offer <- @offers do %>
-  <%= render("_offer.html", conn: @conn, offer: offer, details: false) %>
-<% end %>
+  <%= for offer <- @offers do %>
+    <%= link(to: offer_path(@conn, :show, offer.slug)) do %>
+      <div class="box offer">
+        <%= render("_offer_header.html", conn: @conn, offer: offer, details: false) %>
+      </div>
+    <% end %>
 
-<%= if length(@offers) == 0 do %>
-  <%= render("_no-offer.html", conn: @conn) %>
-<% end %>
+  <% end %>
 
-<%= render("_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
+  <%= if length(@offers) == 0 do %>
+    <%= render("index/_no-offer.html", conn: @conn) %>
+  <% end %>
+
+  <%= render("index/_pagination.html", conn: @conn, page_number: @page_number, total_pages: @total_pages) %>
+</section>

@@ -1,7 +1,7 @@
 defmodule ElixirJobsWeb.AuthController do
   use ElixirJobsWeb, :controller
 
-  alias ElixirJobs.Users
+  alias ElixirJobs.Accounts
   alias ElixirJobsWeb.Guardian
 
   plug :scrub_params, "auth" when action in [:create]
@@ -13,7 +13,7 @@ defmodule ElixirJobsWeb.AuthController do
   def create(conn, %{"auth" => auth_params}) do
     with {:ok, email} <- Map.fetch(auth_params, "email"),
          {:ok, password} <- Map.fetch(auth_params, "password"),
-         {:ok, admin} <- Users.auth_admin(email, password) do
+         {:ok, admin} <- Accounts.authenticate_admin(email, password) do
       conn
       |> Guardian.Plug.sign_in(admin)
       |> put_flash(:info, gettext("Welcome %{user_name}!", user_name: admin.name))

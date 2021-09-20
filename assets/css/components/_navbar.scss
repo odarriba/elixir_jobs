@@ -31,7 +31,6 @@
 
     a {
       text-transform: uppercase;
-      font-weight: lighter;
       color: $white;
       &:hover {
         color: $navbar_color;
@@ -70,4 +69,8 @@
       border-bottom: 2px solid whitesmoke;
     }
   }
+}
+
+.navbar-spacing {
+  margin-top: 70px
 }

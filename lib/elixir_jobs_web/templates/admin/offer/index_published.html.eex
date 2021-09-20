@@ -26,7 +26,7 @@
       <%= for offer <- @offers do %>
         <tr>
           <td class="v-middle"><%= "#{offer.title} @ #{offer.company}" %></td>
-          <td class="v-middle h-center"><%= human_readable_date(offer.published_at, false) %></td>
+          <td class="v-middle h-center"><%= HumanizeHelper.readable_date(offer.published_at, false) %></td>
           <td class="v-middle h-right">
             <%= link(gettext("View"), to: offer_path(@conn, :show, offer.slug), class: "button is-success is-small") %>
             <%= link(gettext("Edit"), to: admin_offer_path(@conn, :edit, offer.slug), class: "button is-info is-small") %>

@@ -123,7 +123,6 @@
         {Credo.Check.Warning.ExpensiveEmptyEnumCheck},
         {Credo.Check.Warning.IExPry},
         {Credo.Check.Warning.IoInspect},
-        {Credo.Check.Warning.LazyLogging},
         {Credo.Check.Warning.OperationOnSameValues},
         {Credo.Check.Warning.OperationWithConstantResult},
         {Credo.Check.Warning.UnusedEnumOperation},
@@ -142,7 +141,9 @@
         {Credo.Check.Refactor.ABCSize, false},
         {Credo.Check.Refactor.AppendSingleItem, false},
         {Credo.Check.Refactor.VariableRebinding, false},
+        {Credo.Check.Refactor.MapInto, false},
         {Credo.Check.Warning.MapGetUnsafePass, false},
+        {Credo.Check.Warning.LazyLogging, false},
         {Credo.Check.Consistency.MultiAliasImportRequireUse, false},
 
         #

@@ -10,4 +10,6 @@
 <%= gettext("Place") %>: <%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %>
 <%= gettext("Type") %>: <%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %>
 ----
+<%= gettext("Contact E-mail") %>: <%= @offer.contact_email %>
+----
 <%= gettext("View") %>: <%= ElixirJobsWeb.Router.Helpers.admin_offer_url(ElixirJobsWeb.Endpoint, :edit, @offer.slug) %>

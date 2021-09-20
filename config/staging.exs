@@ -54,6 +54,9 @@ config :elixir_jobs, :default_app_email, "no-reply@staging.elixirjobs.net"
 config :elixir_jobs, :analytics_id, ""
 config :elixir_jobs, :telegram_channel, "elixir_jobs_st"
 
+# AppSignal
+config :appsignal, :config, active: true
+
 # ## SSL Support
 #
 # To get SSL working, you will need to add the `https` key

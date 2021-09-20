@@ -3,7 +3,7 @@
   <h2><%= gettext("Hire a great Elixir/Erlang developer") %></h2>
   <p><%= raw gettext("Elixir/Erlang community is in a very vibrant moment. Start looking for your next hiring in the right place.") %></p>
 
-  <h3><%= gettext("How does this works?") %></h3>
+  <h3><%= gettext("How does this work?") %></h3>
 
   <p><%= raw gettext("Once you submit your offer, we will review it (just to avoid SPAM or dead links) and, if everything is correct, we will publish it as soon as possible!") %></p>
 

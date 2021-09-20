@@ -48,11 +48,15 @@ config :nadia, token: {:system, "TELEGRAM_TOKEN", ""}
 config :elixir_jobs, ElixirJobsWeb.Mailer,
   adapter: Bamboo.MailgunAdapter,
   api_key: System.get_env("MAILGUN_API_KEY"),
-  domain: "elixirjobs.net"
+  domain: "elixirjobs.net",
+  base_uri: "https://api.eu.mailgun.net/v3"
 
 config :elixir_jobs, :default_app_email, "no-reply@elixirjobs.net"
 config :elixir_jobs, :analytics_id, "UA-106824960-1"
 config :elixir_jobs, :telegram_channel, "elixir_jobs"
+
+# AppSignal
+config :appsignal, :config, active: true
 
 # ## SSL Support
 #

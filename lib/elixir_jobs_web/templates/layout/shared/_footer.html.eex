@@ -1,0 +1,36 @@
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-desktop">
+      <div class="column has-text-centered has-text-left-desktop">
+        <p>
+          <strong>
+            <%= raw gettext("ElixirJobs.net &copy %{year}", year: DateTime.utc_now.year) %>
+          </strong>
+        </p>
+        <p>
+          <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %>
+          |
+          <%= link(gettext("About this site"), to: page_path(@conn, :about)) %>
+        </p>
+        <p>
+          <a href="mailto:hi@elixirjobs.net">Contact us</a>
+        </p>
+      </div>
+      <div class="column has-text-centered has-text-right-desktop">
+        <p><%= link(gettext("Recent job postings"), to: offer_path(@conn, :index)) %></p>
+        <p>
+          <%= link(gettext("On site jobs"), to: offer_path(@conn, :index_filtered, "onsite")) %>
+          |
+          <%= link(gettext("Remote jobs"), to: offer_path(@conn, :index_filtered, "remote")) %>
+        </p>
+        <p>
+          <%= link(gettext("Full time jobs"), to: offer_path(@conn, :index_filtered, "full_time")) %>
+          |
+          <%= link(gettext("Part time jobs"), to: offer_path(@conn, :index_filtered, "part_time")) %>
+          |
+          <%= link(gettext("Freelance jobs"), to: offer_path(@conn, :index_filtered, "freelance")) %>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

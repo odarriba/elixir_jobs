@@ -24,6 +24,7 @@ defmodule ElixirJobs.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import ElixirJobs.DataCase
+      import ElixirJobs.Factory
     end
   end
 

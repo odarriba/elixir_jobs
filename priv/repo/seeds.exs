@@ -10,7 +10,7 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 
-ElixirJobs.Users.create_admin(%{
+ElixirJobs.Accounts.create_admin(%{
   email: "dummy@user.com",
   password: "123456",
   password_confirmation: "123456",

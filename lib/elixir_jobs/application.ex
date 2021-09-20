@@ -10,14 +10,14 @@ defmodule ElixirJobs.Application do
   # See https://hexdocs.pm/elixir/Application.html
   # for more information on OTP Applications
   def start(_type, _args) do
-    import Supervisor.Spec
-
     # Define workers and child supervisors to be supervised
     children = [
       # Start the Ecto repository
-      supervisor(ElixirJobs.Repo, []),
+      {ElixirJobs.Repo, []},
+      # Start the PubSub system
+      {Phoenix.PubSub, name: ElixirJobs.PubSub},
       # Start the endpoint when the application starts
-      supervisor(ElixirJobsWeb.Endpoint, [])
+      {ElixirJobsWeb.Endpoint, []}
       # Start your own worker by calling: ElixirJobs.Worker.start_link(arg1, arg2, arg3)
       # worker(ElixirJobs.Worker, [arg1, arg2, arg3]),
     ]

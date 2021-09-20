@@ -5,8 +5,9 @@ Elixir Jobs is a job board based in Elixir + Phoenix.
 ## Technologies used
 
 - Erlang 22.0
-- Elixir 1.9.1
-- Phoenix 1.4
+- Elixir 1.12.3
+- Phoenix 1.5
+- NodeJS 14.17.6
 - PostgreSQL
 
 Some of the versions are set on `.tool_versions` file, so you can use it with [asdf version manager](https://github.com/asdf-vm/asdf)

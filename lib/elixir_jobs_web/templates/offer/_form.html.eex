@@ -45,7 +45,7 @@
           <%= text_input(f, :url,
                 id: "offer_url",
                 class: "input",
-                placeholder: gettext("External URL of the job offer")) %>
+                placeholder: gettext("URL of the job offer")) %>
           <%= error_tag(f, :url) %>
         </div>
       </div>
@@ -79,11 +79,28 @@
                 maxlength: 450,
                 id: "offer_summary",
                 class: "textarea",
-                placeholder: gettext("Summary (max 450 characters)")) %>
+                placeholder: gettext("Summary (max 2000 characters)")) %>
           <%= error_tag(f, :summary) %>
         </div>
       </div>
     </div>
+
+    <div class="field is-horizontal">
+      <div class="field-label is-normal">
+        <label class="label"><%= gettext("Contact E-mail") %></label>
+      </div>
+      <div class="field-body">
+        <div class="field">
+          <%= text_input(f, :contact_email,
+                id: "offer_contact_email",
+                class: "input",
+                placeholder: gettext("Your e-mail address")) %>
+          <%= error_tag(f, :contact_email) %>
+          <p class="help"><%= raw gettext(" We will use this in case we need to contact you regarding this job posting. <b>It will not be public.</b>") %></p>
+        </div>
+      </div>
+    </div>
+
 
     <div class="field is-horizontal">
       <div class="field-label">

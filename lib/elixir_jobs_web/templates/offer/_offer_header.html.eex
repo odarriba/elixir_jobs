@@ -1,0 +1,34 @@
+<div class="content">
+  <p class="title">
+    <strong>
+      <%= @offer.title %>
+    </strong>
+    <small><%= @offer.company %> - <%= @offer.location %></small>
+  </p>
+  <div class="field is-grouped is-grouped-multiline">
+    <div class="control">
+      <span class="tags has-addons">
+        <span class="tag is-light is-rounded"><%= gettext("Date") %></span>
+        <span class="tag is-danger is-rounded">
+          <%= if @offer.published_at do %>
+          <%= HumanizeHelper.readable_date(@offer.published_at) %>
+          <% else %>
+          <%= HumanizeHelper.readable_date(@offer.inserted_at) %>
+          <% end %>
+        </span>
+      </span>
+    </div>
+    <div class="control">
+      <span class="tags has-addons">
+        <span class="tag is-light is-rounded"><%= gettext("Workplace") %></span>
+        <span class="tag is-warning is-rounded"><%= HumanizeHelper.human_get_place(@offer.job_place, gettext("Unknown")) %></span>
+      </span>
+    </div>
+    <div class="control">
+      <span class="tags has-addons">
+        <span class="tag is-light is-rounded"><%= gettext("Type") %></span>
+        <span class="tag is-link is-rounded"><%= HumanizeHelper.human_get_type(@offer.job_type, gettext("Unknown")) %></span>
+      </span>
+    </div>
+  </div>
+</div>
