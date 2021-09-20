@@ -5,7 +5,7 @@ defmodule ElixirJobs.Mixfile do
     [
       app: :elixir_jobs,
       version: "0.0.1",
-      elixir: "~> 1.5",
+      elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [:phoenix, :gettext] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
@@ -21,14 +21,7 @@ defmodule ElixirJobs.Mixfile do
   def application do
     [
       mod: {ElixirJobs.Application, []},
-      extra_applications: [
-        :logger,
-        :runtime_tools,
-        :scrivener_ecto,
-        :extwitter,
-        :appsignal,
-        :bamboo
-      ]
+      extra_applications: [:logger]
     ]
   end
 
@@ -42,37 +35,36 @@ defmodule ElixirJobs.Mixfile do
   defp deps do
     [
       # Phoenix
-      {:phoenix, "~> 1.4"},
-      {:phoenix_pubsub, "~> 1.1"},
-      {:phoenix_html, "~> 2.13"},
-      {:gettext, "~> 0.17.0"},
-      {:cowboy, "~> 2.6"},
-      {:plug_cowboy, "~> 2.0"},
-      {:plug, "~> 1.7"},
+      {:phoenix, "~> 1.5.0"},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:plug_cowboy, "~> 2.1"},
+      {:phoenix_html, "~> 3.0"},
+      {:gettext, "~> 0.18.2"},
       # Database
-      {:phoenix_ecto, "~> 4.0"},
-      {:ecto_sql, "~> 3.0"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:ecto_sql, "~> 3.7"},
       {:postgrex, ">= 0.0.0"},
       # Auth
-      {:guardian, "~> 2.0"},
-      {:comeonin, "~> 5.1"},
-      {:bcrypt_elixir, "~> 2.0"},
+      {:guardian, "~> 2.2"},
+      {:comeonin, "~> 5.3"},
+      {:bcrypt_elixir, "~> 2.3"},
       # External services
-      {:extwitter, "~> 0.8"},
-      {:bamboo, "~> 1.3"},
-      {:nadia, "~> 0.5"},
+      {:extwitter, "~> 0.12.4"},
+      {:bamboo, "~> 2.0"},
+      {:bamboo_phoenix, "~> 1.0"},
+      {:nadia, "~> 0.7"},
       # Monitoring
-      {:appsignal, "~> 1.10"},
+      {:appsignal_phoenix, "~> 2.0"},
       # Misc
       {:slugger, "~> 0.3.0"},
-      {:scrivener_ecto, "~> 2.2"},
-      {:phoenix_html_sanitizer, "~> 1.1"},
-      {:calendar, "~> 0.18.0"},
-      {:jason, "~> 1.0"},
+      {:scrivener_ecto, "~> 2.7"},
+      {:html_sanitize_ex, "~> 1.4"},
+      {:calendar, "~> 1.0"},
+      {:jason, "~> 1.2"},
       # Tests and dev
-      {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:faker, "~> 0.12", only: :test},
-      {:credo, "~> 1.1", only: [:dev, :test], runtime: false}
+      {:phoenix_live_reload, "~> 1.3", only: :dev},
+      {:faker, "~> 0.16", only: :test},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
     ]
   end
 

@@ -23,7 +23,7 @@
     <section class="section app">
       <div class="container">
         <%= render "shared/_alerts.html", conn: @conn %>
-        <%= render @view_module, @view_template, assigns %>
+        <%= @inner_content %>
       </div>
     </section>
 

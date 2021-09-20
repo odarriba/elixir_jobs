@@ -3,8 +3,6 @@ defmodule ElixirJobsWeb.ViewHelper do
   Module with helpers commonly used in other views.
   """
 
-  use PhoenixHtmlSanitizer, :markdown_html
-
   alias ElixirJobsWeb.DateHelper
 
   def class_with_error(form, field, base_class) do
@@ -22,7 +20,9 @@ defmodule ElixirJobsWeb.ViewHelper do
   end
 
   def do_strip_tags(text) do
-    sanitize(text, :strip_tags)
+    text
+    |> HtmlSanitizeEx.strip_tags()
+    |> Phoenix.HTML.raw()
   end
 
   ###
