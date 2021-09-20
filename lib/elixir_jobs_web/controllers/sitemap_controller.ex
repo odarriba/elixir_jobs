@@ -3,7 +3,7 @@ defmodule ElixirJobsWeb.SitemapController do
 
   alias ElixirJobs.Core
 
-  @items_per_page Application.get_env(:elixir_jobs, :items_per_page)
+  @items_per_page Application.compile_env!(:elixir_jobs, :items_per_page)
 
   def sitemap(conn, _params) do
     offers = Core.list_offers(published: true)
