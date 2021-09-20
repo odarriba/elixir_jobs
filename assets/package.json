@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bulma": "^0.7.5",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "particles.js": "^2.0.0",
     "phoenix": "^1.4.9",
     "phoenix_html": "^2.13.2"
