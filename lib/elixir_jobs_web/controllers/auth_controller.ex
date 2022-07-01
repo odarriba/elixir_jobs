@@ -35,6 +35,7 @@ defmodule ElixirJobsWeb.AuthController do
 
   def auth_error(conn, {_type, _reason}, _opts) do
     conn
+    |> Guardian.Plug.sign_out()
     |> put_flash(:error, gettext("Authentication required"))
     |> redirect(to: auth_path(conn, :new))
   end
