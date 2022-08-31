@@ -3,7 +3,7 @@
 #
 # This configuration file is loaded before any dependency and
 # is restricted to this project.
-use Mix.Config
+import Config
 
 # General application configuration
 config :elixir_jobs,
@@ -23,7 +23,7 @@ config :elixir_jobs, ElixirJobsWeb.Endpoint,
 config :appsignal, :config,
   otp_app: :elixir_jobs,
   name: "ElixirJobs",
-  env: Mix.env,
+  env: Mix.env(),
   active: false
 
 # Use Jason for JSON parsing in Phoenix
