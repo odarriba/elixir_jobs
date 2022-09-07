@@ -49,9 +49,7 @@ defmodule ElixirJobsWeb.Twitter do
   end
 
   defp get_tags do
-    @tags
-    |> Enum.map(&"##{&1}")
-    |> Enum.join(" ")
+    Enum.map_join(@tags, " ", &"##{&1}")
   end
 
   defp get_url(%Plug.Conn{} = conn, %Offer{slug: slug}) do

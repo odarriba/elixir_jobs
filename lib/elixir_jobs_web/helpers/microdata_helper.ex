@@ -13,11 +13,9 @@ defmodule ElixirJobsWeb.MicrodataHelper do
         "<script type=\"application/ld+json\">#{Jason.encode!(microdata)}</script>"
 
       microdatas when is_list(microdatas) ->
-        microdatas
-        |> Enum.map(fn data ->
+        Enum.map_join(microdatas, fn data ->
           "<script type=\"application/ld+json\">#{Jason.encode!(data)}</script>"
         end)
-        |> Enum.join("")
 
       _ ->
         ""
