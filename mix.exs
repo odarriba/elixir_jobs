@@ -7,7 +7,7 @@ defmodule ElixirJobs.Mixfile do
       version: "0.0.1",
       elixir: "~> 1.12",
       elixirc_paths: elixirc_paths(Mix.env()),
-      compilers: [:phoenix, :gettext] ++ Mix.compilers(),
+      compilers: [:phoenix] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
@@ -35,11 +35,11 @@ defmodule ElixirJobs.Mixfile do
   defp deps do
     [
       # Phoenix
-      {:phoenix, "~> 1.5.0"},
+      {:phoenix, "~> 1.6.0"},
       {:phoenix_pubsub, "~> 2.0"},
       {:plug_cowboy, "~> 2.1"},
       {:phoenix_html, "~> 3.0"},
-      {:gettext, "~> 0.18.2"},
+      {:gettext, "~> 0.20.0"},
       # Database
       {:phoenix_ecto, "~> 4.4"},
       {:ecto_sql, "~> 3.7"},
@@ -47,9 +47,10 @@ defmodule ElixirJobs.Mixfile do
       # Auth
       {:guardian, "~> 2.2"},
       {:comeonin, "~> 5.3"},
-      {:bcrypt_elixir, "~> 2.3"},
+      {:bcrypt_elixir, "~> 3.0"},
       # External services
-      {:extwitter, "~> 0.12.4"},
+      {:extwitter, "~> 0.13.0"},
+      {:oauther, "~> 1.1"},
       {:bamboo, "~> 2.0"},
       {:bamboo_phoenix, "~> 1.0"},
       {:nadia, "~> 0.7"},
