@@ -50,6 +50,7 @@ defmodule ElixirJobs.Mixfile do
       {:bcrypt_elixir, "~> 3.0"},
       # External services
       {:extwitter, "~> 0.13.0"},
+      {:oauther, "~> 1.1"},
       {:bamboo, "~> 2.0"},
       {:bamboo_phoenix, "~> 1.0"},
       {:nadia, "~> 0.7"},
