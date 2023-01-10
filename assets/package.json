@@ -14,7 +14,7 @@
     "jquery": "^3.6.0",
     "particles.js": "^2.0.0",
     "phoenix": "^1.4.9",
-    "phoenix_html": "^2.13.2"
+    "phoenix_html": "^3.0.4"
   },
   "devDependencies": {
     "@babel/core": "^7.0",
