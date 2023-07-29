@@ -4,10 +4,10 @@ on: [push]
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
     container:
-      image: hexpm/elixir:1.12.3-erlang-24.0-alpine-3.14.0
+      image: hexpm/elixir:1.15.4-erlang-26.0.2-alpine-3.18.2
 
     services:
       postgres:

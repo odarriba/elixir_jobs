@@ -1,6 +1,5 @@
 defmodule ElixirJobsWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :elixir_jobs
-  use Appsignal.Phoenix
 
   socket "/socket", ElixirJobsWeb.UserSocket,
     websocket: true,
