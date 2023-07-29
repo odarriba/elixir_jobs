@@ -34,38 +34,31 @@ defmodule ElixirJobs.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      # Phoenix
-      {:phoenix, "~> 1.6.0"},
-      {:phoenix_pubsub, "~> 2.0"},
-      {:plug_cowboy, "~> 2.1"},
-      {:phoenix_html, "~> 3.0"},
-      {:gettext, "~> 0.20.0"},
-      # Database
-      {:phoenix_ecto, "~> 4.4"},
-      {:ecto_sql, "~> 3.7"},
-      {:postgrex, ">= 0.0.0"},
-      # Auth
-      {:guardian, "~> 2.2"},
-      {:comeonin, "~> 5.3"},
-      {:bcrypt_elixir, "~> 3.0"},
-      # External services
-      {:extwitter, "~> 0.13.0"},
-      {:oauther, "~> 1.1"},
-      {:bamboo, "~> 2.0"},
-      {:bamboo_phoenix, "~> 1.0"},
-      {:nadia, "~> 0.7"},
-      # Monitoring
       {:appsignal_phoenix, "~> 2.0"},
-      # Misc
-      {:slugger, "~> 0.3.0"},
-      {:scrivener_ecto, "~> 2.7"},
-      {:html_sanitize_ex, "~> 1.4"},
+      {:bamboo_phoenix, "~> 1.0"},
+      {:bamboo, "~> 2.0"},
+      {:bcrypt_elixir, "~> 3.0"},
       {:calendar, "~> 1.0"},
-      {:jason, "~> 1.2"},
-      # Tests and dev
-      {:phoenix_live_reload, "~> 1.3", only: :dev},
+      {:comeonin, "~> 5.3"},
+      {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
+      {:ecto_sql, "~> 3.7"},
+      {:extwitter, "~> 0.13.0"},
       {:faker, "~> 0.16", only: :test},
-      {:credo, "~> 1.5", only: [:dev, :test], runtime: false}
+      {:gettext, "~> 0.20.0"},
+      {:guardian, "~> 2.2"},
+      {:html_sanitize_ex, "~> 1.4"},
+      {:jason, "~> 1.2"},
+      {:nadia, "~> 0.7"},
+      {:oauther, "~> 1.1"},
+      {:phoenix_ecto, "~> 4.4"},
+      {:phoenix_html, "~> 3.0"},
+      {:phoenix_live_reload, "~> 1.3", only: :dev},
+      {:phoenix_pubsub, "~> 2.0"},
+      {:phoenix, "~> 1.6.0"},
+      {:plug_cowboy, "~> 2.1"},
+      {:postgrex, ">= 0.0.0"},
+      {:scrivener_ecto, "~> 2.7"},
+      {:slugger, "~> 0.3.0"}
     ]
   end
 
