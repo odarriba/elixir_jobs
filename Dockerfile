@@ -22,8 +22,11 @@ ARG RUNNER_IMAGE="debian:${DEBIAN_VERSION}"
 
 FROM ${BUILDER_IMAGE} as builder
 
+# Install NodeJS repository
+RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash
+
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential git nodejs npm \
+RUN apt-get update -y && apt-get install -y build-essential curl git nodejs npm \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # prepare build dir
@@ -47,13 +50,13 @@ RUN mkdir config
 COPY config/config.exs config/${MIX_ENV}.exs config/
 RUN mix deps.compile
 
+# Compile assets and digest them
 COPY assets assets
-
-# compile assets and digest them
 RUN npm --prefix assets ci && \
     npm --prefix assets run deploy && \
     mix phx.digest
 
+# Copy app code
 COPY priv priv
 COPY lib lib
 
