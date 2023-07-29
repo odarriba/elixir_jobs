@@ -4,4 +4,8 @@ defmodule ElixirJobsWeb.PageController do
   def about(conn, _params) do
     render(conn, "about.html")
   end
+
+  def sponsors(conn, _params) do
+    render(conn, "sponsors.html")
+  end
 end

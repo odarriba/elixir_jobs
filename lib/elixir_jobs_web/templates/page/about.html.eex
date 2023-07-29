@@ -10,7 +10,7 @@
   <p><%= raw gettext("By posting your offer on our site, it will be distributed also using Telegram, RSS and Twitter (why not start %{following_us}?), so you will potentially reach more developers than using other ways. And more important: <b>you will be reaching developers that want a new job</b>.",
     following_us: "<a href=\"https://twitter.com/jobs_elixir\" taget=\"_blank\">#{gettext("following us")}</a>") %></p>
 
-  <p><%= raw gettext("Also, because you can <b>post your offers for free</b>.") %></p>
+  <p><%= raw gettext("Also, because you can <b>post your job listing for free</b>.") %></p>
 
   <h2><%= raw gettext("Get in touch") %></h2>
 
@@ -18,13 +18,20 @@
 
   <h2><%= raw gettext("Sponsors") %></h2>
 
-  <p><%= raw gettext("Last but not least, we want to thanks the companies that are helping Elixir Jobs:") %></p>
+  <p><%= raw gettext("ElixirJobs runs smoothly thanks to our beloved sponsors, who contribute to the site allowing us to continually develop and maintain it.") %></p>
 
   <nav class="level sponsors">
+    <div class="level-item">
+      <a href="https://learn-elixir.dev/?utm_source=Elixir_Jobs&utm_medium=r&utm_campaign=s&utm_id=1" title="Learn Elixir" target="_blank" class="learn-elixir">
+        <%= img_tag(static_path(@conn, "/images/sponsors/learn-elixir.svg"), alt: "Learn Elixir", width: 320) %>
+      </a>
+    </div>
     <div class="level-item">
       <a href="https://appsignal.com/?utm_source=ElixirJobs" title="AppSignal" target="_blank">
         <%= img_tag(static_path(@conn, "/images/sponsors/appsignal.svg"), alt: "AppSignal", width: 250) %>
       </a>
     </div>
   </nav>
+
+  <p><%= raw gettext("If your company wants to become a sponsor of ElixirJobs, please send us an email to <a href=\"mailto:hi@elixirjobs.net\">hi@elixirjobs.net</a>") %></p>
 </div>

@@ -2,7 +2,7 @@
   <div class="container">
     <div class="columns is-desktop">
       <div class="column has-text-centered has-text-left-desktop">
-        <p>
+        <p class="section-title">
           <strong>
             <%= raw gettext("ElixirJobs.net &copy %{year}", year: DateTime.utc_now.year) %>
           </strong>
@@ -10,14 +10,10 @@
         <p>
           <%= link(gettext("Post a job offer"), to: offer_path(@conn, :new)) %>
           |
-          <%= link(gettext("About this site"), to: page_path(@conn, :about)) %>
+          <%= link(gettext("About"), to: page_path(@conn, :about)) %>
+          |
+          <%= link(gettext("Contact us"), to: "mailto:hi@elixirjobs.net") %>
         </p>
-        <p>
-          <a href="mailto:hi@elixirjobs.net">Contact us</a>
-        </p>
-      </div>
-      <div class="column has-text-centered has-text-right-desktop">
-        <p><%= link(gettext("Recent job postings"), to: offer_path(@conn, :index)) %></p>
         <p>
           <%= link(gettext("On site jobs"), to: offer_path(@conn, :index_filtered, "onsite")) %>
           |
@@ -29,6 +25,18 @@
           <%= link(gettext("Part time jobs"), to: offer_path(@conn, :index_filtered, "part_time")) %>
           |
           <%= link(gettext("Freelance jobs"), to: offer_path(@conn, :index_filtered, "freelance")) %>
+        </p>
+      </div>
+      <div class="column has-text-centered has-text-right-desktop">
+        <p class="section-title">
+          <strong>
+            <%= raw gettext("ElixirJobs is sponsored by", year: DateTime.utc_now.year) %>
+          </strong>
+        </p>
+        <p>
+          <a href="https://learn-elixir.dev/?utm_source=Elixir_Jobs&utm_medium=r&utm_campaign=s&utm_id=1">
+            <%= img_tag(static_path(@conn, "/images/sponsors/learn-elixir-white.svg"), alt: "Learn Elixir", width: 200) %>
+          </a>
         </p>
       </div>
     </div>
