@@ -13,7 +13,7 @@
 #   - Ex: hexpm/elixir:1.13.3-erlang-24.2-debian-bullseye-20210902-slim
 #
 ARG ELIXIR_VERSION=1.15.4
-ARG OTP_VERSION=26.0.2
+ARG OTP_VERSION=25.3.2.5
 ARG NODE_VERSION=18
 ARG DEBIAN_VERSION=bullseye-20230612-slim
 
@@ -26,7 +26,7 @@ FROM ${BUILDER_IMAGE} as builder
 RUN curl -fsSL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash
 
 # install build dependencies
-RUN apt-get update -y && apt-get install -y build-essential curl git nodejs npm \
+RUN apt-get update -y && apt-get install -y build-essential curl git nodejs npm ca-certificates \
     && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # prepare build dir
@@ -73,7 +73,7 @@ RUN mix release
 # the compiled release and other runtime necessities
 FROM ${RUNNER_IMAGE}
 
-RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales \
+RUN apt-get update -y && apt-get install -y libstdc++6 openssl libncurses5 locales ca-certificates \
   && apt-get clean && rm -f /var/lib/apt/lists/*_*
 
 # Set the locale
