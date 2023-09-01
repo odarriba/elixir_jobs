@@ -1,5 +1,9 @@
 # Elixir Jobs
 
+> [!NOTE]
+> This repo will be in read-only mode starting September 1st, 2023<br />
+> Thanks to everyone who contributed to ElixirJobs 💜
+
 Elixir Jobs is a job board based in Elixir + Phoenix.
 
 ## Technologies used
